@@ -1,6 +1,6 @@
 ##
 ## EPITECH PROJECT, 2024
-## Arcade
+## Raytracer
 ## File description:
 ## Makefile
 ##
