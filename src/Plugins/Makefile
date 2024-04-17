@@ -11,7 +11,7 @@ all:
 
 clean:
 	make clean -C ./Lights/
-	make clean -C ./src/Plugins/
+	make clean -C ./Primitives/
 
 fclean: clean
 	make fclean -C ./Lights/

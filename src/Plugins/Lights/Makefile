@@ -11,9 +11,11 @@ OBJ			= $(SRC:.cpp=.o)
 
 NAME		= raytracer_lights.so
 
-FLD_PLUGINS = ../../../../plugins/
+ROOT		= ../../../
 
-INCLUDE		=	-I../../../../include
+FLD_PLUGINS = $(ROOT)plugins/
+
+INCLUDE		=	-I$(ROOT)include
 CXXFLAGS 	= 	-Werror -Wall -Wextra -g -rdynamic -std=c++20 $(INCLUDE)
 
 all: $(NAME)

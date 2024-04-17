@@ -9,12 +9,12 @@ NAME	= raytracer
 
 all: $(NAME)
 
-$(NAME): core plugins
+$(NAME): Core Plugins
 
-core:
+Core:
 	make -C ./src/Core/
 
-plugins:
+Plugins:
 	make -C ./src/Plugins/
 
 clean:
