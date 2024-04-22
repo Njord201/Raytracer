@@ -17,7 +17,7 @@ jobs:
     container: epitechcontent/epitest-docker
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: check_presence_of_pushed_executables
         run: |
           if [ -z "$EXECUTABLES" ]; then
@@ -59,7 +59,7 @@ jobs:
       FAILLED: 0
     timeout-minutes: 2
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: "Create coding-style-reports.log"
@@ -85,7 +85,7 @@ jobs:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: run_tests
         run: make tests_run
         timeout-minutes: 5
@@ -95,7 +95,7 @@ jobs:
     needs: [check_program_compilation]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: pixta-dev/repository-mirroring-action@v1
