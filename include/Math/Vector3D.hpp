@@ -10,32 +10,37 @@
 namespace Math {
 
     class Vector3D {
-    public:
-        double values[3];
 
-        Vector3D();
-        Vector3D(double e0, double e1, double e2);
+        public:
 
-        double x() const;
-        double y() const;
-        double z() const;
+            Vector3D();
+            Vector3D(double x, double y, double z);
 
-        double length() const;
-        double length_squared() const;
+            double x() const;
+            double y() const;
+            double z() const;
 
-        Vector3D operator+(const Vector3D& ptr);
-        Vector3D& operator+=(const Vector3D& ptr);
-        Vector3D operator-(const Vector3D& ptr);
-        Vector3D& operator-=(const Vector3D& ptr);
-        Vector3D operator*(const Vector3D& ptr);
-        Vector3D& operator*=(const Vector3D& ptr);
-        Vector3D operator/(const Vector3D& ptr);
-        Vector3D& operator/=(const Vector3D& ptr);
+            double length() const;
+            double length_squared() const;
 
-        Vector3D operator*(double n);
-        Vector3D& operator*=(double n);
-        Vector3D operator/(double n);
-        Vector3D& operator/=(double n);
+            Vector3D operator+(const Vector3D& ptr);
+            Vector3D& operator+=(const Vector3D& ptr);
+            Vector3D operator-(const Vector3D& ptr);
+            Vector3D& operator-=(const Vector3D& ptr);
+            Vector3D operator*(const Vector3D& ptr);
+            Vector3D& operator*=(const Vector3D& ptr);
+            Vector3D operator/(const Vector3D& ptr);
+            Vector3D& operator/=(const Vector3D& ptr);
+
+            Vector3D operator*(double n);
+            Vector3D& operator*=(double n);
+            Vector3D operator/(double n);
+            Vector3D& operator/=(double n);
+        
+        private:
+
+            double _vector[3];
+
     };
     using Point3D = Vector3D;
 };
