@@ -26,10 +26,12 @@ Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& r) const
 
     double discriminant = b * b - 4 * a * c;
     
-    if (discriminant < 0)
+    if (discriminant < 0) // no hit
         return Math::Point3D(0,0,0);
     
-    //else
+    //else if there is a hit value
     double hitValue = -b - sqrt(discriminant) / 2 * a;
     Math::Point3D hitPoint = rayOrigin + rayDirection * hitValue;
+
+    return hitPoint;
 }
