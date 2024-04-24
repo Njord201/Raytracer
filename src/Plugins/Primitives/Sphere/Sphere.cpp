@@ -26,7 +26,7 @@ Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& r) const
 
     double discriminant = b * b - 4 * a * c;
     
-    if (discriminant < 0) // no hit
+    if (!IS_HIT(discriminant)) // no hit
         return Math::Point3D(0,0,0);
     
     //else if there is a hit value
