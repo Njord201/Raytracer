@@ -7,7 +7,7 @@
 
 MAIN 		= main.cpp \
 
-SRC			=
+SRC			=	Parser/Scene.cpp \
 
 OBJ			= $(SRC:.cpp=.o)
 
@@ -16,7 +16,7 @@ MAIN_OBJ	= $(MAIN:.cpp=.o)
 NAME		= raytracer
 
 INCLUDE		= -I../../include
-CXXFLAGS 	= -std=c++20 -Wall -Wextra -Werror -g $(INCLUDE)
+CXXFLAGS 	= -std=c++20 -Wall -Wextra -Werror -g -lconfig++ $(INCLUDE)
 
 all: $(NAME)
 
