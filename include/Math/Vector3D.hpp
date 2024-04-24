@@ -65,7 +65,7 @@ namespace Math {
              * 
              * @return double 
              */
-            double length_squared() const;
+            double dot() const;
 
             Vector3D operator+(const Vector3D& ptr);
             Vector3D& operator+=(const Vector3D& ptr);

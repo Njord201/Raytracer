@@ -31,10 +31,10 @@ double Math::Vector3D::z() const
 
 double Math::Vector3D::length() const
 {
-    return sqrt(length_squared());
+    return sqrt(dot());
 }
 
-double Math::Vector3D::length_squared() const
+double Math::Vector3D::dot() const
 {
     return _vector[0]*_vector[0] + _vector[1]*_vector[1] + _vector[2]*_vector[2];
 }
