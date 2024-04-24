@@ -9,12 +9,12 @@
 
 Raytracer::Ray::Ray(const Math::Point3D& origin, const Math::Vector3D& direction) : _origin(origin), _direction(direction) {}
 
-Math::Point3D& Raytracer::Ray::origin()
+const Math::Point3D& Raytracer::Ray::origin() const
 {
     return _origin;
 }
 
-Math::Vector3D& Raytracer::Ray::direction()
+const Math::Vector3D& Raytracer::Ray::direction() const
 {
     return _direction;
 }
