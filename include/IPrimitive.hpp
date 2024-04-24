@@ -23,11 +23,11 @@ namespace Primitive {
             virtual ~IPrimitive() = default;
 
             /**
-             * @brief compute the hit value of a primitive
+             * @brief compute the hit point of a primitive with a ray
              *
-             * @param ray vector3D
-             * @return double hit value
+             * @param ray Vector3D
+             * @return Math::Point3D 
              */
-            virtual double hit(const Raytracer::Ray& ray) const = 0;
+            virtual Math::Point3D hit(const Raytracer::Ray& ray) const = 0;
     };
 };
