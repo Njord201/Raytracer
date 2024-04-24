@@ -21,7 +21,7 @@ class Raytracer::Rectangle3D {
          * @brief Construct a new Rectangle 3D object
          *
          */
-        Rectangle3D() = default;
+        Rectangle3D();
 
         /**
          * @brief Construct a new Rectangle 3D object
@@ -38,7 +38,6 @@ class Raytracer::Rectangle3D {
          *
          */
         ~Rectangle3D();
-        
         /**
          * @brief returns the 3D coordinates of the point at the given location in our rectangle
          * 

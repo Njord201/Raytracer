@@ -17,6 +17,10 @@ Raytracer::Camera::Camera(const Camera& other)
     this->_screen = other._screen;
 }
 
+Raytracer::Camera::~Camera()
+{
+}
+
 Raytracer::Camera::Camera(Math::Point3D _origin, Rectangle3D _screen)
 {
     this->_origin = _origin;

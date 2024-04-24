@@ -22,14 +22,14 @@ class Raytracer::Camera {
          * @brief Construct a new Camera object
          *
          */
-        Camera() = default;
+        Camera();
 
         /**
          * @brief Construct a new Camera object
          * 
          * @param other other Camera object to copy
          */
-        Camera(const Camera& other) = default;
+        Camera(const Camera& other);
 
         /**
          * @brief Construct a new Rectangle 3D object
@@ -43,7 +43,7 @@ class Raytracer::Camera {
          * @brief Destructor a Camera object
          *
          */
-        ~Camera() = default;
+        ~Camera();
 
         /**
          * @brief return a ray, going from the camera to the coordinates u and v of the image
