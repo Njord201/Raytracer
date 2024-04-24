@@ -65,7 +65,15 @@ namespace Math {
              * 
              * @return double 
              */
-            double dot() const;
+            double length_squared() const;
+
+            /**
+             * @brief return the dot product with an other Vector
+             * 
+             * @param ptr vector to dot with
+             * @return double result of dot product
+             */
+            double dot(const Vector3D& ptr);
 
             Vector3D operator+(const Vector3D& ptr);
             Vector3D& operator+=(const Vector3D& ptr);
