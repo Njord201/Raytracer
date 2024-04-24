@@ -5,6 +5,8 @@
 ** Sphere
 */
 
+#include "Sphere.hpp"
+
 #include <iostream>
 
 extern "C"
@@ -13,6 +15,11 @@ extern "C"
     static void initsharedlibrary()
     {
         std::cout << "Loading Sphere Plugin ..." << std::endl;
+    }
+
+    Primitive::IPrimitive *getInstance()
+    {
+        return new Primitive::Sphere();
     }
 
     __attribute__((destructor))
