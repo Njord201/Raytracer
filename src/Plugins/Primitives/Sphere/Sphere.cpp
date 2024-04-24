@@ -20,9 +20,10 @@ Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& r) const
     Math::Point3D rayOrigin = r.origin();
     Math::Vector3D rayDirection = r.direction();
 
+    Math::Vector3D oc(rayOrigin.x() - _origin.x(), rayOrigin.y() - _origin.y(), rayOrigin.z() - _origin.z());
     double a = rayDirection.dot(rayDirection);
-    double b = 2 * rayOrigin.dot(rayDirection);
-    double c = rayOrigin.dot(rayOrigin) - _radius * _radius;
+    double b = 2 * oc.dot(rayDirection);
+    double c = oc.dot(oc) - _radius * _radius;
 
     double discriminant = b * b - 4 * a * c;
     
