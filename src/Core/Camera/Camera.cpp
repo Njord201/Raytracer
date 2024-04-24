@@ -29,3 +29,13 @@ Raytracer::Ray Raytracer::Camera::ray(double u, double v)
     Math::Vector3D direction(screen_point.x() - _origin.x(), screen_point.y() - _origin.y(), screen_point.z() - _origin.z());
     return Raytracer::Ray(_origin, direction);
 }
+
+Math::Point3D Raytracer::Camera::getOrigin(void)
+{
+    return this->_origin;
+}
+
+Raytracer::Rectangle3D Raytracer::Camera::getScreen(void)
+{
+    return this->_screen;
+}

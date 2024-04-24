@@ -53,8 +53,20 @@ class Raytracer::Camera {
          */
         Raytracer::Ray ray(double u, double v);
 
+        /**
+         * @brief Get origin of Camera
+         *
+         */
+        Math::Point3D getOrigin(void);
+
+        /**
+         * @brief Get Screen of Camera
+         *
+         */
+        Raytracer::Rectangle3D getScreen(void);
+
     private:
 
         Math::Point3D   _origin;
-        Rectangle3D     _screen;
+        Raytracer::Rectangle3D     _screen;
 };
