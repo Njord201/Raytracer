@@ -44,14 +44,14 @@ namespace Raytracer
              * 
              * @return const Math::Point3D& 
              */
-            const Math::Point3D& origin() const;
+            Math::Point3D& origin();
 
             /**
              * @brief return the direction of the ray
              * 
              * @return const Math::Vector3D& 
              */
-            const Math::Vector3D& direction() const;
+            Math::Vector3D& direction();
 
             /**
              * @brief return the point vector of where point the ray at multiply by t
