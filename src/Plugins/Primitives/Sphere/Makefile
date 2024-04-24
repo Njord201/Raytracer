@@ -5,7 +5,8 @@
 ## Makefile
 ##
 
-SRC			= 	getInstance.cpp
+SRC			= 	getInstance.cpp \
+				Sphere.cpp \
 
 OBJ			= $(SRC:.cpp=.o)
 
@@ -15,7 +16,8 @@ ROOT		= ../../../../
 
 FLD_PLUGINS = $(ROOT)plugins/
 
-INCLUDE		=	-I$(ROOT)include
+INCLUDE		=	-I$(ROOT)include/ -I$(ROOT)include/Primitives/ \
+				-I$(ROOT)include/Math/
 CXXFLAGS 	= 	-Werror -Wall -Wextra -g -rdynamic -std=c++20 $(INCLUDE)
 
 all: $(NAME)
