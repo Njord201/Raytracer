@@ -15,7 +15,7 @@ Primitive::Sphere::Sphere() : _origin(0,0,0), _radius(1){}
 
 Primitive::Sphere::Sphere(const Math::Point3D& origin, double radius) : _origin(origin), _radius(radius){}
 
-Math::Point3D Primitive::Sphere::hit(const Raytracer::Ray& ray) const
+Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& ray) const
 {
     double a = ray.direction().length_squared();
     double b = 2 * ray.origin().dot(ray.direction());
