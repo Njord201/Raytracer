@@ -34,12 +34,12 @@ namespace Primitive {
             ~Sphere() = default;
 
             /**
-             * @brief return the hit value of the sphere
+             * @brief return the hit point of the sphere
              *
              * @param ray vector3D
-             * @return double hit, -1 instead
+             * @return Point3D
              */
-            double hit(const Raytracer::Ray& ray) const override;
+            Math::Point3D hit(const Raytracer::Ray& ray) const override;
 
         private:
 
