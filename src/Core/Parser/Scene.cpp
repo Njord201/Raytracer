@@ -12,9 +12,10 @@ Raytracer::Scene::Scene(std::string filePath)
     try {
         libconfig::Config cfg;
         cfg.readFile(filePath);
-
         const libconfig::Setting &camera = cfg.lookup("camera");
+        const libconfig::Setting &primitives = cfg.lookup("primitives");
         this->_parseCameraSetting(camera);
+        this->_parsePrimitiveSetting(primitives);
         
     } catch (const libconfig::FileIOException &fioex) {
         throw ParserException("Error reading configuration file.");
@@ -29,15 +30,6 @@ Raytracer::Scene::Scene(std::string filePath)
     }
 
 
-    std::cout << "width: " << "[" << this->_camera.getScreen().getBottomSide().x() << "]" << std::endl;
-    std::cout << "height: " << "[" << this->_camera.getScreen().getLeftSide().y() << "]" << std::endl;
-    std::cout << "Position X: " << "[" << this->_camera.getOrigin().x() << "]" << std::endl;
-    std::cout << "Position Y: " << "[" << this->_camera.getOrigin().y() << "]" << std::endl;
-    std::cout << "Position Z: " << "[" << this->_camera.getOrigin().z() << "]" << std::endl;
-    std::cout << "Rotation Position X: " << "[" << this->_camera.getRotation().x() << "]" << std::endl;
-    std::cout << "Rotation Position Y: " << "[" << this->_camera.getRotation().y() << "]" << std::endl;
-    std::cout << "Rotation Position Z: " << "[" << this->_camera.getRotation().z() << "]" << std::endl;
-    std::cout << "fov: " << "[" << this->_camera.getFov() << "]" << std::endl;
 }
 
 Raytracer::Scene::~Scene()
@@ -90,6 +82,13 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
     if (camera.exists("fieldOfView")) {
         const libconfig::Setting &fieldOfViewSetting = camera["fieldOfView"];
         this->_camera.setFov(_parseValue(fieldOfViewSetting));
+    }
+    return 0;
+}
+
+int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitives)
+{
+    if (primitives.exists("spheres")) {
     }
     return 0;
 }

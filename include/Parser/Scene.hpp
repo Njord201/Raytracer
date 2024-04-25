@@ -23,10 +23,16 @@ class Raytracer::Scene {
 
     public:
 
-        // Ctor
+        /**
+         * @brief Construct a new Scene object
+         *
+         */
         Scene(std::string filePath);
 
-        // Dtor
+        /**
+         * @brief Destruct a Scene object
+         *
+         */
         ~Scene();
 
         class ParserException : public std::exception {
@@ -47,8 +53,19 @@ class Raytracer::Scene {
     
     private:
 
+        /// @brief Parse the Camera settings
+        /// @param camera Settings
+        /// @return 0 if no error else 84
         int _parseCameraSetting(const libconfig::Setting &camera);
 
+        /// @brief Parse the Primitives settings
+        /// @param camera Settings
+        /// @return 0 if no error else 84
+        int _parsePrimitiveSetting(const libconfig::Setting &primitives);
+
+        /// @brief Parse the value of settings
+        /// @param value to parse
+        /// @return The value parsed
         double _parseValue(const libconfig::Setting &value);
 
         Camera _camera;
