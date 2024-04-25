@@ -8,6 +8,16 @@
 MAIN 		= main.cpp \
 
 SRC			=	Parser/Scene.cpp \
+				\
+				Camera/Camera.cpp \
+				Camera/Rectangle.cpp \
+				\
+				Ray.cpp \
+				\
+				../Math/Vector3D.cpp \
+				\
+
+				
 
 OBJ			= $(SRC:.cpp=.o)
 

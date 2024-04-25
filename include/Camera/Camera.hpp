@@ -64,9 +64,47 @@ class Raytracer::Camera {
          *
          */
         Raytracer::Rectangle3D getScreen(void);
+        
+        /**
+         * @brief Get Fov of Camera
+         *
+         */
+        double getFov(void);
+
+        /**
+         * @brief Get Rotation of Camera
+         *
+         */
+        Math::Vector3D getRotation(void);
+
+        /**
+         * @brief Set origin of Camera
+         *
+         */
+        void setOrigin(Math::Point3D origin);
+
+        /**
+         * @brief Set Screen of Camera
+         *
+         */
+        void setScreen(Raytracer::Rectangle3D screen);
+
+        /**
+         * @brief Set Fov of Camera
+         *
+         */
+        void setFov(double fov);
+
+        /**
+         * @brief Set Rotation of Camera
+         *
+         */
+        void setRotation(Math::Vector3D rotation);
 
     private:
 
-        Math::Point3D   _origin;
-        Raytracer::Rectangle3D     _screen;
+        Math::Point3D               _origin;
+        Math::Vector3D              _rotation;
+        Raytracer::Rectangle3D      _screen;
+        double                      _fov;
 };
