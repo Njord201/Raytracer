@@ -28,8 +28,6 @@ Raytracer::Scene::Scene(std::string filePath)
     } catch (const ParserException &parseError) {
         throw ParserException(parseError.what());
     }
-
-
 }
 
 Raytracer::Scene::~Scene()
@@ -88,7 +86,18 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
 
 int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitives)
 {
+    Raytracer::Factory factory;
+
     if (primitives.exists("spheres")) {
+        for (int index = 0; index < primitives.getLength(); index++) {
+            std::shared_ptr<Primitive::IPrimitive> sphere = factory.createComponent("sphere");
+            std::shared_ptr<Primitive::Sphere> sphereTest = std::dynamic_pointer_cast<Primitive::Sphere>(sphere);
+
+            
+        }
+        std::cout << "Sphere Origin X: [" << sphereTest->getOrigin().x() << "]" << std::endl;
+        std::cout << "Sphere Origin Y: [" << sphereTest->getOrigin().y() << "]" << std::endl;
+        std::cout << "Sphere Origin Z: [" << sphereTest->getOrigin().z() << "]" << std::endl;
     }
     return 0;
 }

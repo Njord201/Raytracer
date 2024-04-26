@@ -9,10 +9,14 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 #include <iostream>
+#include <functional>
+#include <unordered_map>
 #include <libconfig.h++>
 
 #include "Camera/Camera.hpp"
+#include "Parser/Factory.hpp"
 
 namespace Raytracer
 {
@@ -22,6 +26,8 @@ namespace Raytracer
 class Raytracer::Scene {
 
     public:
+
+        using PrimitivesCreator = std::function<std::unique_ptr<Primitive::IPrimitive>()>;
 
         /**
          * @brief Construct a new Scene object

@@ -31,7 +31,7 @@ namespace Primitive {
              * @brief Destroy the Sphere object
              *
              */
-            ~Sphere() = default;
+            ~Sphere();
 
             /**
              * @brief return the hit point of the sphere
@@ -41,8 +41,31 @@ namespace Primitive {
              */
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
 
-        private:
+            /**
+             * @brief Set the Origin object
+             * @param origin New origin to set
+             */
+            void setOrigin(Math::Point3D origin);
 
+            /**
+             * @brief Set the Radius
+             * @param radius New radius to set
+             */
+            void setRadius(double radius);
+
+            /**
+             * @brief Get the Origin object
+             * @return Origin of sphere
+             */
+            Math::Point3D getOrigin();
+            
+            /**
+             * @brief Get the Origin object
+             * @return Radius of sphere
+             */
+            double getRadius();
+
+        private:
             Math::Point3D _origin;
             double _radius;
     };

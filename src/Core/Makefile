@@ -8,6 +8,8 @@
 MAIN 		= main.cpp \
 
 SRC			=	Parser/Scene.cpp \
+				Parser/Factory.cpp \
+				Parser/DLLoader.cpp \
 				\
 				Camera/Camera.cpp \
 				Camera/Rectangle.cpp \
@@ -16,6 +18,7 @@ SRC			=	Parser/Scene.cpp \
 				\
 				../Math/Vector3D.cpp \
 				\
+				../Plugins/Primitives/Sphere/Sphere.cpp \
 
 				
 

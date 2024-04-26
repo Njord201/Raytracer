@@ -5,9 +5,9 @@
 ** Sphere
 */
 
-#include "Sphere.hpp"
-
 #include <iostream>
+
+#include "Sphere.hpp"
 
 extern "C"
 {
@@ -17,9 +17,11 @@ extern "C"
         std::cout << "Loading Sphere Plugin ..." << std::endl;
     }
 
-    Primitive::IPrimitive *getInstance()
+    Primitive::IPrimitive *getSphereInstance()
     {
-        return new Primitive::Sphere();
+        Primitive::IPrimitive *sphere = new Primitive::Sphere();
+        std::cout << "New sphere created ..." << std::endl;
+        return sphere;
     }
 
     __attribute__((destructor))
