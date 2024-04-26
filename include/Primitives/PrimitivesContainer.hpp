@@ -12,44 +12,47 @@
 #include <vector>
 #include <memory>
 
-class PrimitivesContainer {
+namespace Primitive {
 
-    public:
+    class PrimitivesContainer {
 
-        /**
-         * @brief Construct a new Primitives Container object
-         *
-         */
-        PrimitivesContainer() = default;
+        public:
 
-        /**
-         * @brief Destroy the Primitives Container object
-         *
-         */
-        ~PrimitivesContainer() = default;
+            /**
+             * @brief Construct a new Primitives Container object
+             *
+             */
+            PrimitivesContainer() = default;
 
-        /**
-         * @brief add a Primitive to the container
-         *
-         * @param primitive to add
-         */
-        void add(std::shared_ptr<Primitive::IPrimitive> primitive);
+            /**
+             * @brief Destroy the Primitives Container object
+             *
+             */
+            ~PrimitivesContainer() = default;
 
-        /**
-         * @brief clear the container
-         *
-         */
-        void clear();
+            /**
+             * @brief add a Primitive to the container
+             *
+             * @param primitive to add
+             */
+            void add(std::shared_ptr<Primitive::IPrimitive> primitive);
 
-        /**
-         * @brief return the hit point of a ray in all the primitives
-         *
-         * @param ray Math::Vector3D
-         * @return Math::Point3D
-         */
-        Math::Point3D hitPoint(const Raytracer::Ray& ray) const;
+            /**
+             * @brief clear the container
+             *
+             */
+            void clear();
 
-    private:
+            /**
+             * @brief return the hit point of a ray in all the primitives
+             *
+             * @param ray Math::Vector3D
+             * @return Math::Point3D
+             */
+            Math::Point3D hitPoint(const Raytracer::Ray& ray) const;
 
-        std::vector<std::shared_ptr<Primitive::IPrimitive>> _primitives;
+        private:
+
+            std::vector<std::shared_ptr<Primitive::IPrimitive>> _primitives;
+    };
 };
