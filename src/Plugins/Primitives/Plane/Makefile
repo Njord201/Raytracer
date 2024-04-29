@@ -22,12 +22,10 @@ CXXFLAGS 	= 	-Werror -Wall -Wextra -std=c++20 $(INCLUDE)
 
 CC			=	g++
 
-SHARED_FLAGS	= -shared -fPIC
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(FLD_PLUGINS)$(NAME) $(OBJ) $(CXXFLAGS) $(SHARED_FLAGS)
+	$(CC) $(SHARED_FLAGS) -o $(FLD_PLUGINS)$(NAME) $(SRC) $(CXXFLAGS)
 
 clean:
 	rm -f $(OBJ)
