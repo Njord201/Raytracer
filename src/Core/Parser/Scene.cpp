@@ -86,18 +86,44 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
 
 int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitives)
 {
-    Raytracer::Factory factory;
-
     if (primitives.exists("spheres")) {
-        for (int index = 0; index < primitives.getLength(); index++) {
-            std::shared_ptr<Primitive::IPrimitive> sphere = factory.createComponent("sphere");
-            std::shared_ptr<Primitive::Sphere> sphereTest = std::dynamic_pointer_cast<Primitive::Sphere>(sphere);
+        libconfig::Setting& sphereArray = primitives.lookup("spheres");
+        for (int index = 0; index < sphereArray.getLength(); index++) {
+            std::shared_ptr<Primitive::IPrimitive> sphere = _factory.createComponent("sphere");
+            std::shared_ptr<Primitive::Sphere> newSphere = std::dynamic_pointer_cast<Primitive::Sphere>(sphere);
 
-            
+            const libconfig::Setting &originX = sphereArray[index]["x"];
+            const libconfig::Setting &originY = sphereArray[index]["y"];
+            const libconfig::Setting &originZ = sphereArray[index]["z"];
+            Math::Point3D origin(_parseValue(originX), _parseValue(originY), _parseValue(originZ));
+
+            const libconfig::Setting &radiusValue = sphereArray[index]["r"];
+            double radius = _parseValue(radiusValue);
+
+            newSphere->setRadius(radius);
+            newSphere->setOrigin(origin);
+
+            std::string materialType;
+            libconfig::Setting& material = sphereArray[index].lookup("material");
+            material.lookupValue("type", materialType);
+
+            if (materialType == "flatColor") {
+                libconfig::Setting& color = material.lookup("color");
+                std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                newSphere->setMaterial(materialPtr);
+            }
+            this->_primitives.add(newSphere);
         }
-        std::cout << "Sphere Origin X: [" << sphereTest->getOrigin().x() << "]" << std::endl;
-        std::cout << "Sphere Origin Y: [" << sphereTest->getOrigin().y() << "]" << std::endl;
-        std::cout << "Sphere Origin Z: [" << sphereTest->getOrigin().z() << "]" << std::endl;
     }
     return 0;
+}
+
+Primitive::PrimitivesContainer Raytracer::Scene::getPrimitives(void)
+{
+    return this->_primitives;
+}
+
+Raytracer::Camera& Raytracer::Scene::getCamera(void)
+{
+    return this->_camera;
 }

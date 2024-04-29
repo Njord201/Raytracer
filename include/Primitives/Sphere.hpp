@@ -5,7 +5,12 @@
 ** Sphere
 */
 
+#pragma once
+
+#include <memory>
+
 #include "IPrimitive.hpp"
+#include "Materials/FlatColor.hpp"
 
 namespace Primitive {
 
@@ -25,7 +30,7 @@ namespace Primitive {
              * @param origin center of the sphere
              * @param radius of the sphere
              */
-            Sphere(const Math::Point3D& origin, double radius);
+            Sphere(const Math::Point3D& origin, double radius, std::shared_ptr<Material::IMaterial> material);
 
             /**
              * @brief Destroy the Sphere object
@@ -54,6 +59,12 @@ namespace Primitive {
             void setRadius(double radius);
 
             /**
+             * @brief Set the Material
+             * @param material New material to set
+             */
+            void setMaterial(std::shared_ptr<Material::IMaterial> material);
+
+            /**
              * @brief Get the Origin object
              * @return Origin of sphere
              */
@@ -65,8 +76,15 @@ namespace Primitive {
              */
             double getRadius();
 
+            /**
+             * @brief Get the Material object
+             * @return Material of sphere
+             */
+            std::shared_ptr<Material::IMaterial> getMaterial();
+
         private:
-            Math::Point3D _origin;
-            double _radius;
+            Math::Point3D   _origin;
+            double          _radius;
+            std::shared_ptr<Material::IMaterial> _material;
     };
 };

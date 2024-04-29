@@ -13,10 +13,9 @@ int main(int argc, char **argv)
     (void) argc;
     (void) argv;
     std::cout << "Welcome in the Raytracer!" << std::endl << std::endl;
-
     try {
-        Raytracer::Scene test("tests/subject.cfg");
-    } catch (const Raytracer::Scene::ParserException &parseError) { 
+        Raytracer::Scene scene("tests/subject.cfg");
+    } catch (const Raytracer::Scene::ParserException &parseError) {
         std::cerr << parseError.what() << std::endl;
         return 84;
     }

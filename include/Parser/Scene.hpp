@@ -17,6 +17,8 @@
 
 #include "Camera/Camera.hpp"
 #include "Parser/Factory.hpp"
+#include "Materials/FlatColor.hpp"
+#include "Primitives/PrimitivesContainer.hpp"
 
 namespace Raytracer
 {
@@ -56,6 +58,20 @@ class Raytracer::Scene {
             private:
                 std::string message;
         };
+
+        /**
+         * @brief Get the Camera object
+         * 
+         * @return Camera Object
+         */
+        Raytracer::Camera &getCamera(void);
+        
+        /**
+         * @brief Get the Primitives object
+         * 
+         * @return Primitive::PrimitivesContainer 
+         */
+        Primitive::PrimitivesContainer getPrimitives(void);
     
     private:
 
@@ -74,5 +90,7 @@ class Raytracer::Scene {
         /// @return The value parsed
         double _parseValue(const libconfig::Setting &value);
 
-        Camera _camera;
+        Raytracer::Factory                  _factory;
+        Raytracer::Camera                   _camera;
+        Primitive::PrimitivesContainer      _primitives;
 };

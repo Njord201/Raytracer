@@ -5,15 +5,16 @@
 ** Sphere
 */
 
-#include "Sphere.hpp"
+#include "Primitives/Sphere.hpp"
 
 #include <cmath>
 
 using std::sqrt;
 
-Primitive::Sphere::Sphere() : _origin(0,0,0), _radius(1){}
+Primitive::Sphere::Sphere() : _origin(0,0,0), _radius(1), _material(nullptr){}
 
-Primitive::Sphere::Sphere(const Math::Point3D& origin, double radius) : _origin(origin), _radius(radius){}
+Primitive::Sphere::Sphere(const Math::Point3D& origin, double radius, std::shared_ptr<Material::IMaterial> material) :
+_origin(origin), _radius(radius), _material(material){}
 
 Primitive::Sphere::~Sphere()
 {
@@ -51,6 +52,11 @@ void Primitive::Sphere::setRadius(double radius)
     this->_radius = radius;
 }
 
+void Primitive::Sphere::setMaterial(std::shared_ptr<Material::IMaterial> material)
+{
+    this->_material = material;
+}
+
 Math::Point3D Primitive::Sphere::getOrigin()
 {
     return this->_origin;
@@ -61,3 +67,7 @@ double Primitive::Sphere::getRadius()
     return this->_radius;
 }
 
+std::shared_ptr<Material::IMaterial> Primitive::Sphere::getMaterial()
+{
+    return this->_material;
+}

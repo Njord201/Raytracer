@@ -7,10 +7,11 @@
 
 #pragma once
 
-#include "IPrimitive.hpp"
-
 #include <vector>
 #include <memory>
+#include <iostream>
+
+#include "IPrimitive.hpp"
 
 namespace Primitive {
 
@@ -28,7 +29,7 @@ namespace Primitive {
              * @brief Destroy the Primitives Container object
              *
              */
-            ~PrimitivesContainer() = default;
+            ~PrimitivesContainer();
 
             /**
              * @brief add a Primitive to the container
@@ -50,6 +51,13 @@ namespace Primitive {
              * @return Math::Point3D
              */
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const;
+
+            /**
+             * @brief Get the Primitives List object
+             * 
+             * @return std::vector<std::shared_ptr<Primitive::IPrimitive>> 
+             */
+            std::vector<std::shared_ptr<Primitive::IPrimitive>> getPrimitivesList(void);
 
         private:
 

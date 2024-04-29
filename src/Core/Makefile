@@ -11,14 +11,19 @@ SRC			=	Parser/Scene.cpp \
 				Parser/Factory.cpp \
 				Parser/DLLoader.cpp \
 				\
+				Primitives/PrimitivesContainer.cpp \
+				\
 				Camera/Camera.cpp \
 				Camera/Rectangle.cpp \
+				\
+				Materials/FlatColor.cpp \
 				\
 				Ray.cpp \
 				\
 				../Math/Vector3D.cpp \
 				\
 				../Plugins/Primitives/Sphere/Sphere.cpp \
+				\
 
 				
 
