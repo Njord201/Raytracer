@@ -6,6 +6,7 @@
 ##
 
 SRC		= 	Plane.cpp 		\
+			getInstance.cpp \
 
 OBJ		=	$(SRC:.cpp=.o)
 
