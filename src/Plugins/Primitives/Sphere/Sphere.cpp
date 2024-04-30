@@ -26,7 +26,7 @@ Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& r) const
     double c = vectorSphereToRay.dot(vectorSphereToRay) - _radius * _radius;
 
     double discriminant = b * b - 4 * a * c;
-    
+
     if (!IS_HIT(discriminant))
         return Math::Point3D(0,0,0);
 

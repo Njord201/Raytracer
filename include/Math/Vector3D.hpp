@@ -11,7 +11,7 @@ namespace Math {
 
     /**
      * @brief Vector 3D class (x, y, z)
-     * 
+     *
      */
     class Vector3D {
 
@@ -25,7 +25,7 @@ namespace Math {
 
             /**
              * @brief Construct a new Vector 3D object
-             * 
+             *
              * @param x position vector
              * @param y position vector
              * @param z position vector
@@ -34,42 +34,42 @@ namespace Math {
 
             /**
              * @brief return x coordinate vector
-             * 
-             * @return double 
+             *
+             * @return double
              */
             double x() const;
 
             /**
              * @brief return y coordinate vector
-             * 
-             * @return double 
+             *
+             * @return double
              */
             double y() const;
 
             /**
              * @brief return z coordinate vector
-             * 
-             * @return double 
+             *
+             * @return double
              */
             double z() const;
 
             /**
              * @brief return the lenght of the vector
-             * 
-             * @return double 
+             *
+             * @return double
              */
             double length() const;
 
             /**
              * @brief return the square lenght of the vector
-             * 
-             * @return double 
+             *
+             * @return double
              */
             double length_squared() const;
 
             /**
              * @brief return the dot product with an other Vector
-             * 
+             *
              * @param ptr vector to dot with
              * @return double result of dot product
              */
@@ -88,7 +88,7 @@ namespace Math {
             Vector3D& operator*=(double n);
             Vector3D operator/(double n);
             Vector3D& operator/=(double n);
-        
+
         private:
 
             double _vector[3];
