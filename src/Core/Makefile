@@ -13,6 +13,8 @@ SRC			=	Parser/Scene.cpp \
 				\
 				Primitives/PrimitivesContainer.cpp \
 				\
+				Lights/LightsContainer.cpp \
+				\
 				Camera/Camera.cpp \
 				Camera/Rectangle.cpp \
 				\
@@ -24,8 +26,9 @@ SRC			=	Parser/Scene.cpp \
 				\
 				../Plugins/Primitives/Sphere/Sphere.cpp \
 				\
-
-				
+				../Plugins/Lights/Ambient/Ambient.cpp \
+				../Plugins/Lights/Point/Point.cpp \
+				../Plugins/Lights/Directional/Directional.cpp \
 
 OBJ			= $(SRC:.cpp=.o)
 

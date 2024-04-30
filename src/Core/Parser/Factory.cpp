@@ -11,11 +11,32 @@ Raytracer::Factory::Factory()
 {
     std::shared_ptr<DLLoader> sphereLoader = std::make_shared<DLLoader>("plugins/raytracer_sphere.so");
     this->_libraryLoader.push_back(sphereLoader);
+    std::shared_ptr<DLLoader> ambientLoader = std::make_shared<DLLoader>("plugins/raytracer_ambient.so");
+    this->_libraryLoader.push_back(ambientLoader);
+    std::shared_ptr<DLLoader> pointLoader = std::make_shared<DLLoader>("plugins/raytracer_point.so");
+    this->_libraryLoader.push_back(pointLoader);
+    std::shared_ptr<DLLoader> directionalLoader = std::make_shared<DLLoader>("plugins/raytracer_directional.so");
+    this->_libraryLoader.push_back(directionalLoader);
 
-    this->registerComponent("sphere", [sphereLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
-        Primitive::IPrimitive *test = sphereLoader->getInstance<Primitive::IPrimitive *>("getSphereInstance");
-        std::shared_ptr<Primitive::IPrimitive> sharedPtr(test);
-        return sharedPtr;
+    this->registerPrimitivesComponent("sphere", [sphereLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
+        Primitive::IPrimitive *sphere = sphereLoader->getInstance<Primitive::IPrimitive *>("getSphereInstance");
+        std::shared_ptr<Primitive::IPrimitive> sharedPtrSphere(sphere);
+        return sharedPtrSphere;
+    });
+    this->registerLightsComponent("ambient", [ambientLoader]() -> std::shared_ptr<Light::ILight> {
+        Light::ILight *ambient = ambientLoader->getInstance<Light::ILight *>("getAmbientInstance");
+        std::shared_ptr<Light::ILight> sharedPtrAmbient(ambient);
+        return sharedPtrAmbient;
+    });
+    this->registerLightsComponent("point", [pointLoader]() -> std::shared_ptr<Light::ILight> {
+        Light::ILight *point = pointLoader->getInstance<Light::ILight *>("getPointInstance");
+        std::shared_ptr<Light::ILight> sharedPtrPoint(point);
+        return sharedPtrPoint;
+    });
+    this->registerLightsComponent("directional", [directionalLoader]() -> std::shared_ptr<Light::ILight> {
+        Light::ILight *directional = directionalLoader->getInstance<Light::ILight *>("getDirectionalInstance");
+        std::shared_ptr<Light::ILight> sharedPtrDirectional(directional);
+        return sharedPtrDirectional;
     });
 }
 
@@ -23,7 +44,7 @@ Raytracer::Factory::~Factory()
 {
 }
 
-std::shared_ptr<Primitive::IPrimitive> Raytracer::Factory::createComponent(const std::string &type)
+std::shared_ptr<Primitive::IPrimitive> Raytracer::Factory::createPrimitivesComponent(const std::string &type)
 {
     auto it = this->_componentPrimitivesList.find(type);
     if (it != _componentPrimitivesList.end()) {
@@ -34,7 +55,23 @@ std::shared_ptr<Primitive::IPrimitive> Raytracer::Factory::createComponent(const
     }
 }
 
-void Raytracer::Factory::registerComponent(const std::string& type, PrimitivesCreator creator)
+void Raytracer::Factory::registerPrimitivesComponent(const std::string& type, PrimitivesCreator creator)
 {
     this->_componentPrimitivesList[type] = creator;
+}
+
+std::shared_ptr<Light::ILight> Raytracer::Factory::createLightsComponent(const std::string &type)
+{
+    auto it = this->_componentLightsList.find(type);
+    if (it != _componentLightsList.end()) {
+        auto uniquePtr = it->second();
+        return uniquePtr;
+    } else {
+        return NULL;
+    }
+}
+
+void Raytracer::Factory::registerLightsComponent(const std::string& type, LightsCreator creator)
+{
+    this->_componentLightsList[type] = creator;
 }

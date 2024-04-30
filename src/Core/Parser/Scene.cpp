@@ -14,8 +14,10 @@ Raytracer::Scene::Scene(std::string filePath)
         cfg.readFile(filePath);
         const libconfig::Setting &camera = cfg.lookup("camera");
         const libconfig::Setting &primitives = cfg.lookup("primitives");
+        const libconfig::Setting &lights = cfg.lookup("lights");
         this->_parseCameraSetting(camera);
         this->_parsePrimitiveSetting(primitives);
+        this->_parseLightsSetting(lights);
         
     } catch (const libconfig::FileIOException &fioex) {
         throw ParserException("Error reading configuration file.");
@@ -49,7 +51,6 @@ double Raytracer::Scene::_parseValue(const libconfig::Setting &value)
 
 int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
 {
-    
     if (camera.exists("resolution")) {
         Math::Point3D origin(0, 0, 0);
         const libconfig::Setting &ResolutionWidthSetting = camera["resolution"]["width"];
@@ -89,7 +90,7 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
     if (primitives.exists("spheres")) {
         libconfig::Setting& sphereArray = primitives.lookup("spheres");
         for (int index = 0; index < sphereArray.getLength(); index++) {
-            std::shared_ptr<Primitive::IPrimitive> sphere = _factory.createComponent("sphere");
+            std::shared_ptr<Primitive::IPrimitive> sphere = _factory.createPrimitivesComponent("sphere");
             std::shared_ptr<Primitive::Sphere> newSphere = std::dynamic_pointer_cast<Primitive::Sphere>(sphere);
 
             const libconfig::Setting &originX = sphereArray[index]["x"];
@@ -118,9 +119,72 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
     return 0;
 }
 
+int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
+{
+    double diffuse = 0.0;
+    if (lights.exists("diffuse")) {
+        diffuse = this->_parseValue(lights["diffuse"]);
+    }
+    if (lights.exists("ambient")) {
+        std::shared_ptr<Light::ILight> ambient = _factory.createLightsComponent("ambient");
+        std::shared_ptr<Light::Ambient> newAmbient = std::dynamic_pointer_cast<Light::Ambient>(ambient);
+
+        newAmbient->setMultiplier(this->_parseValue(lights["ambient"]));
+        newAmbient->setDiffuseMultiplier(diffuse);
+
+        this->_lights.add(newAmbient);
+    }
+    if (lights.exists("point")) {
+        libconfig::Setting& lightArrayPoint = lights.lookup("point");
+        for (int index = 0; index < lightArrayPoint.getLength(); index++) {
+            std::shared_ptr<Light::ILight> point = _factory.createLightsComponent("point");
+            std::shared_ptr<Light::Point> newPoint = std::dynamic_pointer_cast<Light::Point>(point);
+
+            const libconfig::Setting &positionX = lightArrayPoint[index]["x"];
+            const libconfig::Setting &positionY = lightArrayPoint[index]["y"];
+            const libconfig::Setting &positionZ = lightArrayPoint[index]["z"];
+            Math::Point3D position(_parseValue(positionX), _parseValue(positionY), _parseValue(positionZ));
+
+            newPoint->setPosition(position);
+            newPoint->setDiffuseMultiplier(diffuse);
+            this->_lights.add(newPoint);
+        }
+    }
+    if (lights.exists("directional")) {
+        libconfig::Setting& lightArrayDirectional = lights.lookup("directional");
+        for (int index = 0; index < lightArrayDirectional.getLength(); index++) {
+            std::shared_ptr<Light::ILight> directional = _factory.createLightsComponent("directional");
+            std::shared_ptr<Light::Directional> newDirectional = std::dynamic_pointer_cast<Light::Directional>(directional);
+
+            libconfig::Setting& positionSetting = lightArrayDirectional[index].lookup("position");
+            const libconfig::Setting &positionX = positionSetting["x"];
+            const libconfig::Setting &positionY = positionSetting["y"];
+            const libconfig::Setting &positionZ = positionSetting["z"];
+            Math::Point3D position(_parseValue(positionX), _parseValue(positionY), _parseValue(positionZ));
+
+            libconfig::Setting& directionSetting = lightArrayDirectional[index].lookup("direction");
+            const libconfig::Setting &directionX = directionSetting["x"];
+            const libconfig::Setting &directionY = directionSetting["y"];
+            const libconfig::Setting &directionZ = directionSetting["z"];
+            Math::Point3D direction(_parseValue(directionX), _parseValue(directionY), _parseValue(directionZ));
+
+            newDirectional->setPosition(position);
+            newDirectional->setDirection(direction);
+            newDirectional->setDiffuseMultiplier(diffuse);
+            this->_lights.add(newDirectional);
+        }
+    }
+    return 0;
+}
+
 Primitive::PrimitivesContainer Raytracer::Scene::getPrimitives(void)
 {
     return this->_primitives;
+}
+
+Light::LightsContainer Raytracer::Scene::getLights(void)
+{
+    return this->_lights;
 }
 
 Raytracer::Camera& Raytracer::Scene::getCamera(void)
