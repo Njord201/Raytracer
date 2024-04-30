@@ -5,27 +5,27 @@
 ## Makefile
 ##
 
-SRC		= 	Plane.cpp 		\
-			getInstance.cpp \
+SRC			= 	getInstance.cpp \
+				Plane.cpp \
 
-OBJ		=	$(SRC:.cpp=.o)
+OBJ			= $(SRC:.cpp=.o)
 
-NAME	= 	raytracer_plane.so
+NAME		= raytracer_plane.so
 
-ROOT	= 	../../../../
+ROOT		= ../../../../
 
-FLD_PLUGINS = 	$(ROOT)plugins/
+FLD_PLUGINS = $(ROOT)plugins/
 
-INCLUDE		=	-I$(ROOT)include/ -I$(ROOT)include/Primitives/ \
-				-I$(ROOT)include/Math/
-CXXFLAGS 	= 	-Werror -Wall -Wextra -std=c++20 $(INCLUDE)
+INCLUDE			=	-I$(ROOT)include/ -I$(ROOT)include/Primitives/ \
+						-I$(ROOT)include/Math/
+CXXFLAGS 		= 	-Werror -Wall -Wextra -std=c++20 $(INCLUDE)
 
-CC			=	g++
+CC	=	g++
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(SHARED_FLAGS) -o $(FLD_PLUGINS)$(NAME) $(SRC) $(CXXFLAGS)
+	$(CC) -shared -o $(FLD_PLUGINS)$(NAME) $(OBJ) $(CXXFLAGS)
 
 clean:
 	rm -f $(OBJ)
@@ -35,5 +35,5 @@ fclean: clean
 
 re:	fclean all
 
-%.o.c:
-	$(CC) -c $< -o $@ $(CXXFLAGS) $(SHARED_FLAGS)
+%.o: %.cpp
+	$(CC) $(CXXFLAGS) -fPIC -c $< -o $@

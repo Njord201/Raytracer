@@ -50,4 +50,5 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
     Math::Point3D hitPoint = Math::Point3D(0, 0, 0);
 
     return hitPoint;
+    (void)ray;
 }
