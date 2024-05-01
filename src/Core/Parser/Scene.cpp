@@ -47,14 +47,15 @@ double Raytracer::Scene::_parseValue(const libconfig::Setting &value)
 
 int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
 {
+    int resolution_x = 0;
+    int resolution_y = 0;
     if (camera.exists("resolution")) {
         const libconfig::Setting &ResolutionWidthSetting = camera["resolution"]["width"];
         const libconfig::Setting &ResolutionHeightSetting = camera["resolution"]["height"];
-        Math::Point3D origin(_parseValue(ResolutionWidthSetting) - 0.5, _parseValue(ResolutionHeightSetting) - 0.5, 0);
-        Math::Vector3D bottomSide(1, 0, 0);
-        Math::Vector3D leftSide(0, 1, 0);
-        Rectangle3D screen(origin, bottomSide, leftSide);
-        this->_camera.setScreen(screen);
+        resolution_x = _parseValue(ResolutionWidthSetting);
+        resolution_y = _parseValue(ResolutionHeightSetting);
+        (void) resolution_x;
+        (void) resolution_y;
     } else {
         throw ParserException("There is no resolution data in file !");
     }
@@ -64,6 +65,12 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
         const libconfig::Setting &positionZ = camera["position"]["z"];
         Math::Point3D origin(_parseValue(positionX), _parseValue(positionY), _parseValue(positionZ));
         this->_camera.setOrigin(origin);
+
+        Math::Vector3D bottomSide(1, 0, 0);
+        Math::Vector3D leftSide(0, 1, 0);
+        Math::Point3D origin_screen(origin.x() - 0.5, origin.y() - 0.5, 0);
+        Rectangle3D screen(origin_screen, bottomSide, leftSide);
+        this->_camera.setScreen(screen);
     } else {
         throw ParserException("There is no position data in file !");
     }
