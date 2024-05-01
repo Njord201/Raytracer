@@ -43,7 +43,7 @@ class Raytracer::Factory {
          * @brief Destruct a Scene object
          *
          */
-        ~Factory();
+        ~Factory() = default;
 
         /// @brief Create a type component
         /// @param type Component to create
@@ -68,5 +68,5 @@ class Raytracer::Factory {
     private:
         std::unordered_map<std::string, PrimitivesCreator>   _componentPrimitivesList;
         std::unordered_map<std::string, LightsCreator>       _componentLightsList;
-        std::vector<std::shared_ptr<DLLoader>> _libraryLoader;
+        std::vector<std::shared_ptr<DLLoader>>               _libraryLoader;
 };

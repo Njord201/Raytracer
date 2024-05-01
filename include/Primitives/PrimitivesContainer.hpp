@@ -9,7 +9,6 @@
 
 #include <vector>
 #include <memory>
-#include <iostream>
 
 #include "IPrimitive.hpp"
 
@@ -29,7 +28,7 @@ namespace Primitive {
              * @brief Destroy the Primitives Container object
              *
              */
-            ~PrimitivesContainer();
+            ~PrimitivesContainer() = default;
 
             /**
              * @brief add a Primitive to the container
@@ -57,7 +56,7 @@ namespace Primitive {
              * 
              * @return std::vector<std::shared_ptr<Primitive::IPrimitive>> 
              */
-            std::vector<std::shared_ptr<Primitive::IPrimitive>> getPrimitivesList(void);
+            std::vector<std::shared_ptr<Primitive::IPrimitive>> getPrimitivesList(void) const;
 
         private:
 

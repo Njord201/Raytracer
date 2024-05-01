@@ -34,22 +34,22 @@ Raytracer::Ray Raytracer::Camera::ray(double u, double v)
     return Raytracer::Ray(_origin, direction);
 }
 
-Math::Point3D Raytracer::Camera::getOrigin(void)
+Math::Point3D Raytracer::Camera::getOrigin(void) const
 {
     return this->_origin;
 }
 
-Raytracer::Rectangle3D Raytracer::Camera::getScreen(void)
+Raytracer::Rectangle3D Raytracer::Camera::getScreen(void) const
 {
     return this->_screen;
 }
 
-double Raytracer::Camera::getFov(void)
+double Raytracer::Camera::getFov(void) const
 {
     return this->_fov;
 }
 
-Math::Vector3D Raytracer::Camera::getRotation(void)
+Math::Vector3D Raytracer::Camera::getRotation(void) const
 {
     return this->_rotation;
 }

@@ -20,11 +20,7 @@ Light::Point::Point(Math::Point3D position, double diffuseMultiplier)
     this->_diffuseMultiplier = diffuseMultiplier;
 }
 
-Light::Point::~Point()
-{
-}
-
-Math::Point3D Light::Point::getPosition(void)
+Math::Point3D Light::Point::getPosition(void) const
 {
     return this->_position;
 }
@@ -34,7 +30,7 @@ void Light::Point::setPosition(Math::Point3D position)
     this->_position = position;
 }
 
-double Light::Point::getDiffuseMultiplier(void)
+double Light::Point::getDiffuseMultiplier(void) const
 {
     return this->_diffuseMultiplier;
 }
@@ -44,7 +40,7 @@ void Light::Point::setDiffuseMultiplier(double diffuseMultiplier)
     this->_diffuseMultiplier = diffuseMultiplier;
 }
 
-Light::LightType Light::Point::getType(void)
+Light::LightType Light::Point::getType(void) const
 {
     return Light::LightType::point;
 }

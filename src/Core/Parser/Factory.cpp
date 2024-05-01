@@ -40,10 +40,6 @@ Raytracer::Factory::Factory()
     });
 }
 
-Raytracer::Factory::~Factory()
-{
-}
-
 std::shared_ptr<Primitive::IPrimitive> Raytracer::Factory::createPrimitivesComponent(const std::string &type)
 {
     auto it = this->_componentPrimitivesList.find(type);

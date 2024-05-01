@@ -28,7 +28,10 @@ class Light::Directional : public Light::ILight {
 
         /**
          * @brief Construct a new Directional object
-         *
+         * 
+         * @param position Position of Directionnal Light
+         * @param direction Direction of Directionnal Light
+         * @param diffuseMultiplier Diffuse Multiplier of Directionnal Light
          */
         Directional(Math::Point3D position, Math::Vector3D direction, double diffuseMultiplier);
 
@@ -36,17 +39,19 @@ class Light::Directional : public Light::ILight {
          * @brief Destroy the Directional object
          *
          */
-        ~Directional();
+        ~Directional() = default;
 
         /**
          * @brief Get the Position number of Point light
          * 
          * @return double 
          */
-        Math::Point3D getPosition(void);
+        Math::Point3D getPosition(void) const;
 
         /**
-         * @brief Set the Position number of Point light
+         * @brief Set the Position object
+         * 
+         * @param position New position of Directional Light
          */
         void setPosition(Math::Point3D position);
 
@@ -55,10 +60,12 @@ class Light::Directional : public Light::ILight {
          * 
          * @return double 
          */
-        Math::Vector3D getDirection(void);
+        Math::Vector3D getDirection(void) const;
 
         /**
-         * @brief Set the Direction number of Point light
+         * @brief Set the Direction object
+         * 
+         * @param direction New Direction of Directional Light
          */
         void setDirection(Math::Vector3D direction);
 
@@ -67,10 +74,12 @@ class Light::Directional : public Light::ILight {
          * 
          * @return double 
          */
-        double getDiffuseMultiplier(void);
+        double getDiffuseMultiplier(void) const;
 
         /**
-         * @brief Set the Diffuse Multiplier number of Point light
+         * @brief Set the Diffuse Multiplier object
+         * 
+         * @param diffuseMultiplier New Diffuse Multiplier of Directional Light
          */
         void setDiffuseMultiplier(double diffuseMultiplier);
 
@@ -78,7 +87,7 @@ class Light::Directional : public Light::ILight {
          * @brief Get type of Light
          * @return The type of the light
          */
-        Light::LightType getType(void) override;
+        Light::LightType getType(void) const override;
 
     private:
         Math::Point3D    _position;

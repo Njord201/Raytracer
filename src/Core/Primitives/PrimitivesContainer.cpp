@@ -12,10 +12,6 @@ void Primitive::PrimitivesContainer::add(std::shared_ptr<Primitive::IPrimitive> 
     _primitives.push_back(primitive);
 }
 
-Primitive::PrimitivesContainer::~PrimitivesContainer()
-{
-}
-
 void Primitive::PrimitivesContainer::clear()
 {
     _primitives.clear();
@@ -31,7 +27,7 @@ Math::Point3D Primitive::PrimitivesContainer::hitPoint(const Raytracer::Ray& ray
     return temp;
 }
 
-std::vector<std::shared_ptr<Primitive::IPrimitive>> Primitive::PrimitivesContainer::getPrimitivesList(void)
+std::vector<std::shared_ptr<Primitive::IPrimitive>> Primitive::PrimitivesContainer::getPrimitivesList(void) const
 {
     return this->_primitives;
 }

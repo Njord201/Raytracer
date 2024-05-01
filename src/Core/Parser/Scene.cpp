@@ -32,10 +32,6 @@ Raytracer::Scene::Scene(std::string filePath)
     }
 }
 
-Raytracer::Scene::~Scene()
-{
-}
-
 double Raytracer::Scene::_parseValue(const libconfig::Setting &value)
 {
     double number = 0.0;
@@ -177,12 +173,12 @@ int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
     return 0;
 }
 
-Primitive::PrimitivesContainer Raytracer::Scene::getPrimitives(void)
+Primitive::PrimitivesContainer Raytracer::Scene::getPrimitives(void) const
 {
     return this->_primitives;
 }
 
-Light::LightsContainer Raytracer::Scene::getLights(void)
+Light::LightsContainer Raytracer::Scene::getLights(void) const
 {
     return this->_lights;
 }
