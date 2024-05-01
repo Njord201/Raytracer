@@ -22,11 +22,7 @@ FlatColor::FlatColor(int r, int g, int b)
     this->_b = b;
 }
 
-FlatColor::~FlatColor()
-{
-}
-
-Material::MaterialType FlatColor::getType(void)
+Material::MaterialType FlatColor::getType(void) const
 {
     return Material::FlatColor;
 }
@@ -46,17 +42,17 @@ void FlatColor::setB(int b)
     this->_b = b;
 }
 
-int FlatColor::getR(void)
+int FlatColor::getR(void) const
 {
     return this->_r;
 }
 
-int FlatColor::getG(void)
+int FlatColor::getG(void) const
 {
     return this->_g;
 }
 
-int FlatColor::getB(void)
+int FlatColor::getB(void) const
 {
     return this->_b;
 }

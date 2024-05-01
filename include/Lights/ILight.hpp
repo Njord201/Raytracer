@@ -32,5 +32,5 @@ class Light::ILight {
              * @brief Get type of Light
              * @return The type of the light
              */
-            virtual Light::LightType getType(void) = 0;
+            virtual Light::LightType getType(void) const = 0;
     };

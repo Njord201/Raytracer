@@ -29,6 +29,7 @@ namespace Primitive {
              *
              * @param origin center of the sphere
              * @param radius of the sphere
+             * @param material Material of Sphere
              */
             Sphere(const Math::Point3D& origin, double radius, std::shared_ptr<Material::IMaterial> material);
 
@@ -36,7 +37,7 @@ namespace Primitive {
              * @brief Destroy the Sphere object
              *
              */
-            ~Sphere();
+            ~Sphere() = default;
 
             /**
              * @brief return the hit point of the sphere
@@ -68,23 +69,23 @@ namespace Primitive {
              * @brief Get the Origin object
              * @return Origin of sphere
              */
-            Math::Point3D getOrigin();
+            Math::Point3D getOrigin() const;
             
             /**
              * @brief Get the Origin object
              * @return Radius of sphere
              */
-            double getRadius();
+            double getRadius() const;
 
             /**
              * @brief Get the Material object
              * @return Material of sphere
              */
-            std::shared_ptr<Material::IMaterial> getMaterial();
+            std::shared_ptr<Material::IMaterial> getMaterial() const;
 
         private:
-            Math::Point3D   _origin;
-            double          _radius;
+            Math::Point3D                        _origin;
+            double                               _radius;
             std::shared_ptr<Material::IMaterial> _material;
     };
 };

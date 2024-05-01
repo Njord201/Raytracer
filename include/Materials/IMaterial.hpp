@@ -29,5 +29,5 @@ class Material::IMaterial {
          * @brief Get type of Material
          * @return The type of the material
          */
-        virtual MaterialType getType(void) = 0;
+        virtual MaterialType getType(void) const = 0;
 };

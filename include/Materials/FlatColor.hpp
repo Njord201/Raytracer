@@ -31,13 +31,13 @@ class FlatColor : public Material::IMaterial {
          * @brief Destruct a FlatColor object
          *
          */
-        ~FlatColor();
+        ~FlatColor() = default;
 
         /**
          * @brief Get type of Material
          * @return The type of the material
          */
-        Material::MaterialType getType(void) override;
+        Material::MaterialType getType(void) const override;
 
         /**
          * @brief Set the new R color
@@ -61,19 +61,19 @@ class FlatColor : public Material::IMaterial {
          * @brief Get the R color
          * @return R color
          */
-        int getR(void);
+        int getR(void) const;
 
         /**
          * @brief Get the G color
          * @return G color
          */
-        int getG(void);
+        int getG(void) const;
 
         /**
          * @brief Get the B color
          * @return B color
          */
-        int getB(void);
+        int getB(void) const;
 
     private:
         int _r;

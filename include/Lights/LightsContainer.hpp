@@ -29,7 +29,7 @@ namespace Light {
              * @brief Destroy the Lights Container object
              *
              */
-            ~LightsContainer();
+            ~LightsContainer() = default;
 
             /**
              * @brief add a Light to the container
@@ -49,7 +49,7 @@ namespace Light {
              * 
              * @return std::vector<std::shared_ptr<Light::ILight>> 
              */
-            std::vector<std::shared_ptr<Light::ILight>> getLightsList(void);
+            std::vector<std::shared_ptr<Light::ILight>> getLightsList(void) const;
 
         private:
 

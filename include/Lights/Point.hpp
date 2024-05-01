@@ -28,7 +28,9 @@ class Light::Point : public Light::ILight {
 
         /**
          * @brief Construct a new Point object
-         *
+         * 
+         * @param position Position of Point Light
+         * @param diffuseMultiplier Diffuse multiplier of Point Light
          */
         Point(Math::Point3D position, double diffuseMultiplier);
 
@@ -36,17 +38,19 @@ class Light::Point : public Light::ILight {
          * @brief Destroy the Point object
          *
          */
-        ~Point();
+        ~Point() = default;
 
         /**
          * @brief Get the Position number of Point light
          * 
          * @return double 
          */
-        Math::Point3D getPosition(void);
+        Math::Point3D getPosition(void) const;
 
         /**
-         * @brief Set the Position number of Point light
+         * @brief Set the Position object
+         * 
+         * @param position New position of Point Light
          */
         void setPosition(Math::Point3D position);
 
@@ -55,10 +59,12 @@ class Light::Point : public Light::ILight {
          * 
          * @return double 
          */
-        double getDiffuseMultiplier(void);
+        double getDiffuseMultiplier(void) const;
 
         /**
-         * @brief Set the Diffuse Multiplier number of Point light
+         * @brief Set the Diffuse Multiplier object
+         * 
+         * @param diffuseMultiplier New Diffuse Multiplier of Point Light
          */
         void setDiffuseMultiplier(double diffuseMultiplier);
 
@@ -66,7 +72,7 @@ class Light::Point : public Light::ILight {
          * @brief Get type of Light
          * @return The type of the light
          */
-        Light::LightType getType(void) override;
+        Light::LightType getType(void) const override;
 
     private:
         Math::Point3D   _position;

@@ -22,11 +22,7 @@ Light::Directional::Directional(Math::Point3D position, Math::Vector3D direction
     this->_diffuseMultiplier = diffuseMultiplier;
 }
 
-Light::Directional::~Directional()
-{
-}
-
-Math::Point3D Light::Directional::getPosition(void)
+Math::Point3D Light::Directional::getPosition(void) const
 {
     return this->_position;
 }
@@ -36,7 +32,7 @@ void Light::Directional::setPosition(Math::Point3D position)
     this->_position = position;
 }
 
-Math::Vector3D Light::Directional::getDirection(void)
+Math::Vector3D Light::Directional::getDirection(void) const
 {
     return this->_direction;
 }
@@ -46,7 +42,7 @@ void Light::Directional::setDirection(Math::Vector3D direction)
     this->_direction = direction;
 }
 
-double Light::Directional::getDiffuseMultiplier(void)
+double Light::Directional::getDiffuseMultiplier(void) const
 {
     return this->_diffuseMultiplier;
 }
@@ -56,7 +52,7 @@ void Light::Directional::setDiffuseMultiplier(double diffuseMultiplier)
     this->_diffuseMultiplier = diffuseMultiplier;
 }
 
-Light::LightType Light::Directional::getType(void)
+Light::LightType Light::Directional::getType(void) const
 {
     return Light::LightType::directionnal;
 }

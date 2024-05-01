@@ -34,7 +34,8 @@ class Raytracer::Scene {
 
         /**
          * @brief Construct a new Scene object
-         *
+         * 
+         * @param filePath File to parse
          */
         Scene(std::string filePath);
 
@@ -42,7 +43,28 @@ class Raytracer::Scene {
          * @brief Destruct a Scene object
          *
          */
-        ~Scene();
+        ~Scene() = default;
+
+        /**
+         * @brief Get the Camera object
+         * 
+         * @return Camera Object
+         */
+        Raytracer::Camera &getCamera(void);
+        
+        /**
+         * @brief Get the Primitives object
+         * 
+         * @return Primitive::PrimitivesContainer 
+         */
+        Primitive::PrimitivesContainer getPrimitives(void) const;
+
+        /**
+         * @brief Get the Lights object
+         * 
+         * @return Light::LightsContainer
+         */
+        Light::LightsContainer getLights(void) const;
 
         class ParserException : public std::exception {
             public:
@@ -59,27 +81,6 @@ class Raytracer::Scene {
             private:
                 std::string message;
         };
-
-        /**
-         * @brief Get the Camera object
-         * 
-         * @return Camera Object
-         */
-        Raytracer::Camera &getCamera(void);
-        
-        /**
-         * @brief Get the Primitives object
-         * 
-         * @return Primitive::PrimitivesContainer 
-         */
-        Primitive::PrimitivesContainer getPrimitives(void);
-
-        /**
-         * @brief Get the Lights object
-         * 
-         * @return Light::LightsContainer
-         */
-        Light::LightsContainer getLights(void);
     
     private:
 

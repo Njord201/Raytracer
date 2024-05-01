@@ -27,7 +27,9 @@ class Light::Ambient : public Light::ILight {
 
         /**
          * @brief Construct a new Ambient object
-         *
+         * 
+         * @param multiplier Multipler of ambient light
+         * @param diffuseMultiplier Diffuse Multipler of ambient light
          */
         Ambient(double multiplier, double diffuseMultiplier);
 
@@ -35,17 +37,19 @@ class Light::Ambient : public Light::ILight {
          * @brief Destroy the Ambient object
          *
          */
-        ~Ambient();
+        ~Ambient() = default;
 
         /**
          * @brief Get the Multiplier number of ambient light
          * 
          * @return double 
          */
-        double getMultiplier(void);
+        double getMultiplier(void) const;
 
         /**
-         * @brief Set the Multiplier number of ambient light
+         * @brief Set the Multiplier object
+         * 
+         * @param multiplier Multipler of ambient light to set
          */
         void setMultiplier(double multiplier);
 
@@ -54,10 +58,12 @@ class Light::Ambient : public Light::ILight {
          * 
          * @return double 
          */
-        double getDiffuseMultiplier(void);
+        double getDiffuseMultiplier(void) const;
 
         /**
-         * @brief Set the Diffuse Multiplier number of ambient light
+         * @brief Set the Diffuse Multiplier object
+         * 
+         * @param diffuseMultiplier New diffuse multiplier to set
          */
         void setDiffuseMultiplier(double diffuseMultiplier);
 
@@ -65,7 +71,7 @@ class Light::Ambient : public Light::ILight {
          * @brief Get type of Light
          * @return The type of the light
          */
-        Light::LightType getType(void) override;
+        Light::LightType getType(void) const override;
 
     private:
         double _multiplier;

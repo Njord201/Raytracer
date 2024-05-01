@@ -19,11 +19,7 @@ Light::Ambient::Ambient(double multiplier, double diffuseMultiplier)
     this->_diffuseMultiplier = diffuseMultiplier;
 }
 
-Light::Ambient::~Ambient()
-{
-}
-
-double Light::Ambient::getMultiplier(void)
+double Light::Ambient::getMultiplier(void) const
 {
     return this->_multiplier;
 }
@@ -33,7 +29,7 @@ void Light::Ambient::setMultiplier(double multiplier)
     this->_multiplier = multiplier;
 }
 
-double Light::Ambient::getDiffuseMultiplier(void)
+double Light::Ambient::getDiffuseMultiplier(void) const
 {
     return this->_diffuseMultiplier;
 }
@@ -43,7 +39,7 @@ void Light::Ambient::setDiffuseMultiplier(double diffuseMultiplier)
     this->_diffuseMultiplier = diffuseMultiplier;
 }
 
-Light::LightType Light::Ambient::getType(void)
+Light::LightType Light::Ambient::getType(void) const
 {
     return Light::LightType::ambient;
 }

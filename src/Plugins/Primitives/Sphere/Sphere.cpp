@@ -16,10 +16,6 @@ Primitive::Sphere::Sphere() : _origin(0,0,0), _radius(1), _material(nullptr){}
 Primitive::Sphere::Sphere(const Math::Point3D& origin, double radius, std::shared_ptr<Material::IMaterial> material) :
 _origin(origin), _radius(radius), _material(material){}
 
-Primitive::Sphere::~Sphere()
-{
-}
-
 Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& ray) const
 {
     Math::Point3D rayOrigin = ray.origin();
@@ -57,17 +53,17 @@ void Primitive::Sphere::setMaterial(std::shared_ptr<Material::IMaterial> materia
     this->_material = material;
 }
 
-Math::Point3D Primitive::Sphere::getOrigin()
+Math::Point3D Primitive::Sphere::getOrigin() const
 {
     return this->_origin;
 }
 
-double Primitive::Sphere::getRadius()
+double Primitive::Sphere::getRadius() const
 {
     return this->_radius;
 }
 
-std::shared_ptr<Material::IMaterial> Primitive::Sphere::getMaterial()
+std::shared_ptr<Material::IMaterial> Primitive::Sphere::getMaterial() const
 {
     return this->_material;
 }
