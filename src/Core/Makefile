@@ -21,6 +21,7 @@ SRC			=	Parser/Scene.cpp \
 				Materials/FlatColor.cpp \
 				\
 				Ray.cpp \
+				Renderer.cpp \
 				\
 				../Math/Vector3D.cpp \
 				\
