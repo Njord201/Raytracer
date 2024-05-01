@@ -5,7 +5,7 @@
 ** Math Vector3D
 */
 
-#include "Vector3D.hpp"
+#include "Math/Vector3D.hpp"
 #include <cmath>
 
 using std::sqrt;
