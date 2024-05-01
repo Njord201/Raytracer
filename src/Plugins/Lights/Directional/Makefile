@@ -6,19 +6,18 @@
 ##
 
 SRC			= 	getInstance.cpp \
-				Sphere.cpp \
+				Directional.cpp \
 				../../../Math/Vector3D.cpp \
 
 OBJ			= $(SRC:.cpp=.o)
 
-NAME		= raytracer_sphere.so
+NAME		= raytracer_directional.so
 
 ROOT		= ../../../../
 
 FLD_PLUGINS = $(ROOT)plugins/
 
-INCLUDE		=	-I$(ROOT)include/ -I$(ROOT)include/Primitives/ \
-				-I$(ROOT)include/Math/
+INCLUDE		=	-I$(ROOT)include
 CXXFLAGS 	= 	-Werror -Wall -Wextra -g -rdynamic -std=c++20 $(INCLUDE)
 
 all: $(NAME)
