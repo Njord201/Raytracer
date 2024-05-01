@@ -36,7 +36,6 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();
 
-
     if (_axis == X && rayDirection.x() == 0)
         return Math::Point3D(0, 0, 0);
     if (_axis == Y && rayDirection.y() == 0)
