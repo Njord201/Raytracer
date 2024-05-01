@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include "Parser/Scene.hpp"
 
 bool displayHelp(int argc, char **argv)
 {
@@ -19,9 +20,16 @@ bool displayHelp(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-
     if (displayHelp(argc, argv))
         return 0;
     std::cout << "Welcome in the Raytracer!" << std::endl;
+    if (argc != 2)
+        return 84;
+    try {
+        Raytracer::Scene scene(argv[1]);
+    } catch (const Raytracer::Scene::ParserException &parseError) {
+        std::cerr << parseError.what() << std::endl;
+        return 84;
+    }
     return 0;
 }
