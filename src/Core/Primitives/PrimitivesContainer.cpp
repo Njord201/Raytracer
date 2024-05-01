@@ -7,6 +7,8 @@
 
 #include "Primitives/PrimitivesContainer.hpp"
 
+#include <cmath>
+
 void Primitive::PrimitivesContainer::add(std::shared_ptr<Primitive::IPrimitive> primitive)
 {
     _primitives.push_back(primitive);
@@ -20,10 +22,10 @@ void Primitive::PrimitivesContainer::clear()
 Math::Point3D Primitive::PrimitivesContainer::hitPoint(const Raytracer::Ray& ray) const
 {
     for (size_t i = 0; i < _primitives.size(); i++) {
-        _primitives[i]->hitPoint(ray);
+        return _primitives[i]->hitPoint(ray);
         // TODO : implement the hitpoint logic
     }
-    Math::Point3D temp(0, 0, 0);
+    Math::Point3D temp(255, 255, 0);
     return temp;
 }
 
