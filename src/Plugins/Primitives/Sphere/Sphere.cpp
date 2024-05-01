@@ -29,13 +29,13 @@ Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& ray) const
     double discriminant = b * b - 4 * a * c;
 
     if (!IS_HIT(discriminant))
-        return Math::Point3D(255,0,255);
+        return Math::Point3D(-1,-1,-1);
 
     // double hitValue = (-b - sqrt(discriminant)) / (2.0 * a);
 
     // Math::Point3D hitPoint = rayOrigin + rayDirection * hitValue;
 
-    return Math::Point3D(255,255,255);
+    return Math::Point3D(0,0,0);
 }
 
 void Primitive::Sphere::setOrigin(Math::Point3D origin)

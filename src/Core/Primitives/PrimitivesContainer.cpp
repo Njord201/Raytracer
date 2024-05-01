@@ -8,6 +8,7 @@
 #include "Primitives/PrimitivesContainer.hpp"
 
 #include <cmath>
+#include <iostream>
 
 void Primitive::PrimitivesContainer::add(std::shared_ptr<Primitive::IPrimitive> primitive)
 {
@@ -25,24 +26,24 @@ Math::Point3D Primitive::PrimitivesContainer::hitPoint(const Raytracer::Ray& ray
     int idx_nearest = -1;
 
     for (size_t i = 0; i < _primitives.size(); i++) {
-        if (i == 0) {
+        Math::Point3D hit = _primitives[i]->hitPoint(ray);
+        if (idx_nearest == -1 && hit.x() != -1 && hit.y() != -1 && hit.z() != -1) {
             point_nearest = _primitives[i]->hitPoint(ray);
             idx_nearest = i;
         }
         else {
-            Math::Point3D hit = _primitives[i]->hitPoint(ray);
-            if (hit.length() < point_nearest.length()) {
-                point_nearest = hit;
-                idx_nearest = i;
+            if (idx_nearest != -1 && hit.x() != -1 && hit.y() != -1 && hit.z() != -1) {
+                if (hit.length() < point_nearest.length()) {
+                    point_nearest = hit;
+                    idx_nearest = i;
+                }
             }
         }
     }
     if (idx_nearest == -1)
-        return Math::Point3D(0, 0, 0);
-
-    Math::Point3D temp(0, 0, 0);
+        return Math::Point3D(255, 255, 255);
     //TODO : compute the color of the point based on the Material
-    return temp;
+    return point_nearest;
 }
 
 std::vector<std::shared_ptr<Primitive::IPrimitive>> Primitive::PrimitivesContainer::getPrimitivesList(void) const
