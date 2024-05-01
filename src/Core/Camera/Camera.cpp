@@ -15,6 +15,8 @@ Raytracer::Camera::Camera(const Camera& other)
 {
     this->_origin = other._origin;
     this->_screen = other._screen;
+    this->_rotation = other._rotation;
+    this->_fov = other._fov;
 }
 
 Raytracer::Camera::~Camera()
