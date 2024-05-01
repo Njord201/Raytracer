@@ -47,15 +47,10 @@ double Raytracer::Scene::_parseValue(const libconfig::Setting &value)
 
 int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
 {
-    int resolution_x = 0;
-    int resolution_y = 0;
     if (camera.exists("resolution")) {
         const libconfig::Setting &ResolutionWidthSetting = camera["resolution"]["width"];
         const libconfig::Setting &ResolutionHeightSetting = camera["resolution"]["height"];
-        resolution_x = _parseValue(ResolutionWidthSetting);
-        resolution_y = _parseValue(ResolutionHeightSetting);
-        (void) resolution_x;
-        (void) resolution_y;
+        this->_camera.setResolution(_parseValue(ResolutionWidthSetting), _parseValue(ResolutionHeightSetting));
     } else {
         throw ParserException("There is no resolution data in file !");
     }
