@@ -33,34 +33,34 @@ void Raytracer::Renderer::renderScene() {
     double fov = 70.0;
 
     // Image Resolution
-    double image_width = _camera.getResolution().first;
-    double image_height = _camera.getResolution().second;
-    auto aspect_ratio = image_width / image_height;
+    double imageWidth = _camera.getResolution().first;
+    double imageHeight = _camera.getResolution().second;
+    auto imageRatio = imageWidth / imageHeight;
 
-    auto focal_length = 1.0;
-    auto viewport_height = 2.0 * std::tan((fov * M_PI / 180.0) / 2.0) * focal_length;
-    auto viewport_width = viewport_height * aspect_ratio;
+    auto focalLength = 1.0;
+    auto viewHeight = 2.0 * std::tan((fov * M_PI / 180.0) / 2.0) * focalLength;
+    auto viewWidth = viewHeight * imageRatio;
 
     // Calculate the vectors across the horizontal and vertical viewport edges.
-    auto viewport_u = Math::Vector3D(viewport_width, 0, 0);
-    auto viewport_v = Math::Vector3D(0, -viewport_height, 0);
+    auto viewU = Math::Vector3D(viewWidth, 0, 0);
+    auto viewV = Math::Vector3D(0, -viewHeight, 0);
 
     // Calculate the horizontal and vertical delta vectors from pixel to pixel.
-    auto pixel_delta_u = viewport_u / image_width;
-    auto pixel_delta_v = viewport_v / image_height;
+    auto pixelSizeU = viewU / imageWidth;
+    auto pixelSizeV = viewV / imageHeight;
 
     // Calculate the location of the upper-left pixel.
-    auto viewport_upper_left = _camera.getOrigin() - Math::Vector3D(0, 0, focal_length) - viewport_u / 2 - viewport_v / 2;
+    auto viewUpper_left = _camera.getOrigin() - Math::Vector3D(0, 0, focalLength) - viewU / 2 - viewV / 2;
 
     if (stream.is_open()) {
-        stream << "P3\n" << image_width << ' ' << image_height << "\n255\n";
-        for (int y = image_height; y >= 0; y--) {
-            std::clog << "\rScanlines remaining: " << (image_width - y) << ' ' << std::flush;
-            for (int x = 0; x < image_width; x++) {
-                auto inverted_x = image_width - x - 1;
-                auto pixel_center = viewport_upper_left + (pixel_delta_u * (inverted_x + 0.5)) + (pixel_delta_v * (y + 0.5));
-                auto ray_direction = pixel_center - _camera.getOrigin();
-                Raytracer::Ray r(_camera.getOrigin(), ray_direction);
+        stream << "P3\n" << imageWidth << ' ' << imageHeight << "\n255\n";
+        for (int y = imageHeight; y >= 0; y--) {
+            std::clog << "\rScanlines remaining: " << (imageWidth - y) << ' ' << std::flush;
+            for (int x = 0; x < imageWidth; x++) {
+                auto invertedX = imageWidth - x - 1;
+                auto pixel_center = viewUpper_left + (pixelSizeU * (invertedX + 0.5)) + (pixelSizeV * (y + 0.5));
+                auto rayDirection = pixel_center - _camera.getOrigin();
+                Raytracer::Ray r(_camera.getOrigin(), rayDirection);
                 Math::Point3D hit = _primitives.hitPoint(r);
                 writeColor(stream, hit);
             }
