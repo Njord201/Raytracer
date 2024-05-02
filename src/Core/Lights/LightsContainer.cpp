@@ -21,3 +21,9 @@ std::vector<std::shared_ptr<Light::ILight>> Light::LightsContainer::getLightsLis
 {
     return this->_Lights;
 }
+
+Math::Point3D Light::LightsContainer::computeColor(const Math::Vector3D& primitiveNormal) const
+{
+    (void) primitiveNormal;
+    return Math::Point3D(255, 255, 0);
+}

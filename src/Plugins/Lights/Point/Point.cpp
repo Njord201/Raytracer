@@ -44,3 +44,9 @@ Light::LightType Light::Point::getType(void) const
 {
     return Light::LightType::point;
 }
+
+Math::Point3D Light::Point::computeColor(const Math::Vector3D& primitiveNormal) const
+{
+    (void) primitiveNormal;
+    return Math::Point3D(255, 255, 0);
+}

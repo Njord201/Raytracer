@@ -6,7 +6,8 @@
 ##
 
 SRC			= 	getInstance.cpp \
-				Ambient.cpp
+				Ambient.cpp \
+				../../../Math/Vector3D.cpp \
 
 OBJ			= $(SRC:.cpp=.o)
 

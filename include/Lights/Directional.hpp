@@ -28,7 +28,7 @@ class Light::Directional : public Light::ILight {
 
         /**
          * @brief Construct a new Directional object
-         * 
+         *
          * @param position Position of Directionnal Light
          * @param direction Direction of Directionnal Light
          * @param diffuseMultiplier Diffuse Multiplier of Directionnal Light
@@ -43,42 +43,42 @@ class Light::Directional : public Light::ILight {
 
         /**
          * @brief Get the Position number of Point light
-         * 
-         * @return double 
+         *
+         * @return double
          */
         Math::Point3D getPosition(void) const;
 
         /**
          * @brief Set the Position object
-         * 
+         *
          * @param position New position of Directional Light
          */
         void setPosition(Math::Point3D position);
 
         /**
          * @brief Get the Direction number of Point light
-         * 
-         * @return double 
+         *
+         * @return double
          */
         Math::Vector3D getDirection(void) const;
 
         /**
          * @brief Set the Direction object
-         * 
+         *
          * @param direction New Direction of Directional Light
          */
         void setDirection(Math::Vector3D direction);
 
         /**
          * @brief Get the Diffuse Multiplier number of Point light
-         * 
-         * @return double 
+         *
+         * @return double
          */
         double getDiffuseMultiplier(void) const;
 
         /**
          * @brief Set the Diffuse Multiplier object
-         * 
+         *
          * @param diffuseMultiplier New Diffuse Multiplier of Directional Light
          */
         void setDiffuseMultiplier(double diffuseMultiplier);
@@ -88,6 +88,14 @@ class Light::Directional : public Light::ILight {
          * @return The type of the light
          */
         Light::LightType getType(void) const override;
+
+        /**
+         * @brief compute the color point with directional light
+         *
+         * @param primitiveNormal normal to the hitpoint
+         * @return Math::Point3D color
+         */
+        Math::Point3D computeColor(const Math::Vector3D& primitiveNormal) const override;
 
     private:
         Math::Point3D    _position;

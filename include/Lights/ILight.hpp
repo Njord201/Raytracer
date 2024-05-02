@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include "Math/Vector3D.hpp"
 
 namespace Light {
     class ILight;
@@ -33,4 +34,6 @@ class Light::ILight {
              * @return The type of the light
              */
             virtual Light::LightType getType(void) const = 0;
+
+            virtual Math::Point3D computeColor(const Math::Vector3D& primitiveNormal) const = 0;
     };
