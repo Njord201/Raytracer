@@ -17,10 +17,16 @@ Raytracer::Factory::Factory()
     this->_libraryLoader.push_back(pointLoader);
     std::shared_ptr<DLLoader> directionalLoader = std::make_shared<DLLoader>("plugins/raytracer_directional.so");
     this->_libraryLoader.push_back(directionalLoader);
-
+    std::shared_ptr<DLLoader> cylinderLoader = std::make_shared<DLLoader>("plugins/raytracer_cylinder.so");
+    this->_libraryLoader.push_back(cylinderLoader);
     this->registerPrimitivesComponent("sphere", [sphereLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
         Primitive::IPrimitive *sphere = sphereLoader->getInstance<Primitive::IPrimitive *>("getSphereInstance");
         std::shared_ptr<Primitive::IPrimitive> sharedPtrSphere(sphere);
+        return sharedPtrSphere;
+    });
+    this->registerPrimitivesComponent("cylinder", [sphereLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
+        Primitive::IPrimitive *cylinder = sphereLoader->getInstance<Primitive::IPrimitive *>("getSphereInstance");
+        std::shared_ptr<Primitive::IPrimitive> sharedPtrSphere(cylinder);
         return sharedPtrSphere;
     });
     this->registerLightsComponent("ambient", [ambientLoader]() -> std::shared_ptr<Light::ILight> {
