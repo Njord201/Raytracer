@@ -7,10 +7,20 @@
 
 #include <iostream>
 
+#include "Parser/Scene.hpp"
+#include "Renderer.hpp"
+
 int main(int argc, char **argv)
 {
-    (void) argc;
-    (void) argv;
-    std::cout << "Welcome in the Raytracer!" << std::endl;
+    if (argc != 2)
+        return 84;
+    try {
+        Raytracer::Scene scene(argv[1]);
+        Raytracer::Renderer renderer(scene);
+        renderer.renderScene();
+    } catch (const Raytracer::Scene::ParserException &parseError) {
+        std::cerr << parseError.what() << std::endl;
+        return 84;
+    }
     return 0;
 }

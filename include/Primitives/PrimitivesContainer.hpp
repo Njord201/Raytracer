@@ -7,10 +7,10 @@
 
 #pragma once
 
-#include "IPrimitive.hpp"
-
 #include <vector>
 #include <memory>
+
+#include "IPrimitive.hpp"
 
 namespace Primitive {
 
@@ -50,6 +50,13 @@ namespace Primitive {
              * @return Math::Point3D
              */
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const;
+
+            /**
+             * @brief Get the Primitives List object
+             * 
+             * @return std::vector<std::shared_ptr<Primitive::IPrimitive>> 
+             */
+            std::vector<std::shared_ptr<Primitive::IPrimitive>> getPrimitivesList(void) const;
 
         private:
 

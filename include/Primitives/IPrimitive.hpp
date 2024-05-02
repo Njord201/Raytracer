@@ -8,7 +8,7 @@
 #pragma once
 
 #include "Ray.hpp"
-#include "Vector3D.hpp"
+#include "Math/Vector3D.hpp"
     
 #define IS_HIT(D) ((D >= 0) ? true : false)
 

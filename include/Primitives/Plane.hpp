@@ -30,6 +30,8 @@ namespace Primitive {
             /**
              * @brief Construct a new Plane object
              *
+             * @param axis Axis of the plane
+             * @param position offset on axis
              */
             Plane(Primitive::Axis axis, double position);
 
