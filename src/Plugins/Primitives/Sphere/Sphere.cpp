@@ -40,9 +40,30 @@ Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& ray) const
 
 Math::Point3D Primitive::Sphere::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
 {
-    (void) hitPoint;
     (void) lights;
-    return Math::Point3D(255, 0, 255);
+
+    Math::Vector3D op(hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
+
+    Math::Vector3D light(0, 0, 0);
+    Math::Vector3D pl = light - hitPoint;
+
+    double n = op.dot(pl);
+    double d  = op.length() * pl.length();
+
+    double angle = acos(n / d) * 180 / M_PI;
+
+    double ambient = 0.4;
+    double diffuse = 0.6;
+
+    Math::Vector3D color(64, 255, 64);
+    double coeffLight = (1 - (angle * diffuse / 90));
+
+    if (angle <= 90 && ambient <= coeffLight)
+            color *= coeffLight;
+    else
+        color *= ambient;
+
+    return color;
 }
 
 void Primitive::Sphere::setOrigin(Math::Point3D origin)
