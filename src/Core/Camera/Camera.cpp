@@ -9,12 +9,17 @@
 
 Raytracer::Camera::Camera(): _origin(0,0,0), _screen()
 {
+    this->_resolution.first = 0;
+    this->_resolution.second = 0;
 }
 
 Raytracer::Camera::Camera(const Camera& other)
 {
     this->_origin = other._origin;
     this->_screen = other._screen;
+    this->_rotation = other._rotation;
+    this->_fov = other._fov;
+    this->_resolution = other._resolution;
 }
 
 Raytracer::Camera::~Camera()
@@ -54,6 +59,11 @@ Math::Vector3D Raytracer::Camera::getRotation(void) const
     return this->_rotation;
 }
 
+std::pair<double, double> Raytracer::Camera::getResolution(void) const
+{
+    return this->_resolution;
+}
+
 void Raytracer::Camera::setOrigin(Math::Point3D origin)
 {
     this->_origin = origin;
@@ -72,4 +82,10 @@ void Raytracer::Camera::setFov(double fov)
 void Raytracer::Camera::setRotation(Math::Vector3D rotation)
 {
    this->_rotation = rotation;
+}
+
+void Raytracer::Camera::setResolution(double width, double height)
+{
+    this->_resolution.first = width;
+    this->_resolution.second = height;
 }

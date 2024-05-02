@@ -29,7 +29,7 @@ Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& ray) const
     double discriminant = b * b - 4 * a * c;
 
     if (!IS_HIT(discriminant))
-        return Math::Point3D(0,0,0);
+        return Math::Point3D(-1,-1,-1);
 
     double hitValue = (-b - sqrt(discriminant)) / (2.0 * a);
 
