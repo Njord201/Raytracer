@@ -114,6 +114,29 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             this->_primitives.add(newSphere);
         }
     }
+    // if (primitives.exists("cylinders")) {
+    //     libconfig::Setting& cylinderArray = primitives.lookup("cylinders");
+    //     for (int index = 0; index < cylinderArray.getLength(); index++) {
+    //         std::shared_ptr<Primitive::IPrimitive> cylinder = _factory.createPrimitivesComponent("sphere");
+    //         std::shared_ptr<Primitive::Cylinder> newCylinder = std::dynamic_pointer_cast<Primitive::Cylinder>(cylinder);
+
+    //         const libconfig::Setting &originX = cylinderArray[index]["x"];
+    //         const libconfig::Setting &originY = cylinderArray[index]["y"];
+    //         const libconfig::Setting &originZ = cylinderArray[index]["z"];
+    //         Math::Point3D origin(_parseValue(originX), _parseValue(originY), _parseValue(originZ));
+
+    //         const libconfig::Setting &radiusValue = cylinderArray[index]["r"];
+    //         double radius = _parseValue(radiusValue);
+
+    //         const libconfig::Setting &heightValue = cylinderArray[index]["h"];
+    //         double height = _parseValue(heightValue);
+
+    //         newCylinder->setRadius(radius);
+    //         newCylinder->setOrigin(origin);
+    //         newCylinder->setHeight(height);
+    //         this->_primitives.add(newCylinder);
+    //     }
+    // }
     return 0;
 }
 

@@ -5,7 +5,7 @@
 ** Cylinder
 */
 
-#include "Cylinder.hpp"
+#include "Primitives/Cylinder.hpp"
 
 #include <cmath>
 
@@ -33,4 +33,19 @@ Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& r) const
         return hitPoint;
     else
         return Math::Point3D(0, 0, 0);
+}
+
+void Primitive::Cylinder::setOrigin(const Math::Point3D& origin)
+{
+    _origin = origin;
+}
+
+void Primitive::Cylinder::setHeight(double height)
+{
+    _height = height;
+}
+
+void Primitive::Cylinder::setRadius(double radius)
+{
+    _radius = radius;
 }

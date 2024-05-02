@@ -24,6 +24,7 @@ namespace Primitive {
              *
              * @param origin center of the cylinder
              * @param radius of the cylinder
+             * @param height of the cylinder
              */
             Cylinder(const Math::Point3D& origin, double radius, double height);
 
@@ -41,6 +42,27 @@ namespace Primitive {
              */
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
 
+            /**
+             * @brief return the normal of the cylinder
+             *
+             * @param hitPoint Point3D
+             * @return Vector3D
+             */
+            void setOrigin(const Math::Point3D& origin);
+
+            /**
+             * @brief return the origin of the cylinder
+             *
+             * @return Point3D
+             */
+            void setHeight(double height);
+
+            /**
+             * @brief return the height of the cylinder
+             *
+             * @return double
+             */
+            void setRadius(double radius);
         private:
 
             Math::Point3D _origin;
