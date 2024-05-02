@@ -78,9 +78,11 @@ class Light::Point : public Light::ILight {
          * @brief compute the color point with ponctual light
          *
          * @param primitiveNormal normal to the hitpoint
+         * @param hitPoint hitpoint
+         * @param color color
          * @return Math::Point3D color
          */
-        Math::Point3D computeColor(const Math::Vector3D& primitiveNormal) const override;
+        Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const override;
 
     private:
         Math::Point3D   _position;

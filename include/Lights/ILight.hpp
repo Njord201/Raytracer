@@ -35,5 +35,13 @@ class Light::ILight {
              */
             virtual Light::LightType getType(void) const = 0;
 
-            virtual Math::Point3D computeColor(const Math::Vector3D& primitiveNormal) const = 0;
+            /**
+             * @brief compute the color point with lights
+             *
+             * @param primitiveNormal normal to the hitpoint
+             * @param hitPoint hitpoint
+             * @param color color
+             * @return Math::Point3D color
+             */
+            virtual Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const = 0;
     };

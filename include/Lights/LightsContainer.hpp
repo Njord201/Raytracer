@@ -55,9 +55,11 @@ namespace Light {
              * @brief compute the color point with lights
              *
              * @param primitiveNormal normal to the hitpoint
+             * @param hitPoint hitpoint
+             * @param color color
              * @return Math::Point3D color
              */
-            Math::Point3D computeColor(const Math::Vector3D& primitiveNormal) const;
+            Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const;
 
         private:
 
