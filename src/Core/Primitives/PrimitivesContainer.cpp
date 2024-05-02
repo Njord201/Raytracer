@@ -43,7 +43,7 @@ Math::Point3D Primitive::PrimitivesContainer::hitPoint(const Raytracer::Ray& ray
     if (idx_nearest == -1)
         return Math::Point3D(255, 255, 255);
     //TODO : compute the color of the point based on the Material
-    return point_nearest;
+    return Math::Point3D(0, 0, 0);
 }
 
 std::vector<std::shared_ptr<Primitive::IPrimitive>> Primitive::PrimitivesContainer::getPrimitivesList(void) const
