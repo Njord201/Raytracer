@@ -26,17 +26,18 @@ void Raytracer::Renderer::writeColor(std::ostream& o, const Math::Point3D& color
     o << r << ' ' << g << ' ' << b << '\n';
 }
 
-void Raytracer::Renderer::renderScene() {
-    std::ofstream stream("ok.ppm");
+void Raytracer::Renderer::renderScene()
+{
+    std::ofstream stream("output.ppm");
 
-    // Field of view in degrees
-    double fov = 70.0;
 
     // Image Resolution
     double imageWidth = _camera.getResolution().first;
     double imageHeight = _camera.getResolution().second;
     auto imageRatio = imageWidth / imageHeight;
 
+    // Field of view in degrees
+    double fov = _camera.getFov();
     auto focalLength = 1.0;
     auto viewHeight = 2.0 * std::tan((fov * M_PI / 180.0) / 2.0) * focalLength;
     auto viewWidth = viewHeight * imageRatio;
@@ -55,7 +56,6 @@ void Raytracer::Renderer::renderScene() {
     if (stream.is_open()) {
         stream << "P3\n" << imageWidth << ' ' << imageHeight << "\n255\n";
         for (int y = imageHeight; y >= 0; y--) {
-            std::clog << "\rScanlines remaining: " << (imageWidth - y) << ' ' << std::flush;
             for (int x = 0; x < imageWidth; x++) {
                 auto invertedX = imageWidth - x - 1;
                 auto pixel_center = viewUpper_left + (pixelSizeU * (invertedX + 0.5)) + (pixelSizeV * (y + 0.5));
