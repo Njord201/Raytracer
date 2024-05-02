@@ -11,28 +11,26 @@
 
 using std::sqrt;
 
-Primitive::Cylinder::Cylinder() : _origin(0,0,0), _radius(1){}
+Primitive::Cylinder::Cylinder() : _origin(0,0,0), _radius(1), _height(1){}
 
-Primitive::Cylinder::Cylinder(const Math::Point3D& origin, double radius) : _origin(origin), _radius(radius){}
+Primitive::Cylinder::Cylinder(const Math::Point3D& origin, double radius, double height) : _origin(origin), _radius(radius), _height(height){}
 
 Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& r) const
 {
     Math::Point3D rayOrigin = r.origin();
     Math::Vector3D rayDirection = r.direction();
 
-    Math::Vector3D vectorSphereToRay(rayOrigin.x() - _origin.x(), rayOrigin.y() - _origin.y(), rayOrigin.z() - _origin.z());
-    double a = rayDirection.dot(rayDirection);
-    double b = 2 * vectorSphereToRay.dot(rayDirection);
-    double c = vectorSphereToRay.dot(vectorSphereToRay) - _radius * _radius;
+    double a = rayDirection.x() * rayDirection.x() + rayDirection.z() * rayDirection.z();
+    double b = 2 * (rayDirection.x() * (rayOrigin.x() - _origin.x()) + rayDirection.z() * (rayOrigin.z() - _origin.z()));
+    double c = (rayOrigin.x() - _origin.x()) * (rayOrigin.x() - _origin.x()) + (rayOrigin.z() - _origin.z()) * (rayOrigin.z() - _origin.z()) - _radius * _radius;
 
     double discriminant = b * b - 4 * a * c;
-
-    if (!IS_HIT(discriminant))
-        return Math::Point3D(0,0,0);
-
+    if (discriminant < 0)
+        return Math::Point3D(0, 0, 0);
     double hitValue = (-b - sqrt(discriminant)) / (2.0 * a);
-
     Math::Point3D hitPoint = rayOrigin + rayDirection * hitValue;
-
-    return hitPoint;
+    if (hitPoint.y() >= _origin.y() && hitPoint.y() <= _origin.y() + _height)
+        return hitPoint;
+    else
+        return Math::Point3D(0, 0, 0);
 }

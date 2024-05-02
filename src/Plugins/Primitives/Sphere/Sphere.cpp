@@ -19,7 +19,6 @@ Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& r) const
 {
     Math::Point3D rayOrigin = r.origin();
     Math::Vector3D rayDirection = r.direction();
-
     Math::Vector3D vectorSphereToRay(rayOrigin.x() - _origin.x(), rayOrigin.y() - _origin.y(), rayOrigin.z() - _origin.z());
     double a = rayDirection.dot(rayDirection);
     double b = 2 * vectorSphereToRay.dot(rayDirection);

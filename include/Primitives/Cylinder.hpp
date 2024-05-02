@@ -25,7 +25,7 @@ namespace Primitive {
              * @param origin center of the cylinder
              * @param radius of the cylinder
              */
-            Cylinder(const Math::Point3D& origin, double radius);
+            Cylinder(const Math::Point3D& origin, double radius, double height);
 
             /**
              * @brief Destroy the Cylinder object
@@ -45,5 +45,6 @@ namespace Primitive {
 
             Math::Point3D _origin;
             double _radius;
+            double _height;
     };
 };
