@@ -37,15 +37,15 @@ Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& r) const
 
 void Primitive::Cylinder::setOrigin(const Math::Point3D& origin)
 {
-    _origin = origin;
+    this->_origin = origin;
 }
 
 void Primitive::Cylinder::setHeight(double height)
 {
-    _height = height;
+    this->_height = height;
 }
 
 void Primitive::Cylinder::setRadius(double radius)
 {
-    _radius = radius;
+    this->_radius = radius;
 }

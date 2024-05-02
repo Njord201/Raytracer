@@ -24,10 +24,10 @@ Raytracer::Factory::Factory()
         std::shared_ptr<Primitive::IPrimitive> sharedPtrSphere(sphere);
         return sharedPtrSphere;
     });
-    this->registerPrimitivesComponent("cylinder", [sphereLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
-        Primitive::IPrimitive *cylinder = sphereLoader->getInstance<Primitive::IPrimitive *>("getSphereInstance");
-        std::shared_ptr<Primitive::IPrimitive> sharedPtrSphere(cylinder);
-        return sharedPtrSphere;
+    this->registerPrimitivesComponent("cylinder", [cylinderLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
+        Primitive::IPrimitive *cylinder = cylinderLoader->getInstance<Primitive::IPrimitive *>("getCylinderInstance");
+        std::shared_ptr<Primitive::IPrimitive> sharedPtrCylinder(cylinder);
+        return sharedPtrCylinder;
     });
     this->registerLightsComponent("ambient", [ambientLoader]() -> std::shared_ptr<Light::ILight> {
         Light::ILight *ambient = ambientLoader->getInstance<Light::ILight *>("getAmbientInstance");

@@ -5,9 +5,9 @@
 ** Cylinder
 */
 
-#include "Cylinder.hpp"
-
 #include <iostream>
+
+#include "Cylinder.hpp"
 
 extern "C"
 {
@@ -17,9 +17,11 @@ extern "C"
         std::cout << "Loading Cylinder Plugin ..." << std::endl;
     }
 
-    Primitive::IPrimitive *getInstance()
+    Primitive::IPrimitive *getCylinderInstance()
     {
-        return new Primitive::Cylinder();
+        Primitive::IPrimitive *cylinder = new Primitive::Cylinder();
+        std::cout << "New Cylinder created ..." << std::endl;
+        return cylinder;
     }
 
     __attribute__((destructor))
