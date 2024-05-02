@@ -58,3 +58,10 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
     }
     return rayDirection * t;
 }
+
+Math::Point3D Primitive::Plane::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
+{
+    (void) hitPoint;
+    (void) lights;
+    return Math::Point3D(255, 0, 255);
+}

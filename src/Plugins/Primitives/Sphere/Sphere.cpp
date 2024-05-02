@@ -38,6 +38,13 @@ Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& ray) const
     return hitPoint;
 }
 
+Math::Point3D Primitive::Sphere::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
+{
+    (void) hitPoint;
+    (void) lights;
+    return Math::Point3D(255, 0, 255);
+}
+
 void Primitive::Sphere::setOrigin(Math::Point3D origin)
 {
     this->_origin = origin;
