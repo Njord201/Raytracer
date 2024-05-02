@@ -42,28 +42,13 @@ Math::Point3D Primitive::Sphere::computeColor(const Math::Point3D& hitPoint, con
 {
     Math::Vector3D sphereNormal(hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
 
-    return lights.computeColor(sphereNormal);
 
-    // Math::Vector3D light(-8, -16, 8);
-    // Math::Vector3D pl = light - hitPoint;
-
-    // double n = sphereNormal.dot(pl);
-    // double d  = sphereNormal.length() * pl.length();
-
-    // double angle = acos(n / d) * 180 / M_PI;
-
-    // double ambient = 0.4;
-    // double diffuse = 0.6;
-
-    // Math::Vector3D color(64, 255, 64);
-    // double coeffLight = (1 - (angle * diffuse / 90));
-
-    // if (angle <= 90 && ambient <= coeffLight)
-    //         color *= coeffLight;
-    // else
-    //     color *= ambient;
-
-    // return color;
+    if (_material->getType() == Material::MaterialType::FlatColor) {
+        std::shared_ptr<FlatColor> sphereFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
+        return lights.computeColor(sphereNormal, hitPoint, Math::Point3D(sphereFlatColor->getR(), sphereFlatColor->getG(), sphereFlatColor->getB()));
+    }
+    std::cout << "material not handle in sphere" << std::endl;
+    return Math::Point3D(0,0,0);
 }
 
 void Primitive::Sphere::setOrigin(Math::Point3D origin)
