@@ -80,9 +80,9 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
     if (camera.exists("translation")) {
         libconfig::Setting& translation = camera.lookup("translation");
         Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
-        Math::Vector3D newpoint = this->_camera.getOrigin();
-        newpoint.translate(trans);
-        this->_camera.setOrigin(newpoint);
+        Math::Vector3D neworigin = this->_camera.getOrigin();
+        neworigin.translate(trans);
+        this->_camera.setOrigin(neworigin);
     }
 
     if (camera.exists("fieldOfView")) {
@@ -124,9 +124,9 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             if (sphereArray[index].exists("translation")) {
                 libconfig::Setting& translation = sphereArray[index].lookup("translation");
                 Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
-                Math::Vector3D newpoint = newSphere->getOrigin();
-                newpoint.translate(trans);
-                newSphere->setOrigin(newpoint);
+                Math::Vector3D neworigin = newSphere->getOrigin();
+                neworigin.translate(trans);
+                newSphere->setOrigin(neworigin);
             }
 
             this->_primitives.add(newSphere);
@@ -163,6 +163,15 @@ int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
 
             newPoint->setPosition(position);
             newPoint->setDiffuseMultiplier(diffuse);
+
+            if (lightArrayPoint[index].exists("translation")) {
+                libconfig::Setting& translation = lightArrayPoint[index].lookup("translation");
+                Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+                Math::Vector3D neworigin = newPoint->getPosition();
+                neworigin.translate(trans);
+                newPoint->setPosition(neworigin);
+            }
+
             this->_lights.add(newPoint);
         }
     }
