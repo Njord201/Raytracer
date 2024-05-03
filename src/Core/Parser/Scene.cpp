@@ -76,6 +76,15 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
         Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
         this->_camera.setRotation(rotation);
     }
+
+    if (camera.exists("translation")) {
+        libconfig::Setting& translation = camera.lookup("translation");
+        Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+        Math::Vector3D newpoint = this->_camera.getOrigin();
+        newpoint.translate(trans);
+        this->_camera.setOrigin(newpoint);
+    }
+
     if (camera.exists("fieldOfView")) {
         const libconfig::Setting &fieldOfViewSetting = camera["fieldOfView"];
         this->_camera.setFov(_parseValue(fieldOfViewSetting));
