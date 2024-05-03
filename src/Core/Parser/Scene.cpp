@@ -111,6 +111,15 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
                 newSphere->setMaterial(materialPtr);
             }
+
+            if (sphereArray[index].exists("translation")) {
+                libconfig::Setting& translation = sphereArray[index].lookup("translation");
+                Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+                Math::Vector3D newpoint = newSphere->getOrigin();
+                newpoint.translate(trans);
+                newSphere->setOrigin(newpoint);
+            }
+
             this->_primitives.add(newSphere);
         }
     }
