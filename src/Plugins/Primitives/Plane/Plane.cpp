@@ -5,15 +5,19 @@
 ** Plane
 */
 
-#include "Plane.hpp"
+#include <iostream>
+#include <string>
+
+#include "Primitives/Plane.hpp"
 
 Primitive::Plane::Plane()
 {
     _position = Math::Point3D(0, 0, 0);
     _axis = X;
+    _material = nullptr;
 }
 
-Primitive::Plane::Plane(Primitive::Axis axis, double position)
+Primitive::Plane::Plane(Primitive::Axis axis, double position, std::shared_ptr<Material::IMaterial> material)
 {
     switch (axis) {
         case X:
@@ -29,6 +33,7 @@ Primitive::Plane::Plane(Primitive::Axis axis, double position)
             break;
     }
     _axis = axis;
+    _material = material;
 }
 
 Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
@@ -58,3 +63,35 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
     }
     return rayDirection * t;
 }
+
+
+Primitive::Axis Primitive::Plane::getAxis(void) const
+{
+    return this->_axis;
+}
+
+void Primitive::Plane::setAxis(const Primitive::Axis &axis)
+{
+    this->_axis = axis;
+}
+
+Math::Point3D Primitive::Plane::getPosition(void) const
+{
+    return this->_position;
+}
+
+void Primitive::Plane::setPosition(Math::Point3D position)
+{
+    this->_position = position;
+}
+
+std::shared_ptr<Material::IMaterial> Primitive::Plane::getMaterial() const
+{
+    return this->_material;
+}
+
+void Primitive::Plane::setMaterial(std::shared_ptr<Material::IMaterial> material)
+{
+    this->_material = material;
+}
+
