@@ -43,7 +43,7 @@ namespace Primitive {
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
 
             /**
-             * @brief return the normal of the cylinder
+             * @brief set origin of cylinder
              *
              * @param hitPoint Point3D
              * @return Vector3D
@@ -51,14 +51,14 @@ namespace Primitive {
             void setOrigin(const Math::Point3D& origin);
 
             /**
-             * @brief return the origin of the cylinder
+             * @brief set axis of cylinder
              *
              * @return Point3D
              */
-            void setHeight(double height);
+            void setAxis(double axis);
 
             /**
-             * @brief return the height of the cylinder
+             * @brief set radius of cylinder
              *
              * @return double
              */
@@ -67,6 +67,6 @@ namespace Primitive {
 
             Math::Point3D _origin;
             double _radius;
-            double _height;
+            double _axis;
     };
 };

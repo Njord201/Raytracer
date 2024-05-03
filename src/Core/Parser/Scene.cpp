@@ -127,12 +127,12 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             const libconfig::Setting &radiusValue = cylinderArray[index]["r"];
             double radius = _parseValue(radiusValue);
 
-            const libconfig::Setting &heightValue = cylinderArray[index]["h"];
-            double height = _parseValue(heightValue);
+            const libconfig::Setting &axisValue = cylinderArray[index]["axis"];
+            double axis = _parseValue(axisValue);
 
             newCylinder->setRadius(radius);
             newCylinder->setOrigin(origin);
-            newCylinder->setHeight(height);
+            newCylinder->setAxis(axis);
             this->_primitives.add(newCylinder);
         }
     }

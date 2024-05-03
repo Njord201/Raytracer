@@ -11,28 +11,33 @@
 
 using std::sqrt;
 
-Primitive::Cylinder::Cylinder() : _origin(0,0,0), _radius(1), _height(1){}
+Primitive::Cylinder::Cylinder() : _origin(0,0,0), _radius(1), _axis(0){}
 
-Primitive::Cylinder::Cylinder(const Math::Point3D& origin, double radius, double height) : _origin(origin), _radius(radius), _height(height){}
+Primitive::Cylinder::Cylinder(const Math::Point3D& origin, double radius, double axis) : _origin(origin), _radius(radius), _axis(axis){}
 
-Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& r) const
+
+Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& ray) const
 {
-    Math::Point3D rayOrigin = r.origin();
-    Math::Vector3D rayDirection = r.direction();
+    Math::Point3D rayOrigin = ray.origin();
+    rayOrigin = Math::Point3D(0, rayOrigin.y(), rayOrigin.z());
+    Math::Vector3D rayDirection = ray.direction();
+    rayDirection = Math::Vector3D(0, rayDirection.y(), rayDirection.z());
 
-    double a = rayDirection.x() * rayDirection.x() + rayDirection.z() * rayDirection.z();
-    double b = 2 * (rayDirection.x() * (rayOrigin.x() - _origin.x()) + rayDirection.z() * (rayOrigin.z() - _origin.z()));
-    double c = (rayOrigin.x() - _origin.x()) * (rayOrigin.x() - _origin.x()) + (rayOrigin.z() - _origin.z()) * (rayOrigin.z() - _origin.z()) - _radius * _radius;
+    Math::Vector3D vectorCylinderToRay(rayOrigin.x() - _origin.x(), rayOrigin.y() - _origin.y(), rayOrigin.z() - _origin.z());
+    double a = rayDirection.dot(rayDirection);
+    double b = 2 * vectorCylinderToRay.dot(rayDirection);
+    double c = vectorCylinderToRay.dot(vectorCylinderToRay) - _radius * _radius;
 
     double discriminant = b * b - 4 * a * c;
-    if (discriminant < 0)
-        return Math::Point3D(255, 255, 255);
+
+    if (!IS_HIT(discriminant))
+        return Math::Point3D(-1,-1,-1);
+
     double hitValue = (-b - sqrt(discriminant)) / (2.0 * a);
+
     Math::Point3D hitPoint = rayOrigin + rayDirection * hitValue;
-    if (hitPoint.y() >= _origin.y() && hitPoint.y() <= _origin.y() + _height)
-        return Math::Point3D(0, 0, 0);
-    else
-        return Math::Point3D(255, 255, 255);
+
+    return hitPoint;
 }
 
 void Primitive::Cylinder::setOrigin(const Math::Point3D& origin)
@@ -40,9 +45,9 @@ void Primitive::Cylinder::setOrigin(const Math::Point3D& origin)
     this->_origin = origin;
 }
 
-void Primitive::Cylinder::setHeight(double height)
+void Primitive::Cylinder::setAxis(double axis)
 {
-    this->_height = height;
+    this->_axis = axis;
 }
 
 void Primitive::Cylinder::setRadius(double radius)
