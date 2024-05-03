@@ -7,6 +7,8 @@
 
 SRC			= 	getInstance.cpp \
 				Cylinder.cpp \
+				../../../Math/Vector3D.cpp \
+				../../../Core/Ray.cpp \
 
 OBJ			= $(SRC:.cpp=.o)
 

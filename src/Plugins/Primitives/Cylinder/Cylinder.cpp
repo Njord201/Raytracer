@@ -26,13 +26,13 @@ Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& r) const
 
     double discriminant = b * b - 4 * a * c;
     if (discriminant < 0)
-        return Math::Point3D(0, 0, 0);
+        return Math::Point3D(255, 255, 255);
     double hitValue = (-b - sqrt(discriminant)) / (2.0 * a);
     Math::Point3D hitPoint = rayOrigin + rayDirection * hitValue;
     if (hitPoint.y() >= _origin.y() && hitPoint.y() <= _origin.y() + _height)
-        return hitPoint;
-    else
         return Math::Point3D(0, 0, 0);
+    else
+        return Math::Point3D(255, 255, 255);
 }
 
 void Primitive::Cylinder::setOrigin(const Math::Point3D& origin)
