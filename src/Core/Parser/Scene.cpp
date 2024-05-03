@@ -196,6 +196,15 @@ int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
             newDirectional->setPosition(position);
             newDirectional->setDirection(direction);
             newDirectional->setDiffuseMultiplier(diffuse);
+
+            if (lightArrayDirectional[index].exists("translation")) {
+                libconfig::Setting& translation = lightArrayDirectional[index].lookup("translation");
+                Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+                Math::Vector3D neworigin = newDirectional->getPosition();
+                neworigin.translate(trans);
+                newDirectional->setPosition(neworigin);
+            }
+
             this->_lights.add(newDirectional);
         }
     }
