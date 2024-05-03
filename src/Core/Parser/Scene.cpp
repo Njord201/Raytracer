@@ -128,7 +128,7 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             double radius = _parseValue(radiusValue);
 
             const libconfig::Setting &axisValue = cylinderArray[index]["axis"];
-            double axis = _parseValue(axisValue);
+            std::string axis = _parseValue(axisValue);
 
             newCylinder->setRadius(radius);
             newCylinder->setOrigin(origin);

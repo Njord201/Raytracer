@@ -15,7 +15,6 @@ Primitive::Cylinder::Cylinder() : _origin(0,0,0), _radius(1), _axis(0){}
 
 Primitive::Cylinder::Cylinder(const Math::Point3D& origin, double radius, double axis) : _origin(origin), _radius(radius), _axis(axis){}
 
-
 Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& ray) const
 {
     Math::Point3D rayOrigin = ray.origin();
