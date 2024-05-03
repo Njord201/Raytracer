@@ -18,7 +18,7 @@ Raytracer::Scene::Scene(std::string filePath)
         this->_parseCameraSetting(camera);
         this->_parsePrimitiveSetting(primitives);
         this->_parseLightsSetting(lights);
-        
+
     } catch (const libconfig::FileIOException &fioex) {
         throw ParserException("Error reading configuration file.");
     } catch (const libconfig::ParseException &pex) {
@@ -80,9 +80,9 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
     if (camera.exists("translation")) {
         libconfig::Setting& translation = camera.lookup("translation");
         Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
-        Math::Vector3D neworigin = this->_camera.getOrigin();
-        neworigin.translate(trans);
-        this->_camera.setOrigin(neworigin);
+        Math::Vector3D newOrigin = this->_camera.getOrigin();
+        newOrigin.translate(trans);
+        this->_camera.setOrigin(newOrigin);
     }
 
     if (camera.exists("fieldOfView")) {
@@ -124,9 +124,9 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             if (sphereArray[index].exists("translation")) {
                 libconfig::Setting& translation = sphereArray[index].lookup("translation");
                 Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
-                Math::Vector3D neworigin = newSphere->getOrigin();
-                neworigin.translate(trans);
-                newSphere->setOrigin(neworigin);
+                Math::Vector3D newOrigin = newSphere->getOrigin();
+                newOrigin.translate(trans);
+                newSphere->setOrigin(newOrigin);
             }
 
             this->_primitives.add(newSphere);
@@ -167,9 +167,9 @@ int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
             if (lightArrayPoint[index].exists("translation")) {
                 libconfig::Setting& translation = lightArrayPoint[index].lookup("translation");
                 Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
-                Math::Vector3D neworigin = newPoint->getPosition();
-                neworigin.translate(trans);
-                newPoint->setPosition(neworigin);
+                Math::Vector3D newOrigin = newPoint->getPosition();
+                newOrigin.translate(trans);
+                newPoint->setPosition(newOrigin);
             }
 
             this->_lights.add(newPoint);
@@ -200,9 +200,9 @@ int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
             if (lightArrayDirectional[index].exists("translation")) {
                 libconfig::Setting& translation = lightArrayDirectional[index].lookup("translation");
                 Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
-                Math::Vector3D neworigin = newDirectional->getPosition();
-                neworigin.translate(trans);
-                newDirectional->setPosition(neworigin);
+                Math::Vector3D newOrigin = newDirectional->getPosition();
+                newOrigin.translate(trans);
+                newDirectional->setPosition(newOrigin);
             }
 
             this->_lights.add(newDirectional);
