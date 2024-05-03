@@ -6,6 +6,7 @@
 */
 
 #include "Primitives/PrimitivesContainer.hpp"
+#include "RaytracerRules.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -41,7 +42,7 @@ Math::Point3D Primitive::PrimitivesContainer::hitPoint(const Raytracer::Ray& ray
         }
     }
     if (idx_nearest == -1)
-        return Math::Point3D(255, 255, 255);
+        return VOID_COLOR;
     //TODO : compute the color of the point based on the Material
     return _primitives[idx_nearest]->computeColor(point_nearest, lights);
 }
