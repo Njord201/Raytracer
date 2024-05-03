@@ -3,10 +3,10 @@
 ** Raytracer
 ** File description:
 ** Rules header
+**
+** This file handle all the important/common rules
+** of the project
 */
-
-// This file handle all the important/common rules
-// of the project
 
 #pragma once
 
