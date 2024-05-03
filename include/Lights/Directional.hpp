@@ -58,7 +58,7 @@ class Light::Directional : public Light::ILight {
         /**
          * @brief Get the Direction number of Point light
          *
-         * @return double
+         * @return Math::Vector3D direction
          */
         Math::Vector3D getDirection(void) const;
 

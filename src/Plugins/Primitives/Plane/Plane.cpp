@@ -63,5 +63,16 @@ Math::Point3D Primitive::Plane::computeColor(const Math::Point3D& hitPoint, cons
 {
     (void) hitPoint;
     (void) lights;
+
+    // TODO : compute the color based on the normal of the normal of the hitpoint
+    // on the plane, the material and lights
+
+    //example :
+
+    // if (_material->getType() == Material::MaterialType::FlatColor) {
+    //     std::shared_ptr<FlatColor> planeFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
+    //     return lights.computeColor(planeNormal, hitPoint, Math::Point3D(planeFlatColor->getR(), planeFlatColor->getG(), planeFlatColor->getB()));
+    // }
+
     return Math::Point3D(255, 0, 255);
 }
