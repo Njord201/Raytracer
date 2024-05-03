@@ -64,7 +64,6 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
     return rayDirection * t;
 }
 
-
 Primitive::Axis Primitive::Plane::getAxis(void) const
 {
     return this->_axis;
@@ -95,3 +94,19 @@ void Primitive::Plane::setMaterial(std::shared_ptr<Material::IMaterial> material
     this->_material = material;
 }
 
+Math::Point3D Primitive::Plane::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
+{
+    (void) hitPoint;
+    (void) lights;
+
+    // TODO : compute the color based on the normal of the normal of the hitpoint
+    // on the plane, the material and lights
+
+    //example :
+    // if (_material->getType() == Material::MaterialType::FlatColor) {
+    //     std::shared_ptr<FlatColor> planeFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
+    //     return lights.computeColor(planeNormal, hitPoint, Math::Point3D(planeFlatColor->getR(), planeFlatColor->getG(), planeFlatColor->getB()));
+    // }
+
+    return Math::Point3D(255, 0, 255);
+}

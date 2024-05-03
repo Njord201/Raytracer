@@ -46,10 +46,20 @@ namespace Light {
 
             /**
              * @brief Get the Lights List object
-             * 
-             * @return std::vector<std::shared_ptr<Light::ILight>> 
+             *
+             * @return std::vector<std::shared_ptr<Light::ILight>>
              */
             std::vector<std::shared_ptr<Light::ILight>> getLightsList(void) const;
+
+            /**
+             * @brief compute the color point with lights
+             *
+             * @param primitiveNormal normal to the hitpoint
+             * @param hitPoint hitpoint
+             * @param color color
+             * @return Math::Point3D color
+             */
+            Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const;
 
         private:
 

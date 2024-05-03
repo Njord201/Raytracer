@@ -27,7 +27,7 @@ class Light::Ambient : public Light::ILight {
 
         /**
          * @brief Construct a new Ambient object
-         * 
+         *
          * @param multiplier Multipler of ambient light
          * @param diffuseMultiplier Diffuse Multipler of ambient light
          */
@@ -41,28 +41,28 @@ class Light::Ambient : public Light::ILight {
 
         /**
          * @brief Get the Multiplier number of ambient light
-         * 
-         * @return double 
+         *
+         * @return double
          */
         double getMultiplier(void) const;
 
         /**
          * @brief Set the Multiplier object
-         * 
+         *
          * @param multiplier Multipler of ambient light to set
          */
         void setMultiplier(double multiplier);
 
         /**
          * @brief Get the Diffuse Multiplier number of ambient light
-         * 
-         * @return double 
+         *
+         * @return double
          */
         double getDiffuseMultiplier(void) const;
 
         /**
          * @brief Set the Diffuse Multiplier object
-         * 
+         *
          * @param diffuseMultiplier New diffuse multiplier to set
          */
         void setDiffuseMultiplier(double diffuseMultiplier);
@@ -72,6 +72,16 @@ class Light::Ambient : public Light::ILight {
          * @return The type of the light
          */
         Light::LightType getType(void) const override;
+
+        /**
+         * @brief compute the color point with ambiant light
+         *
+         * @param primitiveNormal normal to the hitpoint
+         * @param hitPoint hitpoint
+         * @param color color
+         * @return Math::Point3D color
+         */
+        Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const override;
 
     private:
         double _multiplier;
