@@ -75,6 +75,13 @@ namespace Math {
              */
             double dot(const Vector3D& ptr);
 
+            /**
+             * @brief translate a vector with an other
+             *
+             * @param ptr vector of translation
+             */
+            void translate(const Vector3D& ptr);
+
             Vector3D operator+(const Vector3D& ptr);
             Vector3D& operator+=(const Vector3D& ptr);
             Vector3D operator-(const Vector3D& ptr);
