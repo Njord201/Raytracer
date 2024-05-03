@@ -13,11 +13,11 @@ all:
 clean:
 	make clean -C ./Sphere/
 	make clean -C ./Plane/
-	make -C ./Cone/
+	make clean -C ./Cone/
 
 fclean: clean
 	make fclean -C ./Sphere/
 	make fclean -C ./Plane/
-	make -C ./Cone/
+	make fclean -C ./Cone/
 
 re:	fclean all

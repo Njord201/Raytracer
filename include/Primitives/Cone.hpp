@@ -29,9 +29,10 @@ namespace Primitive {
              *
              * @param origin center of the Cone
              * @param radius of the Cone
+             * @param axis of the Cone
              * @param material Material of Cone
              */
-            Cone(const Math::Point3D& origin, double radius, std::shared_ptr<Material::IMaterial> material);
+            Cone(const Math::Point3D& origin, double radius, Axis axis, std::shared_ptr<Material::IMaterial> material);
 
             /**
              * @brief Destroy the Cone object
@@ -93,8 +94,9 @@ namespace Primitive {
             std::shared_ptr<Material::IMaterial> getMaterial() const;
 
         private:
-            Math::Point3D                        _origin;
+            Math::Point3D                        _position;
             double                               _radius;
+            Axis                                 _axis;
             std::shared_ptr<Material::IMaterial> _material;
     };
 };
