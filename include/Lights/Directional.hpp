@@ -44,7 +44,7 @@ class Light::Directional : public Light::ILight {
         /**
          * @brief Get the Position number of Point light
          *
-         * @return double
+         * @return Math::Point3D position
          */
         Math::Point3D getPosition(void) const;
 
