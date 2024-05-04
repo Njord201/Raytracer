@@ -64,10 +64,16 @@ namespace Primitive {
             void setOrigin(Math::Point3D origin);
 
             /**
-             * @brief Set the Radius
-             * @param radius New radius to set
+             * @brief Set the Angle
+             * @param angle New angle to set
              */
-            void setRadius(double radius);
+            void setAngle(double angle);
+
+            /**
+             * @brief Set the Axis
+             * @param axis New axis to set
+             */
+            void setAxis(Axis axis);
 
             /**
              * @brief Set the Material
@@ -82,10 +88,16 @@ namespace Primitive {
             Math::Point3D getOrigin() const;
 
             /**
-             * @brief Get the Origin object
-             * @return Radius of Cone
+             * @brief Get the Angle object
+             * @return Angle of Cone
              */
-            double getRadius() const;
+            double getAngle() const;
+
+            /**
+             * @brief Get the Axis object
+             * @return Axis of Cone
+             */
+            Axis getAxis() const;
 
             /**
              * @brief Get the Material object
@@ -95,7 +107,7 @@ namespace Primitive {
 
         private:
             Math::Point3D                        _position;
-            double                               _radius;
+            double                               _angle;
             Axis                                 _axis;
             std::shared_ptr<Material::IMaterial> _material;
     };
