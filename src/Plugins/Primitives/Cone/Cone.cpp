@@ -27,7 +27,8 @@ Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray) const
     Math::Vector3D vectorConeToRay(rayOrigin.x() - _position.x(), rayOrigin.y() - _position.y(), rayOrigin.z() - _position.z());
 
     double a, b, c;
-    double tanAngle = tan(_angle) * tan(_angle);
+    double angle = _angle * M_PI / 180 / 2;
+    double tanAngle = tan(angle) * tan(angle);
 
     if (_axis == Axis::X) {
         a = -1 * pow(rayDirection.x(), 2) * tanAngle + pow(rayDirection.y(), 2) + pow(rayDirection.z(), 2);
