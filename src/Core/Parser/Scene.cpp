@@ -18,7 +18,7 @@ Raytracer::Scene::Scene(std::string filePath)
         this->_parseCameraSetting(camera);
         this->_parsePrimitiveSetting(primitives);
         this->_parseLightsSetting(lights);
-        
+
     } catch (const libconfig::FileIOException &fioex) {
         throw ParserException("Error reading configuration file.");
     } catch (const libconfig::ParseException &pex) {
@@ -76,6 +76,15 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
         Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
         this->_camera.setRotation(rotation);
     }
+
+    if (camera.exists("translation")) {
+        libconfig::Setting& translation = camera.lookup("translation");
+        Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+        Math::Vector3D newOrigin = this->_camera.getOrigin();
+        newOrigin.translate(trans);
+        this->_camera.setOrigin(newOrigin);
+    }
+
     if (camera.exists("fieldOfView")) {
         const libconfig::Setting &fieldOfViewSetting = camera["fieldOfView"];
         this->_camera.setFov(_parseValue(fieldOfViewSetting));
@@ -111,6 +120,15 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
                 newSphere->setMaterial(materialPtr);
             }
+
+            if (sphereArray[index].exists("translation")) {
+                libconfig::Setting& translation = sphereArray[index].lookup("translation");
+                Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+                Math::Vector3D newOrigin = newSphere->getOrigin();
+                newOrigin.translate(trans);
+                newSphere->setOrigin(newOrigin);
+            }
+
             this->_primitives.add(newSphere);
         }
     }
@@ -127,13 +145,49 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             const libconfig::Setting &radiusValue = cylinderArray[index]["r"];
             double radius = _parseValue(radiusValue);
 
-            const libconfig::Setting &axisValue = cylinderArray[index]["axis"];
-            std::string axis = _parseValue(axisValue);
+            // const libconfig::Setting &axisValue = cylinderArray[index]["axis"];
+            // std::string axis = _parseValue(axisValue);
 
             newCylinder->setRadius(radius);
             newCylinder->setOrigin(origin);
-            newCylinder->setAxis(axis);
+            // newCylinder->setAxis(axis);
             this->_primitives.add(newCylinder);
+        }}
+    if (primitives.exists("planes")) {
+        libconfig::Setting& planeArray = primitives.lookup("planes");
+        for (int index = 0; index < planeArray.getLength(); index++) {
+            std::shared_ptr<Primitive::IPrimitive> plane = _factory.createPrimitivesComponent("plane");
+            std::shared_ptr<Primitive::Plane> newPlane = std::dynamic_pointer_cast<Primitive::Plane>(plane);
+
+            Math::Point3D position(0, 0, 0);
+
+
+            std::string axisType;
+            planeArray[index].lookupValue("axis", axisType);
+
+            if (axisType == "X") {
+                newPlane->setAxis(Primitive::Axis::X);
+                newPlane->setPosition(Math::Point3D (_parseValue(planeArray[index]["position"]), 0, 0));
+            } else if (axisType == "Y") {
+                newPlane->setAxis(Primitive::Axis::Y);
+                newPlane->setPosition(Math::Point3D (0, _parseValue(planeArray[index]["position"]), 0));
+            } else if (axisType == "Z") {
+                newPlane->setAxis(Primitive::Axis::Z);
+                newPlane->setPosition(Math::Point3D (0, 0, _parseValue(planeArray[index]["position"])));
+            } else {
+                throw ParserException("Wrong Axis for plane");
+            }
+            
+            std::string materialType;
+            libconfig::Setting& material = planeArray[index].lookup("material");
+            material.lookupValue("type", materialType);
+
+            if (materialType == "flatColor") {
+                libconfig::Setting& color = material.lookup("color");
+                std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                newPlane->setMaterial(materialPtr);
+            }
+            this->_primitives.add(newPlane);
         }
     }
     return 0;
@@ -167,6 +221,15 @@ int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
 
             newPoint->setPosition(position);
             newPoint->setDiffuseMultiplier(diffuse);
+
+            if (lightArrayPoint[index].exists("translation")) {
+                libconfig::Setting& translation = lightArrayPoint[index].lookup("translation");
+                Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+                Math::Vector3D newOrigin = newPoint->getPosition();
+                newOrigin.translate(trans);
+                newPoint->setPosition(newOrigin);
+            }
+
             this->_lights.add(newPoint);
         }
     }
@@ -191,6 +254,15 @@ int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
             newDirectional->setPosition(position);
             newDirectional->setDirection(direction);
             newDirectional->setDiffuseMultiplier(diffuse);
+
+            if (lightArrayDirectional[index].exists("translation")) {
+                libconfig::Setting& translation = lightArrayDirectional[index].lookup("translation");
+                Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+                Math::Vector3D newOrigin = newDirectional->getPosition();
+                newOrigin.translate(trans);
+                newDirectional->setPosition(newOrigin);
+            }
+
             this->_lights.add(newDirectional);
         }
     }

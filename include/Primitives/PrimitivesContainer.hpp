@@ -47,14 +47,15 @@ namespace Primitive {
              * @brief return the hit point of a ray in all the primitives
              *
              * @param ray Math::Vector3D
+             * @param lights list of lights
              * @return Math::Point3D
              */
-            Math::Point3D hitPoint(const Raytracer::Ray& ray) const;
+            Math::Point3D hitPoint(const Raytracer::Ray& ray, const Light::LightsContainer& lights) const;
 
             /**
              * @brief Get the Primitives List object
-             * 
-             * @return std::vector<std::shared_ptr<Primitive::IPrimitive>> 
+             *
+             * @return std::vector<std::shared_ptr<Primitive::IPrimitive>>
              */
             std::vector<std::shared_ptr<Primitive::IPrimitive>> getPrimitivesList(void) const;
 

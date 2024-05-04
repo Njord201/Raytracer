@@ -11,6 +11,8 @@ Raytracer::Factory::Factory()
 {
     std::shared_ptr<DLLoader> sphereLoader = std::make_shared<DLLoader>("plugins/raytracer_sphere.so");
     this->_libraryLoader.push_back(sphereLoader);
+    std::shared_ptr<DLLoader> planeLoader = std::make_shared<DLLoader>("plugins/raytracer_plane.so");
+    this->_libraryLoader.push_back(planeLoader);
     std::shared_ptr<DLLoader> ambientLoader = std::make_shared<DLLoader>("plugins/raytracer_ambient.so");
     this->_libraryLoader.push_back(ambientLoader);
     std::shared_ptr<DLLoader> pointLoader = std::make_shared<DLLoader>("plugins/raytracer_point.so");
@@ -28,6 +30,11 @@ Raytracer::Factory::Factory()
         Primitive::IPrimitive *cylinder = cylinderLoader->getInstance<Primitive::IPrimitive *>("getCylinderInstance");
         std::shared_ptr<Primitive::IPrimitive> sharedPtrCylinder(cylinder);
         return sharedPtrCylinder;
+    });
+    this->registerPrimitivesComponent("plane", [planeLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
+        Primitive::IPrimitive *plane = planeLoader->getInstance<Primitive::IPrimitive *>("getInstance");
+        std::shared_ptr<Primitive::IPrimitive> sharedPtrPlane(plane);
+        return sharedPtrPlane;
     });
     this->registerLightsComponent("ambient", [ambientLoader]() -> std::shared_ptr<Light::ILight> {
         Light::ILight *ambient = ambientLoader->getInstance<Light::ILight *>("getAmbientInstance");

@@ -48,6 +48,15 @@ namespace Primitive {
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
 
             /**
+             * @brief compute the hit point color of a sphere
+             *
+             * @param hitPoint to compute the color
+             * @param lights container of lights
+             * @return Math::Point3D color
+             */
+            Math::Point3D computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
+
+            /**
              * @brief Set the Origin object
              * @param origin New origin to set
              */
@@ -70,7 +79,7 @@ namespace Primitive {
              * @return Origin of sphere
              */
             Math::Point3D getOrigin() const;
-            
+
             /**
              * @brief Get the Origin object
              * @return Radius of sphere

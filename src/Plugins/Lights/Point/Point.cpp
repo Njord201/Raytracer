@@ -7,6 +7,7 @@
 
 #include "Lights/Point.hpp"
 
+#include <cmath>
 
 Light::Point::Point()
 {
@@ -43,4 +44,24 @@ void Light::Point::setDiffuseMultiplier(double diffuseMultiplier)
 Light::LightType Light::Point::getType(void) const
 {
     return Light::LightType::point;
+}
+
+Math::Point3D Light::Point::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const
+{
+    Math::Vector3D light = _position;
+    Math::Vector3D vectorLightToPoint = light - hitPoint;
+
+    double n = primitiveNormal.dot(vectorLightToPoint);
+    double d  = primitiveNormal.length() * vectorLightToPoint.length();
+
+    double angle = acos(n / d) * 180 / M_PI;
+
+    double coeffLight = (1 - (angle / 90));
+
+    if (angle <= 90)
+        color *= coeffLight;
+    else
+        color = Math::Point3D(0,0,0);
+
+    return color;
 }

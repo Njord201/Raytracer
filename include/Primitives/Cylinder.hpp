@@ -63,6 +63,16 @@ namespace Primitive {
              * @return double
              */
             void setRadius(double radius);
+    
+            /**
+             * @brief compute the hit point color of a sphere
+             *
+             * @param hitPoint to compute the color
+             * @param lights container of lights
+             * @return Math::Point3D color
+             */
+            Math::Point3D computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
+
         private:
 
             Math::Point3D _origin;

@@ -27,6 +27,7 @@ SRC			=	Parser/Scene.cpp \
 				\
 				../Plugins/Primitives/Sphere/Sphere.cpp \
 				../Plugins/Primitives/Cylinder/Cylinder.cpp \
+				../Plugins/Primitives/Plane/Plane.cpp \
 				\
 				../Plugins/Lights/Ambient/Ambient.cpp \
 				../Plugins/Lights/Point/Point.cpp \
