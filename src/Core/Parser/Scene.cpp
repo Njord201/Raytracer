@@ -132,6 +132,42 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             this->_primitives.add(newSphere);
         }
     }
+
+    if (primitives.exists("planes")) {
+        libconfig::Setting& planeArray = primitives.lookup("planes");
+        for (int index = 0; index < planeArray.getLength(); index++) {
+            std::shared_ptr<Primitive::IPrimitive> plane = _factory.createPrimitivesComponent("plane");
+            std::shared_ptr<Primitive::Plane> newPlane = std::dynamic_pointer_cast<Primitive::Plane>(plane);
+            Math::Point3D position(0, 0, 0);
+
+            std::string axisType;
+            planeArray[index].lookupValue("axis", axisType);
+
+            if (axisType == "X") {
+                newPlane->setAxis(Primitive::Axis::X);
+                newPlane->setPosition(Math::Point3D (_parseValue(planeArray[index]["position"]), 0, 0));
+            } else if (axisType == "Y") {
+                newPlane->setAxis(Primitive::Axis::Y);
+                newPlane->setPosition(Math::Point3D (0, _parseValue(planeArray[index]["position"]), 0));
+            } else if (axisType == "Z") {
+                newPlane->setAxis(Primitive::Axis::Z);
+                newPlane->setPosition(Math::Point3D (0, 0, _parseValue(planeArray[index]["position"])));
+            } else {
+                throw ParserException("Wrong Axis for plane");
+            }
+            
+            std::string materialType;
+            libconfig::Setting& material = planeArray[index].lookup("material");
+            material.lookupValue("type", materialType);
+
+            if (materialType == "flatColor") {
+                libconfig::Setting& color = material.lookup("color");
+                std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                newPlane->setMaterial(materialPtr);
+            }
+            this->_primitives.add(newPlane);
+        }
+    }
     return 0;
 }
 
