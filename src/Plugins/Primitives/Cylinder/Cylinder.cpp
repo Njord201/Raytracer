@@ -11,16 +11,50 @@
 
 using std::sqrt;
 
-Primitive::Cylinder::Cylinder() : _origin(0,0,0), _radius(1), _axis(0){}
+Primitive::Cylinder::Cylinder() : _origin(0,0,0), _radius(1), _axis(X){}
 
-Primitive::Cylinder::Cylinder(const Math::Point3D& origin, double radius, double axis) : _origin(origin), _radius(radius), _axis(axis){}
+Primitive::Cylinder::Cylinder(const Math::Point3D& origin, double radius, Primitive::Axis axis) : _origin(origin), _radius(radius), _axis(axis){}
+
+static Math::Point3D getRayOriginByAxis(const Raytracer::Ray& ray, const Primitive::Axis axis)
+{
+    Math::Point3D rayOrigin = ray.origin();
+
+    switch (axis) {
+        case Primitive::X:
+            rayOrigin = Math::Point3D(0, rayOrigin.y(), rayOrigin.z());
+            break;
+        case Primitive::Y:
+            rayOrigin = Math::Point3D(rayOrigin.x(), 0, rayOrigin.z());
+            break;
+        case Primitive::Z:
+            rayOrigin = Math::Point3D(rayOrigin.x(), rayOrigin.y(), 0);
+            break;
+    }
+    return rayOrigin;
+}
+
+static Math::Vector3D getRayDirectionByAxis(const Raytracer::Ray& ray, const Primitive::Axis axis)
+{
+    Math::Vector3D rayDirection = ray.direction();
+
+    switch (axis) {
+        case Primitive::X:
+            rayDirection = Math::Vector3D(0, rayDirection.y(), rayDirection.z());
+            break;
+        case Primitive::Y:
+            rayDirection = Math::Vector3D(rayDirection.x(), 0, rayDirection.z());
+            break;
+        case Primitive::Z:
+            rayDirection = Math::Vector3D(rayDirection.x(), rayDirection.y(), 0);
+            break;
+    }
+    return rayDirection;
+}
 
 Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& ray) const
 {
-    Math::Point3D rayOrigin = ray.origin();
-    rayOrigin = Math::Point3D(0, rayOrigin.y(), rayOrigin.z());
-    Math::Vector3D rayDirection = ray.direction();
-    rayDirection = Math::Vector3D(0, rayDirection.y(), rayDirection.z());
+    Math::Point3D rayOrigin = getRayOriginByAxis(ray, _axis);
+    Math::Vector3D rayDirection = getRayDirectionByAxis(ray, _axis);
 
     Math::Vector3D vectorCylinderToRay(rayOrigin.x() - _origin.x(), rayOrigin.y() - _origin.y(), rayOrigin.z() - _origin.z());
     double a = rayDirection.dot(rayDirection);
@@ -44,11 +78,6 @@ void Primitive::Cylinder::setOrigin(const Math::Point3D& origin)
     this->_origin = origin;
 }
 
-void Primitive::Cylinder::setAxis(double axis)
-{
-    this->_axis = axis;
-}
-
 void Primitive::Cylinder::setRadius(double radius)
 {
     this->_radius = radius;
@@ -69,4 +98,9 @@ Math::Point3D Primitive::Cylinder::computeColor(const Math::Point3D& hitPoint, c
     // }
 
     return Math::Point3D(255, 0, 255);
+}
+
+void Primitive::Cylinder::setAxis(const Primitive::Axis &axis)
+{
+    this->_axis = axis;
 }

@@ -6,6 +6,7 @@
 */
 
 #include "IPrimitive.hpp"
+#include "Plane.hpp"
 
 namespace Primitive {
 
@@ -26,7 +27,7 @@ namespace Primitive {
              * @param radius of the cylinder
              * @param height of the cylinder
              */
-            Cylinder(const Math::Point3D& origin, double radius, double height);
+            Cylinder(const Math::Point3D& origin, double radius, Primitive::Axis axis);
 
             /**
              * @brief Destroy the Cylinder object
@@ -65,7 +66,7 @@ namespace Primitive {
             void setRadius(double radius);
     
             /**
-             * @brief compute the hit point color of a sphere
+             * @brief compute the hit point color of a cylinder
              *
              * @param hitPoint to compute the color
              * @param lights container of lights
@@ -73,10 +74,17 @@ namespace Primitive {
              */
             Math::Point3D computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
 
+            /**
+             * @brief Set the Axis object
+             * 
+             * @param axis The axis of cylinder Object to set
+             */
+            void setAxis(const Primitive::Axis &axis);
+
         private:
 
             Math::Point3D _origin;
             double _radius;
-            double _axis;
+            Primitive::Axis                         _axis;
     };
 };

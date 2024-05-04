@@ -145,12 +145,20 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             const libconfig::Setting &radiusValue = cylinderArray[index]["r"];
             double radius = _parseValue(radiusValue);
 
-            // const libconfig::Setting &axisValue = cylinderArray[index]["axis"];
-            // std::string axis = _parseValue(axisValue);
-
             newCylinder->setRadius(radius);
             newCylinder->setOrigin(origin);
-            // newCylinder->setAxis(axis);
+            std::string axisType;
+            cylinderArray[index].lookupValue("axis", axisType);
+
+            if (axisType == "X") {
+                newCylinder->setAxis(Primitive::Axis::X);
+            } else if (axisType == "Y") {
+                newCylinder->setAxis(Primitive::Axis::Y);
+            } else if (axisType == "Z") {
+                newCylinder->setAxis(Primitive::Axis::Z);
+            } else {
+                throw ParserException("Wrong Axis for plane");
+            }
             this->_primitives.add(newCylinder);
         }}
     if (primitives.exists("planes")) {
