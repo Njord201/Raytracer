@@ -26,6 +26,7 @@ SRC			=	Parser/Scene.cpp \
 				../Math/Vector3D.cpp \
 				\
 				../Plugins/Primitives/Sphere/Sphere.cpp \
+				../Plugins/Primitives/Cone/Cone.cpp \
 				\
 				../Plugins/Lights/Ambient/Ambient.cpp \
 				../Plugins/Lights/Point/Point.cpp \

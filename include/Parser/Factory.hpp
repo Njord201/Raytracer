@@ -17,6 +17,7 @@
 
 #include "Parser/DLLoader.hpp"
 #include "Primitives/Sphere.hpp"
+#include "Primitives/Cone.hpp"
 #include "Lights/Point.hpp"
 #include "Lights/Ambient.hpp"
 #include "Lights/Directional.hpp"
