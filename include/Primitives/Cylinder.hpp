@@ -61,6 +61,7 @@ namespace Primitive {
             /**
              * @brief set radius of cylinder
              *
+             * @param radius double
              * @return nothing
              */
             void setRadius(double radius);
@@ -85,6 +86,6 @@ namespace Primitive {
 
             Math::Point3D _origin;
             double _radius;
-            Primitive::Axis                         _axis;
+            Primitive::Axis _axis;
     };
 };
