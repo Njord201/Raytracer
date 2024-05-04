@@ -138,9 +138,7 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
         for (int index = 0; index < planeArray.getLength(); index++) {
             std::shared_ptr<Primitive::IPrimitive> plane = _factory.createPrimitivesComponent("plane");
             std::shared_ptr<Primitive::Plane> newPlane = std::dynamic_pointer_cast<Primitive::Plane>(plane);
-
             Math::Point3D position(0, 0, 0);
-
 
             std::string axisType;
             planeArray[index].lookupValue("axis", axisType);
