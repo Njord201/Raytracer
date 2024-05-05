@@ -68,12 +68,21 @@ Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray) const
 
 Math::Point3D Primitive::Cone::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
 {
-    Math::Vector3D ConeNormal(hitPoint.x() - _position.x(), hitPoint.y() - _position.y(), hitPoint.z() - _position.z());
+    Math::Vector3D hit = hitPoint;
+    Math::Vector3D coneNormal;
 
-    return Math::Point3D(255,255,255);
+    if (_axis == Axis::X)
+        coneNormal = Math::Vector3D(_position.x() + hit.x(), _position.y() - hit.y(), _position.z() - hit.z());
+    if (_axis == Axis::Y)
+        coneNormal = Math::Vector3D(_position.x() - hit.x(), _position.y() + hit.y(), _position.z() - hit.z());
+    if (_axis == Axis::Z)
+        coneNormal = Math::Vector3D(_position.x() - hit.x(), _position.y() - hit.y(), _position.z() + hit.z());
+    coneNormal = coneNormal / coneNormal.length();
+    coneNormal *= -1;
+
     if (_material->getType() == Material::MaterialType::FlatColor) {
         std::shared_ptr<FlatColor> ConeFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
-        return lights.computeColor(ConeNormal, hitPoint, Math::Point3D(ConeFlatColor->getR(), ConeFlatColor->getG(), ConeFlatColor->getB()));
+        return lights.computeColor(coneNormal, hit, Math::Point3D(ConeFlatColor->getR(), ConeFlatColor->getG(), ConeFlatColor->getB()));
     }
     std::cout << "material not handle in Cone" << std::endl;
     return Math::Point3D(0,0,0);
