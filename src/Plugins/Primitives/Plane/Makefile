@@ -7,29 +7,25 @@
 
 SRC			= 	getInstance.cpp \
 				Plane.cpp \
+				../../../Math/Vector3D.cpp \
+				../../../Core/Ray.cpp \
 
-OBJ			=	$(SRC:.cpp=.o)
+OBJ			= $(SRC:.cpp=.o)
 
-NAME		=	raytracer_plane.so
+NAME		= raytracer_plane.so
 
-ROOT		=	../../../../
+ROOT		= ../../../../
 
-FLD_PLUGINS 	=	$(ROOT)plugins/
+FLD_PLUGINS = $(ROOT)plugins/
 
-INCLUDE			=	-I$(ROOT)include/ -I$(ROOT)include/Primitives/ \
-						-I$(ROOT)include/Math/
-CXXFLAGS 		= 	-Werror -Wall -Wextra -std=c++20 $(INCLUDE)
-
-SHARED_FLAG		=	-shared
-
-FPIC_FLAG		=	-fPIC
-
-CC	=	g++
+INCLUDE		=	-I$(ROOT)include/ -I$(ROOT)include/Primitives/ \
+				-I$(ROOT)include/Math/
+CXXFLAGS 	= 	-Werror -Wall -Wextra -g -rdynamic -std=c++20 $(INCLUDE)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(SHARED_FLAG) -o $(FLD_PLUGINS)$(NAME) $(OBJ) $(CXXFLAGS)
+	g++ -shared -o $(FLD_PLUGINS)$(NAME) -fPIC $(SRC) $(CXXFLAGS)
 
 clean:
 	rm -f $(OBJ)
@@ -38,6 +34,3 @@ fclean: clean
 	rm -f $(FLD_PLUGINS)$(NAME)
 
 re:	fclean all
-
-%.o: %.cpp
-	$(CC) $(CXXFLAGS) $(FPIC_FLAG) -c $< -o $@

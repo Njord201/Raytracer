@@ -7,7 +7,10 @@
 
 #pragma once
 
+#include <memory>
+
 #include "IPrimitive.hpp"
+#include "Materials/FlatColor.hpp"
 
 namespace Primitive {
 
@@ -27,7 +30,7 @@ namespace Primitive {
              * @param axis Axis of the plane
              * @param position offset on axis
              */
-            Plane(Primitive::Axis axis, double position);
+            Plane(Primitive::Axis axis, double position, std::shared_ptr<Material::IMaterial> material);
 
             /**
              * @brief Destroy the Plane object
@@ -42,6 +45,46 @@ namespace Primitive {
              * @return Point3D
              */
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
+            
+            /**
+             * @brief Get the Axis object
+             * 
+             * @return Axis The axis of Plane Object
+             */
+            Primitive::Axis getAxis(void) const;
+
+            /**
+             * @brief Set the Axis object
+             * 
+             * @param axis The axis of Plane Object to set
+             */
+            void setAxis(const Primitive::Axis &axis);
+
+            /**
+             * @brief Get the Position object plane
+             * 
+             * @return Math::Point3D Position of Plane Object
+             */
+            Math::Point3D getPosition(void) const;
+
+            /**
+             * @brief Set the Position object
+             * 
+             * @param position Position to set
+             */
+            void setPosition(Math::Point3D position);
+
+            /**
+             * @brief Get the Material object
+             * @return Material of plane
+             */
+            std::shared_ptr<Material::IMaterial> getMaterial() const;
+
+            /**
+             * @brief Set the Material
+             * @param material New material to set
+             */
+            void setMaterial(std::shared_ptr<Material::IMaterial> material);
 
             /**
              * @brief compute the hit point color of a sphere
@@ -53,7 +96,8 @@ namespace Primitive {
             Math::Point3D computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
 
         private:
-            Axis _axis;
-            Math::Point3D _position;
+            Primitive::Axis                         _axis;
+            Math::Point3D                           _position;
+            std::shared_ptr<Material::IMaterial>    _material;
     };
 };
