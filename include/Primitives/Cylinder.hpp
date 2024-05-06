@@ -53,6 +53,7 @@ namespace Primitive {
             /**
              * @brief set axis of cylinder
              *
+             * @param axis double
              */
             void setAxis(double axis);
 
