@@ -42,12 +42,21 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();
 
-    if (_axis == X && rayDirection.x() == 0)
+    if (_axis == X && rayDirection.x() == 0) {
+        if (_position.x() == rayOrigin.x())
+            return rayOrigin;
         return Math::Point3D(-1, -1, -1);
-    if (_axis == Y && rayDirection.y() == 0)
+    }
+    if (_axis == Y && rayDirection.y() == 0) {
+        if (_position.y() == rayOrigin.y())
+            return rayOrigin;
         return Math::Point3D(-1, -1, -1);
-    if (_axis == Z && rayDirection.z() == 0)
+    }
+    if (_axis == Z && rayDirection.z() == 0) {
+        if (_position.z() == rayOrigin.z())
+            return rayOrigin;
         return Math::Point3D(-1, -1, -1);
+    }
 
     double t = 0;
     if (_axis == X) {
