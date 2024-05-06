@@ -85,11 +85,11 @@ void Primitive::Cylinder::setRadius(double radius)
 
 Math::Point3D Primitive::Cylinder::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
 {
-    Math::Vector3D cylinderNormaml(hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
+    Math::Vector3D cylinderNormal(hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
 
     if (_material->getType() == Material::MaterialType::FlatColor) {
         std::shared_ptr<FlatColor> cylinderFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
-        return lights.computeColor(cylinderNormaml, hitPoint, Math::Point3D(cylinderFlatColor->getR(), cylinderFlatColor->getG(), cylinderFlatColor->getB()));
+        return lights.computeColor(cylinderNormal, hitPoint, Math::Point3D(cylinderFlatColor->getR(), cylinderFlatColor->getG(), cylinderFlatColor->getB()));
     }
     std::cout << "material not handle in cylinder" << std::endl;
     return Math::Point3D(0,0,0);
