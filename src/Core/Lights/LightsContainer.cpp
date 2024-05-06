@@ -22,12 +22,12 @@ std::vector<std::shared_ptr<Light::ILight>> Light::LightsContainer::getLightsLis
     return this->_Lights;
 }
 
-Math::Point3D Light::LightsContainer::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const
+Math::Point3D Light::LightsContainer::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Shadow& shadow) const
 {
     Math::Point3D highColor;
 
     for (size_t i = 0; i < _Lights.size(); i++) {
-        Math::Point3D colorFind = _Lights[i]->computeColor(primitiveNormal, hitPoint, color);
+        Math::Point3D colorFind = _Lights[i]->computeColor(primitiveNormal, hitPoint, color, shadow);
         if (highColor.length() < colorFind.length() ) {
             highColor = colorFind;
         }

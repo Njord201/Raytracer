@@ -81,7 +81,7 @@ class Light::Ambient : public Light::ILight {
          * @param color color
          * @return Math::Point3D color
          */
-        Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const override;
+        Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Shadow& shadow) const override;
 
     private:
         double _multiplier;

@@ -11,6 +11,7 @@
 #include <memory>
 
 #include "IPrimitive.hpp"
+#include "Lights/LightsContainer.hpp"
 
 namespace Primitive {
 
@@ -58,6 +59,16 @@ namespace Primitive {
              * @return std::vector<std::shared_ptr<Primitive::IPrimitive>>
              */
             std::vector<std::shared_ptr<Primitive::IPrimitive>> getPrimitivesList(void) const;
+
+            /**
+             * @brief compute the color pixel of a primitive's hitpoint
+             *
+             * @param primitive primitive to compute
+             * @param hitPoint to check
+             * @param lights list of lights
+             * @return Math::Point3D
+             */
+            Math::Point3D computeColor(const std::shared_ptr<Primitive::IPrimitive>& primitive, const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const;
 
         private:
 

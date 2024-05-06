@@ -7,6 +7,8 @@
 
 #include "Primitives/PrimitivesContainer.hpp"
 #include "RaytracerRules.hpp"
+#include "Materials/FlatColor.hpp"
+#include "Primitives/Shadow.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -43,8 +45,20 @@ Math::Point3D Primitive::PrimitivesContainer::hitPoint(const Raytracer::Ray& ray
     }
     if (idx_nearest == -1)
         return VOID_COLOR;
-    //TODO : compute the color of the point based on the Material
-    return _primitives[idx_nearest]->computeColor(point_nearest, lights);
+
+    return computeColor(_primitives[idx_nearest], point_nearest, lights);
+}
+
+Math::Point3D Primitive::PrimitivesContainer::computeColor(const std::shared_ptr<Primitive::IPrimitive>& primitive, const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
+{
+    Math::Vector3D normal = primitive->getNormal(hitPoint);
+
+    if (primitive->getMaterial()->getType() == Material::MaterialType::FlatColor) {
+        std::shared_ptr<FlatColor> primitiveFlatColor = std::dynamic_pointer_cast<FlatColor>(primitive->getMaterial());
+        return lights.computeColor(normal, hitPoint, Math::Point3D(primitiveFlatColor->getR(), primitiveFlatColor->getG(), primitiveFlatColor->getB()), Shadow(_primitives));
+    }
+    std::cout << "material not handle in sphere" << std::endl;
+    return Math::Point3D(0,0,0);
 }
 
 std::vector<std::shared_ptr<Primitive::IPrimitive>> Primitive::PrimitivesContainer::getPrimitivesList(void) const

@@ -48,15 +48,6 @@ namespace Primitive {
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
 
             /**
-             * @brief compute the hit point color of a sphere
-             *
-             * @param hitPoint to compute the color
-             * @param lights container of lights
-             * @return Math::Point3D color
-             */
-            Math::Point3D computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
-
-            /**
              * @brief Set the Origin object
              * @param origin New origin to set
              */
@@ -90,7 +81,15 @@ namespace Primitive {
              * @brief Get the Material object
              * @return Material of sphere
              */
-            std::shared_ptr<Material::IMaterial> getMaterial() const;
+            std::shared_ptr<Material::IMaterial> getMaterial() const override;
+
+            /**
+             * @brief Get the Normal of the object
+             *
+             * @param hitPoint to compute
+             * @return Math::Vector3D
+             */
+            Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const;
 
         private:
             Math::Point3D                        _origin;

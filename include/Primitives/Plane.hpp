@@ -84,7 +84,7 @@ namespace Primitive {
              * @brief Get the Material object
              * @return Material of plane
              */
-            std::shared_ptr<Material::IMaterial> getMaterial() const;
+            std::shared_ptr<Material::IMaterial> getMaterial() const override;
 
             /**
              * @brief Set the Material
@@ -93,13 +93,12 @@ namespace Primitive {
             void setMaterial(std::shared_ptr<Material::IMaterial> material);
 
             /**
-             * @brief compute the hit point color of a sphere
+             * @brief Get the Normal of the object
              *
-             * @param hitPoint to compute the color
-             * @param lights container of lights
-             * @return Math::Point3D color
+             * @param hitPoint to have the normal
+             * @return Math::Vector3D
              */
-            Math::Point3D computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
+            Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const;
 
         private:
             Primitive::Axis                         _axis;

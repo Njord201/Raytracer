@@ -8,6 +8,7 @@
 #pragma once
 
 #include "Math/Vector3D.hpp"
+#include "Primitives/Shadow.hpp"
 
 namespace Light {
     class ILight;
@@ -43,5 +44,5 @@ class Light::ILight {
              * @param color color
              * @return Math::Point3D color
              */
-            virtual Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const = 0;
+            virtual Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Shadow& shadow) const = 0;
     };
