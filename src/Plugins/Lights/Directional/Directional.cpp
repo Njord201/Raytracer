@@ -59,7 +59,7 @@ Light::LightType Light::Directional::getType(void) const
     return Light::LightType::directionnal;
 }
 
-Math::Point3D Light::Directional::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Shadow& shadow) const
+Math::Point3D Light::Directional::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const
 {
     (void) hitPoint;
     (void) shadow;

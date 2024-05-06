@@ -22,7 +22,7 @@ std::vector<std::shared_ptr<Light::ILight>> Light::LightsContainer::getLightsLis
     return this->_Lights;
 }
 
-Math::Point3D Light::LightsContainer::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Shadow& shadow) const
+Math::Point3D Light::LightsContainer::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const
 {
     Math::Point3D highColor;
 

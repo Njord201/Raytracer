@@ -11,6 +11,8 @@
 #include "Math/Vector3D.hpp"
 #include "Materials/IMaterial.hpp"
 
+#include <memory>
+
 #define IS_HIT(D) ((D >= 0) ? true : false)
 
 namespace Primitive {

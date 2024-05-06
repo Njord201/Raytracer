@@ -59,7 +59,7 @@ namespace Light {
              * @param color color
              * @return Math::Point3D color
              */
-            Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Shadow& shadow) const;
+            Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const;
 
         private:
 

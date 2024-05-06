@@ -55,10 +55,10 @@ Math::Point3D Primitive::PrimitivesContainer::computeColor(const std::shared_ptr
 
     if (primitive->getMaterial()->getType() == Material::MaterialType::FlatColor) {
         std::shared_ptr<FlatColor> primitiveFlatColor = std::dynamic_pointer_cast<FlatColor>(primitive->getMaterial());
-        return lights.computeColor(normal, hitPoint, Math::Point3D(primitiveFlatColor->getR(), primitiveFlatColor->getG(), primitiveFlatColor->getB()), Shadow(_primitives));
+        return lights.computeColor(normal, hitPoint, Math::Point3D(primitiveFlatColor->getR(), primitiveFlatColor->getG(), primitiveFlatColor->getB()), Primitives::Shadow(_primitives));
     }
     std::cout << "material not handle in sphere" << std::endl;
-    return Math::Point3D(0,0,0);
+    return VOID_COLOR;
 }
 
 std::vector<std::shared_ptr<Primitive::IPrimitive>> Primitive::PrimitivesContainer::getPrimitivesList(void) const

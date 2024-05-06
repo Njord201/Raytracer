@@ -12,7 +12,11 @@
 #include <vector>
 #include <memory>
 
-class Shadow {
+namespace Primitives {
+    class Shadow;
+};
+
+class Primitives::Shadow {
 
     public:
 
@@ -21,7 +25,7 @@ class Shadow {
          *
          * @param primitives list of primitives
          */
-        Shadow(const std::vector<std::shared_ptr<Primitive::IPrimitive>>& primitives) : _primitives(primitives) {};
+        Shadow(const std::vector<std::shared_ptr<Primitive::IPrimitive>>& primitives);
 
         /**
          * @brief Destroy the Shadow object
@@ -35,7 +39,7 @@ class Shadow {
          * @return true
          * @return false
          */
-        bool isShadow();
+        bool isShadow(const Math::Vector3D& vectorLightToPoint, const Math::Point3D& hitPoint) const;
 
     private:
         std::vector<std::shared_ptr<Primitive::IPrimitive>> _primitives;

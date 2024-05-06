@@ -46,11 +46,13 @@ Light::LightType Light::Point::getType(void) const
     return Light::LightType::point;
 }
 
-Math::Point3D Light::Point::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Shadow& shadow) const
+Math::Point3D Light::Point::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const
 {
-    (void) shadow;
     Math::Vector3D light = _position;
     Math::Vector3D vectorLightToPoint = light - hitPoint;
+
+    if (shadow.isShadow(vectorLightToPoint, hitPoint))
+        return Math::Point3D(0,0,0);
 
     double n = primitiveNormal.dot(vectorLightToPoint);
     double d  = primitiveNormal.length() * vectorLightToPoint.length();
