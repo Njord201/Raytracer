@@ -42,11 +42,11 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
     Math::Vector3D rayDirection = ray.direction();
 
     if (_axis == X && rayDirection.x() == 0)
-        return Math::Point3D(0, 0, 0);
+        return Math::Point3D(-1, -1, -1);
     if (_axis == Y && rayDirection.y() == 0)
-        return Math::Point3D(0, 0, 0);
+        return Math::Point3D(-1, -1, -1);
     if (_axis == Z && rayDirection.z() == 0)
-        return Math::Point3D(0, 0, 0);
+        return Math::Point3D(-1, -1, -1);
 
     double t = 0;
     if (_axis == X) {
