@@ -6,18 +6,18 @@
 ##
 
 all:
-	make -C ./Ambient/
-	make -C ./Point/
-	make -C ./Directional/
+	@make -C ./Ambient/
+	@make -C ./Point/
+	@make -C ./Directional/
 
 clean:
-	make clean -C ./Ambient/
-	make clean -C ./Point/
-	make clean -C ./Directional/
+	@make clean -C ./Ambient/
+	@make clean -C ./Point/
+	@make clean -C ./Directional/
 
 fclean: clean
-	make fclean -C ./Ambient/
-	make fclean -C ./Point/
-	make fclean -C ./Directional/
+	@make fclean -C ./Ambient/
+	@make fclean -C ./Point/
+	@make fclean -C ./Directional/
 
 re:	fclean all

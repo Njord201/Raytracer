@@ -9,6 +9,7 @@
 #include <string>
 
 #include "Primitives/Plane.hpp"
+#include "RaytracerRules.hpp"
 
 Primitive::Plane::Plane()
 {
@@ -42,11 +43,11 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
     Math::Vector3D rayDirection = ray.direction();
 
     if (_axis == X && rayDirection.x() == 0)
-        return Math::Point3D(0, 0, 0);
+        return Math::Point3D(-1, -1, -1);
     if (_axis == Y && rayDirection.y() == 0)
-        return Math::Point3D(0, 0, 0);
+        return Math::Point3D(-1, -1, -1);
     if (_axis == Z && rayDirection.z() == 0)
-        return Math::Point3D(0, 0, 0);
+        return Math::Point3D(-1, -1, -1);
 
     double t = 0;
     if (_axis == X) {
@@ -61,7 +62,11 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
         double pos = _position.z();
         t = (pos - rayOrigin.z()) / rayDirection.z();
     }
-    return rayDirection * t;
+
+    if (t < 0)
+        return Math::Point3D(-1, -1, -1);
+
+    return rayOrigin + rayDirection * t;
 }
 
 Primitive::Axis Primitive::Plane::getAxis(void) const
@@ -97,6 +102,14 @@ void Primitive::Plane::setMaterial(std::shared_ptr<Material::IMaterial> material
 Math::Vector3D Primitive::Plane::getNormal(const Math::Vector3D& hitPoint) const
 {
     (void) hitPoint;
-    // TODO : compute the normal of a point in the plane
-    return Math::Vector3D(0,0,0);
+    switch (_axis) {
+        case Primitive::X:
+            return Math::Point3D(1, 0, 0);
+        case Primitive::Y:
+            return Math::Point3D(0, 1, 0);
+        case Primitive::Z:
+            return Math::Point3D(0, 0, 1);
+        default:
+            return Math::Point3D(0, 0, 0);
+    }
 }
