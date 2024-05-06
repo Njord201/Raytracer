@@ -101,5 +101,6 @@ void Primitive::Cylinder::setMaterial(std::shared_ptr<Material::IMaterial> mater
 
 Math::Vector3D Primitive::Cylinder::getNormal(const Math::Vector3D& hitPoint) const
 {
+    //TODO : fix the computation of the cylinder normal
     return Math::Vector3D (hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
 }
