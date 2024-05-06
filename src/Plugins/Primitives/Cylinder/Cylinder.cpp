@@ -8,6 +8,7 @@
 #include "Primitives/Cylinder.hpp"
 #include <iostream>
 #include <cmath>
+#include "RaytracerRules.hpp"
 
 using std::sqrt;
 
@@ -92,7 +93,7 @@ Math::Point3D Primitive::Cylinder::computeColor(const Math::Point3D& hitPoint, c
         return lights.computeColor(cylinderNormal, hitPoint, Math::Point3D(cylinderFlatColor->getR(), cylinderFlatColor->getG(), cylinderFlatColor->getB()));
     }
     std::cout << "material not handle in cylinder" << std::endl;
-    return Math::Point3D(0,0,0);
+    return VOID_COLOR;
 }
 
 void Primitive::Cylinder::setAxis(const Primitive::Axis &axis)
