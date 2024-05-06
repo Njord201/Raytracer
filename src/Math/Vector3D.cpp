@@ -5,7 +5,7 @@
 ** Math Vector3D
 */
 
-#include "Vector3D.hpp"
+#include "Math/Vector3D.hpp"
 #include <cmath>
 
 using std::sqrt;
@@ -42,6 +42,11 @@ double Math::Vector3D::length_squared() const
 double Math::Vector3D::dot(const Vector3D& ptr)
 {
     return (_vector[0] * ptr._vector[0]) + (_vector[1] * ptr._vector[1]) + (_vector[2] * ptr._vector[2]);
+}
+
+void Math::Vector3D::translate(const Vector3D& ptr)
+{
+    *this += ptr;
 }
 
 Math::Vector3D Math::Vector3D::operator+(const Vector3D& ptr)
