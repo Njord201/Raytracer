@@ -52,7 +52,10 @@ void Math::Vector3D::translate(const Vector3D& ptr)
 void Math::Vector3D::rotateY(double degrees)
 {
     double radians = degrees * M_PI / 180.0;
- 
+    
+    double cos_theta = std::cos(radians);
+    double sin_theta = std::sin(radians);
+
 }
 
 Math::Vector3D Math::Vector3D::operator+(const Vector3D& ptr)
