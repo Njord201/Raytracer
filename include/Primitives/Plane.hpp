@@ -51,31 +51,31 @@ namespace Primitive {
              * @return Point3D
              */
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
-            
+
             /**
              * @brief Get the Axis object
-             * 
+             *
              * @return Axis The axis of Plane Object
              */
             Primitive::Axis getAxis(void) const;
 
             /**
              * @brief Set the Axis object
-             * 
+             *
              * @param axis The axis of Plane Object to set
              */
             void setAxis(const Primitive::Axis &axis);
 
             /**
              * @brief Get the Position object plane
-             * 
+             *
              * @return Math::Point3D Position of Plane Object
              */
             Math::Point3D getPosition(void) const;
 
             /**
              * @brief Set the Position object
-             * 
+             *
              * @param position Position to set
              */
             void setPosition(Math::Point3D position);
