@@ -47,14 +47,12 @@ namespace Primitive {
              * @brief set origin of cylinder
              *
              * @param hitPoint Point3D
-             * @return nothing
              */
             void setOrigin(const Math::Point3D& origin);
 
             /**
              * @brief set axis of cylinder
              *
-             * @return nothing
              */
             void setAxis(double axis);
 
@@ -62,7 +60,6 @@ namespace Primitive {
              * @brief set radius of cylinder
              *
              * @param radius double
-             * @return nothing
              */
             void setRadius(double radius);
     
