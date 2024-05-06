@@ -61,7 +61,11 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
         double pos = _position.z();
         t = (pos - rayOrigin.z()) / rayDirection.z();
     }
-    return rayDirection * t;
+
+    if (t < 0)
+        return Math::Point3D(-1, -1, -1);
+
+    return rayOrigin + rayDirection * t;
 }
 
 Primitive::Axis Primitive::Plane::getAxis(void) const
