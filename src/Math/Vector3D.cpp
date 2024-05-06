@@ -58,6 +58,7 @@ void Math::Vector3D::rotateY(double degrees)
 
     this->_vector[0] = this->_vector[2] * sin_theta + this->_vector[0] * cos_theta;
     this->_vector[1] = this->_vector[1];
+    this->_vector[2] = this->_vector[2] * cos_theta - this->_vector[0] * sin_theta;
 }
 
 Math::Vector3D Math::Vector3D::operator+(const Vector3D& ptr)
