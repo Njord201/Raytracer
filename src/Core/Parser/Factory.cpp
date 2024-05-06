@@ -21,7 +21,8 @@ Raytracer::Factory::Factory()
     this->_libraryLoader.push_back(pointLoader);
     std::shared_ptr<DLLoader> directionalLoader = std::make_shared<DLLoader>("plugins/raytracer_directional.so");
     this->_libraryLoader.push_back(directionalLoader);
-
+    std::shared_ptr<DLLoader> cylinderLoader = std::make_shared<DLLoader>("plugins/raytracer_cylinder.so");
+    this->_libraryLoader.push_back(cylinderLoader);
     this->registerPrimitivesComponent("sphere", [sphereLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
         Primitive::IPrimitive *sphere = sphereLoader->getInstance<Primitive::IPrimitive *>("getSphereInstance");
         std::shared_ptr<Primitive::IPrimitive> sharedPtrSphere(sphere);
@@ -31,6 +32,11 @@ Raytracer::Factory::Factory()
         Primitive::IPrimitive *cone = coneLoader->getInstance<Primitive::IPrimitive *>("getConeInstance");
         std::shared_ptr<Primitive::IPrimitive> sharedPtrCone(cone);
         return sharedPtrCone;
+    });
+    this->registerPrimitivesComponent("cylinder", [cylinderLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
+        Primitive::IPrimitive *cylinder = cylinderLoader->getInstance<Primitive::IPrimitive *>("getCylinderInstance");
+        std::shared_ptr<Primitive::IPrimitive> sharedPtrCylinder(cylinder);
+        return sharedPtrCylinder;
     });
     this->registerPrimitivesComponent("plane", [planeLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
         Primitive::IPrimitive *plane = planeLoader->getInstance<Primitive::IPrimitive *>("getInstance");

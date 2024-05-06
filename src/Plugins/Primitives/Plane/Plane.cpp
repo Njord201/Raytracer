@@ -9,6 +9,7 @@
 #include <string>
 
 #include "Primitives/Plane.hpp"
+#include "RaytracerRules.hpp"
 
 Primitive::Plane::Plane()
 {
@@ -41,12 +42,21 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();
 
-    if (_axis == X && rayDirection.x() == 0)
-        return Math::Point3D(0, 0, 0);
-    if (_axis == Y && rayDirection.y() == 0)
-        return Math::Point3D(0, 0, 0);
-    if (_axis == Z && rayDirection.z() == 0)
-        return Math::Point3D(0, 0, 0);
+    if (_axis == X && rayDirection.x() == 0) {
+        if (_position.x() == rayOrigin.x())
+            return rayOrigin;
+        return Math::Point3D(-1, -1, -1);
+    }
+    if (_axis == Y && rayDirection.y() == 0) {
+        if (_position.y() == rayOrigin.y())
+            return rayOrigin;
+        return Math::Point3D(-1, -1, -1);
+    }
+    if (_axis == Z && rayDirection.z() == 0) {
+        if (_position.z() == rayOrigin.z())
+            return rayOrigin;
+        return Math::Point3D(-1, -1, -1);
+    }
 
     double t = 0;
     if (_axis == X) {
@@ -61,7 +71,11 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
         double pos = _position.z();
         t = (pos - rayOrigin.z()) / rayDirection.z();
     }
-    return rayDirection * t;
+
+    if (t < 0)
+        return Math::Point3D(-1, -1, -1);
+
+    return rayOrigin + rayDirection * t;
 }
 
 Primitive::Axis Primitive::Plane::getAxis(void) const
@@ -94,19 +108,32 @@ void Primitive::Plane::setMaterial(std::shared_ptr<Material::IMaterial> material
     this->_material = material;
 }
 
+static Math::Point3D getPlaneNormal(const Primitive::Axis axis)
+{
+    switch (axis) {
+        case Primitive::X:
+            return Math::Point3D(1, 0, 0);
+        case Primitive::Y:
+            return Math::Point3D(0, 1, 0);
+        case Primitive::Z:
+            return Math::Point3D(0, 0, 1);
+        default:
+            return Math::Point3D(0, 0, 0);
+    }
+}
+
 Math::Point3D Primitive::Plane::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
 {
-    (void) hitPoint;
-    (void) lights;
+    Math::Vector3D planeNormal = getPlaneNormal(_axis);
 
-    // TODO : compute the color based on the normal of the normal of the hitpoint
-    // on the plane, the material and lights
-
-    //example :
-    // if (_material->getType() == Material::MaterialType::FlatColor) {
-    //     std::shared_ptr<FlatColor> planeFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
-    //     return lights.computeColor(planeNormal, hitPoint, Math::Point3D(planeFlatColor->getR(), planeFlatColor->getG(), planeFlatColor->getB()));
-    // }
+    if (_material->getType() == Material::MaterialType::FlatColor) {
+        std::shared_ptr<FlatColor> planeFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
+        return lights.computeColor(planeNormal, hitPoint, Math::Point3D(planeFlatColor->getR(), planeFlatColor->getG(), planeFlatColor->getB()));
+    } else {
+        // TODO: handle other material types see #55 (https://github.com/Njord201/Raytracer/issues/55)
+        std::cout << "material not handle in plane" << std::endl;
+        return VOID_COLOR;
+    }
 
     return Math::Point3D(255, 0, 255);
 }
