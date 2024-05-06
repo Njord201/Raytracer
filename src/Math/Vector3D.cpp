@@ -49,6 +49,12 @@ void Math::Vector3D::translate(const Vector3D& ptr)
     *this += ptr;
 }
 
+void Math::Vector3D::rotateY(double degrees)
+{
+    double radians = degrees * M_PI / 180.0;
+ 
+}
+
 Math::Vector3D Math::Vector3D::operator+(const Vector3D& ptr)
 {
     return Vector3D(_vector[0] + ptr._vector[0], _vector[1] + ptr._vector[1], _vector[2] + ptr._vector[2]);
