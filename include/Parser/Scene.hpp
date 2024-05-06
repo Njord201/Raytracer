@@ -104,8 +104,19 @@ class Raytracer::Scene {
         /// @return The value parsed
         double _parseValue(const libconfig::Setting &value);
 
+        /// @brief Parse imports of scenes
+        /// @param config of the current file
+        /// @return integer 0 if no error else x
+        int _parseScenesImports(const libconfig::Config &config);
+
+        /// @brief Parse the imported scene
+        /// @param filePath of the scene to parse
+        /// @return integer 0 if no error else x
+        int parseImportedScene(std::string filePath);
+
         Raytracer::Factory                  _factory;
         Raytracer::Camera                   _camera;
         Light::LightsContainer              _lights;
         Primitive::PrimitivesContainer      _primitives;
+        std::vector<std::string>            _importedScenesFiles;
 };

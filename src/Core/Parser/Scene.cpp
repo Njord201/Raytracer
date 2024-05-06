@@ -7,18 +7,28 @@
 
 #include "Parser/Scene.hpp"
 
-Raytracer::Scene::Scene(std::string filePath)
+static bool filepathParsed(std::vector<std::string> parsedFiles, std::string filePath)
 {
+    for (auto &file : parsedFiles) {
+        if (file == filePath)
+            return true;
+    }
+    return false;
+}
+
+int Raytracer::Scene::parseImportedScene(std::string filePath)
+{
+    if (filepathParsed(this->_importedScenesFiles, filePath))
+        return 0;
     try {
         libconfig::Config cfg;
         cfg.readFile(filePath);
-        const libconfig::Setting &camera = cfg.lookup("camera");
         const libconfig::Setting &primitives = cfg.lookup("primitives");
         const libconfig::Setting &lights = cfg.lookup("lights");
-        this->_parseCameraSetting(camera);
         this->_parsePrimitiveSetting(primitives);
         this->_parseLightsSetting(lights);
-
+        this->_importedScenesFiles.push_back(filePath);
+        this->_parseScenesImports(cfg);
     } catch (const libconfig::FileIOException &fioex) {
         throw ParserException("Error reading configuration file.");
     } catch (const libconfig::ParseException &pex) {
@@ -30,6 +40,49 @@ Raytracer::Scene::Scene(std::string filePath)
     } catch (const ParserException &parseError) {
         throw ParserException(parseError.what());
     }
+    return 0;
+}
+
+Raytracer::Scene::Scene(std::string filePath)
+{
+    try {
+        libconfig::Config cfg;
+        cfg.readFile(filePath);
+        const libconfig::Setting &camera = cfg.lookup("camera");
+        const libconfig::Setting &primitives = cfg.lookup("primitives");
+        const libconfig::Setting &lights = cfg.lookup("lights");
+        this->_parseCameraSetting(camera);
+        this->_parsePrimitiveSetting(primitives);
+        this->_parseLightsSetting(lights);
+        this->_importedScenesFiles.push_back(filePath);
+        this->_parseScenesImports(cfg);
+    } catch (const libconfig::FileIOException &fioex) {
+        throw ParserException("Error reading configuration file.");
+    } catch (const libconfig::ParseException &pex) {
+        throw ParserException("Error parsing configuration file. Line: " + std::to_string(pex.getLine()) + " - " + pex.getError());
+    } catch (const libconfig::SettingTypeException &settingpex) {
+        throw ParserException(settingpex.what());
+    } catch (const libconfig::SettingNotFoundException &settingpex) {
+        throw ParserException(settingpex.what());
+    } catch (const ParserException &parseError) {
+        throw ParserException(parseError.what());
+    }
+}
+
+int Raytracer::Scene::_parseScenesImports(const libconfig::Config &config)
+{
+    if (config.exists("imports")) {
+        const libconfig::Setting &imports = config.lookup("imports")["scenes"];
+        for (int index = 0; index < imports.getLength(); index++) {
+            std::string importPath;
+            imports[index].lookupValue("path", importPath);
+            if (!filepathParsed(this->_importedScenesFiles, importPath)) {
+                std::cout << "Importing scene file: " << importPath << std::endl;
+                this->parseImportedScene(importPath);
+            }
+        }
+    }
+    return 0;
 }
 
 double Raytracer::Scene::_parseValue(const libconfig::Setting &value)
