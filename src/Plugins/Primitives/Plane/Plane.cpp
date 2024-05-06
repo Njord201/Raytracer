@@ -121,7 +121,7 @@ Math::Point3D Primitive::Plane::computeColor(const Math::Point3D& hitPoint, cons
         std::shared_ptr<FlatColor> planeFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
         return lights.computeColor(planeNormal, hitPoint, Math::Point3D(planeFlatColor->getR(), planeFlatColor->getG(), planeFlatColor->getB()));
     } else {
-        // TODO: handle other material types
+        // TODO: handle other material types see #55 (https://github.com/Njord201/Raytracer/issues/55)
         std::cout << "material not handle in plane" << std::endl;
         return VOID_COLOR;
     }
