@@ -132,7 +132,43 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             this->_primitives.add(newSphere);
         }
     }
+    if (primitives.exists("cylinders")) {
+        libconfig::Setting& cylinderArray = primitives.lookup("cylinders");
+        for (int index = 0; index < cylinderArray.getLength(); index++) {
+            std::shared_ptr<Primitive::IPrimitive> cylinder = _factory.createPrimitivesComponent("cylinder");
+            std::shared_ptr<Primitive::Cylinder> newCylinder = std::dynamic_pointer_cast<Primitive::Cylinder>(cylinder);
+            const libconfig::Setting &originX = cylinderArray[index]["x"];
+            const libconfig::Setting &originY = cylinderArray[index]["y"];
+            const libconfig::Setting &originZ = cylinderArray[index]["z"];
+            Math::Point3D origin(_parseValue(originX), _parseValue(originY), _parseValue(originZ));
 
+            const libconfig::Setting &radiusValue = cylinderArray[index]["r"];
+            double radius = _parseValue(radiusValue);
+
+            newCylinder->setRadius(radius);
+            newCylinder->setOrigin(origin);
+            std::string axisType;
+            cylinderArray[index].lookupValue("axis", axisType);
+
+            if (axisType == "X") {
+                newCylinder->setAxis(Primitive::Axis::X);
+            } else if (axisType == "Y") {
+                newCylinder->setAxis(Primitive::Axis::Y);
+            } else if (axisType == "Z") {
+                newCylinder->setAxis(Primitive::Axis::Z);
+            } else {
+                throw ParserException("Wrong Axis for Cylinder");
+            }
+            std::string materialType;
+            libconfig::Setting& material = cylinderArray[index].lookup("material");
+            material.lookupValue("type", materialType);
+            if (materialType == "flatColor") {
+                libconfig::Setting& color = material.lookup("color");
+                std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                newCylinder->setMaterial(materialPtr);
+            }
+            this->_primitives.add(newCylinder);
+        }}
     if (primitives.exists("planes")) {
         libconfig::Setting& planeArray = primitives.lookup("planes");
         for (int index = 0; index < planeArray.getLength(); index++) {
