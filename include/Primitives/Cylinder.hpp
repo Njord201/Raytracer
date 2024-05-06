@@ -82,10 +82,22 @@ namespace Primitive {
              */
             void setAxis(const Primitive::Axis &axis);
 
+            /**
+             * @brief Get the Material object
+             * @return Material of cylinder
+             */
+            std::shared_ptr<Material::IMaterial> getMaterial() const;
+
+            /**
+             * @brief Set the Material object
+             * @param material Material of cylinder
+             */
+            void setMaterial(std::shared_ptr<Material::IMaterial> material);
         private:
 
             Math::Point3D _origin;
             double _radius;
             Primitive::Axis _axis;
+            std::shared_ptr<Material::IMaterial> _material;
     };
 };

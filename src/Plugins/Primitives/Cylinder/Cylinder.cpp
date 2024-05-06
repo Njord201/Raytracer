@@ -6,7 +6,7 @@
 */
 
 #include "Primitives/Cylinder.hpp"
-
+#include <iostream>
 #include <cmath>
 
 using std::sqrt;
@@ -85,22 +85,27 @@ void Primitive::Cylinder::setRadius(double radius)
 
 Math::Point3D Primitive::Cylinder::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
 {
-    (void) hitPoint;
-    (void) lights;
+    Math::Vector3D cylinderNormaml(hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
 
-    // TODO : compute the color based on the normal of the normal of the hitpoint
-    // on the plane, the material and lights
-
-    //example :
-    // if (_material->getType() == Material::MaterialType::FlatColor) {
-    //     std::shared_ptr<FlatColor> planeFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
-    //     return lights.computeColor(planeNormal, hitPoint, Math::Point3D(planeFlatColor->getR(), planeFlatColor->getG(), planeFlatColor->getB()));
-    // }
-
-    return Math::Point3D(255, 0, 255);
+    if (_material->getType() == Material::MaterialType::FlatColor) {
+        std::shared_ptr<FlatColor> cylinderFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
+        return lights.computeColor(cylinderNormaml, hitPoint, Math::Point3D(cylinderFlatColor->getR(), cylinderFlatColor->getG(), cylinderFlatColor->getB()));
+    }
+    std::cout << "material not handle in cylinder" << std::endl;
+    return Math::Point3D(0,0,0);
 }
 
 void Primitive::Cylinder::setAxis(const Primitive::Axis &axis)
 {
     this->_axis = axis;
+}
+
+std::shared_ptr<Material::IMaterial> Primitive::Cylinder::getMaterial() const
+{
+    return this->_material;
+}
+
+void Primitive::Cylinder::setMaterial(std::shared_ptr<Material::IMaterial> material)
+{
+    this->_material = material;
 }

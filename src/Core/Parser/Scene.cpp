@@ -157,7 +157,15 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             } else if (axisType == "Z") {
                 newCylinder->setAxis(Primitive::Axis::Z);
             } else {
-                throw ParserException("Wrong Axis for plane");
+                throw ParserException("Wrong Axis for Cylinder");
+            }
+            std::string materialType;
+            libconfig::Setting& material = cylinderArray[index].lookup("material");
+            material.lookupValue("type", materialType);
+            if (materialType == "flatColor") {
+                libconfig::Setting& color = material.lookup("color");
+                std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                newCylinder->setMaterial(materialPtr);
             }
             this->_primitives.add(newCylinder);
         }}
