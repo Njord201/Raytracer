@@ -7,9 +7,9 @@
 
 #include "Renderer.hpp"
 
-#include <iostream>
-#include <fstream>
 #include <cmath>
+#include <fstream>
+#include <iostream>
 #include <SDL2/SDL.h>
 
 Raytracer::Renderer::Renderer(Raytracer::Scene scene) : _camera(scene.getCamera())
@@ -85,9 +85,7 @@ void Raytracer::Renderer::renderScene()
                 SDL_RenderDrawPoint(ren, x, y);
             }
         }
-
         SDL_RenderPresent(ren);
-
     }
 
     SDL_DestroyRenderer(ren);
