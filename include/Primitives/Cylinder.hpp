@@ -69,7 +69,7 @@ namespace Primitive {
              *
              * @param hitPoint to compute the color
              * @param lights container of lights
-             * @return Math::Point3D color
+             * @return Color color
              */
             Color computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
 
