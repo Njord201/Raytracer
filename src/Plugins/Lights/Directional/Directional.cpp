@@ -64,13 +64,11 @@ Math::Point3D Light::Directional::computeColor(Math::Vector3D primitiveNormal, c
     Math::Vector3D normal = primitiveNormal / primitiveNormal.length();
     Math::Vector3D dir = getDirection() / getDirection().length();
 
-    (void) shadow;
-    (void) hitPoint;
-    // TODO : handle drop shadow and perhaps rewrite method to handle the position of the
+    // TODO : rewrite method to handle the position of the
     // directional light
 
-    // if (shadow.isShadow(dir, hitPoint))
-    //     return Math::Point3D(0,0,0);
+    if (shadow.isShadow(dir * -1, hitPoint))
+        return Math::Point3D(0,0,0);
 
     color *= -normal.dot(dir);
 
