@@ -14,12 +14,6 @@
 
 namespace Primitive {
 
-    enum Axis {
-        X,
-        Y,
-        Z
-    };
-
     class Plane : public IPrimitive {
 
         public:

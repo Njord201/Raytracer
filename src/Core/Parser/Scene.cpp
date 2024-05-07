@@ -7,18 +7,28 @@
 
 #include "Parser/Scene.hpp"
 
-Raytracer::Scene::Scene(std::string filePath)
+static bool filepathParsed(std::vector<std::string> parsedFiles, std::string filePath)
 {
+    for (auto &file : parsedFiles) {
+        if (file == filePath)
+            return true;
+    }
+    return false;
+}
+
+int Raytracer::Scene::parseImportedScene(std::string filePath)
+{
+    if (filepathParsed(this->_importedScenesFiles, filePath))
+        return 0;
     try {
         libconfig::Config cfg;
         cfg.readFile(filePath);
-        const libconfig::Setting &camera = cfg.lookup("camera");
         const libconfig::Setting &primitives = cfg.lookup("primitives");
         const libconfig::Setting &lights = cfg.lookup("lights");
-        this->_parseCameraSetting(camera);
         this->_parsePrimitiveSetting(primitives);
         this->_parseLightsSetting(lights);
-
+        this->_importedScenesFiles.push_back(filePath);
+        this->_parseScenesImports(cfg);
     } catch (const libconfig::FileIOException &fioex) {
         throw ParserException("Error reading configuration file.");
     } catch (const libconfig::ParseException &pex) {
@@ -30,6 +40,49 @@ Raytracer::Scene::Scene(std::string filePath)
     } catch (const ParserException &parseError) {
         throw ParserException(parseError.what());
     }
+    return 0;
+}
+
+Raytracer::Scene::Scene(std::string filePath)
+{
+    try {
+        libconfig::Config cfg;
+        cfg.readFile(filePath);
+        const libconfig::Setting &camera = cfg.lookup("camera");
+        const libconfig::Setting &primitives = cfg.lookup("primitives");
+        const libconfig::Setting &lights = cfg.lookup("lights");
+        this->_parseCameraSetting(camera);
+        this->_parsePrimitiveSetting(primitives);
+        this->_parseLightsSetting(lights);
+        this->_importedScenesFiles.push_back(filePath);
+        this->_parseScenesImports(cfg);
+    } catch (const libconfig::FileIOException &fioex) {
+        throw ParserException("Error reading configuration file.");
+    } catch (const libconfig::ParseException &pex) {
+        throw ParserException("Error parsing configuration file. Line: " + std::to_string(pex.getLine()) + " - " + pex.getError());
+    } catch (const libconfig::SettingTypeException &settingpex) {
+        throw ParserException(settingpex.what());
+    } catch (const libconfig::SettingNotFoundException &settingpex) {
+        throw ParserException(settingpex.what());
+    } catch (const ParserException &parseError) {
+        throw ParserException(parseError.what());
+    }
+}
+
+int Raytracer::Scene::_parseScenesImports(const libconfig::Config &config)
+{
+    if (config.exists("imports")) {
+        const libconfig::Setting &imports = config.lookup("imports")["scenes"];
+        for (int index = 0; index < imports.getLength(); index++) {
+            std::string importPath;
+            imports[index].lookupValue("path", importPath);
+            if (!filepathParsed(this->_importedScenesFiles, importPath)) {
+                std::cout << "Importing scene file: " << importPath << std::endl;
+                this->parseImportedScene(importPath);
+            }
+        }
+    }
+    return 0;
 }
 
 double Raytracer::Scene::_parseValue(const libconfig::Setting &value)
@@ -168,7 +221,59 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 newCylinder->setMaterial(materialPtr);
             }
             this->_primitives.add(newCylinder);
-        }}
+        }
+    }
+    if (primitives.exists("cones")) {
+        libconfig::Setting& coneArray = primitives.lookup("cones");
+        for (int index = 0; index < coneArray.getLength(); index++) {
+            std::shared_ptr<Primitive::IPrimitive> cone = _factory.createPrimitivesComponent("cone");
+            std::shared_ptr<Primitive::Cone> newCone = std::dynamic_pointer_cast<Primitive::Cone>(cone);
+
+            const libconfig::Setting &originX = coneArray[index]["x"];
+            const libconfig::Setting &originY = coneArray[index]["y"];
+            const libconfig::Setting &originZ = coneArray[index]["z"];
+            Math::Point3D origin(_parseValue(originX), _parseValue(originY), _parseValue(originZ));
+
+            const libconfig::Setting &angleValue = coneArray[index]["angle"];
+            double angle = _parseValue(angleValue);
+
+            newCone->setAngle(angle);
+            newCone->setOrigin(origin);
+
+            std::string axisType;
+            coneArray[index].lookupValue("axis", axisType);
+
+            if (axisType == "X") {
+                newCone->setAxis(Primitive::Axis::X);
+            } else if (axisType == "Y") {
+                newCone->setAxis(Primitive::Axis::Y);
+            } else if (axisType == "Z") {
+                newCone->setAxis(Primitive::Axis::Z);
+            } else {
+                throw ParserException("Wrong Axis for plane");
+            }
+
+            std::string materialType;
+            libconfig::Setting& material = coneArray[index].lookup("material");
+            material.lookupValue("type", materialType);
+
+            if (materialType == "flatColor") {
+                libconfig::Setting& color = material.lookup("color");
+                std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                newCone->setMaterial(materialPtr);
+            }
+
+            if (coneArray[index].exists("translation")) {
+                libconfig::Setting& translation = coneArray[index].lookup("translation");
+                Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+                Math::Vector3D newOrigin = newCone->getOrigin();
+                newOrigin.translate(trans);
+                newCone->setOrigin(newOrigin);
+            }
+
+            this->_primitives.add(newCone);
+        }
+    }
     if (primitives.exists("planes")) {
         libconfig::Setting& planeArray = primitives.lookup("planes");
         for (int index = 0; index < planeArray.getLength(); index++) {
@@ -191,7 +296,7 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             } else {
                 throw ParserException("Wrong Axis for plane");
             }
-            
+
             std::string materialType;
             libconfig::Setting& material = planeArray[index].lookup("material");
             material.lookupValue("type", materialType);
@@ -201,6 +306,7 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
                 newPlane->setMaterial(materialPtr);
             }
+
             this->_primitives.add(newPlane);
         }
     }

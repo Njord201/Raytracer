@@ -17,6 +17,12 @@
 
 namespace Primitive {
 
+    enum Axis {
+        X,
+        Y,
+        Z
+    };
+
     class IPrimitive {
 
         public:
