@@ -35,14 +35,20 @@ class Raytracer::Renderer {
         ~Renderer() = default;
 
         /**
-         * @brief render the scene
+         * @brief Render the scene in a window with SDL2.
          *
          */
         void renderScene();
 
         /**
-         * @brief write a rgb color in a stream
-         * 
+         * @brief Render the final scene in a .ppm file.
+         *
+         */
+        void renderFinalScene();
+
+        /**
+         * @brief Write a rgb color in a stream.
+         *
          * @param o stream to write in
          * @param color color to write
          */
@@ -50,7 +56,7 @@ class Raytracer::Renderer {
 
     private:
 
-    Raytracer::Camera                   _camera;
-    Primitive::PrimitivesContainer      _primitives;
-    Light::LightsContainer              _lights;
+        Raytracer::Camera                   _camera;
+        Primitive::PrimitivesContainer      _primitives;
+        Light::LightsContainer              _lights;
 };
