@@ -10,6 +10,4 @@
 
 #pragma once
 
-#include "Color.hpp"
-
 #define VOID_COLOR Color(0, 0, 0)
