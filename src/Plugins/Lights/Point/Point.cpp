@@ -6,6 +6,7 @@
 */
 
 #include "Lights/Point.hpp"
+#include "RaytracerRules.hpp"
 
 #include <cmath>
 
@@ -52,7 +53,7 @@ Math::Point3D Light::Point::computeColor(Math::Vector3D primitiveNormal, const M
     Math::Vector3D vectorLightToPoint = light - hitPoint;
 
     if (shadow.isShadow(vectorLightToPoint, hitPoint))
-        return Math::Point3D(0,0,0);
+        return SHADOW_COLOR;
 
     double n = primitiveNormal.dot(vectorLightToPoint);
     double d  = primitiveNormal.length() * vectorLightToPoint.length();

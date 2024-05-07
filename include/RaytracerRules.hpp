@@ -11,3 +11,4 @@
 #pragma once
 
 #define VOID_COLOR Math::Vector3D(0,0,0)
+#define SHADOW_COLOR Math::Vector3D(0,0,0)
