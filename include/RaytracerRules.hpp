@@ -10,4 +10,6 @@
 
 #pragma once
 
-#define VOID_COLOR Math::Vector3D(0,0,0)
+#include "Color.hpp"
+
+#define VOID_COLOR Color(0, 0, 0)

@@ -7,6 +7,7 @@
 
 #include "Primitives/PrimitivesContainer.hpp"
 #include "RaytracerRules.hpp"
+#include "Color.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -21,7 +22,7 @@ void Primitive::PrimitivesContainer::clear()
     _primitives.clear();
 }
 
-Math::Point3D Primitive::PrimitivesContainer::hitPoint(const Raytracer::Ray& ray, const Light::LightsContainer& lights) const
+Color Primitive::PrimitivesContainer::getColorPoint(const Raytracer::Ray& ray, const Light::LightsContainer& lights) const
 {
     Math::Point3D point_nearest;
     int idx_nearest = -1;

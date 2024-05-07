@@ -38,7 +38,7 @@ Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& ray) const
     return hitPoint;
 }
 
-Math::Point3D Primitive::Sphere::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
+Color Primitive::Sphere::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
 {
     Math::Vector3D sphereNormal(hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
 
@@ -48,7 +48,7 @@ Math::Point3D Primitive::Sphere::computeColor(const Math::Point3D& hitPoint, con
         return lights.computeColor(sphereNormal, hitPoint, Math::Point3D(sphereFlatColor->getR(), sphereFlatColor->getG(), sphereFlatColor->getB()));
     }
     std::cout << "material not handle in sphere" << std::endl;
-    return Math::Point3D(0,0,0);
+    return Color(0,0,0);
 }
 
 void Primitive::Sphere::setOrigin(Math::Point3D origin)

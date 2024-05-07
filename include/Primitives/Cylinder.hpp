@@ -63,7 +63,7 @@ namespace Primitive {
              * @param radius double
              */
             void setRadius(double radius);
-    
+
             /**
              * @brief compute the hit point color of a cylinder
              *
@@ -71,11 +71,11 @@ namespace Primitive {
              * @param lights container of lights
              * @return Math::Point3D color
              */
-            Math::Point3D computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
+            Color computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
 
             /**
              * @brief Set the Axis object
-             * 
+             *
              * @param axis The axis of cylinder Object to set
              */
             void setAxis(const Primitive::Axis &axis);

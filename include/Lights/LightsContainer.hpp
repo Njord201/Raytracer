@@ -12,6 +12,7 @@
 #include <iostream>
 
 #include "ILight.hpp"
+#include "Color.hpp"
 
 namespace Light {
 
@@ -57,9 +58,9 @@ namespace Light {
              * @param primitiveNormal normal to the hitpoint
              * @param hitPoint hitpoint
              * @param color color
-             * @return Math::Point3D color
+             * @return Color color
              */
-            Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const;
+            Color computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const;
 
         private:
 

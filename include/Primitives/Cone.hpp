@@ -55,7 +55,7 @@ namespace Primitive {
              * @param lights container of lights
              * @return Math::Point3D color
              */
-            Math::Point3D computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
+            Color computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
 
             /**
              * @brief Set the Origin object

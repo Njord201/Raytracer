@@ -18,11 +18,11 @@ Raytracer::Renderer::Renderer(Raytracer::Scene scene) : _camera(scene.getCamera(
     _primitives = scene.getPrimitives();
 }
 
-void Raytracer::Renderer::writeColor(std::ostream& o, const Math::Point3D& color)
+void Raytracer::Renderer::writeColor(std::ostream& o, const Color& color)
 {
-    int r = int(color.x());
-    int g = int(color.y());
-    int b = int(color.z());
+    int r = int(color.getR());
+    int g = int(color.getG());
+    int b = int(color.getB());
 
     o << r << ' ' << g << ' ' << b << '\n';
 }
@@ -79,9 +79,9 @@ void Raytracer::Renderer::renderScene()
                 auto rayDirection = _camera.getOrigin() - pixel_center;
 
                 Raytracer::Ray r(_camera.getOrigin(), rayDirection);
-                Math::Point3D hit = _primitives.hitPoint(r, _lights);
+                Color hit = _primitives.getColorPoint(r, _lights);
 
-                SDL_SetRenderDrawColor(ren, hit.x(), hit.y(), hit.z(), 255);
+                SDL_SetRenderDrawColor(ren, hit.getR(), hit.getG(), hit.getB(), 255);
                 SDL_RenderDrawPoint(ren, x, y);
             }
         }
@@ -130,7 +130,7 @@ void Raytracer::Renderer::renderFinalScene()
                 auto rayDirection = _camera.getOrigin() - pixel_center;
 
                 Raytracer::Ray r(_camera.getOrigin(), rayDirection);
-                Math::Point3D hit = _primitives.hitPoint(r, _lights);
+                Color hit = _primitives.getColorPoint(r, _lights);
                 writeColor(stream, hit);
             }
         }

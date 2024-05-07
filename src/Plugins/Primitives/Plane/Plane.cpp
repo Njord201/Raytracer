@@ -122,7 +122,7 @@ static Math::Point3D getPlaneNormal(const Primitive::Axis axis)
     }
 }
 
-Math::Point3D Primitive::Plane::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
+Color Primitive::Plane::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
 {
     Math::Vector3D planeNormal = getPlaneNormal(_axis);
 
@@ -135,5 +135,5 @@ Math::Point3D Primitive::Plane::computeColor(const Math::Point3D& hitPoint, cons
         return VOID_COLOR;
     }
 
-    return Math::Point3D(255, 0, 255);
+    return Color(255, 0, 255);
 }

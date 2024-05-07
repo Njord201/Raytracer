@@ -66,7 +66,7 @@ Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray) const
     return hitPoint;
 }
 
-Math::Point3D Primitive::Cone::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
+Color Primitive::Cone::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
 {
     Math::Vector3D hit = hitPoint;
     Math::Vector3D coneNormal;
@@ -85,7 +85,7 @@ Math::Point3D Primitive::Cone::computeColor(const Math::Point3D& hitPoint, const
         return lights.computeColor(coneNormal, hit, Math::Point3D(ConeFlatColor->getR(), ConeFlatColor->getG(), ConeFlatColor->getB()));
     }
     std::cout << "material not handle in Cone" << std::endl;
-    return Math::Point3D(0,0,0);
+    return Color(0,0,0);
 }
 
 void Primitive::Cone::setOrigin(Math::Point3D origin)
