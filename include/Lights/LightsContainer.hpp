@@ -11,8 +11,8 @@
 #include <memory>
 #include <iostream>
 
-#include "ILight.hpp"
 #include "Color.hpp"
+#include "ILight.hpp"
 
 namespace Light {
 

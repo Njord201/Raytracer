@@ -5,9 +5,9 @@
 ** PrimitivesContainer
 */
 
-#include "Primitives/PrimitivesContainer.hpp"
-#include "RaytracerRules.hpp"
 #include "Color.hpp"
+#include "RaytracerRules.hpp"
+#include "Primitives/PrimitivesContainer.hpp"
 
 #include <cmath>
 #include <iostream>

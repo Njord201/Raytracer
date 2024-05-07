@@ -12,7 +12,7 @@ class Color {
     public:
 
         /**
-         * @brief Construct a new Color object
+         * @brief Construct a new Color object.
          *
          * @param r red value
          * @param g green value
@@ -21,51 +21,51 @@ class Color {
         Color(int r, int g, int b);
 
         /**
-         * @brief Construct a new Color object with default values (black, (0, 0, 0))
+         * @brief Construct a new Color object with default values (black, (0, 0, 0)).
          *
          */
         Color() = default;
 
         /**
-         * @brief Destroy the Color object
+         * @brief Destroy the Color object.
          *
          */
         ~Color() = default;
 
         /**
-         * @brief set the red value
+         * @brief Set the red value.
          *
          */
         void setR(int r);
 
         /**
-         * @brief get the red value
+         * @brief Get the red value.
          *
          * @return int - red value
          */
         int getR() const;
 
         /**
-         * @brief set the green value
+         * @brief Set the green value.
          *
          */
         void setG(int g);
 
         /**
-         * @brief get the green value
+         * @brief Get the green value.
          *
          * @return int - green value
          */
         int getG() const;
 
         /**
-         * @brief set the blue value
+         * @brief Set the blue value.
          *
          */
         void setB(int b);
 
         /**
-         * @brief get the blue value
+         * @brief Get the blue value.
          *
          * @return int - blue value
          */

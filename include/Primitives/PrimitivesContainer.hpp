@@ -44,7 +44,7 @@ namespace Primitive {
             void clear();
 
             /**
-             * @brief return the color of hit point of a ray in all the primitives
+             * @brief Return the color of hit point of a ray in all the primitives.
              *
              * @param ray Math::Vector3D
              * @param lights list of lights

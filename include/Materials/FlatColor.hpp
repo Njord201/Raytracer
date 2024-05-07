@@ -28,7 +28,7 @@ class FlatColor : public Material::IMaterial {
         FlatColor(int r, int g, int b);
 
         /**
-         * @brief Destruct a FlatColor object
+         * @brief Destruct a FlatColor object.
          *
          */
         ~FlatColor() = default;
