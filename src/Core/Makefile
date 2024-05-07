@@ -6,7 +6,7 @@
 ##
 
 #Files
-MAIN 		= main.cpp
+MAIN 		=	main.cpp
 SRC			=	Parser/Scene.cpp \
 				Parser/Factory.cpp \
 				Parser/DLLoader.cpp \
@@ -33,18 +33,18 @@ SRC			=	Parser/Scene.cpp \
 				../Plugins/Lights/Point/Point.cpp \
 				../Plugins/Lights/Directional/Directional.cpp \
 
-OBJ			= $(SRC:.cpp=.o)
-MAIN_OBJ	= $(MAIN:.cpp=.o)
+OBJ			=	$(SRC:.cpp=.o)
+MAIN_OBJ	=	$(MAIN:.cpp=.o)
 
 #Name
-NAME		= raytracer
+NAME		= 	raytracer
 
 #Path
 ROOT_PATH = ../../
 
 # Flags
 INCLUDE		= -I$(ROOT_PATH)include
-CXXFLAGS 	= -std=c++20 -Wall -Wextra -Werror -g -lconfig++
+CXXFLAGS 	= -std=c++20 -Wall -Wextra -Werror -g -lconfig++ -lSDL2
 
 # Colors
 YELLOW 			= /bin/echo -e "\x1b[33m $1\x1b[0m"
