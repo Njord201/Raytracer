@@ -21,20 +21,20 @@ class Primitives::Shadow {
     public:
 
         /**
-         * @brief Construct a new Shadow object
+         * @brief Construct a new Shadow object.
          *
          * @param primitives list of primitives
          */
         Shadow(const std::vector<std::shared_ptr<Primitive::IPrimitive>>& primitives);
 
         /**
-         * @brief Destroy the Shadow object
+         * @brief Destroy the Shadow object.
          *
          */
         ~Shadow() = default;
 
         /**
-         * @brief return if there is a shadow
+         * @brief Return if there is a shadow.
          *
          * @return true
          * @return false

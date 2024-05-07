@@ -7,22 +7,20 @@
 
 #include "Primitives/Shadow.hpp"
 
-#include <iostream>
 #include <math.h>
+#include <iostream>
 
 Primitives::Shadow::Shadow(const std::vector<std::shared_ptr<Primitive::IPrimitive>>& primitives) : _primitives(primitives) {};
 
-static double myRound(double v, double precision)
+static double myRound(double value, double precision)
 {
-    return std::round(v/precision)*precision;
+    return std::round(value / precision) * precision;
 }
 
 bool Primitives::Shadow::isShadow(const Math::Vector3D& vectorLightToPoint, const Math::Point3D& hitPoint) const
 {
     Raytracer::Ray ray(hitPoint, vectorLightToPoint);
-    Math::Point3D h = hitPoint;
-    Math::Vector3D vltp =vectorLightToPoint;
-    Math::Point3D light = h + vltp;
+    Math::Point3D light = (Math::Point3D)hitPoint + vectorLightToPoint;
 
     for (size_t i = 0; i < _primitives.size(); i++) {
         Math::Point3D hit = _primitives[i]->hitPoint(ray);

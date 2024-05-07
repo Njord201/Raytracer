@@ -42,17 +42,17 @@ namespace Primitive {
             virtual Math::Point3D hitPoint(const Raytracer::Ray& ray) const = 0;
 
             /**
-             * @brief Get the Normal of the object
+             * @brief Get the Normal of the object.
              *
-             * @param hitPoint to have the normal
+             * @param hitPoint to compute the normal
              * @return Math::Vector3D
              */
             virtual Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const = 0;
 
             /**
-             * @brief Get the Material object
+             * @brief Get the Material object.
              *
-             * @return std::shared_ptr<Material::IMaterial> 
+             * @return std::shared_ptr<Material::IMaterial>
              */
             virtual std::shared_ptr<Material::IMaterial> getMaterial() const = 0;
     };

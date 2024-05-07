@@ -28,9 +28,8 @@ Math::Point3D Light::LightsContainer::computeColor(Math::Vector3D primitiveNorma
 
     for (size_t i = 0; i < _Lights.size(); i++) {
         Math::Point3D colorFind = _Lights[i]->computeColor(primitiveNormal, hitPoint, color, shadow);
-        if (highColor.length() < colorFind.length() ) {
+        if (highColor.length() < colorFind.length())
             highColor = colorFind;
-        }
     }
     return highColor;
 }

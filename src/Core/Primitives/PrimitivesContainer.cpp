@@ -5,10 +5,10 @@
 ** PrimitivesContainer
 */
 
-#include "Primitives/PrimitivesContainer.hpp"
 #include "RaytracerRules.hpp"
-#include "Materials/FlatColor.hpp"
 #include "Primitives/Shadow.hpp"
+#include "Materials/FlatColor.hpp"
+#include "Primitives/PrimitivesContainer.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -57,7 +57,7 @@ Math::Point3D Primitive::PrimitivesContainer::computeColor(const std::shared_ptr
         std::shared_ptr<FlatColor> primitiveFlatColor = std::dynamic_pointer_cast<FlatColor>(primitive->getMaterial());
         return lights.computeColor(normal, hitPoint, Math::Point3D(primitiveFlatColor->getR(), primitiveFlatColor->getG(), primitiveFlatColor->getB()), Primitives::Shadow(_primitives));
     }
-    std::cout << "material not handle in sphere" << std::endl;
+    std::cout << "Material not handle in sphere" << std::endl;
     return VOID_COLOR;
 }
 

@@ -15,13 +15,13 @@ namespace Primitive {
         public:
 
             /**
-             * @brief Construct a new Cylinder object
+             * @brief Construct a new Cylinder object.
              *
              */
             Cylinder();
 
             /**
-             * @brief Construct a new Cylinder object
+             * @brief Construct a new Cylinder object.
              *
              * @param origin center of the cylinder
              * @param radius of the cylinder
@@ -36,7 +36,7 @@ namespace Primitive {
             ~Cylinder() = default;
 
             /**
-             * @brief return the hit point of the cylinder
+             * @brief Return the hit point of the cylinder.
              *
              * @param ray vector3D
              * @return Point3D
@@ -44,49 +44,49 @@ namespace Primitive {
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
 
             /**
-             * @brief set origin of cylinder
+             * @brief Set origin of cylinder.
              *
              * @param hitPoint Point3D
              */
             void setOrigin(const Math::Point3D& origin);
 
             /**
-             * @brief set axis of cylinder
+             * @brief Set axis of cylinder.
              *
              * @param axis double
              */
             void setAxis(double axis);
 
             /**
-             * @brief set radius of cylinder
+             * @brief Set radius of cylinder.
              *
              * @param radius double
              */
             void setRadius(double radius);
 
             /**
-             * @brief Set the Axis object
-             * 
+             * @brief Set the Axis object.
+             *
              * @param axis The axis of cylinder Object to set
              */
             void setAxis(const Primitive::Axis &axis);
 
             /**
-             * @brief Get the Material object
+             * @brief Get the Material object.
              *
              * @return Material of cylinder
              */
             std::shared_ptr<Material::IMaterial> getMaterial() const;
 
             /**
-             * @brief Set the Material object
+             * @brief Set the Material object.
              *
              * @param material Material of cylinder
              */
             void setMaterial(std::shared_ptr<Material::IMaterial> material);
 
             /**
-             * @brief Get the Normal of the object
+             * @brief Get the Normal of the object.
              *
              * @param hitPoint to have the normal
              * @return Math::Vector3D

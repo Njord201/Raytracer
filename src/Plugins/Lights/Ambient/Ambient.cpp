@@ -47,8 +47,8 @@ Light::LightType Light::Ambient::getType(void) const
 Math::Point3D Light::Ambient::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const
 {
     (void) shadow;
-    (void) primitiveNormal;
     (void) hitPoint;
+    (void) primitiveNormal;
     color *= _multiplier;
     return color;
 }

@@ -97,7 +97,7 @@ namespace Primitive {
             std::shared_ptr<Material::IMaterial> getMaterial() const;
 
             /**
-             * @brief Get the Normal of the object
+             * @brief Get the Normal of the object.
              *
              * @param hitPoint to have the normal
              * @return Math::Vector3D
