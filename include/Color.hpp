@@ -44,6 +44,7 @@ class Color {
         /**
          * @brief Set the red value.
          *
+         * @param r red value
          */
         void setR(int r);
 
@@ -57,6 +58,7 @@ class Color {
         /**
          * @brief Set the green value.
          *
+         * @param g green value
          */
         void setG(int g);
 
@@ -70,6 +72,7 @@ class Color {
         /**
          * @brief Set the blue value.
          *
+         * @param b blue value
          */
         void setB(int b);
 
