@@ -11,6 +11,7 @@
 #include <memory>
 #include <iostream>
 
+#include "Color.hpp"
 #include "ILight.hpp"
 
 namespace Light {
@@ -59,8 +60,10 @@ namespace Light {
              * @param color color
              * @param shadow Primitive::Shadow class to handle shadows
              * @return Math::Point3D color
+             *
+             * @return Color color
              */
-            Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const;
+            Color computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const;
 
         private:
 

@@ -45,13 +45,13 @@ namespace Primitive {
             void clear();
 
             /**
-             * @brief Return the hit point of a ray in all the primitives.
+             * @brief Return the color of hit point of a ray in all the primitives.
              *
              * @param ray Math::Vector3D
              * @param lights list of lights
-             * @return Math::Point3D
+             * @return Color
              */
-            Math::Point3D hitPoint(const Raytracer::Ray& ray, const Light::LightsContainer& lights) const;
+            Color getColorPoint(const Raytracer::Ray& ray, const Light::LightsContainer& lights) const;
 
             /**
              * @brief Get the Primitives List object.
@@ -68,7 +68,7 @@ namespace Primitive {
              * @param lights list of lights
              * @return Math::Point3D
              */
-            Math::Point3D computeColor(const std::shared_ptr<Primitive::IPrimitive>& primitive, const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const;
+            Color computeColor(const std::shared_ptr<Primitive::IPrimitive>& primitive, const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const;
 
         private:
 

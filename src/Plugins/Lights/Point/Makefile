@@ -11,6 +11,7 @@ SRC			= 	getInstance.cpp \
 				../../../Math/Vector3D.cpp \
 				../../../Core/Ray.cpp \
 				../../../Core/Primitives/Shadow.cpp \
+				../../../Core/Color.cpp \
 
 OBJ			= $(SRC:.cpp=.o)
 

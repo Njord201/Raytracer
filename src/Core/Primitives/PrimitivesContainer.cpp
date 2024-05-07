@@ -5,6 +5,7 @@
 ** PrimitivesContainer
 */
 
+#include "Color.hpp"
 #include "RaytracerRules.hpp"
 #include "Primitives/Shadow.hpp"
 #include "Materials/FlatColor.hpp"
@@ -23,7 +24,7 @@ void Primitive::PrimitivesContainer::clear()
     _primitives.clear();
 }
 
-Math::Point3D Primitive::PrimitivesContainer::hitPoint(const Raytracer::Ray& ray, const Light::LightsContainer& lights) const
+Color Primitive::PrimitivesContainer::getColorPoint(const Raytracer::Ray& ray, const Light::LightsContainer& lights) const
 {
     Math::Point3D point_nearest;
     int idx_nearest = -1;
@@ -49,7 +50,7 @@ Math::Point3D Primitive::PrimitivesContainer::hitPoint(const Raytracer::Ray& ray
     return computeColor(_primitives[idx_nearest], point_nearest, lights);
 }
 
-Math::Point3D Primitive::PrimitivesContainer::computeColor(const std::shared_ptr<Primitive::IPrimitive>& primitive, const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
+Color Primitive::PrimitivesContainer::computeColor(const std::shared_ptr<Primitive::IPrimitive>& primitive, const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
 {
     Math::Vector3D normal = primitive->getNormal(hitPoint);
 

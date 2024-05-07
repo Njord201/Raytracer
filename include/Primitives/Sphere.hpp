@@ -48,7 +48,8 @@ namespace Primitive {
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
 
             /**
-             * @brief Set the Origin object.
+             * @brief Set the Origin object
+             *
              * @param origin New origin to set
              */
             void setOrigin(Math::Point3D origin);
