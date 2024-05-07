@@ -17,6 +17,7 @@
 
 #include "Parser/DLLoader.hpp"
 #include "Primitives/Sphere.hpp"
+#include "Primitives/Cone.hpp"
 #include "Primitives/Cylinder.hpp"
 #include "Primitives/Plane.hpp"
 #include "Lights/Point.hpp"
@@ -66,7 +67,7 @@ class Raytracer::Factory {
         /// @param type Component to register
         /// @param creator Function to create the component
         void registerLightsComponent(const std::string& type, LightsCreator creator);
-    
+
     private:
         std::unordered_map<std::string, PrimitivesCreator>   _componentPrimitivesList;
         std::unordered_map<std::string, LightsCreator>       _componentLightsList;

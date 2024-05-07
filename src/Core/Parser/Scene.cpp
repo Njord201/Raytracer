@@ -220,7 +220,59 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 newCylinder->setMaterial(materialPtr);
             }
             this->_primitives.add(newCylinder);
-        }}
+        }
+    }
+    if (primitives.exists("cones")) {
+        libconfig::Setting& coneArray = primitives.lookup("cones");
+        for (int index = 0; index < coneArray.getLength(); index++) {
+            std::shared_ptr<Primitive::IPrimitive> cone = _factory.createPrimitivesComponent("cone");
+            std::shared_ptr<Primitive::Cone> newCone = std::dynamic_pointer_cast<Primitive::Cone>(cone);
+
+            const libconfig::Setting &originX = coneArray[index]["x"];
+            const libconfig::Setting &originY = coneArray[index]["y"];
+            const libconfig::Setting &originZ = coneArray[index]["z"];
+            Math::Point3D origin(_parseValue(originX), _parseValue(originY), _parseValue(originZ));
+
+            const libconfig::Setting &angleValue = coneArray[index]["angle"];
+            double angle = _parseValue(angleValue);
+
+            newCone->setAngle(angle);
+            newCone->setOrigin(origin);
+
+            std::string axisType;
+            coneArray[index].lookupValue("axis", axisType);
+
+            if (axisType == "X") {
+                newCone->setAxis(Primitive::Axis::X);
+            } else if (axisType == "Y") {
+                newCone->setAxis(Primitive::Axis::Y);
+            } else if (axisType == "Z") {
+                newCone->setAxis(Primitive::Axis::Z);
+            } else {
+                throw ParserException("Wrong Axis for plane");
+            }
+
+            std::string materialType;
+            libconfig::Setting& material = coneArray[index].lookup("material");
+            material.lookupValue("type", materialType);
+
+            if (materialType == "flatColor") {
+                libconfig::Setting& color = material.lookup("color");
+                std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                newCone->setMaterial(materialPtr);
+            }
+
+            if (coneArray[index].exists("translation")) {
+                libconfig::Setting& translation = coneArray[index].lookup("translation");
+                Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+                Math::Vector3D newOrigin = newCone->getOrigin();
+                newOrigin.translate(trans);
+                newCone->setOrigin(newOrigin);
+            }
+
+            this->_primitives.add(newCone);
+        }
+    }
     if (primitives.exists("planes")) {
         libconfig::Setting& planeArray = primitives.lookup("planes");
         for (int index = 0; index < planeArray.getLength(); index++) {
@@ -243,7 +295,7 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             } else {
                 throw ParserException("Wrong Axis for plane");
             }
-            
+
             std::string materialType;
             libconfig::Setting& material = planeArray[index].lookup("material");
             material.lookupValue("type", materialType);
@@ -253,6 +305,7 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
                 newPlane->setMaterial(materialPtr);
             }
+
             this->_primitives.add(newPlane);
         }
     }
