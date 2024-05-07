@@ -60,6 +60,7 @@ void Raytracer::Renderer::renderScene()
                 auto invertedX = imageWidth - x - 1;
                 auto pixel_center = viewUpper_left + (pixelSizeU * (invertedX + 0.5)) + (pixelSizeV * (y + 0.5));
                 auto rayDirection = _camera.getOrigin() - pixel_center;
+
                 Raytracer::Ray r(_camera.getOrigin(), rayDirection);
                 Math::Point3D hit = _primitives.hitPoint(r, _lights);
                 writeColor(stream, hit);

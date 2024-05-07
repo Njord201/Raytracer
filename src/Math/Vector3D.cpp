@@ -56,9 +56,13 @@ void Math::Vector3D::rotateY(double degrees)
     double cos_theta = std::cos(radians);
     double sin_theta = std::sin(radians);
 
-    this->_vector[0] = this->_vector[2] * sin_theta + this->_vector[0] * cos_theta;
-    this->_vector[1] = this->_vector[1];
-    this->_vector[2] = this->_vector[2] * cos_theta - this->_vector[0] * sin_theta;
+    double coordX = this->_vector[0];
+    double coordY = this->_vector[1];
+    double coordZ = this->_vector[2];
+
+    this->_vector[0] = coordZ * sin_theta + coordX * cos_theta;
+    this->_vector[1] = coordY;
+    this->_vector[2] = coordZ * cos_theta - coordX * sin_theta;
 }
 
 Math::Vector3D Math::Vector3D::operator+(const Vector3D& ptr)

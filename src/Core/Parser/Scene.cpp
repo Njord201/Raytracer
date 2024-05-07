@@ -181,7 +181,6 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 newOrigin.translate(trans);
                 newSphere->setOrigin(newOrigin);
             }
-
             this->_primitives.add(newSphere);
         }
     }
