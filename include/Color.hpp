@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include "Math/Vector3D.hpp"
+
 class Color {
 
     public:
@@ -19,6 +21,13 @@ class Color {
          * @param b blue value
          */
         Color(int r, int g, int b);
+
+        /**
+         * @brief Construct a new Color object form a Point3D.
+         *
+         * @param color
+         */
+        Color(Math::Point3D color);
 
         /**
          * @brief Construct a new Color object with default values (black, (0, 0, 0)).

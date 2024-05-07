@@ -11,6 +11,13 @@ Color::Color(int r, int g, int b) : _r(r), _g(g), _b(b)
 {
 }
 
+Color::Color(Math::Point3D color)
+{
+    _r = color.x();
+    _g = color.y();
+    _b = color.z();
+}
+
 void Color::setR(int r)
 {
     _r = r;
