@@ -32,5 +32,5 @@ Color Light::LightsContainer::computeColor(Math::Vector3D primitiveNormal, const
             highColor = colorFind;
         }
     }
-    return Color(highColor.x(), highColor.y(), highColor.z());
+    return Color(highColor);
 }
