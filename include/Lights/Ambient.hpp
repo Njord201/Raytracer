@@ -69,6 +69,7 @@ class Light::Ambient : public Light::ILight {
 
         /**
          * @brief Get type of Light
+         *
          * @return The type of the light
          */
         Light::LightType getType(void) const override;
@@ -80,6 +81,7 @@ class Light::Ambient : public Light::ILight {
          * @param hitPoint hitpoint
          * @param color color
          * @param shadow Primitive::Shadow class to handle shadows
+         *
          * @return Color color
          */
         Color computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const override;
