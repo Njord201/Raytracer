@@ -19,13 +19,13 @@ namespace Primitive {
         public:
 
             /**
-             * @brief Construct a new Cone object
+             * @brief Construct a new Cone object.
              *
              */
             Cone();
 
             /**
-             * @brief Construct a new Cone object
+             * @brief Construct a new Cone object.
              *
              * @param origin center of the Cone
              * @param radius of the Cone
@@ -35,13 +35,13 @@ namespace Primitive {
             Cone(const Math::Point3D& origin, double radius, Axis axis, std::shared_ptr<Material::IMaterial> material);
 
             /**
-             * @brief Destroy the Cone object
+             * @brief Destroy the Cone object.
              *
              */
             ~Cone() = default;
 
             /**
-             * @brief return the hit point of the Cone
+             * @brief return the hit point of the Cone.
              *
              * @param ray vector3D
              * @return Point3D
@@ -49,58 +49,66 @@ namespace Primitive {
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
 
             /**
-             * @brief compute the hit point color of a Cone
+             * @brief compute the hit point color of a Cone.
              *
              * @param hitPoint to compute the color
              * @param lights container of lights
-             * @return Math::Point3D color
+             * @return Color color
              */
-            Math::Point3D computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
+            Color computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
 
             /**
-             * @brief Set the Origin object
+             * @brief Set the Origin object.
+             *
              * @param origin New origin to set
              */
             void setOrigin(Math::Point3D origin);
 
             /**
-             * @brief Set the Angle
+             * @brief Set the Angle.
+             *
              * @param angle New angle to set
              */
             void setAngle(double angle);
 
             /**
-             * @brief Set the Axis
+             * @brief Set the Axis.
+             *
              * @param axis New axis to set
              */
             void setAxis(Axis axis);
 
             /**
-             * @brief Set the Material
+             * @brief Set the Material.
+             *
              * @param material New material to set
              */
             void setMaterial(std::shared_ptr<Material::IMaterial> material);
 
             /**
-             * @brief Get the Origin object
+             * @brief Get the Origin object.
+             *
              * @return Origin of Cone
              */
             Math::Point3D getOrigin() const;
 
             /**
-             * @brief Get the Angle object
+             * @brief Get the Angle object.
+             *
              * @return Angle of Cone
              */
             double getAngle() const;
 
             /**
-             * @brief Get the Axis object
+             * @brief Get the Axis object.
+             *
              * @return Axis of Cone
              */
             Axis getAxis() const;
 
             /**
-             * @brief Get the Material object
+             * @brief Get the Material object.
+             *
              * @return Material of Cone
              */
             std::shared_ptr<Material::IMaterial> getMaterial() const;

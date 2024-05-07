@@ -84,7 +84,7 @@ void Primitive::Cylinder::setRadius(double radius)
     this->_radius = radius;
 }
 
-Math::Point3D Primitive::Cylinder::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
+Color Primitive::Cylinder::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
 {
     Math::Vector3D cylinderNormal(hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
 
