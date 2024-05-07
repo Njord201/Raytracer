@@ -79,7 +79,7 @@ void Raytracer::Renderer::renderScene()
                 auto rayDirection = _camera.getOrigin() - pixel_center;
 
                 Raytracer::Ray r(_camera.getOrigin(), rayDirection);
-                Math::Point3D hit = _primitives.getColorPoint(r, _lights);
+                Math::Point3D hit = _primitives.hitPoint(r, _lights);
 
                 SDL_SetRenderDrawColor(ren, hit.x(), hit.y(), hit.z(), 255);
                 SDL_RenderDrawPoint(ren, x, y);
@@ -132,7 +132,7 @@ void Raytracer::Renderer::renderFinalScene()
                 auto rayDirection = _camera.getOrigin() - pixel_center;
 
                 Raytracer::Ray r(_camera.getOrigin(), rayDirection);
-                Math::Point3D hit = _primitives.getColorPoint(r, _lights);
+                Math::Point3D hit = _primitives.hitPoint(r, _lights);
                 writeColor(stream, hit);
             }
         }
