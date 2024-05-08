@@ -5,8 +5,8 @@
 ** Dircetional
 */
 
-#include "Lights/Directional.hpp"
 #include "RaytracerRules.hpp"
+#include "Lights/Directional.hpp"
 
 #include <cmath>
 #include <iostream>
