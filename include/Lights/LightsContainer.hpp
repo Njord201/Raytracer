@@ -21,46 +21,49 @@ namespace Light {
         public:
 
             /**
-             * @brief Construct a new Lights Container object
+             * @brief Construct a new Lights Container object.
              *
              */
             LightsContainer() = default;
 
             /**
-             * @brief Destroy the Lights Container object
+             * @brief Destroy the Lights Container object.
              *
              */
             ~LightsContainer() = default;
 
             /**
-             * @brief add a Light to the container
+             * @brief Add a Light to the container.
              *
              * @param Light to add
              */
             void add(std::shared_ptr<Light::ILight> Light);
 
             /**
-             * @brief clear the container
+             * @brief Clear the container.
              *
              */
             void clear();
 
             /**
-             * @brief Get the Lights List object
+             * @brief Get the Lights List object.
              *
              * @return std::vector<std::shared_ptr<Light::ILight>>
              */
             std::vector<std::shared_ptr<Light::ILight>> getLightsList(void) const;
 
             /**
-             * @brief compute the color point with lights
+             * @brief Compute the color point with lights.
              *
              * @param primitiveNormal normal to the hitpoint
              * @param hitPoint hitpoint
              * @param color color
+             * @param shadow Primitive::Shadow class to handle shadows
+             * @return Math::Point3D color
+             *
              * @return Color color
              */
-            Color computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const;
+            Color computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const;
 
         private:
 

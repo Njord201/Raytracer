@@ -108,9 +108,10 @@ void Primitive::Plane::setMaterial(std::shared_ptr<Material::IMaterial> material
     this->_material = material;
 }
 
-static Math::Point3D getPlaneNormal(const Primitive::Axis axis)
+Math::Vector3D Primitive::Plane::getNormal(const Math::Vector3D& hitPoint) const
 {
-    switch (axis) {
+    (void) hitPoint;
+    switch (_axis) {
         case Primitive::X:
             return Math::Point3D(1, 0, 0);
         case Primitive::Y:
@@ -120,20 +121,4 @@ static Math::Point3D getPlaneNormal(const Primitive::Axis axis)
         default:
             return Math::Point3D(0, 0, 0);
     }
-}
-
-Color Primitive::Plane::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
-{
-    Math::Vector3D planeNormal = getPlaneNormal(_axis);
-
-    if (_material->getType() == Material::MaterialType::FlatColor) {
-        std::shared_ptr<FlatColor> planeFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
-        return lights.computeColor(planeNormal, hitPoint, Math::Point3D(planeFlatColor->getR(), planeFlatColor->getG(), planeFlatColor->getB()));
-    } else {
-        // TODO: handle other material types see #55 (https://github.com/Njord201/Raytracer/issues/55)
-        std::cout << "material not handle in plane" << std::endl;
-        return VOID_COLOR;
-    }
-
-    return Color(255, 0, 255);
 }
