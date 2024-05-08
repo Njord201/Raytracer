@@ -21,13 +21,13 @@ class Light::Point : public Light::ILight {
     public:
 
         /**
-         * @brief Construct a new Point object
+         * @brief Construct a new Point object.
          *
          */
         Point();
 
         /**
-         * @brief Construct a new Point object
+         * @brief Construct a new Point object.
          *
          * @param position Position of Point Light
          * @param diffuseMultiplier Diffuse multiplier of Point Light
@@ -35,54 +35,57 @@ class Light::Point : public Light::ILight {
         Point(Math::Point3D position, double diffuseMultiplier);
 
         /**
-         * @brief Destroy the Point object
+         * @brief Destroy the Point object.
          *
          */
         ~Point() = default;
 
         /**
-         * @brief Get the Position number of Point light
+         * @brief Get the Position number of Point light.
          *
          * @return Math::Point3D position
          */
         Math::Point3D getPosition(void) const;
 
         /**
-         * @brief Set the Position object
+         * @brief Set the Position object.
          *
          * @param position New position of Point Light
          */
         void setPosition(Math::Point3D position);
 
         /**
-         * @brief Get the Diffuse Multiplier number of Point light
+         * @brief Get the Diffuse Multiplier number of Point light.
          *
          * @return double
          */
         double getDiffuseMultiplier(void) const;
 
         /**
-         * @brief Set the Diffuse Multiplier object
+         * @brief Set the Diffuse Multiplier object.
          *
          * @param diffuseMultiplier New Diffuse Multiplier of Point Light
          */
         void setDiffuseMultiplier(double diffuseMultiplier);
 
         /**
-         * @brief Get type of Light
+         * @brief Get type of Light.
+         *
          * @return The type of the light
          */
         Light::LightType getType(void) const override;
 
         /**
-         * @brief compute the color point with ponctual light
+         * @brief Compute the color point with ponctual light.
          *
          * @param primitiveNormal normal to the hitpoint
          * @param hitPoint hitpoint
          * @param color color
+         * @param shadow Primitive::Shadow class to handle shadows
+         *
          * @return Math::Point3D color
          */
-        Math::Point3D computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const override;
+        Color computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const override;
 
     private:
         Math::Point3D   _position;

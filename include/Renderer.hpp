@@ -52,7 +52,7 @@ class Raytracer::Renderer {
          * @param o stream to write in
          * @param color color to write
          */
-        void writeColor(std::ostream& o, const Math::Point3D& color);
+        void writeColor(std::ostream& o, const Color& color);
 
     private:
 

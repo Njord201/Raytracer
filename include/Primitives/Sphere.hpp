@@ -19,13 +19,13 @@ namespace Primitive {
         public:
 
             /**
-             * @brief Construct a new Sphere object
+             * @brief Construct a new Sphere object.
              *
              */
             Sphere();
 
             /**
-             * @brief Construct a new Sphere object
+             * @brief Construct a new Sphere object.
              *
              * @param origin center of the sphere
              * @param radius of the sphere
@@ -34,13 +34,13 @@ namespace Primitive {
             Sphere(const Math::Point3D& origin, double radius, std::shared_ptr<Material::IMaterial> material);
 
             /**
-             * @brief Destroy the Sphere object
+             * @brief Destroy the Sphere object.
              *
              */
             ~Sphere() = default;
 
             /**
-             * @brief return the hit point of the sphere
+             * @brief Return the hit point of the sphere.
              *
              * @param ray vector3D
              * @return Point3D
@@ -48,49 +48,54 @@ namespace Primitive {
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
 
             /**
-             * @brief compute the hit point color of a sphere
-             *
-             * @param hitPoint to compute the color
-             * @param lights container of lights
-             * @return Math::Point3D color
-             */
-            Math::Point3D computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
-
-            /**
              * @brief Set the Origin object
+             *
              * @param origin New origin to set
              */
             void setOrigin(Math::Point3D origin);
 
             /**
-             * @brief Set the Radius
+             * @brief Set the Radius.
+             *
              * @param radius New radius to set
              */
             void setRadius(double radius);
 
             /**
-             * @brief Set the Material
+             * @brief Set the Material.
+             *
              * @param material New material to set
              */
             void setMaterial(std::shared_ptr<Material::IMaterial> material);
 
             /**
-             * @brief Get the Origin object
+             * @brief Get the Origin object.
+             *
              * @return Origin of sphere
              */
             Math::Point3D getOrigin() const;
 
             /**
-             * @brief Get the Origin object
+             * @brief Get the Origin object.
+             *
              * @return Radius of sphere
              */
             double getRadius() const;
 
             /**
-             * @brief Get the Material object
+             * @brief Get the Material object.
+             *
              * @return Material of sphere
              */
-            std::shared_ptr<Material::IMaterial> getMaterial() const;
+            std::shared_ptr<Material::IMaterial> getMaterial() const override;
+
+            /**
+             * @brief Get the Normal of the object.
+             *
+             * @param hitPoint to compute the normal
+             * @return Math::Vector3D
+             */
+            Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const override;
 
         private:
             Math::Point3D                        _origin;

@@ -9,6 +9,9 @@
 SRC			= 	getInstance.cpp \
 				Directional.cpp \
 				../../../Math/Vector3D.cpp \
+				../../../Core/Primitives/Shadow.cpp \
+				../../../Core/Ray.cpp \
+				../../../Core/Color.cpp \
 
 OBJ			= $(SRC:.cpp=.o)
 

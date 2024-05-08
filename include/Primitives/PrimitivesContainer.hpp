@@ -11,6 +11,7 @@
 #include <memory>
 
 #include "IPrimitive.hpp"
+#include "Lights/LightsContainer.hpp"
 
 namespace Primitive {
 
@@ -19,45 +20,55 @@ namespace Primitive {
         public:
 
             /**
-             * @brief Construct a new Primitives Container object
+             * @brief Construct a new Primitives Container object.
              *
              */
             PrimitivesContainer() = default;
 
             /**
-             * @brief Destroy the Primitives Container object
+             * @brief Destroy the Primitives Container object.
              *
              */
             ~PrimitivesContainer() = default;
 
             /**
-             * @brief add a Primitive to the container
+             * @brief Add a Primitive to the container.
              *
              * @param primitive to add
              */
             void add(std::shared_ptr<Primitive::IPrimitive> primitive);
 
             /**
-             * @brief clear the container
+             * @brief Clear the container.
              *
              */
             void clear();
 
             /**
-             * @brief return the hit point of a ray in all the primitives
+             * @brief Return the color of hit point of a ray in all the primitives.
              *
              * @param ray Math::Vector3D
              * @param lights list of lights
-             * @return Math::Point3D
+             * @return Color
              */
-            Math::Point3D hitPoint(const Raytracer::Ray& ray, const Light::LightsContainer& lights) const;
+            Color getColorPoint(const Raytracer::Ray& ray, const Light::LightsContainer& lights) const;
 
             /**
-             * @brief Get the Primitives List object
+             * @brief Get the Primitives List object.
              *
              * @return std::vector<std::shared_ptr<Primitive::IPrimitive>>
              */
             std::vector<std::shared_ptr<Primitive::IPrimitive>> getPrimitivesList(void) const;
+
+            /**
+             * @brief Compute the color pixel of a primitive's hitpoint.
+             *
+             * @param primitive primitive to compute
+             * @param hitPoint to check
+             * @param lights list of lights
+             * @return Math::Point3D
+             */
+            Color computeColor(const std::shared_ptr<Primitive::IPrimitive>& primitive, const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const;
 
         private:
 

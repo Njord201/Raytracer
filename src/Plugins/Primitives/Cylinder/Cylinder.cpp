@@ -71,6 +71,10 @@ Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& ray) const
 
     Math::Point3D hitPoint = rayOrigin + rayDirection * hitValue;
 
+    Math::Vector3D rayOriginToHit = hitPoint - rayOrigin;
+    if (IS_INVERSE(rayOriginToHit.x(), rayDirection.x()) || IS_INVERSE(rayOriginToHit.y(), rayDirection.y()) || IS_INVERSE(rayOriginToHit.z(), rayDirection.z()))
+        return Math::Point3D(-1,-1,-1);
+
     return hitPoint;
 }
 
@@ -82,18 +86,6 @@ void Primitive::Cylinder::setOrigin(const Math::Point3D& origin)
 void Primitive::Cylinder::setRadius(double radius)
 {
     this->_radius = radius;
-}
-
-Math::Point3D Primitive::Cylinder::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
-{
-    Math::Vector3D cylinderNormal(hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
-
-    if (_material->getType() == Material::MaterialType::FlatColor) {
-        std::shared_ptr<FlatColor> cylinderFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
-        return lights.computeColor(cylinderNormal, hitPoint, Math::Point3D(cylinderFlatColor->getR(), cylinderFlatColor->getG(), cylinderFlatColor->getB()));
-    }
-    std::cout << "material not handle in cylinder" << std::endl;
-    return VOID_COLOR;
 }
 
 void Primitive::Cylinder::setAxis(const Primitive::Axis &axis)
@@ -109,4 +101,10 @@ std::shared_ptr<Material::IMaterial> Primitive::Cylinder::getMaterial() const
 void Primitive::Cylinder::setMaterial(std::shared_ptr<Material::IMaterial> material)
 {
     this->_material = material;
+}
+
+Math::Vector3D Primitive::Cylinder::getNormal(const Math::Vector3D& hitPoint) const
+{
+    //TODO : fix the computation of the cylinder normal
+    return Math::Vector3D (hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
 }

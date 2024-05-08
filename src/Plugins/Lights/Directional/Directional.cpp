@@ -59,13 +59,18 @@ Light::LightType Light::Directional::getType(void) const
     return Light::LightType::directionnal;
 }
 
-Math::Point3D Light::Directional::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const
+Color Light::Directional::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const
 {
-    (void) hitPoint;
-    Math::Vector3D pr = primitiveNormal / primitiveNormal.length();
+    Math::Vector3D normal = primitiveNormal / primitiveNormal.length();
     Math::Vector3D dir = getDirection() / getDirection().length();
 
-    color *= -pr.dot(dir);
+    // TODO : rewrite method to handle the position of the
+    // directional light
+
+    if (shadow.isShadow(dir * -1, hitPoint))
+        return Math::Point3D(0,0,0);
+
+    color *= -normal.dot(dir);
 
     if (color.x() < 0)
         color = Math::Point3D(0, color.y(), color.z());

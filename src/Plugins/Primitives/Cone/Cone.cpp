@@ -63,29 +63,11 @@ Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray) const
     if (_axis == Axis::Z && hitPoint.z() > _position.z())
         return Math::Point3D(-1,-1,-1);
 
+    Math::Vector3D rayOriginToHit = hitPoint - rayOrigin;
+    if (IS_INVERSE(rayOriginToHit.x(), rayDirection.x()) || IS_INVERSE(rayOriginToHit.y(), rayDirection.y()) || IS_INVERSE(rayOriginToHit.z(), rayDirection.z()))
+        return Math::Point3D(-1,-1,-1);
+
     return hitPoint;
-}
-
-Math::Point3D Primitive::Cone::computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
-{
-    Math::Vector3D hit = hitPoint;
-    Math::Vector3D coneNormal;
-
-    if (_axis == Axis::X)
-        coneNormal = Math::Vector3D(_position.x() + hit.x(), _position.y() - hit.y(), _position.z() - hit.z());
-    if (_axis == Axis::Y)
-        coneNormal = Math::Vector3D(_position.x() - hit.x(), _position.y() + hit.y(), _position.z() - hit.z());
-    if (_axis == Axis::Z)
-        coneNormal = Math::Vector3D(_position.x() - hit.x(), _position.y() - hit.y(), _position.z() + hit.z());
-    coneNormal = coneNormal / coneNormal.length();
-    coneNormal *= -1;
-
-    if (_material->getType() == Material::MaterialType::FlatColor) {
-        std::shared_ptr<FlatColor> ConeFlatColor = std::dynamic_pointer_cast<FlatColor>(getMaterial());
-        return lights.computeColor(coneNormal, hit, Math::Point3D(ConeFlatColor->getR(), ConeFlatColor->getG(), ConeFlatColor->getB()));
-    }
-    std::cout << "material not handle in Cone" << std::endl;
-    return Math::Point3D(0,0,0);
 }
 
 void Primitive::Cone::setOrigin(Math::Point3D origin)
@@ -126,4 +108,21 @@ Primitive::Axis Primitive::Cone::getAxis() const
 std::shared_ptr<Material::IMaterial> Primitive::Cone::getMaterial() const
 {
     return this->_material;
+}
+
+Math::Vector3D Primitive::Cone::getNormal(const Math::Vector3D& hitPoint) const
+{
+    Math::Vector3D coneNormal;
+    Math::Vector3D hit = hitPoint;
+
+    if (_axis == Axis::X)
+        coneNormal = Math::Vector3D(_position.x() + hit.x(), _position.y() - hit.y(), _position.z() - hit.z());
+    if (_axis == Axis::Y)
+        coneNormal = Math::Vector3D(_position.x() - hit.x(), _position.y() + hit.y(), _position.z() - hit.z());
+    if (_axis == Axis::Z)
+        coneNormal = Math::Vector3D(_position.x() - hit.x(), _position.y() - hit.y(), _position.z() + hit.z());
+    coneNormal = coneNormal / coneNormal.length();
+    coneNormal *= -1;
+
+    return coneNormal;
 }
