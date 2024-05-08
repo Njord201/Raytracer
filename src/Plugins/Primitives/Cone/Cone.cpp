@@ -18,13 +18,23 @@ _position(origin), _angle(angle), _axis(axis), _material(material){}
 
 Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray) const
 {
+    Math::Vector3D coneDirection = this->getVectorDirection();
+    coneDirection.rotateX(this->_rotation.x());
+    coneDirection.rotateY(this->_rotation.y());
+    coneDirection.rotateZ(this->_rotation.z());
+
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();
+    rayDirection.rotateX(this->_rotation.x());
+    rayDirection.rotateY(this->_rotation.y());
+    rayDirection.rotateZ(this->_rotation.z());
 
-    rayOrigin = Math::Point3D(rayOrigin.x(), rayOrigin.y(), rayOrigin.z());
-    rayDirection = Math::Point3D(rayDirection.x(), rayDirection.y(), rayDirection.z());
-
-    Math::Vector3D vectorConeToRay(rayOrigin.x() - _position.x(), rayOrigin.y() - _position.y(), rayOrigin.z() - _position.z());
+    Math::Vector3D vectorConeToRay(rayOrigin.x() - _position.x(),
+                                   rayOrigin.y() - _position.y(),
+                                   rayOrigin.z() - _position.z());
+    vectorConeToRay.rotateX(this->_rotation.x());
+    vectorConeToRay.rotateY(this->_rotation.y());
+    vectorConeToRay.rotateZ(this->_rotation.z());
 
     double a, b, c;
     double angle = _angle * M_PI / 180 / 2;
@@ -70,6 +80,19 @@ Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray) const
     return hitPoint;
 }
 
+Math::Vector3D Primitive::Cone::getVectorDirection(void) const
+{
+    if (_axis == Axis::X) {
+        return Math::Vector3D(1, 0, 0);
+    }
+    else if (_axis == Axis::Y) {
+        return Math::Vector3D(0, 1, 0);
+    }
+    else {
+        return Math::Vector3D(0, 0, 1);
+    }
+}
+
 void Primitive::Cone::setOrigin(Math::Point3D origin)
 {
     this->_position = origin;
@@ -88,6 +111,11 @@ void Primitive::Cone::setAxis(Axis axis)
 void Primitive::Cone::setMaterial(std::shared_ptr<Material::IMaterial> material)
 {
     this->_material = material;
+}
+
+void Primitive::Cone::setRotation(Math::Vector3D rotation)
+{
+    this->_rotation = rotation;
 }
 
 Math::Point3D Primitive::Cone::getOrigin() const
