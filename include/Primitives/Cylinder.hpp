@@ -91,7 +91,7 @@ namespace Primitive {
              * @param hitPoint to have the normal
              * @return Math::Vector3D
              */
-            Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const;
+            Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const override;
 
         private:
 
