@@ -82,7 +82,7 @@ void Raytracer::Renderer::renderScene()
                 Color hit = _primitives.getColorPoint(r, _lights);
 
                 SDL_SetRenderDrawColor(ren, hit.getR(), hit.getG(), hit.getB(), 255);
-                SDL_RenderDrawPoint(ren, x, y);
+                SDL_RenderDrawPoint(ren, imageWidth - x, imageHeight - y);
             }
         }
         SDL_RenderPresent(ren);
