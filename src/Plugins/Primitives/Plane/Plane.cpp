@@ -42,6 +42,10 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();
 
+    rayDirection.rotateX(this->_rotation.x());
+    rayDirection.rotateY(this->_rotation.y());
+    rayDirection.rotateZ(this->_rotation.z());
+
     if (_axis == X && rayDirection.x() == 0) {
         if (_position.x() == rayOrigin.x())
             return rayOrigin;
@@ -86,6 +90,11 @@ Primitive::Axis Primitive::Plane::getAxis(void) const
 void Primitive::Plane::setAxis(const Primitive::Axis &axis)
 {
     this->_axis = axis;
+}
+
+void Primitive::Plane::setRotation(Math::Vector3D rotation)
+{
+    this->_rotation = rotation;
 }
 
 Math::Point3D Primitive::Plane::getPosition(void) const

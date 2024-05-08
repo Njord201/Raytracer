@@ -313,6 +313,15 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 throw ParserException("Wrong Axis for plane");
             }
 
+            if (planeArray[index].exists("rotation")) {
+                libconfig::Setting& rotationSetting = planeArray[index].lookup("rotation");
+                const libconfig::Setting &rotationX = rotationSetting["x"];
+                const libconfig::Setting &rotationY = rotationSetting["y"];
+                const libconfig::Setting &rotationZ = rotationSetting["z"];
+                Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
+                newPlane->setRotation(rotation);
+            }
+
             std::string materialType;
             libconfig::Setting& material = planeArray[index].lookup("material");
             material.lookupValue("type", materialType);
