@@ -70,7 +70,12 @@ Color Light::Directional::computeColor(Math::Vector3D primitiveNormal, const Mat
     if (IS_INVERSE(rayOriginToHit.x(), dir.x()) || IS_INVERSE(rayOriginToHit.y(), dir.y()) || IS_INVERSE(rayOriginToHit.z(), dir.z()))
         return SHADOW_COLOR;
 
-    if (shadow.isShadow(dir * -1, hitPoint))
+    // Compute the Vector between the light and the hitpoint
+    // P(x) = O + D*t -> calcul a point on a vector
+    Math::Point3D pos = _position;
+    Math::Vector3D t = pos - hit / -1 * dir;
+
+    if (shadow.isShadow(dir * t.length() * -1, hitPoint))
         return SHADOW_COLOR;
 
     color *= -normal.dot(dir);
