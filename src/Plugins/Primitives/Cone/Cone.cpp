@@ -63,6 +63,10 @@ Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray) const
     if (_axis == Axis::Z && hitPoint.z() > _position.z())
         return Math::Point3D(-1,-1,-1);
 
+    Math::Vector3D rayOriginToHit = hitPoint - rayOrigin;
+    if (IS_INVERSE(rayOriginToHit.x(), rayDirection.x()) || IS_INVERSE(rayOriginToHit.y(), rayDirection.y()) || IS_INVERSE(rayOriginToHit.z(), rayDirection.z()))
+        return Math::Point3D(-1,-1,-1);
+
     return hitPoint;
 }
 
