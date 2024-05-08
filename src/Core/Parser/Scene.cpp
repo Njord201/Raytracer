@@ -164,6 +164,15 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             newSphere->setRadius(radius);
             newSphere->setOrigin(origin);
 
+            if (sphereArray[index].exists("rotation")) {
+                libconfig::Setting& rotationSetting = sphereArray[index].lookup("rotation");
+                const libconfig::Setting &rotationX = rotationSetting["x"];
+                const libconfig::Setting &rotationY = rotationSetting["y"];
+                const libconfig::Setting &rotationZ = rotationSetting["z"];
+                Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
+                newSphere->setRotation(rotation);
+            }
+
             std::string materialType;
             libconfig::Setting& material = sphereArray[index].lookup("material");
             material.lookupValue("type", materialType);

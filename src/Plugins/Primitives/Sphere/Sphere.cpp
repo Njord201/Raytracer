@@ -20,8 +20,14 @@ Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& ray) const
 {
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();
+    rayDirection.rotateX(this->_rotation.x());
+    rayDirection.rotateY(this->_rotation.y());
+    rayDirection.rotateZ(this->_rotation.z());
 
     Math::Vector3D vectorSphereToRay(rayOrigin.x() - _origin.x(), rayOrigin.y() - _origin.y(), rayOrigin.z() - _origin.z());
+    vectorSphereToRay.rotateX(this->_rotation.x());
+    vectorSphereToRay.rotateY(this->_rotation.y());
+    vectorSphereToRay.rotateZ(this->_rotation.z());
     double a = rayDirection.dot(rayDirection);
     double b = 2 * vectorSphereToRay.dot(rayDirection);
     double c = vectorSphereToRay.dot(vectorSphereToRay) - _radius * _radius;
@@ -76,3 +82,9 @@ Math::Vector3D Primitive::Sphere::getNormal(const Math::Vector3D& hitPoint) cons
 {
     return Math::Vector3D (hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
 }
+
+void Primitive::Sphere::setRotation(Math::Vector3D rotation)
+{
+    this->_rotation = rotation;
+}
+
