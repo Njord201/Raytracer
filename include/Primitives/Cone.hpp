@@ -49,15 +49,6 @@ namespace Primitive {
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
 
             /**
-             * @brief compute the hit point color of a Cone.
-             *
-             * @param hitPoint to compute the color
-             * @param lights container of lights
-             * @return Color color
-             */
-            Color computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const override;
-
-            /**
              * @brief Set the Origin object.
              *
              * @param origin New origin to set
@@ -112,6 +103,14 @@ namespace Primitive {
              * @return Material of Cone
              */
             std::shared_ptr<Material::IMaterial> getMaterial() const;
+
+            /**
+             * @brief Get the Normal of the object.
+             *
+             * @param hitPoint to have the normal
+             * @return Math::Vector3D
+             */
+            Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const override;
 
         private:
             Math::Point3D                        _position;

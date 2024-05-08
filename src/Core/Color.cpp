@@ -7,7 +7,7 @@
 
 #include "Color.hpp"
 
-Color::Color(int r, int g, int b) : _r(r), _g(g), _b(b)
+Color::Color(double r, double g, double b) : _r(r), _g(g), _b(b)
 {
 }
 
@@ -18,32 +18,32 @@ Color::Color(Math::Point3D color)
     _b = color.z();
 }
 
-void Color::setR(int r)
+void Color::setR(double r)
 {
     _r = r;
 }
 
-int Color::getR() const
+double Color::getR() const
 {
     return _r;
 }
 
-void Color::setG(int g)
+void Color::setG(double g)
 {
     _g = g;
 }
 
-int Color::getG() const
+double Color::getG() const
 {
     return _g;
 }
 
-void Color::setB(int b)
+void Color::setB(double b)
 {
     _b = b;
 }
 
-int Color::getB() const
+double Color::getB() const
 {
     return _b;
 }

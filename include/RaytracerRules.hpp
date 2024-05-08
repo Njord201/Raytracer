@@ -10,4 +10,5 @@
 
 #pragma once
 
+#define SHADOW_COLOR Color(0,0,0)
 #define VOID_COLOR Color(0, 0, 0)

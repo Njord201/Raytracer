@@ -6,6 +6,7 @@
 */
 
 #include "Lights/Directional.hpp"
+#include "RaytracerRules.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -59,18 +60,20 @@ Light::LightType Light::Directional::getType(void) const
     return Light::LightType::directionnal;
 }
 
-Math::Point3D Light::Directional::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color) const
+Color Light::Directional::computeColor(Math::Vector3D primitiveNormal, const Math::Point3D& hitPoint, Math::Point3D color, const Primitives::Shadow& shadow) const
 {
-    (void) hitPoint;
-    Math::Vector3D pr = primitiveNormal / primitiveNormal.length();
+    Math::Vector3D normal = primitiveNormal / primitiveNormal.length();
     Math::Vector3D dir = getDirection() / getDirection().length();
 
     Math::Vector3D hit = hitPoint;
     Math::Vector3D rayOriginToHit = hit - _position;
     if (IS_INVERSE(rayOriginToHit.x(), dir.x()) || IS_INVERSE(rayOriginToHit.y(), dir.y()) || IS_INVERSE(rayOriginToHit.z(), dir.z()))
-        return Math::Point3D(0,0,0);
+        return SHADOW_COLOR;
 
-    color *= -pr.dot(dir);
+    if (shadow.isShadow(dir * -1, hitPoint))
+        return SHADOW_COLOR;
+
+    color *= -normal.dot(dir);
 
     if (color.x() < 0)
         color = Math::Point3D(0, color.y(), color.z());

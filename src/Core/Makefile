@@ -12,6 +12,7 @@ SRC			=	Parser/Scene.cpp \
 				Parser/DLLoader.cpp \
 				\
 				Primitives/PrimitivesContainer.cpp \
+				Primitives/Shadow.cpp \
 				\
 				Lights/LightsContainer.cpp \
 				\

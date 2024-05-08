@@ -20,7 +20,7 @@ class Color {
          * @param g green value
          * @param b blue value
          */
-        Color(int r, int g, int b);
+        Color(double r, double g, double b);
 
         /**
          * @brief Construct a new Color object form a Point3D.
@@ -46,46 +46,46 @@ class Color {
          *
          * @param r red value
          */
-        void setR(int r);
+        void setR(double r);
 
         /**
          * @brief Get the red value.
          *
-         * @return int - red value
+         * @return double - red value
          */
-        int getR() const;
+        double getR() const;
 
         /**
          * @brief Set the green value.
          *
          * @param g green value
          */
-        void setG(int g);
+        void setG(double g);
 
         /**
          * @brief Get the green value.
          *
-         * @return int - green value
+         * @return double - green value
          */
-        int getG() const;
+        double getG() const;
 
         /**
          * @brief Set the blue value.
          *
          * @param b blue value
          */
-        void setB(int b);
+        void setB(double b);
 
         /**
          * @brief Get the blue value.
          *
-         * @return int - blue value
+         * @return double - blue value
          */
-        int getB() const;
+        double getB() const;
 
     private:
-        int _r;
-        int _g;
-        int _b;
+        double _r;
+        double _g;
+        double _b;
 
 };

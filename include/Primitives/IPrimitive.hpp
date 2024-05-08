@@ -9,7 +9,9 @@
 
 #include "Ray.hpp"
 #include "Math/Vector3D.hpp"
-#include "Lights/LightsContainer.hpp"
+#include "Materials/IMaterial.hpp"
+
+#include <memory>
 
 #define IS_HIT(D) ((D >= 0) ? true : false)
 
@@ -40,12 +42,18 @@ namespace Primitive {
             virtual Math::Point3D hitPoint(const Raytracer::Ray& ray) const = 0;
 
             /**
-             * @brief compute the hit point color of a primitive
+             * @brief Get the Normal of the object.
              *
-             * @param hitPoint to compute the color
-             * @param lights container of lights
-             * @return Color color
+             * @param hitPoint to compute the normal
+             * @return Math::Vector3D
              */
-            virtual Color computeColor(const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const = 0;
+            virtual Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const = 0;
+
+            /**
+             * @brief Get the Material object.
+             *
+             * @return std::shared_ptr<Material::IMaterial>
+             */
+            virtual std::shared_ptr<Material::IMaterial> getMaterial() const = 0;
     };
 };
