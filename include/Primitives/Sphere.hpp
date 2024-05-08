@@ -56,30 +56,35 @@ namespace Primitive {
 
             /**
              * @brief Set the Radius.
+             *
              * @param radius New radius to set
              */
             void setRadius(double radius);
 
             /**
              * @brief Set the Material.
+             *
              * @param material New material to set
              */
             void setMaterial(std::shared_ptr<Material::IMaterial> material);
 
             /**
              * @brief Get the Origin object.
+             *
              * @return Origin of sphere
              */
             Math::Point3D getOrigin() const;
 
             /**
              * @brief Get the Origin object.
+             *
              * @return Radius of sphere
              */
             double getRadius() const;
 
             /**
              * @brief Get the Material object.
+             *
              * @return Material of sphere
              */
             std::shared_ptr<Material::IMaterial> getMaterial() const override;

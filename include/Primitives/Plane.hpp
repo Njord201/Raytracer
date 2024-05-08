@@ -76,12 +76,14 @@ namespace Primitive {
 
             /**
              * @brief Get the Material object.
+             *
              * @return Material of plane
              */
             std::shared_ptr<Material::IMaterial> getMaterial() const override;
 
             /**
              * @brief Set the Material.
+             *
              * @param material New material to set
              */
             void setMaterial(std::shared_ptr<Material::IMaterial> material);
