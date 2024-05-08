@@ -56,7 +56,7 @@ Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& ray) const
 {
     Math::Point3D rayOrigin = getRayOriginByAxis(ray, _axis);
     Math::Vector3D rayDirection = getRayDirectionByAxis(ray, _axis);
-
+    //TODO : fix the computation of the cylinder normale
     Math::Vector3D vectorCylinderToRay(rayOrigin.x() - _origin.x(), rayOrigin.y() - _origin.y(), rayOrigin.z() - _origin.z());
     double a = rayDirection.dot(rayDirection);
     double b = 2 * vectorCylinderToRay.dot(rayDirection);
