@@ -65,6 +65,11 @@ Math::Point3D Light::Directional::computeColor(Math::Vector3D primitiveNormal, c
     Math::Vector3D pr = primitiveNormal / primitiveNormal.length();
     Math::Vector3D dir = getDirection() / getDirection().length();
 
+    Math::Vector3D hit = hitPoint;
+    Math::Vector3D rayOriginToHit = hit - _position;
+    if (IS_INVERSE(rayOriginToHit.x(), dir.x()) || IS_INVERSE(rayOriginToHit.y(), dir.y()) || IS_INVERSE(rayOriginToHit.z(), dir.z()))
+        return Math::Point3D(0,0,0);
+
     color *= -pr.dot(dir);
 
     if (color.x() < 0)

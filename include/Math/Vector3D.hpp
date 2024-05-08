@@ -7,6 +7,8 @@
 
 #pragma once
 
+#define IS_INVERSE(X,Y) (((X > 0 && Y < 0) || (X < 0 && Y > 0)) ? true : false)
+
 namespace Math {
 
     /**
