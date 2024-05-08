@@ -211,6 +211,14 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             } else {
                 throw ParserException("Wrong Axis for Cylinder");
             }
+            if (cylinderArray[index].exists("rotation")) {
+                libconfig::Setting& rotationSetting = cylinderArray[index].lookup("rotation");
+                const libconfig::Setting &rotationX = rotationSetting["x"];
+                const libconfig::Setting &rotationY = rotationSetting["y"];
+                const libconfig::Setting &rotationZ = rotationSetting["z"];
+                Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
+                newCylinder->setRotation(rotation);
+            }
             std::string materialType;
             libconfig::Setting& material = cylinderArray[index].lookup("material");
             material.lookupValue("type", materialType);

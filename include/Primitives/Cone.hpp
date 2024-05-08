@@ -119,13 +119,6 @@ namespace Primitive {
              */
             Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const override;
 
-            /**
-             * @brief Get the Vector Direction object.
-             * 
-             * @return Math::Vector3D Direction to return
-             */
-            Math::Vector3D getVectorDirection(void) const;
-
         private:
             Math::Vector3D                       _rotation;
             Math::Point3D                        _position;

@@ -72,6 +72,13 @@ namespace Primitive {
             void setAxis(const Primitive::Axis &axis);
 
             /**
+             * @brief Set the Rotation object.
+             * 
+             * @param rotation rotation of cone
+             */
+            void setRotation(Math::Vector3D rotation);
+
+            /**
              * @brief Get the Material object.
              *
              * @return Material of cylinder
@@ -94,10 +101,10 @@ namespace Primitive {
             Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const override;
 
         private:
-
-            Math::Point3D _origin;
-            double _radius;
-            Primitive::Axis _axis;
+            Math::Vector3D                       _rotation;
+            Math::Point3D                        _origin;
+            double                               _radius;
+            Primitive::Axis                      _axis;
             std::shared_ptr<Material::IMaterial> _material;
     };
 };
