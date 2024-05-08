@@ -14,7 +14,6 @@
 #include <memory>
 
 #define IS_HIT(D) ((D >= 0) ? true : false)
-#define IS_INVERSE(X,Y) (((X > 0 && Y < 0) || (X < 0 && Y > 0)) ? true : false)
 
 namespace Primitive {
 
