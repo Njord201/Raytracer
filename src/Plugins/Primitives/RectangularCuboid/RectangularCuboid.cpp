@@ -14,15 +14,17 @@ Primitive::RectangularCuboid::RectangularCuboid() {
     _minX = 0;
     _minY = 0;
     _minZ = 0;
+    _rotation = Math::Vector3D(0, 0, 0);
 }
 
-Primitive::RectangularCuboid::RectangularCuboid(double maxX, double maxY, double maxZ, double minX, double minY, double minZ) {
+Primitive::RectangularCuboid::RectangularCuboid(double maxX, double maxY, double maxZ, double minX, double minY, double minZ, std::shared_ptr<Material::IMaterial> material) {
     _maxX = maxX;
     _maxY = maxY;
     _maxZ = maxZ;
     _minX = minX;
     _minY = minY;
     _minZ = minZ;
+    _material = material;
 }
 
 Math::Point3D Primitive::RectangularCuboid::checkRayReachPrimitive(double t, Math::Vector3D vDir, Math::Point3D origin) const
@@ -40,6 +42,12 @@ Math::Point3D Primitive::RectangularCuboid::hitPoint(const Raytracer::Ray& ray) 
 {
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();
+    rayOrigin.rotateX(this->_rotation.x());
+    rayOrigin.rotateY(this->_rotation.y());
+    rayOrigin.rotateZ(this->_rotation.z());
+    rayDirection.rotateX(this->_rotation.x());
+    rayDirection.rotateY(this->_rotation.y());
+    rayDirection.rotateZ(this->_rotation.z());
 
     if (rayDirection.x() != 0) {
         double tXmin = (_minX - rayOrigin.x()) / rayDirection.x();
@@ -160,4 +168,9 @@ Math::Vector3D Primitive::RectangularCuboid::getNormal(const Math::Vector3D& hit
     if (hitPoint.z() == _minZ)
         return Math::Vector3D(0, 0, -1);
     return Math::Vector3D(-1, -1, -1);
+}
+
+void Primitive::RectangularCuboid::setRotation(Math::Vector3D rotation)
+{
+    _rotation = rotation;
 }

@@ -29,7 +29,7 @@ namespace Primitive {
              * @param minY double min y of the rectangular cuboid
              * @param minZ double min z of the rectangular cuboid
              */
-            RectangularCuboid(double maxX, double maxY, double maxZ, double minX, double minY, double minZ);
+            RectangularCuboid(double maxX, double maxY, double maxZ, double minX, double minY, double minZ, std::shared_ptr<Material::IMaterial> material);
 
             /**
              * @brief Destroy the RectangularCuboid object
@@ -151,6 +151,13 @@ namespace Primitive {
              */
             Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const override;
 
+            /**
+             * @brief Set the Rotation of the object.
+             *
+             * @param rotation - Rotation value
+             */
+            void setRotation(Math::Vector3D rotation);
+
         private:
 
             /**
@@ -170,6 +177,7 @@ namespace Primitive {
             double _minY;
             double _maxZ;
             double _minZ;
-            std::shared_ptr<Material::IMaterial> _material;
+            std::shared_ptr<Material::IMaterial>    _material;
+            Math::Vector3D                          _rotation;
     };
 };

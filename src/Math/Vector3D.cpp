@@ -51,10 +51,10 @@ void Math::Vector3D::translate(const Vector3D& ptr)
 
 void Math::Vector3D::rotateZ(double degrees) {
     double radians = degrees * M_PI / 180.0;
- 
+
     double cos_theta = std::cos(radians);
     double sin_theta = std::sin(radians);
- 
+
     double x = this->_vector[0];
     double y = this->_vector[1];
     double z = this->_vector[2];
@@ -66,10 +66,10 @@ void Math::Vector3D::rotateZ(double degrees) {
 
 void Math::Vector3D::rotateY(double degrees) {
     double radians = degrees * M_PI / 180.0;
- 
+
     double cos_theta = std::cos(radians);
     double sin_theta = std::sin(radians);
- 
+
     double x = this->_vector[0];
     double y = this->_vector[1];
     double z = this->_vector[2];
@@ -78,13 +78,13 @@ void Math::Vector3D::rotateY(double degrees) {
     this->_vector[1] = y;
     this->_vector[2] = z * cos_theta - x * sin_theta;
 }
- 
+
 void Math::Vector3D::rotateX(double degrees) {
     double radians = degrees * M_PI / 180.0;
- 
+
     double cos_theta = std::cos(radians);
     double sin_theta = std::sin(radians);
- 
+
     double x = this->_vector[0];
     double y = this->_vector[1];
     double z = this->_vector[2];
