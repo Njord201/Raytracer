@@ -79,7 +79,6 @@ void Math::Vector3D::rotateY(double degrees) {
     this->_vector[2] = z * cos_theta - x * sin_theta;
 }
  
- 
 void Math::Vector3D::rotateX(double degrees) {
     double radians = degrees * M_PI / 180.0;
  
