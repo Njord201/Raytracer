@@ -16,6 +16,7 @@ Primitive::Plane::Plane()
     _position = Math::Point3D(0, 0, 0);
     _axis = X;
     _material = nullptr;
+    _rotation = Math::Point3D(0,0,0);
 }
 
 Primitive::Plane::Plane(Primitive::Axis axis, double position, std::shared_ptr<Material::IMaterial> material)
@@ -41,6 +42,13 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
 {
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();
+
+    rayOrigin.rotateX(this->_rotation.x());
+    rayOrigin.rotateY(this->_rotation.y());
+    rayOrigin.rotateZ(this->_rotation.z());
+    rayDirection.rotateX(this->_rotation.x());
+    rayDirection.rotateY(this->_rotation.y());
+    rayDirection.rotateZ(this->_rotation.z());
 
     if (_axis == X && rayDirection.x() == 0) {
         if (_position.x() == rayOrigin.x())
@@ -75,7 +83,11 @@ Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
     if (t < 0)
         return Math::Point3D(-1, -1, -1);
 
-    return rayOrigin + rayDirection * t;
+    Math::Point3D hitpoint = rayOrigin + rayDirection * t;
+    hitpoint.rotateX(this->_rotation.x());
+    hitpoint.rotateY(this->_rotation.y());
+    hitpoint.rotateZ(this->_rotation.z());
+    return hitpoint;
 }
 
 Primitive::Axis Primitive::Plane::getAxis(void) const
@@ -86,6 +98,11 @@ Primitive::Axis Primitive::Plane::getAxis(void) const
 void Primitive::Plane::setAxis(const Primitive::Axis &axis)
 {
     this->_axis = axis;
+}
+
+void Primitive::Plane::setRotation(Math::Vector3D rotation)
+{
+    this->_rotation = rotation;
 }
 
 Math::Point3D Primitive::Plane::getPosition(void) const

@@ -83,6 +83,14 @@ class Color {
          */
         double getB() const;
 
+        /**
+         * @brief Check if the rgb is valid (0 <= rgb <= 255).
+         *
+         * @return true
+         * @return false
+         */
+        bool isWrongColor() const;
+
     private:
         double _r;
         double _g;

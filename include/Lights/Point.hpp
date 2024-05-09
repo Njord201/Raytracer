@@ -55,6 +55,13 @@ class Light::Point : public Light::ILight {
         void setPosition(Math::Point3D position);
 
         /**
+         * @brief Set the Color object.
+         *
+         * @param rgb color
+         */
+        void setColor(const Color& rgb);
+
+        /**
          * @brief Get the Diffuse Multiplier number of Point light.
          *
          * @return double
@@ -76,6 +83,13 @@ class Light::Point : public Light::ILight {
         Light::LightType getType(void) const override;
 
         /**
+         * @brief Get the Color object.
+         *
+         * @return Color
+         */
+        Color getColor(void) const override;
+
+        /**
          * @brief Compute the color point with ponctual light.
          *
          * @param primitiveNormal normal to the hitpoint
@@ -90,4 +104,5 @@ class Light::Point : public Light::ILight {
     private:
         Math::Point3D   _position;
         double          _diffuseMultiplier;
+        Color           _color;
 };

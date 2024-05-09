@@ -11,12 +11,14 @@ Light::Ambient::Ambient()
 {
     this->_multiplier = 0.0;
     this->_diffuseMultiplier = 0.0;
+    _color = Color(-1, -1, -1);
 }
 
 Light::Ambient::Ambient(double multiplier, double diffuseMultiplier)
 {
     this->_multiplier = multiplier;
     this->_diffuseMultiplier = diffuseMultiplier;
+    _color = Color(-1, -1, -1);
 }
 
 double Light::Ambient::getMultiplier(void) const
@@ -51,4 +53,9 @@ Color Light::Ambient::computeColor(Math::Vector3D primitiveNormal, const Math::P
     (void) primitiveNormal;
     color *= _multiplier;
     return color;
+}
+
+Color Light::Ambient::getColor(void) const
+{
+    return _color;
 }

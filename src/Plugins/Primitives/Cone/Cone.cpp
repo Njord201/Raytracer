@@ -11,20 +11,28 @@
 
 using std::sqrt;
 
-Primitive::Cone::Cone() : _position(0,0,0), _angle(25), _axis(Axis::X), _material(nullptr){}
+Primitive::Cone::Cone() : _rotation(0,0,0), _position(0,0,0), _angle(25), _axis(Axis::X), _material(nullptr) {}
 
 Primitive::Cone::Cone(const Math::Point3D& origin, double angle, Axis axis, std::shared_ptr<Material::IMaterial> material) :
-_position(origin), _angle(angle), _axis(axis), _material(material){}
+_position(origin), _angle(angle), _axis(axis), _material(material) {}
 
 Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray) const
 {
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();
+    rayOrigin.rotateX(this->_rotation.x());
+    rayOrigin.rotateY(this->_rotation.y());
+    rayOrigin.rotateZ(this->_rotation.z());
+    rayDirection.rotateX(this->_rotation.x());
+    rayDirection.rotateY(this->_rotation.y());
+    rayDirection.rotateZ(this->_rotation.z());
 
-    rayOrigin = Math::Point3D(rayOrigin.x(), rayOrigin.y(), rayOrigin.z());
-    rayDirection = Math::Point3D(rayDirection.x(), rayDirection.y(), rayDirection.z());
-
-    Math::Vector3D vectorConeToRay(rayOrigin.x() - _position.x(), rayOrigin.y() - _position.y(), rayOrigin.z() - _position.z());
+    Math::Vector3D vectorConeToRay(rayOrigin.x() - _position.x(),
+                                   rayOrigin.y() - _position.y(),
+                                   rayOrigin.z() - _position.z());
+    vectorConeToRay.rotateX(this->_rotation.x());
+    vectorConeToRay.rotateY(this->_rotation.y());
+    vectorConeToRay.rotateZ(this->_rotation.z());
 
     double a, b, c;
     double angle = _angle * M_PI / 180 / 2;
@@ -67,6 +75,9 @@ Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray) const
     if (IS_INVERSE(rayOriginToHit.x(), rayDirection.x()) || IS_INVERSE(rayOriginToHit.y(), rayDirection.y()) || IS_INVERSE(rayOriginToHit.z(), rayDirection.z()))
         return Math::Point3D(-1,-1,-1);
 
+    hitPoint.rotateX(this->_rotation.x());
+    hitPoint.rotateY(this->_rotation.y());
+    hitPoint.rotateZ(this->_rotation.z());
     return hitPoint;
 }
 
@@ -88,6 +99,11 @@ void Primitive::Cone::setAxis(Axis axis)
 void Primitive::Cone::setMaterial(std::shared_ptr<Material::IMaterial> material)
 {
     this->_material = material;
+}
+
+void Primitive::Cone::setRotation(Math::Vector3D rotation)
+{
+    this->_rotation = rotation;
 }
 
 Math::Point3D Primitive::Cone::getOrigin() const

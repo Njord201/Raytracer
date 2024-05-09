@@ -129,6 +129,10 @@ void Raytracer::Renderer::renderFinalScene()
                 auto pixel_center = viewUpper_left + (pixelSizeU * (invertedX + 0.5)) + (pixelSizeV * (y + 0.5));
                 auto rayDirection = _camera.getOrigin() - pixel_center;
 
+                rayDirection.rotateX(this->_camera.getRotation().x());
+                rayDirection.rotateY(this->_camera.getRotation().y());
+                rayDirection.rotateZ(this->_camera.getRotation().z());
+
                 Raytracer::Ray r(_camera.getOrigin(), rayDirection);
                 Color hit = _primitives.getColorPoint(r, _lights);
                 writeColor(stream, hit);

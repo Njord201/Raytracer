@@ -16,6 +16,7 @@ Light::Directional::Directional()
     this->_position = Math::Point3D(0, 0, 0);
     this->_direction = Math::Vector3D(0, 0, 0);
     this->_diffuseMultiplier = 0.0;
+    this->_color = Color(-1, -1, -1);
 }
 
 Light::Directional::Directional(Math::Point3D position, Math::Vector3D direction, double diffuseMultiplier)
@@ -23,6 +24,7 @@ Light::Directional::Directional(Math::Point3D position, Math::Vector3D direction
     this->_position = position;
     this->_direction = direction;
     this->_diffuseMultiplier = diffuseMultiplier;
+    this->_color = Color(-1, -1, -1);
 }
 
 Math::Point3D Light::Directional::getPosition(void) const
@@ -87,5 +89,16 @@ Color Light::Directional::computeColor(Math::Vector3D primitiveNormal, const Mat
     if (color.z() < 0)
         color = Math::Point3D(color.x(), color.y(), 0);
 
+
     return color;
+}
+
+void Light::Directional::setColor(const Color& rgb)
+{
+    _color = rgb;
+}
+
+Color Light::Directional::getColor(void) const
+{
+    return _color;
 }

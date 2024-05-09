@@ -164,6 +164,15 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             newSphere->setRadius(radius);
             newSphere->setOrigin(origin);
 
+            if (sphereArray[index].exists("rotation")) {
+                libconfig::Setting& rotationSetting = sphereArray[index].lookup("rotation");
+                const libconfig::Setting &rotationX = rotationSetting["x"];
+                const libconfig::Setting &rotationY = rotationSetting["y"];
+                const libconfig::Setting &rotationZ = rotationSetting["z"];
+                Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
+                newSphere->setRotation(rotation);
+            }
+
             std::string materialType;
             libconfig::Setting& material = sphereArray[index].lookup("material");
             material.lookupValue("type", materialType);
@@ -181,7 +190,6 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 newOrigin.translate(trans);
                 newSphere->setOrigin(newOrigin);
             }
-
             this->_primitives.add(newSphere);
         }
     }
@@ -212,6 +220,16 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             } else {
                 throw ParserException("Wrong Axis for Cylinder");
             }
+
+            if (cylinderArray[index].exists("rotation")) {
+                libconfig::Setting& rotationSetting = cylinderArray[index].lookup("rotation");
+                const libconfig::Setting &rotationX = rotationSetting["x"];
+                const libconfig::Setting &rotationY = rotationSetting["y"];
+                const libconfig::Setting &rotationZ = rotationSetting["z"];
+                Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
+                newCylinder->setRotation(rotation);
+            }
+            
             std::string materialType;
             libconfig::Setting& material = cylinderArray[index].lookup("material");
             material.lookupValue("type", materialType);
@@ -251,6 +269,15 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 newCone->setAxis(Primitive::Axis::Z);
             } else {
                 throw ParserException("Wrong Axis for plane");
+            }
+
+            if (coneArray[index].exists("rotation")) {
+                libconfig::Setting& rotationSetting = coneArray[index].lookup("rotation");
+                const libconfig::Setting &rotationX = rotationSetting["x"];
+                const libconfig::Setting &rotationY = rotationSetting["y"];
+                const libconfig::Setting &rotationZ = rotationSetting["z"];
+                Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
+                newCone->setRotation(rotation);
             }
 
             std::string materialType;
@@ -295,6 +322,15 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 newPlane->setPosition(Math::Point3D (0, 0, _parseValue(planeArray[index]["position"])));
             } else {
                 throw ParserException("Wrong Axis for plane");
+            }
+
+            if (planeArray[index].exists("rotation")) {
+                libconfig::Setting& rotationSetting = planeArray[index].lookup("rotation");
+                const libconfig::Setting &rotationX = rotationSetting["x"];
+                const libconfig::Setting &rotationY = rotationSetting["y"];
+                const libconfig::Setting &rotationZ = rotationSetting["z"];
+                Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
+                newPlane->setRotation(rotation);
             }
 
             std::string materialType;
@@ -391,6 +427,12 @@ int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
                 newPoint->setPosition(newOrigin);
             }
 
+            if (lightArrayPoint[index].exists("color")) {
+                libconfig::Setting& colorSetting = lightArrayPoint[index].lookup("color");
+                Color color(_parseValue(colorSetting["r"]), _parseValue(colorSetting["g"]), _parseValue(colorSetting["b"]));
+                newPoint->setColor(color);
+            }
+
             this->_lights.add(newPoint);
         }
     }
@@ -422,6 +464,12 @@ int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
                 Math::Vector3D newOrigin = newDirectional->getPosition();
                 newOrigin.translate(trans);
                 newDirectional->setPosition(newOrigin);
+            }
+
+            if (lightArrayDirectional[index].exists("color")) {
+                libconfig::Setting& colorSetting = lightArrayDirectional[index].lookup("color");
+                Color color(_parseValue(colorSetting["r"]), _parseValue(colorSetting["g"]), _parseValue(colorSetting["b"]));
+                newDirectional->setColor(color);
             }
 
             this->_lights.add(newDirectional);
