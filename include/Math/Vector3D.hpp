@@ -87,21 +87,21 @@ namespace Math {
             /**
              * @brief Rotate a vector with an angle on the axis Z.
              * 
-             * @param degrees how many to rotate
+             * @param degrees - Rotation value
              */
             void rotateZ(double degrees);
 
             /**
              * @brief Rotate a vector with an angle on the axis Y.
              * 
-             * @param degrees how many to rotate
+             * @param degrees - Rotation value
              */
             void rotateY(double degrees);
 
             /**
              * @brief Rotate a vector with an angle on the axis X.
              * 
-             * @param degrees how many to rotate
+             * @param degrees - Rotation value
              */
             void rotateX(double degrees);
 
