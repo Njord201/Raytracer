@@ -85,14 +85,14 @@ namespace Math {
             void translate(const Vector3D& ptr);
 
             /**
-             * @brief Rotate a vector with an angle on the axis Z
+             * @brief Rotate a vector with an angle on the axis Z.
              * 
              * @param degrees how many to rotate
              */
             void rotateZ(double degrees);
 
             /**
-             * @brief Rotate a vector with an angle.
+             * @brief Rotate a vector with an angle on the axis Y.
              * 
              * @param degrees how many to rotate
              */
