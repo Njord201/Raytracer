@@ -1,0 +1,54 @@
+\hypertarget{classPrimitives_1_1Shadow}{}\doxysection{Primitives\+::Shadow Class Reference}
+\label{classPrimitives_1_1Shadow}\index{Primitives::Shadow@{Primitives::Shadow}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPrimitives_1_1Shadow_a337c6e06c4af5d2eeeea94473f8fc0d3}{Shadow}} (const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPrimitive_1_1IPrimitive}{Primitive\+::\+IPrimitive}} $>$$>$ \&primitives)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPrimitives_1_1Shadow}{Shadow}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPrimitives_1_1Shadow_ab2f63296b08296816c89f5e926526171}\label{classPrimitives_1_1Shadow_ab2f63296b08296816c89f5e926526171}} 
+\mbox{\hyperlink{classPrimitives_1_1Shadow_ab2f63296b08296816c89f5e926526171}{$\sim$\+Shadow}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classPrimitives_1_1Shadow}{Shadow}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPrimitives_1_1Shadow_a46560ef47b4282ba7f20bc33b0eeed5a}{is\+Shadow}} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \&vector\+Light\+To\+Point, const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&hit\+Point) const
+\begin{DoxyCompactList}\small\item\em Return if there is a shadow. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPrimitives_1_1Shadow_a337c6e06c4af5d2eeeea94473f8fc0d3}\label{classPrimitives_1_1Shadow_a337c6e06c4af5d2eeeea94473f8fc0d3}} 
+\index{Primitives::Shadow@{Primitives::Shadow}!Shadow@{Shadow}}
+\index{Shadow@{Shadow}!Primitives::Shadow@{Primitives::Shadow}}
+\doxysubsubsection{\texorpdfstring{Shadow()}{Shadow()}}
+{\footnotesize\ttfamily Primitives\+::\+Shadow\+::\+Shadow (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPrimitive_1_1IPrimitive}{Primitive\+::\+IPrimitive}} $>$$>$ \&}]{primitives }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classPrimitives_1_1Shadow}{Shadow}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em primitives} & list of primitives \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPrimitives_1_1Shadow_a46560ef47b4282ba7f20bc33b0eeed5a}\label{classPrimitives_1_1Shadow_a46560ef47b4282ba7f20bc33b0eeed5a}} 
+\index{Primitives::Shadow@{Primitives::Shadow}!isShadow@{isShadow}}
+\index{isShadow@{isShadow}!Primitives::Shadow@{Primitives::Shadow}}
+\doxysubsubsection{\texorpdfstring{isShadow()}{isShadow()}}
+{\footnotesize\ttfamily bool Primitives\+::\+Shadow\+::is\+Shadow (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \&}]{vector\+Light\+To\+Point,  }\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&}]{hit\+Point }\end{DoxyParamCaption}) const}
+
+
+
+Return if there is a shadow. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Primitives/Shadow.\+hpp\item 
+src/\+Core/\+Primitives/Shadow.\+cpp\end{DoxyCompactItemize}

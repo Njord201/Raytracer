@@ -1,0 +1,249 @@
+\hypertarget{classPrimitive_1_1Cone}{}\doxysection{Primitive\+::Cone Class Reference}
+\label{classPrimitive_1_1Cone}\index{Primitive::Cone@{Primitive::Cone}}
+Inheritance diagram for Primitive\+::Cone\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPrimitive_1_1Cone}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPrimitive_1_1Cone_a3a89bb15bb8e0b6f93b873b3193a8af1}\label{classPrimitive_1_1Cone_a3a89bb15bb8e0b6f93b873b3193a8af1}} 
+\mbox{\hyperlink{classPrimitive_1_1Cone_a3a89bb15bb8e0b6f93b873b3193a8af1}{Cone}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPrimitive_1_1Cone_ac70f60cef0dad522261c046c75f6cf0c}{Cone}} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&origin, double radius, Axis axis, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial_1_1IMaterial}{Material\+::\+IMaterial}} $>$ material)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPrimitive_1_1Cone_a41095b0618bd1084b4be783d53ba6b77}\label{classPrimitive_1_1Cone_a41095b0618bd1084b4be783d53ba6b77}} 
+\mbox{\hyperlink{classPrimitive_1_1Cone_a41095b0618bd1084b4be783d53ba6b77}{$\sim$\+Cone}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \mbox{\hyperlink{classPrimitive_1_1Cone_afc2605c0e3d8152b61ebc346cd2ae3f5}{hit\+Point}} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray) const override
+\begin{DoxyCompactList}\small\item\em return the hit point of the \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPrimitive_1_1Cone_abedcb6a71787666adb5cf8e1febe251d}{set\+Origin}} (\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} origin)
+\begin{DoxyCompactList}\small\item\em Set the Origin object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPrimitive_1_1Cone_a132554f98b809ab4081769f71a954c09}{set\+Angle}} (double angle)
+\begin{DoxyCompactList}\small\item\em Set the Angle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPrimitive_1_1Cone_a14b48ef2f73fb1053f83f88905a00126}{set\+Axis}} (Axis axis)
+\begin{DoxyCompactList}\small\item\em Set the Axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPrimitive_1_1Cone_a6c7aa5a32a2774d8af43d8d8f2fb7e3d}{set\+Material}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial_1_1IMaterial}{Material\+::\+IMaterial}} $>$ material)
+\begin{DoxyCompactList}\small\item\em Set the Material. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPrimitive_1_1Cone_adf1605e0f7cf3099a37481e7a0cf53cd}{set\+Rotation}} (\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} rotation)
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \mbox{\hyperlink{classPrimitive_1_1Cone_a5d749a21b7794178e521d40c9ede2565}{get\+Origin}} () const
+\begin{DoxyCompactList}\small\item\em Get the Origin object. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPrimitive_1_1Cone_a10bd09dfd195a895c2fecf7017359fc2}{get\+Angle}} () const
+\begin{DoxyCompactList}\small\item\em Get the Angle object. \end{DoxyCompactList}\item 
+Axis \mbox{\hyperlink{classPrimitive_1_1Cone_a21e8b2208f6152a56ed92c50aaba67de}{get\+Axis}} () const
+\begin{DoxyCompactList}\small\item\em Get the Axis object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial_1_1IMaterial}{Material\+::\+IMaterial}} $>$ \mbox{\hyperlink{classPrimitive_1_1Cone_a1fbebd6db407bff9642ffef8cdbe9855}{get\+Material}} () const
+\begin{DoxyCompactList}\small\item\em Get the Material object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \mbox{\hyperlink{classPrimitive_1_1Cone_a49fbb023101926937ded505e2ae8150f}{get\+Normal}} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \&\mbox{\hyperlink{classPrimitive_1_1Cone_afc2605c0e3d8152b61ebc346cd2ae3f5}{hit\+Point}}) const override
+\begin{DoxyCompactList}\small\item\em Get the Normal of the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPrimitive_1_1Cone_ac70f60cef0dad522261c046c75f6cf0c}\label{classPrimitive_1_1Cone_ac70f60cef0dad522261c046c75f6cf0c}} 
+\index{Primitive::Cone@{Primitive::Cone}!Cone@{Cone}}
+\index{Cone@{Cone}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{Cone()}{Cone()}}
+{\footnotesize\ttfamily Primitive\+::\+Cone\+::\+Cone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&}]{origin,  }\item[{double}]{radius,  }\item[{Axis}]{axis,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial_1_1IMaterial}{Material\+::\+IMaterial}} $>$}]{material }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & center of the \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} \\
+\hline
+{\em radius} & of the \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} \\
+\hline
+{\em axis} & of the \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} \\
+\hline
+{\em material} & Material of \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPrimitive_1_1Cone_a10bd09dfd195a895c2fecf7017359fc2}\label{classPrimitive_1_1Cone_a10bd09dfd195a895c2fecf7017359fc2}} 
+\index{Primitive::Cone@{Primitive::Cone}!getAngle@{getAngle}}
+\index{getAngle@{getAngle}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{getAngle()}{getAngle()}}
+{\footnotesize\ttfamily double Primitive\+::\+Cone\+::get\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Angle object. 
+
+\begin{DoxyReturn}{Returns}
+Angle of \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPrimitive_1_1Cone_a21e8b2208f6152a56ed92c50aaba67de}\label{classPrimitive_1_1Cone_a21e8b2208f6152a56ed92c50aaba67de}} 
+\index{Primitive::Cone@{Primitive::Cone}!getAxis@{getAxis}}
+\index{getAxis@{getAxis}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{getAxis()}{getAxis()}}
+{\footnotesize\ttfamily Primitive\+::\+Axis Primitive\+::\+Cone\+::get\+Axis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Axis object. 
+
+\begin{DoxyReturn}{Returns}
+Axis of \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPrimitive_1_1Cone_a1fbebd6db407bff9642ffef8cdbe9855}\label{classPrimitive_1_1Cone_a1fbebd6db407bff9642ffef8cdbe9855}} 
+\index{Primitive::Cone@{Primitive::Cone}!getMaterial@{getMaterial}}
+\index{getMaterial@{getMaterial}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{getMaterial()}{getMaterial()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial_1_1IMaterial}{Material\+::\+IMaterial}} $>$ Primitive\+::\+Cone\+::get\+Material (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Material object. 
+
+\begin{DoxyReturn}{Returns}
+Material of \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPrimitive_1_1IPrimitive_ad4cbc6ab522db4cd690f7147b32bd4fd}{Primitive\+::\+IPrimitive}}.
+
+\mbox{\Hypertarget{classPrimitive_1_1Cone_a49fbb023101926937ded505e2ae8150f}\label{classPrimitive_1_1Cone_a49fbb023101926937ded505e2ae8150f}} 
+\index{Primitive::Cone@{Primitive::Cone}!getNormal@{getNormal}}
+\index{getNormal@{getNormal}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{getNormal()}{getNormal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} Primitive\+::\+Cone\+::get\+Normal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \&}]{hit\+Point }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Normal of the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hit\+Point} & to have the normal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPrimitive_1_1IPrimitive_a72bed929132ab511befdcd04b73ae94f}{Primitive\+::\+IPrimitive}}.
+
+\mbox{\Hypertarget{classPrimitive_1_1Cone_a5d749a21b7794178e521d40c9ede2565}\label{classPrimitive_1_1Cone_a5d749a21b7794178e521d40c9ede2565}} 
+\index{Primitive::Cone@{Primitive::Cone}!getOrigin@{getOrigin}}
+\index{getOrigin@{getOrigin}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{getOrigin()}{getOrigin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} Primitive\+::\+Cone\+::get\+Origin (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Origin object. 
+
+\begin{DoxyReturn}{Returns}
+Origin of \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPrimitive_1_1Cone_afc2605c0e3d8152b61ebc346cd2ae3f5}\label{classPrimitive_1_1Cone_afc2605c0e3d8152b61ebc346cd2ae3f5}} 
+\index{Primitive::Cone@{Primitive::Cone}!hitPoint@{hitPoint}}
+\index{hitPoint@{hitPoint}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{hitPoint()}{hitPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} Primitive\+::\+Cone\+::hit\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&}]{ray }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+return the hit point of the \mbox{\hyperlink{classPrimitive_1_1Cone}{Cone}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ray} & vector3D \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Point3D 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPrimitive_1_1IPrimitive_a13b06d12d3a3d6a03ba0715c7dcd97fe}{Primitive\+::\+IPrimitive}}.
+
+\mbox{\Hypertarget{classPrimitive_1_1Cone_a132554f98b809ab4081769f71a954c09}\label{classPrimitive_1_1Cone_a132554f98b809ab4081769f71a954c09}} 
+\index{Primitive::Cone@{Primitive::Cone}!setAngle@{setAngle}}
+\index{setAngle@{setAngle}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{setAngle()}{setAngle()}}
+{\footnotesize\ttfamily void Primitive\+::\+Cone\+::set\+Angle (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption})}
+
+
+
+Set the Angle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & New angle to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPrimitive_1_1Cone_a14b48ef2f73fb1053f83f88905a00126}\label{classPrimitive_1_1Cone_a14b48ef2f73fb1053f83f88905a00126}} 
+\index{Primitive::Cone@{Primitive::Cone}!setAxis@{setAxis}}
+\index{setAxis@{setAxis}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{setAxis()}{setAxis()}}
+{\footnotesize\ttfamily void Primitive\+::\+Cone\+::set\+Axis (\begin{DoxyParamCaption}\item[{Axis}]{axis }\end{DoxyParamCaption})}
+
+
+
+Set the Axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axis} & New axis to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPrimitive_1_1Cone_a6c7aa5a32a2774d8af43d8d8f2fb7e3d}\label{classPrimitive_1_1Cone_a6c7aa5a32a2774d8af43d8d8f2fb7e3d}} 
+\index{Primitive::Cone@{Primitive::Cone}!setMaterial@{setMaterial}}
+\index{setMaterial@{setMaterial}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{setMaterial()}{setMaterial()}}
+{\footnotesize\ttfamily void Primitive\+::\+Cone\+::set\+Material (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial_1_1IMaterial}{Material\+::\+IMaterial}} $>$}]{material }\end{DoxyParamCaption})}
+
+
+
+Set the Material. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em material} & New material to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPrimitive_1_1Cone_abedcb6a71787666adb5cf8e1febe251d}\label{classPrimitive_1_1Cone_abedcb6a71787666adb5cf8e1febe251d}} 
+\index{Primitive::Cone@{Primitive::Cone}!setOrigin@{setOrigin}}
+\index{setOrigin@{setOrigin}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{setOrigin()}{setOrigin()}}
+{\footnotesize\ttfamily void Primitive\+::\+Cone\+::set\+Origin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}}}]{origin }\end{DoxyParamCaption})}
+
+
+
+Set the Origin object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & New origin to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPrimitive_1_1Cone_adf1605e0f7cf3099a37481e7a0cf53cd}\label{classPrimitive_1_1Cone_adf1605e0f7cf3099a37481e7a0cf53cd}} 
+\index{Primitive::Cone@{Primitive::Cone}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!Primitive::Cone@{Primitive::Cone}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily void Primitive\+::\+Cone\+::set\+Rotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}}}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Set the Rotation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rotation} & -\/ Rotation value \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Primitives/Cone.\+hpp\item 
+src/\+Plugins/\+Primitives/\+Cone/Cone.\+cpp\end{DoxyCompactItemize}

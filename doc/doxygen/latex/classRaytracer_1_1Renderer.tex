@@ -1,0 +1,62 @@
+\hypertarget{classRaytracer_1_1Renderer}{}\doxysection{Raytracer\+::Renderer Class Reference}
+\label{classRaytracer_1_1Renderer}\index{Raytracer::Renderer@{Raytracer::Renderer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRaytracer_1_1Renderer_ae982df91c3ea1705dcde9c0a45ae4e53}{Renderer}} (\mbox{\hyperlink{classRaytracer_1_1Scene}{Raytracer\+::\+Scene}} scene)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classRaytracer_1_1Renderer}{Renderer}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRaytracer_1_1Renderer_a35387ea957f4604dbef7df04075b7ecf}\label{classRaytracer_1_1Renderer_a35387ea957f4604dbef7df04075b7ecf}} 
+\mbox{\hyperlink{classRaytracer_1_1Renderer_a35387ea957f4604dbef7df04075b7ecf}{$\sim$\+Renderer}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classRaytracer_1_1Renderer}{Renderer}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRaytracer_1_1Renderer_a003debbf800ae660e5ddd5e959eaa86c}\label{classRaytracer_1_1Renderer_a003debbf800ae660e5ddd5e959eaa86c}} 
+void \mbox{\hyperlink{classRaytracer_1_1Renderer_a003debbf800ae660e5ddd5e959eaa86c}{render\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em Render the scene in a window with SDL2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRaytracer_1_1Renderer_a35b741d6ebeee6a57ce75083fddf7d8f}\label{classRaytracer_1_1Renderer_a35b741d6ebeee6a57ce75083fddf7d8f}} 
+void \mbox{\hyperlink{classRaytracer_1_1Renderer_a35b741d6ebeee6a57ce75083fddf7d8f}{render\+Final\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em Render the final scene in a .ppm file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRaytracer_1_1Renderer_a87f47823cfeb4a7449390fb961d3e474}{write\+Color}} (std\+::ostream \&o, const \mbox{\hyperlink{classColor}{Color}} \&color)
+\begin{DoxyCompactList}\small\item\em Write a rgb color in a stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRaytracer_1_1Renderer_ae982df91c3ea1705dcde9c0a45ae4e53}\label{classRaytracer_1_1Renderer_ae982df91c3ea1705dcde9c0a45ae4e53}} 
+\index{Raytracer::Renderer@{Raytracer::Renderer}!Renderer@{Renderer}}
+\index{Renderer@{Renderer}!Raytracer::Renderer@{Raytracer::Renderer}}
+\doxysubsubsection{\texorpdfstring{Renderer()}{Renderer()}}
+{\footnotesize\ttfamily Raytracer\+::\+Renderer\+::\+Renderer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRaytracer_1_1Scene}{Raytracer\+::\+Scene}}}]{scene }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classRaytracer_1_1Renderer}{Renderer}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & to render \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRaytracer_1_1Renderer_a87f47823cfeb4a7449390fb961d3e474}\label{classRaytracer_1_1Renderer_a87f47823cfeb4a7449390fb961d3e474}} 
+\index{Raytracer::Renderer@{Raytracer::Renderer}!writeColor@{writeColor}}
+\index{writeColor@{writeColor}!Raytracer::Renderer@{Raytracer::Renderer}}
+\doxysubsubsection{\texorpdfstring{writeColor()}{writeColor()}}
+{\footnotesize\ttfamily void Raytracer\+::\+Renderer\+::write\+Color (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{o,  }\item[{const \mbox{\hyperlink{classColor}{Color}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+Write a rgb color in a stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & stream to write in \\
+\hline
+{\em color} & color to write \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Renderer.\+hpp\item 
+src/\+Core/Renderer.\+cpp\end{DoxyCompactItemize}

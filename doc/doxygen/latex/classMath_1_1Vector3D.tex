@@ -1,0 +1,252 @@
+\hypertarget{classMath_1_1Vector3D}{}\doxysection{Math\+::Vector3D Class Reference}
+\label{classMath_1_1Vector3D}\index{Math::Vector3D@{Math::Vector3D}}
+
+
+Vector 3D class (x, y, z)  
+
+
+
+
+{\ttfamily \#include $<$Vector3\+D.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_a338f0af3092c931b91e0b4f46eb74ffd}\label{classMath_1_1Vector3D_a338f0af3092c931b91e0b4f46eb74ffd}} 
+\mbox{\hyperlink{classMath_1_1Vector3D_a338f0af3092c931b91e0b4f46eb74ffd}{Vector3D}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Vector 3D object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMath_1_1Vector3D_a4129b0fb0240be80a1c46df73bd49b24}{Vector3D}} (double \mbox{\hyperlink{classMath_1_1Vector3D_a88ee2b9dd23ffa63e2091a64c9f1f0dc}{x}}, double \mbox{\hyperlink{classMath_1_1Vector3D_a02934769c4d044857dd9701a7f6aae8b}{y}}, double \mbox{\hyperlink{classMath_1_1Vector3D_a9ed6a2b7f58dad970ab6ecc0f2806a4e}{z}})
+\begin{DoxyCompactList}\small\item\em Construct a new Vector 3D object. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMath_1_1Vector3D_a88ee2b9dd23ffa63e2091a64c9f1f0dc}{x}} () const
+\begin{DoxyCompactList}\small\item\em return x coordinate vector \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMath_1_1Vector3D_a02934769c4d044857dd9701a7f6aae8b}{y}} () const
+\begin{DoxyCompactList}\small\item\em return y coordinate vector \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMath_1_1Vector3D_a9ed6a2b7f58dad970ab6ecc0f2806a4e}{z}} () const
+\begin{DoxyCompactList}\small\item\em return z coordinate vector \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMath_1_1Vector3D_a4c208026b6867d4c99afa13ddc3b9278}{length}} () const
+\begin{DoxyCompactList}\small\item\em return the lenght of the vector \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMath_1_1Vector3D_ae972cd565256a62cfc461d6bf06d4c47}{length\+\_\+squared}} () const
+\begin{DoxyCompactList}\small\item\em return the square lenght of the vector \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMath_1_1Vector3D_aa3439a73fdeaa38c40c267a67b91fd3a}{dot}} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&ptr)
+\begin{DoxyCompactList}\small\item\em return the dot product with an other Vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMath_1_1Vector3D_ab7fc4dab39c6fb88343fe73810efd386}{translate}} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&ptr)
+\begin{DoxyCompactList}\small\item\em translate a vector with an other \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMath_1_1Vector3D_ab392a2d35956ac47155f180695a8582c}{rotateZ}} (double degrees)
+\begin{DoxyCompactList}\small\item\em Rotate a vector with an angle on the axis Z. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMath_1_1Vector3D_a1b3fa8d9b4ff6dfad44a9c5801a63a13}{rotateY}} (double degrees)
+\begin{DoxyCompactList}\small\item\em Rotate a vector with an angle on the axis Y. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMath_1_1Vector3D_a8a765a974d0a18615584b06171996bd5}{rotateX}} (double degrees)
+\begin{DoxyCompactList}\small\item\em Rotate a vector with an angle on the axis X. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_a6b51bd61d1e2e2f36b4d335b9aaeb1bf}\label{classMath_1_1Vector3D_a6b51bd61d1e2e2f36b4d335b9aaeb1bf}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} {\bfseries operator+} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&ptr)
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_ae0fe6e1105d4636b3fe79266bf20e676}\label{classMath_1_1Vector3D_ae0fe6e1105d4636b3fe79266bf20e676}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \& {\bfseries operator+=} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&ptr)
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_a95545936aed3fce625b4d354cea21e20}\label{classMath_1_1Vector3D_a95545936aed3fce625b4d354cea21e20}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} {\bfseries operator-\/} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&ptr)
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_a90d246f030fe57d98ee4e35c170e3dab}\label{classMath_1_1Vector3D_a90d246f030fe57d98ee4e35c170e3dab}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \& {\bfseries operator-\/=} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&ptr)
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_a21b5fd164f4474c3be44f72a5c16455d}\label{classMath_1_1Vector3D_a21b5fd164f4474c3be44f72a5c16455d}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} {\bfseries operator$\ast$} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&ptr)
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_a339d06a7e349c202be08155450b3961a}\label{classMath_1_1Vector3D_a339d06a7e349c202be08155450b3961a}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \& {\bfseries operator$\ast$=} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&ptr)
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_ad54a91773b88f3bf31a8251ecf675a34}\label{classMath_1_1Vector3D_ad54a91773b88f3bf31a8251ecf675a34}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} {\bfseries operator/} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&ptr)
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_a7efef94506b2e8b1f0dfba5fd7204ad9}\label{classMath_1_1Vector3D_a7efef94506b2e8b1f0dfba5fd7204ad9}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \& {\bfseries operator/=} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&ptr)
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_aabd4099932918883da9873ea5af755b2}\label{classMath_1_1Vector3D_aabd4099932918883da9873ea5af755b2}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} {\bfseries operator$\ast$} (double n)
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_a3a7fb965fe715b0cf1253c889e0b4379}\label{classMath_1_1Vector3D_a3a7fb965fe715b0cf1253c889e0b4379}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \& {\bfseries operator$\ast$=} (double n)
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_a7f60663e629f0a0287f0cba707c762be}\label{classMath_1_1Vector3D_a7f60663e629f0a0287f0cba707c762be}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} {\bfseries operator/} (double n)
+\item 
+\mbox{\Hypertarget{classMath_1_1Vector3D_a267d3c679d5308411591d94f0d93f553}\label{classMath_1_1Vector3D_a267d3c679d5308411591d94f0d93f553}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \& {\bfseries operator/=} (double n)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Vector 3D class (x, y, z) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMath_1_1Vector3D_a4129b0fb0240be80a1c46df73bd49b24}\label{classMath_1_1Vector3D_a4129b0fb0240be80a1c46df73bd49b24}} 
+\index{Math::Vector3D@{Math::Vector3D}!Vector3D@{Vector3D}}
+\index{Vector3D@{Vector3D}!Math::Vector3D@{Math::Vector3D}}
+\doxysubsubsection{\texorpdfstring{Vector3D()}{Vector3D()}}
+{\footnotesize\ttfamily Math\+::\+Vector3\+D\+::\+Vector3D (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{z }\end{DoxyParamCaption})}
+
+
+
+Construct a new Vector 3D object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & position vector \\
+\hline
+{\em y} & position vector \\
+\hline
+{\em z} & position vector \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMath_1_1Vector3D_aa3439a73fdeaa38c40c267a67b91fd3a}\label{classMath_1_1Vector3D_aa3439a73fdeaa38c40c267a67b91fd3a}} 
+\index{Math::Vector3D@{Math::Vector3D}!dot@{dot}}
+\index{dot@{dot}!Math::Vector3D@{Math::Vector3D}}
+\doxysubsubsection{\texorpdfstring{dot()}{dot()}}
+{\footnotesize\ttfamily double Math\+::\+Vector3\+D\+::dot (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&}]{ptr }\end{DoxyParamCaption})}
+
+
+
+return the dot product with an other Vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & vector to dot with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double result of dot product 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMath_1_1Vector3D_a4c208026b6867d4c99afa13ddc3b9278}\label{classMath_1_1Vector3D_a4c208026b6867d4c99afa13ddc3b9278}} 
+\index{Math::Vector3D@{Math::Vector3D}!length@{length}}
+\index{length@{length}!Math::Vector3D@{Math::Vector3D}}
+\doxysubsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily double Math\+::\+Vector3\+D\+::length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+return the lenght of the vector 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMath_1_1Vector3D_ae972cd565256a62cfc461d6bf06d4c47}\label{classMath_1_1Vector3D_ae972cd565256a62cfc461d6bf06d4c47}} 
+\index{Math::Vector3D@{Math::Vector3D}!length\_squared@{length\_squared}}
+\index{length\_squared@{length\_squared}!Math::Vector3D@{Math::Vector3D}}
+\doxysubsubsection{\texorpdfstring{length\_squared()}{length\_squared()}}
+{\footnotesize\ttfamily double Math\+::\+Vector3\+D\+::length\+\_\+squared (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+return the square lenght of the vector 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMath_1_1Vector3D_a8a765a974d0a18615584b06171996bd5}\label{classMath_1_1Vector3D_a8a765a974d0a18615584b06171996bd5}} 
+\index{Math::Vector3D@{Math::Vector3D}!rotateX@{rotateX}}
+\index{rotateX@{rotateX}!Math::Vector3D@{Math::Vector3D}}
+\doxysubsubsection{\texorpdfstring{rotateX()}{rotateX()}}
+{\footnotesize\ttfamily void Math\+::\+Vector3\+D\+::rotateX (\begin{DoxyParamCaption}\item[{double}]{degrees }\end{DoxyParamCaption})}
+
+
+
+Rotate a vector with an angle on the axis X. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em degrees} & -\/ Rotation value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMath_1_1Vector3D_a1b3fa8d9b4ff6dfad44a9c5801a63a13}\label{classMath_1_1Vector3D_a1b3fa8d9b4ff6dfad44a9c5801a63a13}} 
+\index{Math::Vector3D@{Math::Vector3D}!rotateY@{rotateY}}
+\index{rotateY@{rotateY}!Math::Vector3D@{Math::Vector3D}}
+\doxysubsubsection{\texorpdfstring{rotateY()}{rotateY()}}
+{\footnotesize\ttfamily void Math\+::\+Vector3\+D\+::rotateY (\begin{DoxyParamCaption}\item[{double}]{degrees }\end{DoxyParamCaption})}
+
+
+
+Rotate a vector with an angle on the axis Y. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em degrees} & -\/ Rotation value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMath_1_1Vector3D_ab392a2d35956ac47155f180695a8582c}\label{classMath_1_1Vector3D_ab392a2d35956ac47155f180695a8582c}} 
+\index{Math::Vector3D@{Math::Vector3D}!rotateZ@{rotateZ}}
+\index{rotateZ@{rotateZ}!Math::Vector3D@{Math::Vector3D}}
+\doxysubsubsection{\texorpdfstring{rotateZ()}{rotateZ()}}
+{\footnotesize\ttfamily void Math\+::\+Vector3\+D\+::rotateZ (\begin{DoxyParamCaption}\item[{double}]{degrees }\end{DoxyParamCaption})}
+
+
+
+Rotate a vector with an angle on the axis Z. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em degrees} & -\/ Rotation value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMath_1_1Vector3D_ab7fc4dab39c6fb88343fe73810efd386}\label{classMath_1_1Vector3D_ab7fc4dab39c6fb88343fe73810efd386}} 
+\index{Math::Vector3D@{Math::Vector3D}!translate@{translate}}
+\index{translate@{translate}!Math::Vector3D@{Math::Vector3D}}
+\doxysubsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily void Math\+::\+Vector3\+D\+::translate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Vector3D}} \&}]{ptr }\end{DoxyParamCaption})}
+
+
+
+translate a vector with an other 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & vector of translation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMath_1_1Vector3D_a88ee2b9dd23ffa63e2091a64c9f1f0dc}\label{classMath_1_1Vector3D_a88ee2b9dd23ffa63e2091a64c9f1f0dc}} 
+\index{Math::Vector3D@{Math::Vector3D}!x@{x}}
+\index{x@{x}!Math::Vector3D@{Math::Vector3D}}
+\doxysubsubsection{\texorpdfstring{x()}{x()}}
+{\footnotesize\ttfamily double Math\+::\+Vector3\+D\+::x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+return x coordinate vector 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMath_1_1Vector3D_a02934769c4d044857dd9701a7f6aae8b}\label{classMath_1_1Vector3D_a02934769c4d044857dd9701a7f6aae8b}} 
+\index{Math::Vector3D@{Math::Vector3D}!y@{y}}
+\index{y@{y}!Math::Vector3D@{Math::Vector3D}}
+\doxysubsubsection{\texorpdfstring{y()}{y()}}
+{\footnotesize\ttfamily double Math\+::\+Vector3\+D\+::y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+return y coordinate vector 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMath_1_1Vector3D_a9ed6a2b7f58dad970ab6ecc0f2806a4e}\label{classMath_1_1Vector3D_a9ed6a2b7f58dad970ab6ecc0f2806a4e}} 
+\index{Math::Vector3D@{Math::Vector3D}!z@{z}}
+\index{z@{z}!Math::Vector3D@{Math::Vector3D}}
+\doxysubsubsection{\texorpdfstring{z()}{z()}}
+{\footnotesize\ttfamily double Math\+::\+Vector3\+D\+::z (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+return z coordinate vector 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Math/Vector3\+D.\+hpp\item 
+src/\+Math/Vector3\+D.\+cpp\end{DoxyCompactItemize}

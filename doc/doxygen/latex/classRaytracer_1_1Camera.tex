@@ -1,0 +1,180 @@
+\hypertarget{classRaytracer_1_1Camera}{}\doxysection{Raytracer\+::Camera Class Reference}
+\label{classRaytracer_1_1Camera}\index{Raytracer::Camera@{Raytracer::Camera}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRaytracer_1_1Camera_a2a0d7f9f9a9fdc34a9253270a02d12cf}\label{classRaytracer_1_1Camera_a2a0d7f9f9a9fdc34a9253270a02d12cf}} 
+\mbox{\hyperlink{classRaytracer_1_1Camera_a2a0d7f9f9a9fdc34a9253270a02d12cf}{Camera}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRaytracer_1_1Camera_a2bf3a9615200d8a4c03df764013b7bed}{Camera}} (const \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}} \&other)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRaytracer_1_1Camera_a6a3d58c3006dc55d690e69520fd21a8c}{Camera}} (\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} origin, \mbox{\hyperlink{classRaytracer_1_1Rectangle3D}{Rectangle3D}} screen)
+\begin{DoxyCompactList}\small\item\em Construct a new Rectangle 3D object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRaytracer_1_1Camera_a817940b1b18f3dc213e55b836c656a66}\label{classRaytracer_1_1Camera_a817940b1b18f3dc213e55b836c656a66}} 
+\mbox{\hyperlink{classRaytracer_1_1Camera_a817940b1b18f3dc213e55b836c656a66}{$\sim$\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Destructor a \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \mbox{\hyperlink{classRaytracer_1_1Camera_a70b0d04afaa76321e0837488c6a99d95}{ray}} (double u, double v)
+\begin{DoxyCompactList}\small\item\em return a ray, going from the camera to the coordinates u and v of the image \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRaytracer_1_1Camera_abc10922301c1fa3e14636bba914f9784}\label{classRaytracer_1_1Camera_abc10922301c1fa3e14636bba914f9784}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \mbox{\hyperlink{classRaytracer_1_1Camera_abc10922301c1fa3e14636bba914f9784}{get\+Origin}} (void) const
+\begin{DoxyCompactList}\small\item\em Get origin of \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRaytracer_1_1Camera_adf3cc845ec2a2ccf37ff6e36185a43b3}\label{classRaytracer_1_1Camera_adf3cc845ec2a2ccf37ff6e36185a43b3}} 
+\mbox{\hyperlink{classRaytracer_1_1Rectangle3D}{Raytracer\+::\+Rectangle3D}} \mbox{\hyperlink{classRaytracer_1_1Camera_adf3cc845ec2a2ccf37ff6e36185a43b3}{get\+Screen}} (void) const
+\begin{DoxyCompactList}\small\item\em Get Screen of \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRaytracer_1_1Camera_a2abe149303668c23e6adfef0d472c6c8}\label{classRaytracer_1_1Camera_a2abe149303668c23e6adfef0d472c6c8}} 
+double \mbox{\hyperlink{classRaytracer_1_1Camera_a2abe149303668c23e6adfef0d472c6c8}{get\+Fov}} (void) const
+\begin{DoxyCompactList}\small\item\em Get Fov of \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRaytracer_1_1Camera_ad7a953fb83ebea9039640568aad11066}\label{classRaytracer_1_1Camera_ad7a953fb83ebea9039640568aad11066}} 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \mbox{\hyperlink{classRaytracer_1_1Camera_ad7a953fb83ebea9039640568aad11066}{get\+Rotation}} (void) const
+\begin{DoxyCompactList}\small\item\em Get Rotation of \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRaytracer_1_1Camera_abb5915daf5a78ed7167aad921bbe5a17}\label{classRaytracer_1_1Camera_abb5915daf5a78ed7167aad921bbe5a17}} 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{classRaytracer_1_1Camera_abb5915daf5a78ed7167aad921bbe5a17}{get\+Resolution}} (void) const
+\begin{DoxyCompactList}\small\item\em Get Resolution of \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRaytracer_1_1Camera_a2dc9abe00082b45923dddf291a440201}{set\+Origin}} (\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} origin)
+\begin{DoxyCompactList}\small\item\em Set the Origin object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRaytracer_1_1Camera_a84673da49ef01d96b9957d6f42deb241}{set\+Screen}} (\mbox{\hyperlink{classRaytracer_1_1Rectangle3D}{Raytracer\+::\+Rectangle3D}} screen)
+\begin{DoxyCompactList}\small\item\em Set the Screen object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRaytracer_1_1Camera_ae308e47de413c39d15cd45017d4fd406}{set\+Fov}} (double fov)
+\begin{DoxyCompactList}\small\item\em Set the Fov object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRaytracer_1_1Camera_a9a3f4c94a20ff6fc4eeab541b9efa738}{set\+Rotation}} (\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} rotation)
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRaytracer_1_1Camera_ae77d4eab098c4ce526b5481657094710}{set\+Resolution}} (double width, double height)
+\begin{DoxyCompactList}\small\item\em Set the Resolution object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRaytracer_1_1Camera_a2bf3a9615200d8a4c03df764013b7bed}\label{classRaytracer_1_1Camera_a2bf3a9615200d8a4c03df764013b7bed}} 
+\index{Raytracer::Camera@{Raytracer::Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Raytracer::Camera@{Raytracer::Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Raytracer\+::\+Camera\+::\+Camera (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & other \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}} object to copy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRaytracer_1_1Camera_a6a3d58c3006dc55d690e69520fd21a8c}\label{classRaytracer_1_1Camera_a6a3d58c3006dc55d690e69520fd21a8c}} 
+\index{Raytracer::Camera@{Raytracer::Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Raytracer::Camera@{Raytracer::Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Raytracer\+::\+Camera\+::\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}}}]{origin,  }\item[{\mbox{\hyperlink{classRaytracer_1_1Rectangle3D}{Rectangle3D}}}]{screen }\end{DoxyParamCaption})}
+
+
+
+Construct a new Rectangle 3D object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & camera’s origin point \\
+\hline
+{\em screen} & of camera \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRaytracer_1_1Camera_a70b0d04afaa76321e0837488c6a99d95}\label{classRaytracer_1_1Camera_a70b0d04afaa76321e0837488c6a99d95}} 
+\index{Raytracer::Camera@{Raytracer::Camera}!ray@{ray}}
+\index{ray@{ray}!Raytracer::Camera@{Raytracer::Camera}}
+\doxysubsubsection{\texorpdfstring{ray()}{ray()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} Raytracer\+::\+Camera\+::ray (\begin{DoxyParamCaption}\item[{double}]{u,  }\item[{double}]{v }\end{DoxyParamCaption})}
+
+
+
+return a ray, going from the camera to the coordinates u and v of the image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & location u in rectangle \\
+\hline
+{\em v} & location v in rectangle \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRaytracer_1_1Camera_ae308e47de413c39d15cd45017d4fd406}\label{classRaytracer_1_1Camera_ae308e47de413c39d15cd45017d4fd406}} 
+\index{Raytracer::Camera@{Raytracer::Camera}!setFov@{setFov}}
+\index{setFov@{setFov}!Raytracer::Camera@{Raytracer::Camera}}
+\doxysubsubsection{\texorpdfstring{setFov()}{setFov()}}
+{\footnotesize\ttfamily void Raytracer\+::\+Camera\+::set\+Fov (\begin{DoxyParamCaption}\item[{double}]{fov }\end{DoxyParamCaption})}
+
+
+
+Set the Fov object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fov} & Fov to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRaytracer_1_1Camera_a2dc9abe00082b45923dddf291a440201}\label{classRaytracer_1_1Camera_a2dc9abe00082b45923dddf291a440201}} 
+\index{Raytracer::Camera@{Raytracer::Camera}!setOrigin@{setOrigin}}
+\index{setOrigin@{setOrigin}!Raytracer::Camera@{Raytracer::Camera}}
+\doxysubsubsection{\texorpdfstring{setOrigin()}{setOrigin()}}
+{\footnotesize\ttfamily void Raytracer\+::\+Camera\+::set\+Origin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}}}]{origin }\end{DoxyParamCaption})}
+
+
+
+Set the Origin object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & Origin to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRaytracer_1_1Camera_ae77d4eab098c4ce526b5481657094710}\label{classRaytracer_1_1Camera_ae77d4eab098c4ce526b5481657094710}} 
+\index{Raytracer::Camera@{Raytracer::Camera}!setResolution@{setResolution}}
+\index{setResolution@{setResolution}!Raytracer::Camera@{Raytracer::Camera}}
+\doxysubsubsection{\texorpdfstring{setResolution()}{setResolution()}}
+{\footnotesize\ttfamily void Raytracer\+::\+Camera\+::set\+Resolution (\begin{DoxyParamCaption}\item[{double}]{width,  }\item[{double}]{height }\end{DoxyParamCaption})}
+
+
+
+Set the Resolution object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & of image \\
+\hline
+{\em height} & of image \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRaytracer_1_1Camera_a9a3f4c94a20ff6fc4eeab541b9efa738}\label{classRaytracer_1_1Camera_a9a3f4c94a20ff6fc4eeab541b9efa738}} 
+\index{Raytracer::Camera@{Raytracer::Camera}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!Raytracer::Camera@{Raytracer::Camera}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily void Raytracer\+::\+Camera\+::set\+Rotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}}}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Set the Rotation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rotation} & Rotation Vector to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRaytracer_1_1Camera_a84673da49ef01d96b9957d6f42deb241}\label{classRaytracer_1_1Camera_a84673da49ef01d96b9957d6f42deb241}} 
+\index{Raytracer::Camera@{Raytracer::Camera}!setScreen@{setScreen}}
+\index{setScreen@{setScreen}!Raytracer::Camera@{Raytracer::Camera}}
+\doxysubsubsection{\texorpdfstring{setScreen()}{setScreen()}}
+{\footnotesize\ttfamily void Raytracer\+::\+Camera\+::set\+Screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRaytracer_1_1Rectangle3D}{Raytracer\+::\+Rectangle3D}}}]{screen }\end{DoxyParamCaption})}
+
+
+
+Set the Screen object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen} & Screen to set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Camera/Camera.\+hpp\item 
+src/\+Core/\+Camera/Camera.\+cpp\end{DoxyCompactItemize}

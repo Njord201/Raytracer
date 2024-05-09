@@ -1,0 +1,90 @@
+\hypertarget{classLight_1_1ILight}{}\doxysection{Light\+::ILight Class Reference}
+\label{classLight_1_1ILight}\index{Light::ILight@{Light::ILight}}
+Inheritance diagram for Light\+::ILight\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLight_1_1ILight}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLight_1_1ILight_a34d49f526a092129209c9ec2ccc51e13}\label{classLight_1_1ILight_a34d49f526a092129209c9ec2ccc51e13}} 
+virtual \mbox{\hyperlink{classLight_1_1ILight_a34d49f526a092129209c9ec2ccc51e13}{$\sim$\+ILight}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classLight_1_1ILight}{ILight}} object. \end{DoxyCompactList}\item 
+virtual Light\+::\+Light\+Type \mbox{\hyperlink{classLight_1_1ILight_a13e1ccb9cc7fc80a78f48167caed504d}{get\+Type}} (void) const =0
+\begin{DoxyCompactList}\small\item\em Get type of Light. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classColor}{Color}} \mbox{\hyperlink{classLight_1_1ILight_aba927f10eadc8a48d15523fa66335ad4}{get\+Color}} (void) const =0
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classColor}{Color}} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classColor}{Color}} \mbox{\hyperlink{classLight_1_1ILight_adf32acfd650202fad3fd6b04c90750f0}{compute\+Color}} (\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} primitive\+Normal, const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&hit\+Point, \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} color, const \mbox{\hyperlink{classPrimitives_1_1Shadow}{Primitives\+::\+Shadow}} \&shadow) const =0
+\begin{DoxyCompactList}\small\item\em Compute the color point with lights. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLight_1_1ILight_adf32acfd650202fad3fd6b04c90750f0}\label{classLight_1_1ILight_adf32acfd650202fad3fd6b04c90750f0}} 
+\index{Light::ILight@{Light::ILight}!computeColor@{computeColor}}
+\index{computeColor@{computeColor}!Light::ILight@{Light::ILight}}
+\doxysubsubsection{\texorpdfstring{computeColor()}{computeColor()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classColor}{Color}} Light\+::\+ILight\+::compute\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}}}]{primitive\+Normal,  }\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&}]{hit\+Point,  }\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}}}]{color,  }\item[{const \mbox{\hyperlink{classPrimitives_1_1Shadow}{Primitives\+::\+Shadow}} \&}]{shadow }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Compute the color point with lights. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em primitive\+Normal} & normal to the hitpoint \\
+\hline
+{\em hit\+Point} & hitpoint \\
+\hline
+{\em color} & color \\
+\hline
+{\em shadow} & Primitive\+::\+Shadow class to handle shadows\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classColor}{Color}} color 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classLight_1_1Point_a5274b8b054b3891f9f538040ac036f9c}{Light\+::\+Point}}, \mbox{\hyperlink{classLight_1_1Directional_af097d251dcf6a0f17207bfa5a5f1900a}{Light\+::\+Directional}}, and \mbox{\hyperlink{classLight_1_1Ambient_a1ae4b9744ee615d165b163c1b7c52dee}{Light\+::\+Ambient}}.
+
+\mbox{\Hypertarget{classLight_1_1ILight_aba927f10eadc8a48d15523fa66335ad4}\label{classLight_1_1ILight_aba927f10eadc8a48d15523fa66335ad4}} 
+\index{Light::ILight@{Light::ILight}!getColor@{getColor}}
+\index{getColor@{getColor}!Light::ILight@{Light::ILight}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classColor}{Color}} Light\+::\+ILight\+::get\+Color (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the \mbox{\hyperlink{classColor}{Color}} object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classColor}{Color}} 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classLight_1_1Point_ad91680268da4ba3ed548df7140d31ae5}{Light\+::\+Point}}, \mbox{\hyperlink{classLight_1_1Directional_af3808a2bfea986935110b40db79e0352}{Light\+::\+Directional}}, and \mbox{\hyperlink{classLight_1_1Ambient_a45b44159012d8d4f52f8d4839a55f37f}{Light\+::\+Ambient}}.
+
+\mbox{\Hypertarget{classLight_1_1ILight_a13e1ccb9cc7fc80a78f48167caed504d}\label{classLight_1_1ILight_a13e1ccb9cc7fc80a78f48167caed504d}} 
+\index{Light::ILight@{Light::ILight}!getType@{getType}}
+\index{getType@{getType}!Light::ILight@{Light::ILight}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual Light\+::\+Light\+Type Light\+::\+ILight\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get type of Light. 
+
+\begin{DoxyReturn}{Returns}
+The type of the light 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classLight_1_1Point_ab8174ed6a84c3be297a356dc70e48120}{Light\+::\+Point}}, \mbox{\hyperlink{classLight_1_1Directional_a660036fc68606c1e7c71d7308ba9606a}{Light\+::\+Directional}}, and \mbox{\hyperlink{classLight_1_1Ambient_a186f73ee74e7713b9dbfd7555b7584e7}{Light\+::\+Ambient}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Lights/ILight.\+hpp\end{DoxyCompactItemize}

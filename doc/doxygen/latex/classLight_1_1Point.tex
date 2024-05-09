@@ -1,0 +1,197 @@
+\hypertarget{classLight_1_1Point}{}\doxysection{Light\+::Point Class Reference}
+\label{classLight_1_1Point}\index{Light::Point@{Light::Point}}
+Inheritance diagram for Light\+::Point\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLight_1_1Point}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLight_1_1Point_a3a8fa38a2eac8146e79ee0210f18b271}\label{classLight_1_1Point_a3a8fa38a2eac8146e79ee0210f18b271}} 
+\mbox{\hyperlink{classLight_1_1Point_a3a8fa38a2eac8146e79ee0210f18b271}{Point}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classLight_1_1Point}{Point}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLight_1_1Point_a585cdae5a597883348f4a6328742f736}{Point}} (\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} position, double diffuse\+Multiplier)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classLight_1_1Point}{Point}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLight_1_1Point_a0f37f357bb9758c12efe26256131fc03}\label{classLight_1_1Point_a0f37f357bb9758c12efe26256131fc03}} 
+\mbox{\hyperlink{classLight_1_1Point_a0f37f357bb9758c12efe26256131fc03}{$\sim$\+Point}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classLight_1_1Point}{Point}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \mbox{\hyperlink{classLight_1_1Point_a60e28afb5e093f1b09c1c894f6a521b6}{get\+Position}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the Position number of \mbox{\hyperlink{classLight_1_1Point}{Point}} light. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLight_1_1Point_aa4a11ace523359013d54b49ff451ae59}{set\+Position}} (\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} position)
+\begin{DoxyCompactList}\small\item\em Set the Position object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLight_1_1Point_a52d21c76c03ec5cfbd2b3c53729fcacc}{set\+Color}} (const \mbox{\hyperlink{classColor}{Color}} \&rgb)
+\begin{DoxyCompactList}\small\item\em Set the \mbox{\hyperlink{classColor}{Color}} object. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLight_1_1Point_a2930cbc9e32f647674092536746dd392}{get\+Diffuse\+Multiplier}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the Diffuse Multiplier number of \mbox{\hyperlink{classLight_1_1Point}{Point}} light. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLight_1_1Point_a95790551fa0319b4bfdcace446077d57}{set\+Diffuse\+Multiplier}} (double diffuse\+Multiplier)
+\begin{DoxyCompactList}\small\item\em Set the Diffuse Multiplier object. \end{DoxyCompactList}\item 
+Light\+::\+Light\+Type \mbox{\hyperlink{classLight_1_1Point_ab8174ed6a84c3be297a356dc70e48120}{get\+Type}} (void) const override
+\begin{DoxyCompactList}\small\item\em Get type of Light. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classColor}{Color}} \mbox{\hyperlink{classLight_1_1Point_ad91680268da4ba3ed548df7140d31ae5}{get\+Color}} (void) const override
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classColor}{Color}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classColor}{Color}} \mbox{\hyperlink{classLight_1_1Point_a5274b8b054b3891f9f538040ac036f9c}{compute\+Color}} (\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} primitive\+Normal, const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&hit\+Point, \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} color, const \mbox{\hyperlink{classPrimitives_1_1Shadow}{Primitives\+::\+Shadow}} \&shadow) const override
+\begin{DoxyCompactList}\small\item\em Compute the color point with ponctual light. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLight_1_1Point_a585cdae5a597883348f4a6328742f736}\label{classLight_1_1Point_a585cdae5a597883348f4a6328742f736}} 
+\index{Light::Point@{Light::Point}!Point@{Point}}
+\index{Point@{Point}!Light::Point@{Light::Point}}
+\doxysubsubsection{\texorpdfstring{Point()}{Point()}}
+{\footnotesize\ttfamily Light\+::\+Point\+::\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}}}]{position,  }\item[{double}]{diffuse\+Multiplier }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classLight_1_1Point}{Point}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & Position of \mbox{\hyperlink{classLight_1_1Point}{Point}} Light \\
+\hline
+{\em diffuse\+Multiplier} & Diffuse multiplier of \mbox{\hyperlink{classLight_1_1Point}{Point}} Light \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLight_1_1Point_a5274b8b054b3891f9f538040ac036f9c}\label{classLight_1_1Point_a5274b8b054b3891f9f538040ac036f9c}} 
+\index{Light::Point@{Light::Point}!computeColor@{computeColor}}
+\index{computeColor@{computeColor}!Light::Point@{Light::Point}}
+\doxysubsubsection{\texorpdfstring{computeColor()}{computeColor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classColor}{Color}} Light\+::\+Point\+::compute\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}}}]{primitive\+Normal,  }\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&}]{hit\+Point,  }\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}}}]{color,  }\item[{const \mbox{\hyperlink{classPrimitives_1_1Shadow}{Primitives\+::\+Shadow}} \&}]{shadow }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Compute the color point with ponctual light. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em primitive\+Normal} & normal to the hitpoint \\
+\hline
+{\em hit\+Point} & hitpoint \\
+\hline
+{\em color} & color \\
+\hline
+{\em shadow} & Primitive\+::\+Shadow class to handle shadows\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Math\+::\+Point3D color 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLight_1_1ILight_adf32acfd650202fad3fd6b04c90750f0}{Light\+::\+ILight}}.
+
+\mbox{\Hypertarget{classLight_1_1Point_ad91680268da4ba3ed548df7140d31ae5}\label{classLight_1_1Point_ad91680268da4ba3ed548df7140d31ae5}} 
+\index{Light::Point@{Light::Point}!getColor@{getColor}}
+\index{getColor@{getColor}!Light::Point@{Light::Point}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classColor}{Color}} Light\+::\+Point\+::get\+Color (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{classColor}{Color}} object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classColor}{Color}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLight_1_1ILight_aba927f10eadc8a48d15523fa66335ad4}{Light\+::\+ILight}}.
+
+\mbox{\Hypertarget{classLight_1_1Point_a2930cbc9e32f647674092536746dd392}\label{classLight_1_1Point_a2930cbc9e32f647674092536746dd392}} 
+\index{Light::Point@{Light::Point}!getDiffuseMultiplier@{getDiffuseMultiplier}}
+\index{getDiffuseMultiplier@{getDiffuseMultiplier}!Light::Point@{Light::Point}}
+\doxysubsubsection{\texorpdfstring{getDiffuseMultiplier()}{getDiffuseMultiplier()}}
+{\footnotesize\ttfamily double Light\+::\+Point\+::get\+Diffuse\+Multiplier (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Diffuse Multiplier number of \mbox{\hyperlink{classLight_1_1Point}{Point}} light. 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLight_1_1Point_a60e28afb5e093f1b09c1c894f6a521b6}\label{classLight_1_1Point_a60e28afb5e093f1b09c1c894f6a521b6}} 
+\index{Light::Point@{Light::Point}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Light::Point@{Light::Point}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} Light\+::\+Point\+::get\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Position number of \mbox{\hyperlink{classLight_1_1Point}{Point}} light. 
+
+\begin{DoxyReturn}{Returns}
+Math\+::\+Point3D position 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLight_1_1Point_ab8174ed6a84c3be297a356dc70e48120}\label{classLight_1_1Point_ab8174ed6a84c3be297a356dc70e48120}} 
+\index{Light::Point@{Light::Point}!getType@{getType}}
+\index{getType@{getType}!Light::Point@{Light::Point}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Light\+::\+Light\+Type Light\+::\+Point\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get type of Light. 
+
+\begin{DoxyReturn}{Returns}
+The type of the light 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLight_1_1ILight_a13e1ccb9cc7fc80a78f48167caed504d}{Light\+::\+ILight}}.
+
+\mbox{\Hypertarget{classLight_1_1Point_a52d21c76c03ec5cfbd2b3c53729fcacc}\label{classLight_1_1Point_a52d21c76c03ec5cfbd2b3c53729fcacc}} 
+\index{Light::Point@{Light::Point}!setColor@{setColor}}
+\index{setColor@{setColor}!Light::Point@{Light::Point}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily void Light\+::\+Point\+::set\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classColor}{Color}} \&}]{rgb }\end{DoxyParamCaption})}
+
+
+
+Set the \mbox{\hyperlink{classColor}{Color}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rgb} & color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLight_1_1Point_a95790551fa0319b4bfdcace446077d57}\label{classLight_1_1Point_a95790551fa0319b4bfdcace446077d57}} 
+\index{Light::Point@{Light::Point}!setDiffuseMultiplier@{setDiffuseMultiplier}}
+\index{setDiffuseMultiplier@{setDiffuseMultiplier}!Light::Point@{Light::Point}}
+\doxysubsubsection{\texorpdfstring{setDiffuseMultiplier()}{setDiffuseMultiplier()}}
+{\footnotesize\ttfamily void Light\+::\+Point\+::set\+Diffuse\+Multiplier (\begin{DoxyParamCaption}\item[{double}]{diffuse\+Multiplier }\end{DoxyParamCaption})}
+
+
+
+Set the Diffuse Multiplier object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffuse\+Multiplier} & New Diffuse Multiplier of \mbox{\hyperlink{classLight_1_1Point}{Point}} Light \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLight_1_1Point_aa4a11ace523359013d54b49ff451ae59}\label{classLight_1_1Point_aa4a11ace523359013d54b49ff451ae59}} 
+\index{Light::Point@{Light::Point}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Light::Point@{Light::Point}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Light\+::\+Point\+::set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Set the Position object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & New position of \mbox{\hyperlink{classLight_1_1Point}{Point}} Light \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Lights/Point.\+hpp\item 
+src/\+Plugins/\+Lights/\+Point/Point.\+cpp\end{DoxyCompactItemize}

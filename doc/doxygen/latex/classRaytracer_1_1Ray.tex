@@ -1,0 +1,104 @@
+\hypertarget{classRaytracer_1_1Ray}{}\doxysection{Raytracer\+::Ray Class Reference}
+\label{classRaytracer_1_1Ray}\index{Raytracer::Ray@{Raytracer::Ray}}
+
+
+\mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} class, (point and direction vectors)  
+
+
+
+
+{\ttfamily \#include $<$Ray.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRaytracer_1_1Ray_a8c9f80a0d8f9eaabc72e97412b5ed7f1}\label{classRaytracer_1_1Ray_a8c9f80a0d8f9eaabc72e97412b5ed7f1}} 
+\mbox{\hyperlink{classRaytracer_1_1Ray_a8c9f80a0d8f9eaabc72e97412b5ed7f1}{Ray}} ()=default
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRaytracer_1_1Ray_ad110d47524fc8d709522094356242618}{Ray}} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&\mbox{\hyperlink{classRaytracer_1_1Ray_ab1e2cfdc33ad514947c0dbfb604e0810}{origin}}, const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \&\mbox{\hyperlink{classRaytracer_1_1Ray_aaf73b5cc534650303a31cc613dda30aa}{direction}})
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRaytracer_1_1Ray_a6881e5ec145d10e87995df9c39d187e8}\label{classRaytracer_1_1Ray_a6881e5ec145d10e87995df9c39d187e8}} 
+\mbox{\hyperlink{classRaytracer_1_1Ray_a6881e5ec145d10e87995df9c39d187e8}{$\sim$\+Ray}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} object. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \& \mbox{\hyperlink{classRaytracer_1_1Ray_ab1e2cfdc33ad514947c0dbfb604e0810}{origin}} () const
+\begin{DoxyCompactList}\small\item\em return the origin of the ray \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \& \mbox{\hyperlink{classRaytracer_1_1Ray_aaf73b5cc534650303a31cc613dda30aa}{direction}} () const
+\begin{DoxyCompactList}\small\item\em return the direction of the ray \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \mbox{\hyperlink{classRaytracer_1_1Ray_a34f2bd706da1c8af5d1f8e84c3db1262}{at}} (double t) const
+\begin{DoxyCompactList}\small\item\em return the point vector of where point the ray at multiply by t \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} class, (point and direction vectors) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRaytracer_1_1Ray_ad110d47524fc8d709522094356242618}\label{classRaytracer_1_1Ray_ad110d47524fc8d709522094356242618}} 
+\index{Raytracer::Ray@{Raytracer::Ray}!Ray@{Ray}}
+\index{Ray@{Ray}!Raytracer::Ray@{Raytracer::Ray}}
+\doxysubsubsection{\texorpdfstring{Ray()}{Ray()}}
+{\footnotesize\ttfamily Raytracer\+::\+Ray\+::\+Ray (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&}]{origin,  }\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \&}]{direction }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & point vector \\
+\hline
+{\em direction} & vector direction \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRaytracer_1_1Ray_a34f2bd706da1c8af5d1f8e84c3db1262}\label{classRaytracer_1_1Ray_a34f2bd706da1c8af5d1f8e84c3db1262}} 
+\index{Raytracer::Ray@{Raytracer::Ray}!at@{at}}
+\index{at@{at}!Raytracer::Ray@{Raytracer::Ray}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} Raytracer\+::\+Ray\+::at (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption}) const}
+
+
+
+return the point vector of where point the ray at multiply by t 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & multiplication factor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Math\+::\+Point3D 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRaytracer_1_1Ray_aaf73b5cc534650303a31cc613dda30aa}\label{classRaytracer_1_1Ray_aaf73b5cc534650303a31cc613dda30aa}} 
+\index{Raytracer::Ray@{Raytracer::Ray}!direction@{direction}}
+\index{direction@{direction}!Raytracer::Ray@{Raytracer::Ray}}
+\doxysubsubsection{\texorpdfstring{direction()}{direction()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \& Raytracer\+::\+Ray\+::direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+return the direction of the ray 
+
+\begin{DoxyReturn}{Returns}
+const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRaytracer_1_1Ray_ab1e2cfdc33ad514947c0dbfb604e0810}\label{classRaytracer_1_1Ray_ab1e2cfdc33ad514947c0dbfb604e0810}} 
+\index{Raytracer::Ray@{Raytracer::Ray}!origin@{origin}}
+\index{origin@{origin}!Raytracer::Ray@{Raytracer::Ray}}
+\doxysubsubsection{\texorpdfstring{origin()}{origin()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \& Raytracer\+::\+Ray\+::origin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+return the origin of the ray 
+
+\begin{DoxyReturn}{Returns}
+const Math\+::\+Point3D\& 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Ray.\+hpp\item 
+src/\+Core/Ray.\+cpp\end{DoxyCompactItemize}

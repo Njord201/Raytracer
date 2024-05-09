@@ -1,0 +1,219 @@
+\hypertarget{classPrimitive_1_1Cylinder}{}\doxysection{Primitive\+::Cylinder Class Reference}
+\label{classPrimitive_1_1Cylinder}\index{Primitive::Cylinder@{Primitive::Cylinder}}
+Inheritance diagram for Primitive\+::Cylinder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPrimitive_1_1Cylinder}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_a6cbadb4c188fc2a54497cd6ab6c8b185}\label{classPrimitive_1_1Cylinder_a6cbadb4c188fc2a54497cd6ab6c8b185}} 
+\mbox{\hyperlink{classPrimitive_1_1Cylinder_a6cbadb4c188fc2a54497cd6ab6c8b185}{Cylinder}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPrimitive_1_1Cylinder}{Cylinder}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPrimitive_1_1Cylinder_a4035114a60ab2276dc42a79d36df9ebe}{Cylinder}} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&origin, double radius, Primitive\+::\+Axis axis)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPrimitive_1_1Cylinder}{Cylinder}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_ab5f66736f1760eb66250e7dd45cc75a0}\label{classPrimitive_1_1Cylinder_ab5f66736f1760eb66250e7dd45cc75a0}} 
+\mbox{\hyperlink{classPrimitive_1_1Cylinder_ab5f66736f1760eb66250e7dd45cc75a0}{$\sim$\+Cylinder}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classPrimitive_1_1Cylinder}{Cylinder}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \mbox{\hyperlink{classPrimitive_1_1Cylinder_ab9881cb8d2cf5f5c84dcb414536817f9}{hit\+Point}} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray) const override
+\begin{DoxyCompactList}\small\item\em Return the hit point of the cylinder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPrimitive_1_1Cylinder_ac5d493e19cf49e064ec73939dfbddd27}{set\+Origin}} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&origin)
+\begin{DoxyCompactList}\small\item\em Set origin of cylinder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPrimitive_1_1Cylinder_a6f2a067eac3e32d4870098882ba308fd}{set\+Axis}} (double axis)
+\begin{DoxyCompactList}\small\item\em Set axis of cylinder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPrimitive_1_1Cylinder_a2d4a8ff6af195a5dd3a7fef4341e4eab}{set\+Radius}} (double radius)
+\begin{DoxyCompactList}\small\item\em Set radius of cylinder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPrimitive_1_1Cylinder_ac0b58d9c4ecc26e1c1e23ce691907cb2}{set\+Axis}} (const Primitive\+::\+Axis \&axis)
+\begin{DoxyCompactList}\small\item\em Set the Axis object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPrimitive_1_1Cylinder_ab4d8868c401e211777d1d24f24ccced4}{set\+Rotation}} (\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} rotation)
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial_1_1IMaterial}{Material\+::\+IMaterial}} $>$ \mbox{\hyperlink{classPrimitive_1_1Cylinder_a2642b5647b2fbcf27faba534fddcfea8}{get\+Material}} () const
+\begin{DoxyCompactList}\small\item\em Get the Material object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPrimitive_1_1Cylinder_a5ecd7eb60ac59796202cf52dfe10474f}{set\+Material}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial_1_1IMaterial}{Material\+::\+IMaterial}} $>$ material)
+\begin{DoxyCompactList}\small\item\em Set the Material object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \mbox{\hyperlink{classPrimitive_1_1Cylinder_a3c2f03e7fc97ff50c58365fe306c2e8d}{get\+Normal}} (const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \&\mbox{\hyperlink{classPrimitive_1_1Cylinder_ab9881cb8d2cf5f5c84dcb414536817f9}{hit\+Point}}) const override
+\begin{DoxyCompactList}\small\item\em Get the Normal of the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_a4035114a60ab2276dc42a79d36df9ebe}\label{classPrimitive_1_1Cylinder_a4035114a60ab2276dc42a79d36df9ebe}} 
+\index{Primitive::Cylinder@{Primitive::Cylinder}!Cylinder@{Cylinder}}
+\index{Cylinder@{Cylinder}!Primitive::Cylinder@{Primitive::Cylinder}}
+\doxysubsubsection{\texorpdfstring{Cylinder()}{Cylinder()}}
+{\footnotesize\ttfamily Primitive\+::\+Cylinder\+::\+Cylinder (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&}]{origin,  }\item[{double}]{radius,  }\item[{Primitive\+::\+Axis}]{axis }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classPrimitive_1_1Cylinder}{Cylinder}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & center of the cylinder \\
+\hline
+{\em radius} & of the cylinder \\
+\hline
+{\em axis} & of the cylinder \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_a2642b5647b2fbcf27faba534fddcfea8}\label{classPrimitive_1_1Cylinder_a2642b5647b2fbcf27faba534fddcfea8}} 
+\index{Primitive::Cylinder@{Primitive::Cylinder}!getMaterial@{getMaterial}}
+\index{getMaterial@{getMaterial}!Primitive::Cylinder@{Primitive::Cylinder}}
+\doxysubsubsection{\texorpdfstring{getMaterial()}{getMaterial()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial_1_1IMaterial}{Material\+::\+IMaterial}} $>$ Primitive\+::\+Cylinder\+::get\+Material (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Material object. 
+
+\begin{DoxyReturn}{Returns}
+Material of cylinder 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPrimitive_1_1IPrimitive_ad4cbc6ab522db4cd690f7147b32bd4fd}{Primitive\+::\+IPrimitive}}.
+
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_a3c2f03e7fc97ff50c58365fe306c2e8d}\label{classPrimitive_1_1Cylinder_a3c2f03e7fc97ff50c58365fe306c2e8d}} 
+\index{Primitive::Cylinder@{Primitive::Cylinder}!getNormal@{getNormal}}
+\index{getNormal@{getNormal}!Primitive::Cylinder@{Primitive::Cylinder}}
+\doxysubsubsection{\texorpdfstring{getNormal()}{getNormal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} Primitive\+::\+Cylinder\+::get\+Normal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} \&}]{hit\+Point }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Normal of the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hit\+Point} & to have the normal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPrimitive_1_1IPrimitive_a72bed929132ab511befdcd04b73ae94f}{Primitive\+::\+IPrimitive}}.
+
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_ab9881cb8d2cf5f5c84dcb414536817f9}\label{classPrimitive_1_1Cylinder_ab9881cb8d2cf5f5c84dcb414536817f9}} 
+\index{Primitive::Cylinder@{Primitive::Cylinder}!hitPoint@{hitPoint}}
+\index{hitPoint@{hitPoint}!Primitive::Cylinder@{Primitive::Cylinder}}
+\doxysubsubsection{\texorpdfstring{hitPoint()}{hitPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} Primitive\+::\+Cylinder\+::hit\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&}]{ray }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Return the hit point of the cylinder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ray} & vector3D \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Point3D 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPrimitive_1_1IPrimitive_a13b06d12d3a3d6a03ba0715c7dcd97fe}{Primitive\+::\+IPrimitive}}.
+
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_ac0b58d9c4ecc26e1c1e23ce691907cb2}\label{classPrimitive_1_1Cylinder_ac0b58d9c4ecc26e1c1e23ce691907cb2}} 
+\index{Primitive::Cylinder@{Primitive::Cylinder}!setAxis@{setAxis}}
+\index{setAxis@{setAxis}!Primitive::Cylinder@{Primitive::Cylinder}}
+\doxysubsubsection{\texorpdfstring{setAxis()}{setAxis()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Primitive\+::\+Cylinder\+::set\+Axis (\begin{DoxyParamCaption}\item[{const Primitive\+::\+Axis \&}]{axis }\end{DoxyParamCaption})}
+
+
+
+Set the Axis object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axis} & The axis of cylinder Object to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_a6f2a067eac3e32d4870098882ba308fd}\label{classPrimitive_1_1Cylinder_a6f2a067eac3e32d4870098882ba308fd}} 
+\index{Primitive::Cylinder@{Primitive::Cylinder}!setAxis@{setAxis}}
+\index{setAxis@{setAxis}!Primitive::Cylinder@{Primitive::Cylinder}}
+\doxysubsubsection{\texorpdfstring{setAxis()}{setAxis()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Primitive\+::\+Cylinder\+::set\+Axis (\begin{DoxyParamCaption}\item[{double}]{axis }\end{DoxyParamCaption})}
+
+
+
+Set axis of cylinder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axis} & double \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_a5ecd7eb60ac59796202cf52dfe10474f}\label{classPrimitive_1_1Cylinder_a5ecd7eb60ac59796202cf52dfe10474f}} 
+\index{Primitive::Cylinder@{Primitive::Cylinder}!setMaterial@{setMaterial}}
+\index{setMaterial@{setMaterial}!Primitive::Cylinder@{Primitive::Cylinder}}
+\doxysubsubsection{\texorpdfstring{setMaterial()}{setMaterial()}}
+{\footnotesize\ttfamily void Primitive\+::\+Cylinder\+::set\+Material (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial_1_1IMaterial}{Material\+::\+IMaterial}} $>$}]{material }\end{DoxyParamCaption})}
+
+
+
+Set the Material object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em material} & Material of cylinder \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_ac5d493e19cf49e064ec73939dfbddd27}\label{classPrimitive_1_1Cylinder_ac5d493e19cf49e064ec73939dfbddd27}} 
+\index{Primitive::Cylinder@{Primitive::Cylinder}!setOrigin@{setOrigin}}
+\index{setOrigin@{setOrigin}!Primitive::Cylinder@{Primitive::Cylinder}}
+\doxysubsubsection{\texorpdfstring{setOrigin()}{setOrigin()}}
+{\footnotesize\ttfamily void Primitive\+::\+Cylinder\+::set\+Origin (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Point3D}} \&}]{origin }\end{DoxyParamCaption})}
+
+
+
+Set origin of cylinder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hit\+Point} & Point3D \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_a2d4a8ff6af195a5dd3a7fef4341e4eab}\label{classPrimitive_1_1Cylinder_a2d4a8ff6af195a5dd3a7fef4341e4eab}} 
+\index{Primitive::Cylinder@{Primitive::Cylinder}!setRadius@{setRadius}}
+\index{setRadius@{setRadius}!Primitive::Cylinder@{Primitive::Cylinder}}
+\doxysubsubsection{\texorpdfstring{setRadius()}{setRadius()}}
+{\footnotesize\ttfamily void Primitive\+::\+Cylinder\+::set\+Radius (\begin{DoxyParamCaption}\item[{double}]{radius }\end{DoxyParamCaption})}
+
+
+
+Set radius of cylinder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em radius} & double \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPrimitive_1_1Cylinder_ab4d8868c401e211777d1d24f24ccced4}\label{classPrimitive_1_1Cylinder_ab4d8868c401e211777d1d24f24ccced4}} 
+\index{Primitive::Cylinder@{Primitive::Cylinder}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!Primitive::Cylinder@{Primitive::Cylinder}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily void Primitive\+::\+Cylinder\+::set\+Rotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMath_1_1Vector3D}{Math\+::\+Vector3D}}}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Set the Rotation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rotation} & -\/ Rotation value \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Primitives/Cylinder.\+hpp\item 
+src/\+Plugins/\+Primitives/\+Cylinder/Cylinder.\+cpp\end{DoxyCompactItemize}

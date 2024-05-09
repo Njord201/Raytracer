@@ -25,6 +25,11 @@ fclean: clean
 	@make fclean -C ./src/Core/
 	@make fclean -C ./src/Plugins/
 
+doc:
+	@doxygen doc/doxygen/Doxyfile
+
+.PHONY: doc
+
 tests_run:
 
 re:	fclean all
