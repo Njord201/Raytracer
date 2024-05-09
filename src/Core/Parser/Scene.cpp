@@ -310,6 +310,47 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             this->_primitives.add(newPlane);
         }
     }
+    if (primitives.exists("rectangular_cuboids")) {
+        libconfig::Setting& rectangularCuboidArray = primitives.lookup("rectangular_cuboids");
+        for (int index = 0; index < rectangularCuboidArray.getLength(); index++) {
+            std::shared_ptr<Primitive::IPrimitive> rectangularCuboid = _factory.createPrimitivesComponent("rectangular_cuboid");
+            std::shared_ptr<Primitive::RectangularCuboid> newRectangularCuboid = std::dynamic_pointer_cast<Primitive::RectangularCuboid>(rectangularCuboid);
+
+            const libconfig::Setting &minX = rectangularCuboidArray[index]["minX"];
+            const libconfig::Setting &minY = rectangularCuboidArray[index]["minY"];
+            const libconfig::Setting &minZ = rectangularCuboidArray[index]["minZ"];
+            const libconfig::Setting &maxX = rectangularCuboidArray[index]["maxX"];
+            const libconfig::Setting &maxY = rectangularCuboidArray[index]["maxY"];
+            const libconfig::Setting &maxZ = rectangularCuboidArray[index]["maxZ"];
+
+            newRectangularCuboid->setMinX(_parseValue(minX));
+            newRectangularCuboid->setMinY(_parseValue(minY));
+            newRectangularCuboid->setMinZ(_parseValue(minZ));
+            newRectangularCuboid->setMaxX(_parseValue(maxX));
+            newRectangularCuboid->setMaxY(_parseValue(maxY));
+            newRectangularCuboid->setMaxZ(_parseValue(maxZ));
+
+            std::string materialType;
+            libconfig::Setting& material = rectangularCuboidArray[index].lookup("material");
+            material.lookupValue("type", materialType);
+
+            if (materialType == "flatColor") {
+                libconfig::Setting& color = material.lookup("color");
+                std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                newRectangularCuboid->setMaterial(materialPtr);
+            }
+
+            // if (rectangularCuboidArray[index].exists("translation")) {
+            //     libconfig::Setting& translation = rectangularCuboidArray[index].lookup("translation");
+            //     Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+            //     Math::Vector3D newOrigin = newRectangularCuboid->getOrigin();
+            //     newOrigin.translate(trans);
+            //     newRectangularCuboid->setOrigin(newOrigin);
+            // }
+
+            this->_primitives.add(newRectangularCuboid);
+        }
+    }
     return 0;
 }
 
