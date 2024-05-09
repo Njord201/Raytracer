@@ -93,7 +93,6 @@ Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& ray) const
     return hitPoint;
 }
 
-
 void Primitive::Cylinder::setRotation(Math::Vector3D rotation)
 {
     this->_rotation = rotation;
