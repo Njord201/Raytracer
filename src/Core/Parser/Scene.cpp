@@ -384,6 +384,12 @@ int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
                 newPoint->setPosition(newOrigin);
             }
 
+            if (lightArrayPoint[index].exists("color")) {
+                libconfig::Setting& colorSetting = lightArrayPoint[index].lookup("color");
+                Color color(_parseValue(colorSetting["r"]), _parseValue(colorSetting["g"]), _parseValue(colorSetting["b"]));
+                newPoint->setColor(color);
+            }
+
             this->_lights.add(newPoint);
         }
     }
@@ -415,6 +421,12 @@ int Raytracer::Scene::_parseLightsSetting(const libconfig::Setting &lights)
                 Math::Vector3D newOrigin = newDirectional->getPosition();
                 newOrigin.translate(trans);
                 newDirectional->setPosition(newOrigin);
+            }
+
+            if (lightArrayDirectional[index].exists("color")) {
+                libconfig::Setting& colorSetting = lightArrayDirectional[index].lookup("color");
+                Color color(_parseValue(colorSetting["r"]), _parseValue(colorSetting["g"]), _parseValue(colorSetting["b"]));
+                newDirectional->setColor(color);
             }
 
             this->_lights.add(newDirectional);

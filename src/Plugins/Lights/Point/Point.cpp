@@ -14,12 +14,14 @@ Light::Point::Point()
 {
     this->_position = Math::Point3D(0, 0, 0);
     this->_diffuseMultiplier = 0.0;
+    this->_color = Color(-1, -1, -1);
 }
 
 Light::Point::Point(Math::Point3D position, double diffuseMultiplier)
 {
     this->_position = position;
     this->_diffuseMultiplier = diffuseMultiplier;
+    this->_color = Color(-1, -1, -1);
 }
 
 Math::Point3D Light::Point::getPosition(void) const
@@ -62,10 +64,22 @@ Color Light::Point::computeColor(Math::Vector3D primitiveNormal, const Math::Poi
 
     double coeffLight = (1 - (angle / 90));
 
+    Math::Vector3D colorCoeff (_color.getR(), _color.getG(), _color.getB());
+
     if (angle <= 90)
         color *= coeffLight;
     else
         color = Math::Point3D(0,0,0);
 
     return color;
+}
+
+void Light::Point::setColor(const Color& rgb)
+{
+    _color = rgb;
+}
+
+Color Light::Point::getColor(void) const
+{
+    return _color;
 }
