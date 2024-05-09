@@ -47,3 +47,14 @@ double Color::getB() const
 {
     return _b;
 }
+
+bool Color::isWrongColor() const
+{
+    if (_r < 0 || _r > 255)
+        return true;
+    if (_g < 0 || _g > 255)
+        return true;
+    if (_b < 0 || _b > 255)
+        return true;
+    return false;
+}
