@@ -31,6 +31,7 @@ SRC			=	Parser/Scene.cpp \
 				../Plugins/Primitives/Cone/Cone.cpp \
 				../Plugins/Primitives/Cylinder/Cylinder.cpp \
 				../Plugins/Primitives/Plane/Plane.cpp \
+				../Plugins/Primitives/RectangularCuboid/RectangularCuboid.cpp \
 				\
 				../Plugins/Lights/Ambient/Ambient.cpp \
 				../Plugins/Lights/Point/Point.cpp \
