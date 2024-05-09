@@ -28,6 +28,7 @@ namespace Primitive {
              * @param minX double min x of the rectangular cuboid
              * @param minY double min y of the rectangular cuboid
              * @param minZ double min z of the rectangular cuboid
+             * @param material Material of the rectangular cuboid
              */
             RectangularCuboid(double maxX, double maxY, double maxZ, double minX, double minY, double minZ, std::shared_ptr<Material::IMaterial> material);
 
@@ -171,12 +172,12 @@ namespace Primitive {
              */
             Math::Point3D checkRayReachPrimitive(double t, Math::Vector3D vDir, Math::Point3D origin) const;
 
-            double _maxX;
-            double _minX;
-            double _maxY;
-            double _minY;
-            double _maxZ;
-            double _minZ;
+            double                                  _maxX;
+            double                                  _minX;
+            double                                  _maxY;
+            double                                  _minY;
+            double                                  _maxZ;
+            double                                  _minZ;
             std::shared_ptr<Material::IMaterial>    _material;
             Math::Vector3D                          _rotation;
     };
