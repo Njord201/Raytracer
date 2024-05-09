@@ -26,10 +26,12 @@ fclean: clean
 	@make fclean -C ./src/Plugins/
 
 doc:
-	@doxygen doc/doxygen/Doxyfile
+	@doxygen doc/doxygen/Doxyfile && make -C doc/doxygen/latex
+	@mv doc/doxygen/latex/refman.pdf ./doc
 
 .PHONY: doc
 
 tests_run:
 
 re:	fclean all
+	
