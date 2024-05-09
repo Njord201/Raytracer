@@ -32,7 +32,7 @@ namespace Primitive {
             RectangularCuboid(double maxX, double maxY, double maxZ, double minX, double minY, double minZ, std::shared_ptr<Material::IMaterial> material);
 
             /**
-             * @brief Destroy the RectangularCuboid object
+             * @brief Destroy the RectangularCuboid object.
              *
              */
             ~RectangularCuboid() = default;
