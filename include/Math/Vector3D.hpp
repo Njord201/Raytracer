@@ -99,7 +99,7 @@ namespace Math {
             void rotateY(double degrees);
 
             /**
-             * @brief Rotate a vector with an angle.
+             * @brief Rotate a vector with an angle on the axis X.
              * 
              * @param degrees how many to rotate
              */
