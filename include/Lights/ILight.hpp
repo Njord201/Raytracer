@@ -38,6 +38,13 @@ class Light::ILight {
             virtual Light::LightType getType(void) const = 0;
 
             /**
+             * @brief Get the Color object.
+             *
+             * @return Color
+             */
+            virtual Color getColor(void) const = 0;
+
+            /**
              * @brief Compute the color point with lights.
              *
              * @param primitiveNormal normal to the hitpoint
