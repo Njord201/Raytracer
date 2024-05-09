@@ -16,9 +16,12 @@ Primitive::Cylinder::Cylinder() : _origin(0,0,0), _radius(1), _axis(X){}
 
 Primitive::Cylinder::Cylinder(const Math::Point3D& origin, double radius, Primitive::Axis axis) : _origin(origin), _radius(radius), _axis(axis){}
 
-static Math::Point3D getRayOriginByAxis(const Raytracer::Ray& ray, const Primitive::Axis axis)
+static Math::Point3D getRayOriginByAxis(const Raytracer::Ray& ray, const Primitive::Axis axis, Math::Point3D rotation)
 {
     Math::Point3D rayOrigin = ray.origin();
+    rayOrigin.rotateX(rotation.x());
+    rayOrigin.rotateY(rotation.y());
+    rayOrigin.rotateZ(rotation.z());
 
     switch (axis) {
         case Primitive::X:
@@ -58,7 +61,7 @@ static Math::Vector3D getRayDirectionByAxis(const Raytracer::Ray& ray, const Pri
 
 Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& ray) const
 {
-    Math::Point3D rayOrigin = getRayOriginByAxis(ray, _axis);
+    Math::Point3D rayOrigin = getRayOriginByAxis(ray, _axis, this->_rotation);
     Math::Vector3D rayDirection = getRayDirectionByAxis(ray, _axis, this->_rotation);
 
     Math::Vector3D vectorCylinderToRay(rayOrigin.x() - _origin.x(),
@@ -84,7 +87,9 @@ Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& ray) const
     Math::Vector3D rayOriginToHit = hitPoint - rayOrigin;
     if (IS_INVERSE(rayOriginToHit.x(), rayDirection.x()) || IS_INVERSE(rayOriginToHit.y(), rayDirection.y()) || IS_INVERSE(rayOriginToHit.z(), rayDirection.z()))
         return Math::Point3D(-1,-1,-1);
-
+    hitPoint.rotateX(this->_rotation.x());
+    hitPoint.rotateY(this->_rotation.y());
+    hitPoint.rotateZ(this->_rotation.z());
     return hitPoint;
 }
 
