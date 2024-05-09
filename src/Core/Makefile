@@ -18,6 +18,7 @@ SRC			=	Parser/Scene.cpp \
 				\
 				Camera/Camera.cpp \
 				Camera/Rectangle.cpp \
+				Camera/CameraBuilder.cpp \
 				\
 				Materials/FlatColor.cpp \
 				\
