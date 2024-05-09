@@ -40,7 +40,7 @@ class Raytracer::Camera {
         Camera(Math::Point3D origin, Rectangle3D screen);
 
         /**
-         * @brief Construct a new Camera object by another one
+         * @brief Construct a new Camera object by another one.
          * 
          * @param other Camera object to duplicate
          * @return Camera& The new Camera object

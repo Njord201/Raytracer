@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2024
-** Camera
+** CameraBuilder
 ** File description:
 ** Raytracer
 */
@@ -29,9 +29,10 @@ class Raytracer::CameraBuilder {
         ~CameraBuilder() = default;
 
         /**
-         * @brief Set the Origin object.
-         *
+         * @brief Set the Origin object
+         * 
          * @param origin Origin to set
+         * @return CameraBuilder& object to chain the setter
          */
         CameraBuilder& setOrigin(Math::Point3D origin);
 
@@ -39,6 +40,7 @@ class Raytracer::CameraBuilder {
          * @brief Set the Screen object.
          *
          * @param screen Screen to set
+         * @return CameraBuilder& object to chain the setter
          */
         CameraBuilder& setScreen(Raytracer::Rectangle3D screen);
 
@@ -46,6 +48,7 @@ class Raytracer::CameraBuilder {
          * @brief Set the Fov object.
          *
          * @param fov Fov to set
+         * @return CameraBuilder& object to chain the setter
          */
         CameraBuilder& setFov(double fov);
 
@@ -53,6 +56,7 @@ class Raytracer::CameraBuilder {
          * @brief Set the Rotation object.
          *
          * @param rotation Rotation Vector to set
+         * @return CameraBuilder& object to chain the setter
          */
         CameraBuilder& setRotation(Math::Vector3D rotation);
 
@@ -61,6 +65,7 @@ class Raytracer::CameraBuilder {
          *
          * @param width of image
          * @param height of image
+         * @return CameraBuilder& object to chain the setter
          */
         CameraBuilder& setResolution(double width, double height);
 
@@ -72,5 +77,5 @@ class Raytracer::CameraBuilder {
         Camera build(void);
 
     private:
-        Camera camera;
+        Camera _camera;
 };
