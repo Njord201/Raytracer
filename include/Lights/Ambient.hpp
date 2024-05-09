@@ -75,6 +75,13 @@ class Light::Ambient : public Light::ILight {
         Light::LightType getType(void) const override;
 
         /**
+         * @brief Get the Color object.
+         *
+         * @return Color
+         */
+        Color getColor(void) const override;
+
+        /**
          * @brief compute the color point with ambiant light
          *
          * @param primitiveNormal normal to the hitpoint
@@ -89,4 +96,5 @@ class Light::Ambient : public Light::ILight {
     private:
         double _multiplier;
         double _diffuseMultiplier;
+        Color  _color;
 };

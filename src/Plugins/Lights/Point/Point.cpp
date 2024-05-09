@@ -66,15 +66,8 @@ Color Light::Point::computeColor(Math::Vector3D primitiveNormal, const Math::Poi
 
     Math::Vector3D colorCoeff (_color.getR(), _color.getG(), _color.getB());
 
-    if (angle <= 90) {
-        if (not _color.isWrongColor()) {
-            // The color is (colorPrimitive + colorLight) / 2
-            // example : ((255, 255, 0) + (25, 75, 20)) / 2 = (140, 165, 10)
-            color += colorCoeff;
-            color /= 2;
-        }
+    if (angle <= 90)
         color *= coeffLight;
-    }
     else
         color = Math::Point3D(0,0,0);
 

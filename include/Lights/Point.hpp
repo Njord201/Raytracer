@@ -87,7 +87,7 @@ class Light::Point : public Light::ILight {
          *
          * @return Color
          */
-        Color getColor(void) const;
+        Color getColor(void) const override;
 
         /**
          * @brief Compute the color point with ponctual light.

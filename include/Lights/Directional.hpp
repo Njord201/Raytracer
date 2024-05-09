@@ -102,7 +102,7 @@ class Light::Directional : public Light::ILight {
          *
          * @return Color
          */
-        Color getColor(void) const;
+        Color getColor(void) const override;
 
         /**
          * @brief compute the color point with directional light

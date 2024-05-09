@@ -72,12 +72,6 @@ Color Light::Directional::computeColor(Math::Vector3D primitiveNormal, const Mat
     if (shadow.isShadow(dir * -1, hitPoint))
         return Math::Point3D(0,0,0);
 
-    if (not _color.isWrongColor()) {
-        Math::Vector3D colorCoeff (_color.getR(), _color.getG(), _color.getB());
-        color += colorCoeff;
-        color /= 2;
-    }
-
     color *= -normal.dot(dir);
 
     if (color.x() < 0)
