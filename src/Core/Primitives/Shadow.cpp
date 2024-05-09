@@ -36,6 +36,11 @@ bool Primitives::Shadow::isShadow(const Math::Vector3D& vectorLightToPoint, cons
                 myRound(hit.y(), 0.001) == myRound(hitPoint.y(), 0.001) &&
                 myRound(hit.z(), 0.001) == myRound(hitPoint.z(), 0.001))
                 continue;
+            Math::Vector3D lightToHit = light - hit;
+            if (IS_INVERSE(vectorLightToPoint.x(), lightToHit.x()) ||
+                IS_INVERSE(vectorLightToPoint.y(), lightToHit.y()) ||
+                IS_INVERSE(vectorLightToPoint.z(), lightToHit.z()))
+                continue;
             return true;
         }
     }
