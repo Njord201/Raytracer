@@ -376,13 +376,24 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 newRectangularCuboid->setMaterial(materialPtr);
             }
 
-            // if (rectangularCuboidArray[index].exists("translation")) {
-            //     libconfig::Setting& translation = rectangularCuboidArray[index].lookup("translation");
-            //     Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
-            //     Math::Vector3D newOrigin = newRectangularCuboid->getOrigin();
-            //     newOrigin.translate(trans);
-            //     newRectangularCuboid->setOrigin(newOrigin);
-            // }
+            if (rectangularCuboidArray[index].exists("translation")) {
+                libconfig::Setting& translation = rectangularCuboidArray[index].lookup("translation");
+                Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+
+                double newMinX = newRectangularCuboid->getMinX() + trans.x();
+                double newMinY = newRectangularCuboid->getMinY() + trans.y();
+                double newMinZ = newRectangularCuboid->getMinZ() + trans.z();
+                double newMaxX = newRectangularCuboid->getMaxX() + trans.x();
+                double newMaxY = newRectangularCuboid->getMaxY() + trans.y();
+                double newMaxZ = newRectangularCuboid->getMaxZ() + trans.z();
+
+                newRectangularCuboid->setMinX(newMinX);
+                newRectangularCuboid->setMinY(newMinY);
+                newRectangularCuboid->setMinZ(newMinZ);
+                newRectangularCuboid->setMaxX(newMaxX);
+                newRectangularCuboid->setMaxY(newMaxY);
+                newRectangularCuboid->setMaxZ(newMaxZ);
+            }
 
             this->_primitives.add(newRectangularCuboid);
         }
