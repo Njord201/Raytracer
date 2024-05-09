@@ -132,3 +132,23 @@ Math::Vector3D& Math::Vector3D::operator/=(double n)
 
     return *this;
 }
+
+bool Math::Vector3D::operator==(const Vector3D& ptr)
+{
+    return _vector[0] == ptr._vector[0] && _vector[1] == ptr._vector[1] && _vector[2] == ptr._vector[2];
+}
+
+bool Math::Vector3D::operator!=(const Vector3D& ptr)
+{
+    return _vector[0] != ptr._vector[0] || _vector[1] != ptr._vector[1] || _vector[2] != ptr._vector[2];
+}
+
+bool Math::Vector3D::operator<(const Vector3D& ptr)
+{
+    return _vector[0] < ptr._vector[0] && _vector[1] < ptr._vector[1] && _vector[2] < ptr._vector[2];
+}
+
+bool Math::Vector3D::operator>(const Vector3D& ptr)
+{
+    return _vector[0] > ptr._vector[0] && _vector[1] > ptr._vector[1] && _vector[2] > ptr._vector[2];
+}

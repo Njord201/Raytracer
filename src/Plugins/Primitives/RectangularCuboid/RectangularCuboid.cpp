@@ -25,38 +25,54 @@ Primitive::RectangularCuboid::RectangularCuboid(double maxX, double maxY, double
     _minZ = minZ;
 }
 
+Math::Point3D Primitive::RectangularCuboid::checkRayReachPrimitive(double t, Math::Vector3D vDir, Math::Point3D origin) const
+{
+    Math::Point3D hitPoint = origin + vDir * t;
+
+    if (hitPoint.x() >= _minX && hitPoint.x() <= _maxX &&
+        hitPoint.y() >= _minY && hitPoint.y() <= _maxY &&
+        hitPoint.z() >= _minZ && hitPoint.z() <= _maxZ)
+        return hitPoint;
+    return Math::Point3D(-1, -1, -1);
+}
+
 Math::Point3D Primitive::RectangularCuboid::hitPoint(const Raytracer::Ray& ray) const
 {
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();
 
-    double tX = 0;
-    double tY = 0;
-    double tZ = 0;
-
     if (rayDirection.x() != 0) {
-        double t1 = (_minX - rayOrigin.x()) / rayDirection.x();
-        double t2 = (_maxX - rayOrigin.x()) / rayDirection.x();
-        tX = t1 < t2 ? t1 : t2;
-    } else {
-        return Math::Point3D(-1, -1, -1);
+        double tXmin = (_minX - rayOrigin.x()) / rayDirection.x();
+        double tXmax = (_maxX - rayOrigin.x()) / rayDirection.x();
+        if (tXmin > tXmax)
+            std::swap(tXmin, tXmax);
+
+        auto hitPoint = checkRayReachPrimitive(tXmin, rayDirection, rayOrigin);
+        if (hitPoint != Math::Point3D(-1, -1, -1))
+            return hitPoint;
     }
     if (rayDirection.y() != 0) {
-        double t1 = (_minY - rayOrigin.y()) / rayDirection.y();
-        double t2 = (_maxY - rayOrigin.y()) / rayDirection.y();
-        tY = t1 < t2 ? t1 : t2;
-    } else {
-        return Math::Point3D(-1, -1, -1);
+        double tYmin = (_minY - rayOrigin.y()) / rayDirection.y();
+        double tYmax = (_maxY - rayOrigin.y()) / rayDirection.y();
+        if (tYmin > tYmax)
+            std::swap(tYmin, tYmax);
+
+        auto hitPoint = checkRayReachPrimitive(tYmin, rayDirection, rayOrigin);
+        if (hitPoint != Math::Point3D(-1, -1, -1))
+            return hitPoint;
     }
     if (rayDirection.z() != 0) {
-        double t1 = (_minZ - rayOrigin.z()) / rayDirection.z();
-        double t2 = (_maxZ - rayOrigin.z()) / rayDirection.z();
-        tZ = t1 < t2 ? t1 : t2;
-    } else {
-        return Math::Point3D(-1, -1, -1);
+        double tZmin = (_minZ - rayOrigin.z()) / rayDirection.z();
+        double tZmax = (_maxZ - rayOrigin.z()) / rayDirection.z();
+        if (tZmin > tZmax)
+            std::swap(tZmin, tZmax);
+
+        auto hitPoint = checkRayReachPrimitive(tZmin, rayDirection, rayOrigin);
+        if (hitPoint != Math::Point3D(-1, -1, -1))
+            return hitPoint;
     }
 
-    return Math::Point3D(tX, tY, tZ);
+    return Math::Point3D(-1, -1, -1);
 }
 
 double Primitive::RectangularCuboid::getMinX() const

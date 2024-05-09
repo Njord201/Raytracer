@@ -153,6 +153,17 @@ namespace Primitive {
 
         private:
 
+            /**
+             * @brief Check if the ray reach the primitive rectangular cuboid.
+             *
+             * @param t - coefficient ((x | y | z) - rayOrigin.(x | y | z) / rayDirection.(x | y | z)
+             * @param vDir - vector direction of the ray
+             * @param origin - origin of the ray
+             * @return hitPoint if the ray reach the primitive or
+             * @return (-1, -1, -1) if the ray doesn't reach the primitive
+             */
+            Math::Point3D checkRayReachPrimitive(double t, Math::Vector3D vDir, Math::Point3D origin) const;
+
             double _maxX;
             double _minX;
             double _maxY;
