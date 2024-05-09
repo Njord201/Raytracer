@@ -70,6 +70,13 @@ class Light::Directional : public Light::ILight {
         void setDirection(Math::Vector3D direction);
 
         /**
+         * @brief Set the Color object.
+         *
+         * @param rgb color
+         */
+        void setColor(const Color& rgb);
+
+        /**
          * @brief Get the Diffuse Multiplier number of Point light
          *
          * @return double
@@ -91,6 +98,13 @@ class Light::Directional : public Light::ILight {
         Light::LightType getType(void) const override;
 
         /**
+         * @brief Get the Color object.
+         *
+         * @return Color
+         */
+        Color getColor(void) const;
+
+        /**
          * @brief compute the color point with directional light
          *
          * @param primitiveNormal normal to the hitpoint
@@ -106,4 +120,5 @@ class Light::Directional : public Light::ILight {
         Math::Point3D    _position;
         Math::Vector3D   _direction;
         double           _diffuseMultiplier;
+        Color            _color;
 };
