@@ -89,3 +89,13 @@ void Raytracer::Camera::setResolution(double width, double height)
     this->_resolution.first = width;
     this->_resolution.second = height;
 }
+
+Raytracer::Camera& Raytracer::Camera::operator=(const Raytracer::Camera& other)
+{
+    this->_fov = other.getFov();
+    this->_origin = other.getOrigin();
+    this->_resolution = other.getResolution();
+    this->_rotation = other.getRotation();
+    this->_screen = other.getScreen();
+    return *this;
+}
