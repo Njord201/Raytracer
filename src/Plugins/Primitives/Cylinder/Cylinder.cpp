@@ -12,7 +12,7 @@
 
 using std::sqrt;
 
-Primitive::Cylinder::Cylinder() : _origin(0,0,0), _radius(1), _axis(X){}
+Primitive::Cylinder::Cylinder() : _rotation(0,0,0), _origin(0,0,0), _radius(1), _axis(X){}
 
 Primitive::Cylinder::Cylinder(const Math::Point3D& origin, double radius, Primitive::Axis axis) : _origin(origin), _radius(radius), _axis(axis){}
 

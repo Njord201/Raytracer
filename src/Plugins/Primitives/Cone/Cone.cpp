@@ -11,10 +11,10 @@
 
 using std::sqrt;
 
-Primitive::Cone::Cone() : _position(0,0,0), _angle(25), _axis(Axis::X), _material(nullptr){}
+Primitive::Cone::Cone() : _rotation(0,0,0), _position(0,0,0), _angle(25), _axis(Axis::X), _material(nullptr) {}
 
 Primitive::Cone::Cone(const Math::Point3D& origin, double angle, Axis axis, std::shared_ptr<Material::IMaterial> material) :
-_position(origin), _angle(angle), _axis(axis), _material(material){}
+_position(origin), _angle(angle), _axis(axis), _material(material) {}
 
 Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray) const
 {

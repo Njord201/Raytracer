@@ -16,6 +16,7 @@ Primitive::Plane::Plane()
     _position = Math::Point3D(0, 0, 0);
     _axis = X;
     _material = nullptr;
+    _rotation = Math::Point3D(0,0,0);
 }
 
 Primitive::Plane::Plane(Primitive::Axis axis, double position, std::shared_ptr<Material::IMaterial> material)
