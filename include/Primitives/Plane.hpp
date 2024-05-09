@@ -63,7 +63,7 @@ namespace Primitive {
             /**
              * @brief Set the Rotation object.
              * 
-             * @param rotation rotation of plane
+             * @param rotation - Rotation value
              */
             void setRotation(Math::Vector3D rotation);
 

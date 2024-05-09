@@ -74,7 +74,7 @@ namespace Primitive {
             /**
              * @brief Set the Rotation object.
              * 
-             * @param rotation rotation of cylinder
+             * @param rotation - Rotation value
              */
             void setRotation(Math::Vector3D rotation);
 
