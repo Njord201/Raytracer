@@ -17,7 +17,7 @@ SRC			= 	getInstance.cpp \
 OBJ			= $(SRC:.cpp=.o)
 
 #Name
-NAME		= raytracer_cylinder.so
+NAME		= raytracer_rectangular_cuboid.so
 
 #Path
 ROOT		= ../../../../
