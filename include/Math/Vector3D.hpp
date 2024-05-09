@@ -84,6 +84,27 @@ namespace Math {
              */
             void translate(const Vector3D& ptr);
 
+            /**
+             * @brief Rotate a vector with an angle on the axis Z.
+             * 
+             * @param degrees - Rotation value
+             */
+            void rotateZ(double degrees);
+
+            /**
+             * @brief Rotate a vector with an angle on the axis Y.
+             * 
+             * @param degrees - Rotation value
+             */
+            void rotateY(double degrees);
+
+            /**
+             * @brief Rotate a vector with an angle on the axis X.
+             * 
+             * @param degrees - Rotation value
+             */
+            void rotateX(double degrees);
+
             Vector3D operator+(const Vector3D& ptr);
             Vector3D& operator+=(const Vector3D& ptr);
             Vector3D operator-(const Vector3D& ptr);

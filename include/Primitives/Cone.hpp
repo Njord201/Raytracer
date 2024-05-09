@@ -77,6 +77,13 @@ namespace Primitive {
             void setMaterial(std::shared_ptr<Material::IMaterial> material);
 
             /**
+             * @brief Set the Rotation object.
+             * 
+             * @param rotation - Rotation value
+             */
+            void setRotation(Math::Vector3D rotation);
+
+            /**
              * @brief Get the Origin object.
              *
              * @return Origin of Cone
@@ -113,6 +120,7 @@ namespace Primitive {
             Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const override;
 
         private:
+            Math::Vector3D                       _rotation;
             Math::Point3D                        _position;
             double                               _angle;
             Axis                                 _axis;
