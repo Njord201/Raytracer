@@ -47,12 +47,12 @@ Color Primitive::PrimitivesContainer::getColorPoint(const Raytracer::Ray& ray, c
     if (idx_nearest == -1)
         return VOID_COLOR;
 
-    return computeColor(_primitives[idx_nearest], point_nearest, lights);
+    return computeColor(_primitives[idx_nearest], point_nearest, lights, ray);
 }
 
-Color Primitive::PrimitivesContainer::computeColor(const std::shared_ptr<Primitive::IPrimitive>& primitive, const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const
+Color Primitive::PrimitivesContainer::computeColor(const std::shared_ptr<Primitive::IPrimitive>& primitive, const Math::Point3D& hitPoint, const Light::LightsContainer& lights, const Raytracer::Ray& ray) const
 {
-    Math::Vector3D normal = primitive->getNormal(hitPoint);
+    Math::Vector3D normal = primitive->getNormal(hitPoint, ray);
 
     if (primitive->getMaterial()->getType() == Material::MaterialType::FlatColor) {
         std::shared_ptr<FlatColor> primitiveFlatColor = std::dynamic_pointer_cast<FlatColor>(primitive->getMaterial());
