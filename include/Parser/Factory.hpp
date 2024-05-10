@@ -38,40 +38,40 @@ class Raytracer::Factory {
         using LightsCreator = std::function<std::shared_ptr<Light::ILight>()>;
 
         /**
-         * @brief Construct a new Scene object
+         * @brief Construct a new Scene object.
          *
          */
         Factory();
 
         /**
-         * @brief Destruct a Scene object
+         * @brief Destruct a Scene object.
          *
          */
         ~Factory() = default;
 
         /*
-         * @brief Create a type component
+         * @brief Create a type component.
          * @param type Component to create
          * @return The Component
          */
         std::shared_ptr<Primitive::IPrimitive> createPrimitivesComponent(const std::string &type);
 
         /*
-         * @brief Register a type component
+         * @brief Register a type component.
          * @param type Component to register
          * @param creator Function to create the component
          */
         void registerPrimitivesComponent(const std::string& type, PrimitivesCreator creator);
 
         /*
-         * @brief Create a type component
+         * @brief Create a type component.
          * @param type Component to create
          * @return The Component
          */
         std::shared_ptr<Light::ILight> createLightsComponent(const std::string &type);
 
         /*
-         * @brief Register a type component
+         * @brief Register a type component.
          * @param type Component to register
          * @param creator Function to create the component
          */
