@@ -40,13 +40,13 @@ class Cube {
         Cube(double minX, double minY, double minZ, double maxX, double maxY, double maxZ);
 
         /**
-         * @brief Construct a new Cube object
+         * @brief Construct a new Cube object.
          *
          */
         Cube() = default;
 
         /**
-         * @brief Destroy the Cube object
+         * @brief Destroy the Cube object.
          *
          */
         ~Cube() = default;
