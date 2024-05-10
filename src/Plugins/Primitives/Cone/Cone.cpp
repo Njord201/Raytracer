@@ -142,3 +142,32 @@ Math::Vector3D Primitive::Cone::getNormal(const Math::Vector3D& hitPoint) const
 
     return coneNormal;
 }
+
+Octree::cubeCollider Primitive::Cone::getColliderBox() const
+{
+    Octree::cubeCollider collider;
+
+    collider.maxX.second = _position.x() + _angle;
+    collider.minX.second = _position.x() - _angle;
+    collider.maxY.second = _position.y() + _angle;
+    collider.minY.second = _position.y() - _angle;
+    collider.maxZ.second = _position.z() + _angle;
+    collider.minZ.second = _position.z() - _angle;
+
+    collider.maxX.first = false;
+    collider.minX.first = false;
+    collider.maxY.first = false;
+    collider.minY.first = false;
+    collider.maxZ.first = false;
+    collider.minZ.first = false;
+
+    if (_axis == Axis::X) {
+        collider.maxX.first = true;
+    } else if (_axis == Axis::Y) {
+        collider.maxY.first = true;
+    } else {
+        collider.maxZ.first = true;
+    }
+
+    return collider;
+}

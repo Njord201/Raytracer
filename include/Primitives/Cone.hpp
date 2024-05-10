@@ -78,7 +78,7 @@ namespace Primitive {
 
             /**
              * @brief Set the Rotation object.
-             * 
+             *
              * @param rotation - Rotation value
              */
             void setRotation(Math::Vector3D rotation);
@@ -119,11 +119,18 @@ namespace Primitive {
              */
             Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const override;
 
+            /**
+             * @brief Get the collider box object.
+             *
+             * @return Octree::cubeCollider
+             */
+            Octree::cubeCollider getColliderBox() const override;
+
         private:
-            Math::Vector3D                       _rotation;
-            Math::Point3D                        _position;
-            double                               _angle;
-            Axis                                 _axis;
-            std::shared_ptr<Material::IMaterial> _material;
+            Math::Vector3D                          _rotation;
+            Math::Point3D                           _position;
+            double                                  _angle;
+            Axis                                    _axis;
+            std::shared_ptr<Material::IMaterial>    _material;
     };
 };
