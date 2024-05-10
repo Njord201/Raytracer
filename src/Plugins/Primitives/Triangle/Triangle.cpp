@@ -84,7 +84,6 @@ std::shared_ptr<Material::IMaterial> Primitive::Triangle::getMaterial() const
 Math::Vector3D Primitive::Triangle::getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const
 {
     (void) hitPoint;
-    (void) ray;
 
     Math::Vector3D normal = _normal;
     Math::Vector3D rayDirection = ray.direction();
