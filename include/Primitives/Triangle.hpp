@@ -73,12 +73,22 @@ namespace Primitive {
              * @brief Get the Normal of the object.
              *
              * @param hitPoint to compute the normal
+             * @param ray of the camera
              * @return Math::Vector3D
              */
-            Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const override;
+            Math::Vector3D getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const override;
+
+            void createNormals();
+
+            Math::Vector3D getTriangleNormal();
+            Math::Vector3D getTriangleInverseNormal();
+            void setTriangleNormal(const Math::Vector3D& normal);
+            void setTriangleInverseNormal(const Math::Vector3D& inverseNormal);
 
         private:
             Math::Vector3D                       _rotation;
+            Math::Vector3D                       _normal;
+            Math::Vector3D                       _inverseNormal;
             Math::Point3D                        _vertex1;
             Math::Point3D                        _vertex2;
             Math::Point3D                        _vertex3;

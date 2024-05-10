@@ -125,9 +125,10 @@ void Primitive::Plane::setMaterial(std::shared_ptr<Material::IMaterial> material
     this->_material = material;
 }
 
-Math::Vector3D Primitive::Plane::getNormal(const Math::Vector3D& hitPoint) const
+Math::Vector3D Primitive::Plane::getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const
 {
     (void) hitPoint;
+    (void) ray;
     switch (_axis) {
         case Primitive::X:
             return Math::Point3D(1, 0, 0);

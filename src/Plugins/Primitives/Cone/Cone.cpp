@@ -126,8 +126,9 @@ std::shared_ptr<Material::IMaterial> Primitive::Cone::getMaterial() const
     return this->_material;
 }
 
-Math::Vector3D Primitive::Cone::getNormal(const Math::Vector3D& hitPoint) const
+Math::Vector3D Primitive::Cone::getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const
 {
+    (void) ray;
     Math::Vector3D coneNormal;
     Math::Vector3D hit = hitPoint;
 
