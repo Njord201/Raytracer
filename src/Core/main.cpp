@@ -29,7 +29,7 @@ int main(int argc, char **argv)
     try {
         Raytracer::Scene scene(argv[1]);
         Raytracer::Renderer renderer(scene);
-        // renderer.renderScene();
+        renderer.renderScene();
         renderer.renderFinalScene();
     } catch (const Raytracer::Scene::ParserException &parseError) {
         std::cerr << parseError.what() << std::endl;
