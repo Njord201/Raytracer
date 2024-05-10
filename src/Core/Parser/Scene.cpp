@@ -145,6 +145,17 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
         camBuilder.setFov(_parseValue(fieldOfViewSetting));
     }
 
+    if (camera.exists("antialiasing")) {
+        const libconfig::Setting &fieldOfViewSetting = camera["antialiasing"];
+
+        if (fieldOfViewSetting.getType() == libconfig::Setting::TypeFloat)
+            throw ParserException("Antialiasing must be an Integer and not a Float");
+        int number = fieldOfViewSetting;
+        if (number <= 0)
+            throw ParserException("Antialiasing must be greater than 0");
+        camBuilder.setAntialiasing(number);
+    }
+
     this->_camera = camBuilder.build();
     return 0;
 }

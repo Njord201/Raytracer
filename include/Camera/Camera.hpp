@@ -92,6 +92,13 @@ class Raytracer::Camera {
         std::pair<double, double> getResolution(void) const;
 
         /**
+         * @brief Get the Antialiasing object.
+         * 
+         * @return int Value of antialiasing
+         */
+        int getAntialiasing(void) const;
+
+        /**
          * @brief Set the Origin object
          *
          * @param origin Origin to set
@@ -127,8 +134,15 @@ class Raytracer::Camera {
          */
         void setResolution(double width, double height);
 
-    private:
+        /**
+         * @brief Set the Antialiasing object.
+         *
+         * @param antialiasing Value of antialiasing
+         */
+        void setAntialiasing(int antialiasing);
 
+    private:
+        int                         _antialiasing;
         Math::Point3D               _origin;
         Math::Vector3D              _rotation;
         Raytracer::Rectangle3D      _screen;

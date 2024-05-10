@@ -91,6 +91,9 @@ class Color {
          */
         bool isWrongColor() const;
 
+        Color& operator+=(const Color& other);
+        Color& operator/=(float value);
+
     private:
         double _r;
         double _g;
