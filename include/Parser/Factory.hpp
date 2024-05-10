@@ -17,12 +17,13 @@
 
 #include "Parser/DLLoader.hpp"
 #include "Primitives/Sphere.hpp"
-#include "Primitives/Cone.hpp"
-#include "Primitives/Cylinder.hpp"
-#include "Primitives/Plane.hpp"
 #include "Lights/Point.hpp"
 #include "Lights/Ambient.hpp"
+#include "Primitives/Cone.hpp"
+#include "Primitives/Plane.hpp"
 #include "Lights/Directional.hpp"
+#include "Primitives/Cylinder.hpp"
+#include "Primitives/RectangularCuboid.hpp"
 
 namespace Raytracer
 {
