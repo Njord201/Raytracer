@@ -177,3 +177,10 @@ Math::Vector3D& Math::Vector3D::operator/=(double n)
 
     return *this;
 }
+
+Math::Vector3D Math::Vector3D::cross(const Vector3D& ptr)
+{
+    return Math::Vector3D(_vector[1] * ptr._vector[2] - _vector[2] * ptr._vector[1],
+                          _vector[2] * ptr._vector[0] - _vector[0] * ptr._vector[2],
+                          _vector[0] * ptr._vector[1] - _vector[1] * ptr._vector[0]);
+}
