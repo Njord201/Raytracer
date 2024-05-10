@@ -8,6 +8,7 @@
 #include "Primitives/Triangle.hpp"
 
 #include <cmath>
+#include <iostream>
 
 using std::sqrt;
 
@@ -18,8 +19,32 @@ _vertex1(vertex1), _vertex2(vertex2), _vertex3(vertex3), _material(material){}
 
 Math::Point3D Primitive::Triangle::hitPoint(const Raytracer::Ray& ray) const
 {
-    (void) ray;
-    return Math::Point3D(0,0,0);
+    Math::Point3D rayOrigin = ray.origin();
+    Math::Point3D rayDirection = ray.direction();
+
+    Math::Vector3D normal = getNormal(Math::Vector3D(0,0,0));
+
+    if (normal.dot(rayDirection) == 0)
+        return Math::Vector3D(-1,-1,-1);
+
+    Math::Point3D A = _vertex1;
+    Math::Point3D B = _vertex2;
+    Math::Point3D C = _vertex3;
+
+    double d = normal.dot(A);
+
+    double t = (d - normal.dot(rayOrigin)) / normal.dot(rayDirection);
+
+    Math::Point3D hitPoint = rayOrigin + (rayDirection * t);
+
+    if (((B-A).cross(hitPoint - A)).dot((hitPoint - A).cross(C - A)) < 0)
+        return Math::Vector3D(-1,-1,-1);
+    if (((C-B).cross(hitPoint - B)).dot((hitPoint - B).cross(A - B)) < 0)
+        return Math::Vector3D(-1,-1,-1);
+    if (((A-C).cross(hitPoint - C)).dot((hitPoint - C).cross(B - C)) < 0)
+        return Math::Vector3D(-1,-1,-1);
+
+    return hitPoint;
 }
 
 void Primitive::Triangle::setVertex1(const Math::Point3D& vertex1)
@@ -50,7 +75,17 @@ std::shared_ptr<Material::IMaterial> Primitive::Triangle::getMaterial() const
 Math::Vector3D Primitive::Triangle::getNormal(const Math::Vector3D& hitPoint) const
 {
     (void) hitPoint;
-    return Math::Vector3D(0, 0, 0);
+
+    Math::Vector3D A = _vertex1;
+    Math::Vector3D B = _vertex2;
+    Math::Vector3D C = _vertex3;
+
+    Math::Vector3D u = B - A;
+    Math::Vector3D v = C - A;
+
+    Math::Vector3D normal = u.cross(v);
+
+    return normal;
 }
 
 void Primitive::Triangle::setRotation(Math::Vector3D rotation)
