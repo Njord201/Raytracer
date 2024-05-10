@@ -56,16 +56,19 @@ Math::Point3D Primitive::Triangle::hitPoint(const Raytracer::Ray& ray) const
 void Primitive::Triangle::setVertex1(const Math::Point3D& vertex1)
 {
     _vertex1 = vertex1;
+    createNormals();
 }
 
 void Primitive::Triangle::setVertex2(const Math::Point3D& vertex2)
 {
     _vertex2 = vertex2;
+    createNormals();
 }
 
 void Primitive::Triangle::setVertex3(const Math::Point3D& vertex3)
 {
     _vertex3 = vertex3;
+    createNormals();
 }
 
 void Primitive::Triangle::setMaterial(std::shared_ptr<Material::IMaterial> material)
@@ -81,10 +84,19 @@ std::shared_ptr<Material::IMaterial> Primitive::Triangle::getMaterial() const
 Math::Vector3D Primitive::Triangle::getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const
 {
     (void) hitPoint;
+    (void) ray;
 
-    
+    Math::Vector3D normal = _normal;
+    Math::Vector3D rayDirection = ray.direction();
 
-    return Math::Vector3D();
+    double n = normal.dot(rayDirection);
+    double d  = normal.length() * rayDirection.length();
+
+    double angle = acos(n / d) * 180 / M_PI;
+
+    if (angle >= 90)
+        return _normal;
+    return _inverseNormal;
 }
 
 void Primitive::Triangle::createNormals()
