@@ -70,7 +70,7 @@ Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& ray) const
     vectorCylinderToRay.rotateX(this->_rotation.x());
     vectorCylinderToRay.rotateY(this->_rotation.y());
     vectorCylinderToRay.rotateZ(this->_rotation.z());
-   
+
     double a = rayDirection.dot(rayDirection);
     double b = 2 * vectorCylinderToRay.dot(rayDirection);
     double c = vectorCylinderToRay.dot(vectorCylinderToRay) - _radius * _radius;
@@ -127,4 +127,35 @@ Math::Vector3D Primitive::Cylinder::getNormal(const Math::Vector3D& hitPoint) co
 {
     //TODO : fix the computation of the cylinder normal
     return Math::Vector3D (hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
+}
+
+Octree::cubeCollider Primitive::Cylinder::getColliderBox() const
+{
+    Octree::cubeCollider collider;
+
+    collider.maxX.second = _origin.x() + _radius;
+    collider.minX.second = _origin.x() - _radius;
+    collider.maxY.second = _origin.y() + _radius;
+    collider.minY.second = _origin.y() - _radius;
+    collider.maxZ.second = _origin.z() + _radius;
+    collider.minZ.second = _origin.z() - _radius;
+
+    collider.maxX.first = false;
+    collider.minX.first = false;
+    collider.maxY.first = false;
+    collider.minY.first = false;
+    collider.maxZ.first = false;
+    collider.minZ.first = false;
+
+    if (_axis == Axis::X) {
+        collider.minX.first = true;
+        collider.maxX.first = true;
+    } else if (_axis == Axis::Y) {
+        collider.minY.first = true;
+        collider.maxY.first = true;
+    } else {
+        collider.minZ.first = true;
+        collider.maxZ.first = true;
+    }
+    return collider;
 }
