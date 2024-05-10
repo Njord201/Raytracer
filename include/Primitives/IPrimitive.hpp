@@ -10,6 +10,7 @@
 #include "Ray.hpp"
 #include "Math/Vector3D.hpp"
 #include "Materials/IMaterial.hpp"
+#include "Optimisation/OctreeRules.hpp"
 
 #include <memory>
 
@@ -55,5 +56,12 @@ namespace Primitive {
              * @return std::shared_ptr<Material::IMaterial>
              */
             virtual std::shared_ptr<Material::IMaterial> getMaterial() const = 0;
+
+            /**
+             * @brief Get the collider box object.
+             *
+             * @return Octree::cubeCollider
+             */
+            virtual Octree::cubeCollider getColliderBox() const = 0;
     };
 };

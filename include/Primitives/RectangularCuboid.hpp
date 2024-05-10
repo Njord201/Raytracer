@@ -159,6 +159,13 @@ namespace Primitive {
              */
             void setRotation(Math::Vector3D rotation);
 
+            /**
+             * @brief Get the collider box object.
+             *
+             * @return Octree::cubeCollider
+             */
+            Octree::cubeCollider getColliderBox() const override;
+
         private:
 
             /**
@@ -180,5 +187,6 @@ namespace Primitive {
             double                                  _minZ;
             std::shared_ptr<Material::IMaterial>    _material;
             Math::Vector3D                          _rotation;
+            Octree::cubeCollider                    _collider;
     };
 };

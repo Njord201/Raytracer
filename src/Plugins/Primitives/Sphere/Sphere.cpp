@@ -93,3 +93,23 @@ void Primitive::Sphere::setRotation(Math::Vector3D rotation)
     this->_rotation = rotation;
 }
 
+Octree::cubeCollider Primitive::Sphere::getColliderBox() const
+{
+    Octree::cubeCollider collider;
+
+    collider.maxX.second = _origin.x() + _radius;
+    collider.minX.second = _origin.x() - _radius;
+    collider.maxY.second = _origin.y() + _radius;
+    collider.minY.second = _origin.y() - _radius;
+    collider.maxZ.second = _origin.z() + _radius;
+    collider.minZ.second = _origin.z() - _radius;
+
+    collider.maxX.first = false;
+    collider.minX.first = false;
+    collider.maxY.first = false;
+    collider.minY.first = false;
+    collider.maxZ.first = false;
+    collider.minZ.first = false;
+
+    return collider;
+}
