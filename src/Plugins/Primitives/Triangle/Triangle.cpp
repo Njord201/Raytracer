@@ -137,12 +137,12 @@ Math::Point3D Primitive::Triangle::getVertex3() const
     return _vertex3;
 }
 
-Math::Vector3D Primitive::Triangle::getTriangleNormal()
+Math::Vector3D Primitive::Triangle::getTriangleNormal() const
 {
     return _normal;
 }
 
-Math::Vector3D Primitive::Triangle::getTriangleInverseNormal()
+Math::Vector3D Primitive::Triangle::getTriangleInverseNormal() const
 {
     return _inverseNormal;
 }

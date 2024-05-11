@@ -131,14 +131,14 @@ namespace Primitive {
              *
              * @return Math::Vector3D
              */
-            Math::Vector3D getTriangleNormal();
+            Math::Vector3D getTriangleNormal() const;
 
             /**
              * @brief Get the Triangle Inverse Normal object.
              *
              * @return Math::Vector3D
              */
-            Math::Vector3D getTriangleInverseNormal();
+            Math::Vector3D getTriangleInverseNormal() const;
 
             /**
              * @brief Set the Triangle Normal object.
@@ -148,7 +148,7 @@ namespace Primitive {
             void setTriangleNormal(const Math::Vector3D& normal);
 
             /**
-             * @brief Set the Triangle Inverse Normal object
+             * @brief Set the Triangle Inverse Normal object.
              *
              * @param inverseNormal to set
              */
