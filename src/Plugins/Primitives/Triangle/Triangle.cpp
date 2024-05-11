@@ -23,7 +23,13 @@ _vertex1(vertex1), _vertex2(vertex2), _vertex3(vertex3), _material(material)
     createNormals();
 }
 
-Math::Point3D Primitive::Triangle::hitPoint(const Raytracer::Ray& ray) const
+Primitive::Triangle::Triangle(const Math::Point3D& vertex1, const Math::Point3D& vertex2, const Math::Point3D& vertex3) :
+_vertex1(vertex1), _vertex2(vertex2), _vertex3(vertex3)
+{
+    createNormals();
+}
+
+Math::Point3D Primitive::Triangle::hitPoint(const Raytracer::Ray& ray)
 {
     Math::Point3D rayOrigin = ray.origin();
     Math::Point3D rayDirection = ray.direction();

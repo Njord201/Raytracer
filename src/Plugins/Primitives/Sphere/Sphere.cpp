@@ -16,7 +16,7 @@ Primitive::Sphere::Sphere() : _rotation(0,0,0), _origin(0,0,0), _radius(1), _mat
 Primitive::Sphere::Sphere(const Math::Point3D& origin, double radius, std::shared_ptr<Material::IMaterial> material) :
 _origin(origin), _radius(radius), _material(material){}
 
-Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& ray) const
+Math::Point3D Primitive::Sphere::hitPoint(const Raytracer::Ray& ray)
 {
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();

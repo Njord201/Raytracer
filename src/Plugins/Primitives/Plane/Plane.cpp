@@ -39,7 +39,7 @@ Primitive::Plane::Plane(Primitive::Axis axis, double position, std::shared_ptr<M
     _material = material;
 }
 
-Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray) const
+Math::Point3D Primitive::Plane::hitPoint(const Raytracer::Ray &ray)
 {
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();

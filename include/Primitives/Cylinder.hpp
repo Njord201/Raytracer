@@ -41,7 +41,7 @@ namespace Primitive {
              * @param ray vector3D
              * @return Point3D
              */
-            Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
+            Math::Point3D hitPoint(const Raytracer::Ray& ray) override;
 
             /**
              * @brief Set origin of cylinder.

@@ -9,6 +9,8 @@
 
 #include "Primitives/IPrimitive.hpp"
 
+#include <vector>
+
 namespace Primitive {
     class Mesh;
 };
@@ -35,7 +37,7 @@ class Primitive::Mesh : public Primitive::IPrimitive {
          * @param ray Vector3D
          * @return Math::Point3D
          */
-        Math::Point3D hitPoint(const Raytracer::Ray& ray) const;
+        Math::Point3D hitPoint(const Raytracer::Ray& ray) override;
 
         /**
          * @brief Get the Normal of the object.
@@ -67,8 +69,17 @@ class Primitive::Mesh : public Primitive::IPrimitive {
          */
         Octree::cubeCollider getColliderBox() const;
 
+        /**
+         * @brief Add a Primitive to the Mesh.
+         *
+         * @param primitive to add
+         */
+        void add(std::shared_ptr<Primitive::IPrimitive> primitive);
+
     private:
 
-        std::shared_ptr<Material::IMaterial>    _material;
-        Octree::cubeCollider                    _collider;
+        std::shared_ptr<Material::IMaterial>                _material;
+        Octree::cubeCollider                                _collider;
+        std::shared_ptr<Primitive::IPrimitive>              _lastHit;
+        std::vector<std::shared_ptr<Primitive::IPrimitive>> _primitives;
 };
