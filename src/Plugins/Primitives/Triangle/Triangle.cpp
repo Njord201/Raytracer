@@ -27,6 +27,12 @@ Math::Point3D Primitive::Triangle::hitPoint(const Raytracer::Ray& ray) const
 {
     Math::Point3D rayOrigin = ray.origin();
     Math::Point3D rayDirection = ray.direction();
+    rayOrigin.rotateX(this->_rotation.x());
+    rayOrigin.rotateY(this->_rotation.y());
+    rayOrigin.rotateZ(this->_rotation.z());
+    rayDirection.rotateX(this->_rotation.x());
+    rayDirection.rotateY(this->_rotation.y());
+    rayDirection.rotateZ(this->_rotation.z());
 
     Math::Vector3D normal = getNormal(Math::Vector3D(0,0,0), ray);
 
