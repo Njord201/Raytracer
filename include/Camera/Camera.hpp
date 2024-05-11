@@ -137,7 +137,7 @@ class Raytracer::Camera {
         /**
          * @brief Set the antialiasing object.
          *
-         * @param antialiasing Value of antialiasing
+         * @param antialiasing value of antialiasing
          */
         void setAntialiasing(int antialiasing);
 
