@@ -11,6 +11,7 @@
 #include <fstream>
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 Raytracer::Renderer::Renderer(Raytracer::Scene scene) : _camera(scene.getCamera())
 {
@@ -29,27 +30,10 @@ void Raytracer::Renderer::writeColor(std::ostream& o, const Color& color)
 
 void Raytracer::Renderer::renderScene()
 {
-    // Image Resolution
+    renderFinalScene();
+
     double imageWidth = _camera.getResolution().first;
     double imageHeight = _camera.getResolution().second;
-    auto imageRatio = imageWidth / imageHeight;
-
-    // Field of view in degrees
-    double fov = _camera.getFov();
-    auto focalLength = 1.0;
-    auto viewHeight = 2.0 * std::tan((fov * M_PI / 180.0) / 2.0) * focalLength;
-    auto viewWidth = viewHeight * imageRatio;
-
-    // Calculate the vectors across the horizontal and vertical viewport edges.
-    auto viewU = Math::Vector3D(viewWidth, 0, 0);
-    auto viewV = Math::Vector3D(0, -viewHeight, 0);
-
-    // Calculate the horizontal and vertical delta vectors from pixel to pixel.
-    auto pixelSizeU = viewU / imageWidth;
-    auto pixelSizeV = viewV / imageHeight;
-
-    // Calculate the location of the upper-left pixel.
-    auto viewUpper_left = _camera.getOrigin() - Math::Vector3D(0, 0, focalLength) - viewU / 2 - viewV / 2;
 
     // SDL init
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -62,32 +46,23 @@ void Raytracer::Renderer::renderScene()
     SDL_CreateWindowAndRenderer((int)imageWidth, (int)imageHeight, 0, &win, &ren);
     SDL_Event event;
 
+    SDL_Surface *surface = IMG_Load("output.ppm");
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(ren, surface);
+
     bool windowOpen = true;
     while (windowOpen) {
-
-        SDL_RenderClear(ren);
-
+        std::cout << "in loop" << std::endl;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT)
                 windowOpen = false;
         }
-
-        for (int y = imageHeight; y >= 0; y--) {
-            for (int x = 0; x < imageWidth; x++) {
-                auto invertedX = imageWidth - x - 1;
-                auto pixel_center = viewUpper_left + (pixelSizeU * (invertedX + 0.5)) + (pixelSizeV * (y + 0.5));
-                auto rayDirection = _camera.getOrigin() - pixel_center;
-
-                Raytracer::Ray r(_camera.getOrigin(), rayDirection);
-                Color hit = _primitives.getColorPoint(r, _lights);
-
-                SDL_SetRenderDrawColor(ren, hit.getR(), hit.getG(), hit.getB(), 255);
-                SDL_RenderDrawPoint(ren, imageWidth - x, imageHeight - y);
-            }
-        }
+        SDL_RenderClear(ren);
+        SDL_RenderCopy(ren, tex, nullptr, nullptr);
         SDL_RenderPresent(ren);
     }
 
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(tex);
     SDL_DestroyRenderer(ren);
     SDL_DestroyWindow(win);
     SDL_Quit();
