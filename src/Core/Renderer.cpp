@@ -170,7 +170,7 @@ void Raytracer::Renderer::renderFinalScene()
         stream << "P3\n" << imageWidth << ' ' << imageHeight << "\n255\n";
 
         for (int y = imageHeight - 1; y >= 0; y--) {
-            for (int x = 0; x < imageWidth; x++) {
+            for (int x = imageWidth - 1; x >= 0; x--) {
                 writeColor(stream, finalImage[y][x]);
             }
         }
