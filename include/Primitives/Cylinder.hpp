@@ -106,7 +106,7 @@ namespace Primitive {
              *
              * @return Octree::cubeCollider
              */
-            Optimisation::cubeCollider getColliderBox() const override;
+            Octree::cubeCollider getColliderBox() const override;
 
         private:
             Math::Vector3D                          _rotation;
@@ -114,6 +114,6 @@ namespace Primitive {
             double                                  _radius;
             Primitive::Axis                         _axis;
             std::shared_ptr<Material::IMaterial>    _material;
-            Optimisation::cubeCollider                    _collider;
+            Octree::cubeCollider                    _collider;
     };
 };

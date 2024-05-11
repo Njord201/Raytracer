@@ -125,7 +125,7 @@ namespace Primitive {
              *
              * @return Octree::cubeCollider
              */
-            Optimisation::cubeCollider getColliderBox() const override;
+            Octree::cubeCollider getColliderBox() const override;
 
         private:
             Math::Vector3D                          _rotation;

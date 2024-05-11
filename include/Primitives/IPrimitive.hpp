@@ -63,6 +63,6 @@ namespace Primitive {
              *
              * @return Octree::cubeCollider
              */
-            virtual Optimisation::cubeCollider getColliderBox() const = 0;
+            virtual Octree::cubeCollider getColliderBox() const = 0;
     };
 };
