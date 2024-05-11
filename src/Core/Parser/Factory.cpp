@@ -27,6 +27,8 @@ Raytracer::Factory::Factory()
     this->_libraryLoader.push_back(triangleLoader);
     std::shared_ptr<DLLoader> rectangularCuboidLoader = std::make_shared<DLLoader>("plugins/raytracer_rectangular_cuboid.so");
     this->_libraryLoader.push_back(rectangularCuboidLoader);
+    std::shared_ptr<DLLoader> meshLoader = std::make_shared<DLLoader>("plugins/raytracer_mesh.so");
+    this->_libraryLoader.push_back(meshLoader);
 
     this->registerPrimitivesComponent("sphere", [sphereLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
         Primitive::IPrimitive *sphere = sphereLoader->getInstance<Primitive::IPrimitive *>("getSphereInstance");
@@ -72,6 +74,11 @@ Raytracer::Factory::Factory()
         Primitive::IPrimitive *rectangularCuboid = rectangularCuboidLoader->getInstance<Primitive::IPrimitive *>("getRectangularCuboidInstance");
         std::shared_ptr<Primitive::IPrimitive> sharedPtrRectangularCuboid(rectangularCuboid);
         return sharedPtrRectangularCuboid;
+    });
+    this->registerPrimitivesComponent("mesh", [meshLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
+        Primitive::IPrimitive *mesh = meshLoader->getInstance<Primitive::IPrimitive *>("getMeshInstance");
+        std::shared_ptr<Primitive::IPrimitive> sharedPtrMesh(mesh);
+        return sharedPtrMesh;
     });
 }
 

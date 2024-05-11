@@ -15,6 +15,7 @@
 #include <unordered_map>
 #include <libconfig.h++>
 
+#include "Primitives/Mesh.hpp"
 #include "Lights/Point.hpp"
 #include "Lights/Ambient.hpp"
 #include "Primitives/Cone.hpp"

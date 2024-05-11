@@ -89,9 +89,26 @@ int Raytracer::Scene::_parseScenesImports(const libconfig::Config &config)
         if (imports.exists("meshes")) {
             const libconfig::Setting &meshes = imports.lookup("meshes");
             for (int index = 0; index < meshes.getLength(); index++) {
+
                 std::string meshPath;
                 meshes[index].lookupValue("path", meshPath);
-                std::cout << meshPath << std::endl;
+
+                std::shared_ptr<Primitive::IPrimitive> mesh = _factory.createPrimitivesComponent("mesh");
+                std::shared_ptr<Primitive::Mesh> newMesh = std::dynamic_pointer_cast<Primitive::Mesh>(mesh);
+
+                std::cout << "Importing obj file: " << meshPath << std::endl;
+                ParserObj parserObj(meshPath, newMesh);
+
+                std::string materialType;
+                libconfig::Setting& material = meshes[index].lookup("material");
+                material.lookupValue("type", materialType);
+
+                if (materialType == "flatColor") {
+                    libconfig::Setting& color = material.lookup("color");
+                    std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                    newMesh->setMaterial(materialPtr);
+                }
+                this->_primitives.add(newMesh);
             }
         }
     }
