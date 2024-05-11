@@ -54,6 +54,8 @@ double Light::Directional::getDiffuseMultiplier(void) const
 
 void Light::Directional::setDiffuseMultiplier(double diffuseMultiplier)
 {
+    if (diffuseMultiplier > 1)
+        diffuseMultiplier = 1;
     this->_diffuseMultiplier = diffuseMultiplier;
 }
 
@@ -81,6 +83,9 @@ Color Light::Directional::computeColor(Math::Vector3D primitiveNormal, const Mat
         return SHADOW_COLOR;
 
     color *= -normal.dot(dir);
+
+    double diffuse = getDiffuseMultiplier();
+    color *= diffuse;
 
     if (color.x() < 0)
         color = Math::Point3D(0, color.y(), color.z());
