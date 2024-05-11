@@ -99,22 +99,23 @@ namespace Primitive {
              * @brief Get the normal of the object.
              *
              * @param hitPoint to have the normal
+             * @param ray of the camera
              * @return Math::Vector3D
              */
-            Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const override;
+            Math::Vector3D getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const override;
 
             /**
              * @brief Get the collider box object.
              *
              * @return Octree::cubeCollider
              */
-            Octree::cubeCollider getColliderBox() const override;
+            Optimisation::cubeCollider getColliderBox() const override;
 
         private:
             Math::Vector3D                          _rotation;
             Primitive::Axis                         _axis;
             Math::Point3D                           _position;
             std::shared_ptr<Material::IMaterial>    _material;
-            Octree::cubeCollider                    _collider;
+            Optimisation::cubeCollider              _collider;
     };
 };

@@ -14,6 +14,9 @@ SRC			=	Parser/Scene.cpp \
 				Primitives/PrimitivesContainer.cpp \
 				Primitives/Shadow.cpp \
 				\
+				Optimisation/Octree.cpp \
+				Optimisation/Cube.cpp \
+				\
 				Lights/LightsContainer.cpp \
 				\
 				Camera/Camera.cpp \
@@ -32,6 +35,7 @@ SRC			=	Parser/Scene.cpp \
 				../Plugins/Primitives/Cone/Cone.cpp \
 				../Plugins/Primitives/Cylinder/Cylinder.cpp \
 				../Plugins/Primitives/Plane/Plane.cpp \
+				../Plugins/Primitives/Triangle/Triangle.cpp \
 				../Plugins/Primitives/RectangularCuboid/RectangularCuboid.cpp \
 				\
 				../Plugins/Lights/Ambient/Ambient.cpp \

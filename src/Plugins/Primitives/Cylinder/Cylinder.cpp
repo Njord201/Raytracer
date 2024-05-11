@@ -123,15 +123,16 @@ void Primitive::Cylinder::setMaterial(std::shared_ptr<Material::IMaterial> mater
     this->_material = material;
 }
 
-Math::Vector3D Primitive::Cylinder::getNormal(const Math::Vector3D& hitPoint) const
+Math::Vector3D Primitive::Cylinder::getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const
 {
+    (void) ray;
     //TODO : fix the computation of the cylinder normal
     return Math::Vector3D (hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
 }
 
-Octree::cubeCollider Primitive::Cylinder::getColliderBox() const
+Optimisation::cubeCollider Primitive::Cylinder::getColliderBox() const
 {
-    Octree::cubeCollider collider;
+    Optimisation::cubeCollider collider;
 
     collider.maxX.second = _origin.x() + _radius;
     collider.minX.second = _origin.x() - _radius;

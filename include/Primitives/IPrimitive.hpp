@@ -46,9 +46,10 @@ namespace Primitive {
              * @brief Get the Normal of the object.
              *
              * @param hitPoint to compute the normal
+             * @param ray of the camera
              * @return Math::Vector3D
              */
-            virtual Math::Vector3D getNormal(const Math::Vector3D& hitPoint) const = 0;
+            virtual Math::Vector3D getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const = 0;
 
             /**
              * @brief Get the Material object.
@@ -62,6 +63,6 @@ namespace Primitive {
              *
              * @return Octree::cubeCollider
              */
-            virtual Octree::cubeCollider getColliderBox() const = 0;
+            virtual Optimisation::cubeCollider getColliderBox() const = 0;
     };
 };

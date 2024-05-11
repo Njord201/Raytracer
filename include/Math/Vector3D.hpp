@@ -105,6 +105,14 @@ namespace Math {
              */
             void rotateX(double degrees);
 
+            /**
+             * @brief Return the cross product with the vector.
+             *
+             * @param ptr within do the cross product
+             * @return Vector3D cross product
+             */
+            Vector3D cross(const Vector3D& ptr);
+
             Vector3D operator+(const Vector3D& ptr);
             Vector3D& operator+=(const Vector3D& ptr);
             Vector3D operator-(const Vector3D& ptr);

@@ -8,6 +8,7 @@
 #pragma once
 
 #include "Parser/Scene.hpp"
+#include "Optimisation/Octree.hpp"
 
 #include <vector>
 #include <memory>
@@ -59,4 +60,6 @@ class Raytracer::Renderer {
         Raytracer::Camera                   _camera;
         Primitive::PrimitivesContainer      _primitives;
         Light::LightsContainer              _lights;
+        Optimisation::Octree                _octree;
+
 };

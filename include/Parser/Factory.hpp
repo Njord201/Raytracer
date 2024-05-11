@@ -15,14 +15,15 @@
 #include <unordered_map>
 #include <libconfig.h++>
 
-#include "Parser/DLLoader.hpp"
-#include "Primitives/Sphere.hpp"
 #include "Lights/Point.hpp"
 #include "Lights/Ambient.hpp"
 #include "Primitives/Cone.hpp"
+#include "Parser/DLLoader.hpp"
 #include "Primitives/Plane.hpp"
+#include "Primitives/Sphere.hpp"
 #include "Lights/Directional.hpp"
 #include "Primitives/Cylinder.hpp"
+#include "Primitives/Triangle.hpp"
 #include "Primitives/RectangularCuboid.hpp"
 
 namespace Raytracer

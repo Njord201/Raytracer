@@ -2592,7 +2592,7 @@ DOT_TRANSPARENT        = NO
 # this, this feature is disabled by default.
 # The default value is: NO.
 # This tag requires that the tag HAVE_DOT is set to YES.
-
+ 
 DOT_MULTI_TARGETS      = NO
 
 # If the GENERATE_LEGEND tag is set to YES doxygen will generate a legend page
