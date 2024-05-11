@@ -9,14 +9,13 @@
 
 #include <cmath>
 #include <fstream>
+#include <iostream>
 #include <SDL2/SDL.h>
 
 Raytracer::Renderer::Renderer(Raytracer::Scene scene) : _camera(scene.getCamera())
 {
     _lights = scene.getLights();
     _primitives = scene.getPrimitives();
-    Optimisation::cubeCollider collider = {{false, -500}, {false, -500}, {false, -500}, {false, 500}, {false, 500}, {false, 500}};
-    _octree = Optimisation::Octree(_primitives, collider);
 }
 
 void Raytracer::Renderer::writeColor(std::ostream& o, const Color& color)
@@ -79,9 +78,8 @@ void Raytracer::Renderer::renderScene()
                 auto pixel_center = viewUpper_left + (pixelSizeU * (invertedX + 0.5)) + (pixelSizeV * (y + 0.5));
                 auto rayDirection = _camera.getOrigin() - pixel_center;
 
-                Raytracer::Ray ray(_camera.getOrigin(), rayDirection);
-                auto primitives = _octree.getPrimitivesHits(ray);
-                Color hit = primitives.getColorPoint(ray, _lights);
+                Raytracer::Ray r(_camera.getOrigin(), rayDirection);
+                Color hit = _primitives.getColorPoint(r, _lights);
 
                 SDL_SetRenderDrawColor(ren, hit.getR(), hit.getG(), hit.getB(), 255);
                 SDL_RenderDrawPoint(ren, imageWidth - x, imageHeight - y);
@@ -135,9 +133,8 @@ void Raytracer::Renderer::renderFinalScene()
                 rayDirection.rotateY(this->_camera.getRotation().y());
                 rayDirection.rotateZ(this->_camera.getRotation().z());
 
-                Raytracer::Ray ray(_camera.getOrigin(), rayDirection);
-                auto primitives = _octree.getPrimitivesHits(ray);
-                Color hit = primitives.getColorPoint(ray, _lights);
+                Raytracer::Ray r(_camera.getOrigin(), rayDirection);
+                Color hit = _primitives.getColorPoint(r, _lights);
                 writeColor(stream, hit);
             }
         }

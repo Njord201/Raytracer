@@ -130,9 +130,9 @@ Math::Vector3D Primitive::Cylinder::getNormal(const Math::Vector3D& hitPoint, co
     return Math::Vector3D (hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
 }
 
-Optimisation::cubeCollider Primitive::Cylinder::getColliderBox() const
+Octree::cubeCollider Primitive::Cylinder::getColliderBox() const
 {
-    Optimisation::cubeCollider collider;
+    Octree::cubeCollider collider;
 
     collider.maxX.second = _origin.x() + _radius;
     collider.minX.second = _origin.x() - _radius;

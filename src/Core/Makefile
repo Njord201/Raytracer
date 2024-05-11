@@ -14,9 +14,6 @@ SRC			=	Parser/Scene.cpp \
 				Primitives/PrimitivesContainer.cpp \
 				Primitives/Shadow.cpp \
 				\
-				Optimisation/Octree.cpp \
-				Optimisation/Cube.cpp \
-				\
 				Lights/LightsContainer.cpp \
 				\
 				Camera/Camera.cpp \
