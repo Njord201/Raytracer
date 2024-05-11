@@ -153,8 +153,10 @@ void Primitive::RectangularCuboid::setMaterial(std::shared_ptr<Material::IMateri
     this->_material = material;
 }
 
-Math::Vector3D Primitive::RectangularCuboid::getNormal(const Math::Vector3D& hitPoint) const
+Math::Vector3D Primitive::RectangularCuboid::getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const
 {
+    (void) ray;
+
     if (hitPoint.x() == _maxX)
         return Math::Vector3D(1, 0, 0);
     if (hitPoint.x() == _minX)

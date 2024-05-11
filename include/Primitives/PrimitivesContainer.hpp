@@ -66,9 +66,10 @@ namespace Primitive {
              * @param primitive primitive to compute
              * @param hitPoint to check
              * @param lights list of lights
+             * @param ray ray of the camera
              * @return Math::Point3D
              */
-            Color computeColor(const std::shared_ptr<Primitive::IPrimitive>& primitive, const Math::Point3D& hitPoint, const Light::LightsContainer& lights) const;
+            Color computeColor(const std::shared_ptr<Primitive::IPrimitive>& primitive, const Math::Point3D& hitPoint, const Light::LightsContainer& lights, const Raytracer::Ray& ray) const;
 
         private:
 
