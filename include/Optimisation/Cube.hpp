@@ -14,7 +14,7 @@
 
 using IPrimitive = Primitive::IPrimitive;
 
-namespace Octree {
+namespace Optimisation {
 
     /**
      * @brief Cube class for the Octree subdivision.
@@ -24,7 +24,7 @@ namespace Octree {
 
 };
 
-class Cube {
+class Optimisation::Cube {
     public:
 
         /**

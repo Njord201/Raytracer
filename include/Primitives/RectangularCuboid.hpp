@@ -164,7 +164,7 @@ namespace Primitive {
              *
              * @return Octree::cubeCollider
              */
-            Octree::cubeCollider getColliderBox() const override;
+            Optimisation::cubeCollider getColliderBox() const override;
 
         private:
 
@@ -187,6 +187,6 @@ namespace Primitive {
             double                                  _minZ;
             std::shared_ptr<Material::IMaterial>    _material;
             Math::Vector3D                          _rotation;
-            Octree::cubeCollider                    _collider;
+            Optimisation::cubeCollider                    _collider;
     };
 };

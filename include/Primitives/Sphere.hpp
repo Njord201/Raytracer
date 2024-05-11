@@ -109,13 +109,13 @@ namespace Primitive {
              *
              * @return Octree::cubeCollider
              */
-            Octree::cubeCollider getColliderBox() const override;
+            Optimisation::cubeCollider getColliderBox() const override;
 
         private:
             Math::Vector3D                          _rotation;
             Math::Point3D                           _origin;
             double                                  _radius;
             std::shared_ptr<Material::IMaterial>    _material;
-            Octree::cubeCollider                    _collider;
+            Optimisation::cubeCollider                    _collider;
     };
 };

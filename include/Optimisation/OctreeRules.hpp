@@ -9,7 +9,7 @@
 
 #include <utility>
 
-namespace Octree {
+namespace Optimisation {
 
     struct cubeCollider {
         std::pair<bool, double> minX;

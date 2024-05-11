@@ -175,9 +175,9 @@ void Primitive::RectangularCuboid::setRotation(Math::Vector3D rotation)
     _rotation = rotation;
 }
 
-Octree::cubeCollider Primitive::RectangularCuboid::getColliderBox() const
+Optimisation::cubeCollider Primitive::RectangularCuboid::getColliderBox() const
 {
-    Octree::cubeCollider collider;
+    Optimisation::cubeCollider collider;
 
     collider.maxX.second = _maxX;
     collider.minX.second = _minX;

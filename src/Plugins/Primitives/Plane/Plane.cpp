@@ -140,9 +140,9 @@ Math::Vector3D Primitive::Plane::getNormal(const Math::Vector3D& hitPoint) const
     }
 }
 
-Octree::cubeCollider Primitive::Plane::getColliderBox() const
+Optimisation::cubeCollider Primitive::Plane::getColliderBox() const
 {
-    Octree::cubeCollider collider;
+    Optimisation::cubeCollider collider;
 
     collider.minX.second = _position.x();
     collider.minY.second = _position.y();
