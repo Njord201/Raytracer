@@ -131,34 +131,34 @@ void Raytracer::Renderer::renderFinalScene()
         for (int x = 0; x < supersampledWidth; x++) {
             auto pixelCenter = viewUpper_left + (pixelSizeU * (x + 0.5)) + (pixelSizeV * (y + 0.5));
             auto rayDirection = _camera.getOrigin() - pixelCenter;
- 
+
             rayDirection.rotateX(this->_camera.getRotation().x());
             rayDirection.rotateY(this->_camera.getRotation().y());
             rayDirection.rotateZ(this->_camera.getRotation().z());
- 
+
             Raytracer::Ray r(_camera.getOrigin(), rayDirection);
             Color hitColor = _primitives.getColorPoint(r, _lights);
- 
+
             supersampledImage[y][x] = hitColor;
         }
     }
 
     std::vector<std::vector<Color>> finalImage(imageHeight, std::vector<Color>(imageWidth));
- 
+
     for (int y = 0; y < imageHeight; y++) {
         for (int x = 0; x < imageWidth; x++) {
             Color averageColor(0, 0, 0);
             int pixelCount = 0;
- 
-            for (int sy = 0; sy < supersamplingFactor; sy++) {
-                for (int sx = 0; sx < supersamplingFactor; sx++) {
-                    int sourceY = y * supersamplingFactor + sy;
-                    int sourceX = x * supersamplingFactor + sx;
+
+            for (int supersamplingY = 0; supersamplingY < supersamplingFactor; supersamplingY++) {
+                for (int supersamplingX = 0; supersamplingX < supersamplingFactor; supersamplingX++) {
+                    int sourceY = y * supersamplingFactor + supersamplingY;
+                    int sourceX = x * supersamplingFactor + supersamplingX;
                     averageColor += supersampledImage[sourceY][sourceX];
                     pixelCount++;
                 }
             }
- 
+
             averageColor /= pixelCount;
             finalImage[y][x] = averageColor;
         }

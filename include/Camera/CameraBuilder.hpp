@@ -70,7 +70,7 @@ class Raytracer::CameraBuilder {
         CameraBuilder& setResolution(double width, double height);
 
         /**
-         * @brief Set the Antialiasing object.
+         * @brief Set the antialiasing object.
          *
          * @param antialiasing Value of antialiasing
          * @return CameraBuilder& object to chain the setter
@@ -79,7 +79,7 @@ class Raytracer::CameraBuilder {
 
         /**
          * @brief Build the Camera object.
-         * 
+         *
          * @return Camera to build
          */
         Camera build(void);

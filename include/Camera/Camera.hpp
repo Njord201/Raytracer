@@ -92,8 +92,8 @@ class Raytracer::Camera {
         std::pair<double, double> getResolution(void) const;
 
         /**
-         * @brief Get the Antialiasing object.
-         * 
+         * @brief Get the antialiasing object.
+         *
          * @return int Value of antialiasing
          */
         int getAntialiasing(void) const;
@@ -135,7 +135,7 @@ class Raytracer::Camera {
         void setResolution(double width, double height);
 
         /**
-         * @brief Set the Antialiasing object.
+         * @brief Set the antialiasing object.
          *
          * @param antialiasing Value of antialiasing
          */
