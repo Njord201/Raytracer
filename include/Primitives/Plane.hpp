@@ -115,6 +115,6 @@ namespace Primitive {
             Primitive::Axis                         _axis;
             Math::Point3D                           _position;
             std::shared_ptr<Material::IMaterial>    _material;
-            Optimisation::cubeCollider                    _collider;
+            Optimisation::cubeCollider              _collider;
     };
 };

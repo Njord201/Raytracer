@@ -224,9 +224,8 @@ static bool isCubeHit(const Raytracer::Ray &ray, const Cube cube)
 PrimitivesContainer Cube::getPrimitivesHits(const Raytracer::Ray ray) const
 {
     for (std::size_t i = 0; i < _cubes.size(); i++) {
-        if (isCubeHit(ray, _cubes[i])) {
+        if (isCubeHit(ray, _cubes[i]))
             return _cubes[i].getPrimitivesHits(ray);
-        }
     }
     return _primitives;
 }
