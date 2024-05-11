@@ -19,13 +19,13 @@ namespace Primitive {
         public:
 
             /**
-             * @brief Construct a new Triangle object.
+             * @brief Construct a new triangle object.
              *
              */
             Triangle();
 
             /**
-             * @brief Construct a new Triangle object.
+             * @brief Construct a new triangle object.
              *
              * @param vertex1 first edge of the triangle
              * @param vertex2 second edge of the triangle
@@ -35,7 +35,7 @@ namespace Primitive {
             Triangle(const Math::Point3D& vertex1, const Math::Point3D& vertex2, const Math::Point3D& vertex3, std::shared_ptr<Material::IMaterial> material);
 
             /**
-             * @brief Destroy the Triangle object.
+             * @brief Destroy the triangle object.
              *
              */
             ~Triangle() = default;
@@ -49,70 +49,70 @@ namespace Primitive {
             Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
 
             /**
-             * @brief Set the Vertex1 object.
+             * @brief Set the vertex1 object.
              *
              * @param vertex1 first edge of the triangle to set
              */
             void setVertex1(const Math::Point3D& vertex1);
 
             /**
-             * @brief Set the Vertex2 object.
+             * @brief Set the vertex2 object.
              *
              * @param vertex2 second edge of the triangle to set
              */
             void setVertex2(const Math::Point3D& vertex2);
 
             /**
-             * @brief Set the Vertex3 object.
+             * @brief Set the vertex3 object.
              *
              * @param vertex3 third edge of the triangle to set
              */
             void setVertex3(const Math::Point3D& vertex3);
 
             /**
-             * @brief Set the Material.
+             * @brief Set the material.
              *
              * @param material New material to set
              */
             void setMaterial(std::shared_ptr<Material::IMaterial> material);
 
             /**
-             * @brief Set the Rotation object.
+             * @brief Set the rotation object.
              *
              * @param rotation - Rotation value
              */
             void setRotation(Math::Vector3D rotation);
 
             /**
-             * @brief Get the Vertex1 object.
+             * @brief Get the vertex1 object.
              *
              * @return Math::Point3D
              */
             Math::Point3D getVertex1() const;
 
             /**
-             * @brief Get the Vertex2 object.
+             * @brief Get the vertex2 object.
              *
              * @return Math::Point3D
              */
             Math::Point3D getVertex2() const;
 
             /**
-             * @brief Get the Vertex3 object.
+             * @brief Get the vertex3 object.
              *
              * @return Math::Point3D
              */
             Math::Point3D getVertex3() const;
 
             /**
-             * @brief Get the Material object.
+             * @brief Get the material object.
              *
              * @return Material of triangle
              */
             std::shared_ptr<Material::IMaterial> getMaterial() const override;
 
             /**
-             * @brief Get the Normal of the object.
+             * @brief Get the normal of the object.
              *
              * @param hitPoint to compute the normal
              * @param ray of the camera
@@ -127,30 +127,30 @@ namespace Primitive {
             void createNormals();
 
             /**
-             * @brief Get the Triangle Normal object.
+             * @brief Get the triangle normal object.
              *
              * @return Math::Vector3D
              */
             Math::Vector3D getTriangleNormal() const;
 
             /**
-             * @brief Get the Triangle Inverse Normal object.
+             * @brief Get the triangle inverse normal object.
              *
              * @return Math::Vector3D
              */
             Math::Vector3D getTriangleInverseNormal() const;
 
             /**
-             * @brief Set the Triangle Normal object.
+             * @brief Set the triangle normal object.
              *
-             * @param normal to set
+             * @param normal new value to set
              */
             void setTriangleNormal(const Math::Vector3D& normal);
 
             /**
-             * @brief Set the Triangle Inverse Normal object.
+             * @brief Set the triangle inverse normal object.
              *
-             * @param inverseNormal to set
+             * @param inverseNormal new value to set
              */
             void setTriangleInverseNormal(const Math::Vector3D& inverseNormal);
 
