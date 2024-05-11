@@ -53,7 +53,7 @@ ROOT_PATH = ../../
 
 # Flags
 INCLUDE		= -I$(ROOT_PATH)include
-CXXFLAGS 	= -std=c++20 -Wall -Wextra -Werror -g -lconfig++ -lSDL2
+CXXFLAGS 	= -std=c++20 -Wall -Wextra -Werror -lconfig++ -lSDL2 -lSDL2_image
 
 # Colors
 YELLOW 			= /bin/echo -e "\x1b[33m $1\x1b[0m"
