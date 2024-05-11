@@ -83,8 +83,9 @@ std::shared_ptr<Material::IMaterial> Primitive::Sphere::getMaterial() const
     return this->_material;
 }
 
-Math::Vector3D Primitive::Sphere::getNormal(const Math::Vector3D& hitPoint) const
+Math::Vector3D Primitive::Sphere::getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const
 {
+    (void) ray;
     return Math::Vector3D (hitPoint.x() - _origin.x(), hitPoint.y() - _origin.y(), hitPoint.z() - _origin.z());
 }
 

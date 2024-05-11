@@ -5,11 +5,12 @@
 ** Plane
 */
 
-#include <iostream>
+#include <cmath>
 #include <string>
+#include <iostream>
 
-#include "Primitives/Plane.hpp"
 #include "RaytracerRules.hpp"
+#include "Primitives/Plane.hpp"
 
 Primitive::Plane::Plane()
 {
@@ -125,19 +126,35 @@ void Primitive::Plane::setMaterial(std::shared_ptr<Material::IMaterial> material
     this->_material = material;
 }
 
-Math::Vector3D Primitive::Plane::getNormal(const Math::Vector3D& hitPoint) const
+Math::Vector3D Primitive::Plane::getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const
 {
     (void) hitPoint;
+
+    Math::Vector3D normal;
+    Math::Vector3D rayDirection = ray.direction();
+
     switch (_axis) {
         case Primitive::X:
-            return Math::Point3D(1, 0, 0);
+            normal = Math::Point3D(1, 0, 0);
+            break;
         case Primitive::Y:
-            return Math::Point3D(0, 1, 0);
+            normal = Math::Point3D(0, 1, 0);
+            break;
         case Primitive::Z:
-            return Math::Point3D(0, 0, 1);
+            normal = Math::Point3D(0, 0, 1);
+            break;
         default:
-            return Math::Point3D(0, 0, 0);
+            normal = Math::Vector3D(0, 0, 0);
     }
+
+    double n = normal.dot(rayDirection);
+    double d  = normal.length() * rayDirection.length();
+
+    double angle = acos(n / d) * 180 / M_PI;
+
+    if (angle >= 90)
+        return normal;
+    return normal * -1;
 }
 
 Octree::cubeCollider Primitive::Plane::getColliderBox() const

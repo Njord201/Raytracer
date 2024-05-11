@@ -10,6 +10,7 @@ all:
 	@make -C ./Plane/
 	@make -C ./Cylinder/
 	@make -C ./Cone/
+	@make -C ./Triangle/
 	@make -C ./RectangularCuboid/
 
 clean:
@@ -17,6 +18,7 @@ clean:
 	@make clean -C ./Plane/
 	@make clean -C ./Cylinder/
 	@make clean -C ./Cone/
+	@make clean -C ./Triangle/
 	@make clean -C ./RectangularCuboid/
 
 fclean: clean
@@ -24,6 +26,7 @@ fclean: clean
 	@make fclean -C ./Plane/
 	@make fclean -C ./Cylinder/
 	@make fclean -C ./Cone/
+	@make fclean -C ./Triangle/
 	@make fclean -C ./RectangularCuboid/
 
 re:	fclean all

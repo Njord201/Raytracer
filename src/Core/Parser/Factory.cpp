@@ -23,7 +23,10 @@ Raytracer::Factory::Factory()
     this->_libraryLoader.push_back(directionalLoader);
     std::shared_ptr<DLLoader> cylinderLoader = std::make_shared<DLLoader>("plugins/raytracer_cylinder.so");
     this->_libraryLoader.push_back(cylinderLoader);
+    std::shared_ptr<DLLoader> triangleLoader = std::make_shared<DLLoader>("plugins/raytracer_triangle.so");
+    this->_libraryLoader.push_back(triangleLoader);
     std::shared_ptr<DLLoader> rectangularCuboidLoader = std::make_shared<DLLoader>("plugins/raytracer_rectangular_cuboid.so");
+    this->_libraryLoader.push_back(rectangularCuboidLoader);
 
     this->registerPrimitivesComponent("sphere", [sphereLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
         Primitive::IPrimitive *sphere = sphereLoader->getInstance<Primitive::IPrimitive *>("getSphereInstance");
@@ -34,6 +37,11 @@ Raytracer::Factory::Factory()
         Primitive::IPrimitive *cone = coneLoader->getInstance<Primitive::IPrimitive *>("getConeInstance");
         std::shared_ptr<Primitive::IPrimitive> sharedPtrCone(cone);
         return sharedPtrCone;
+    });
+    this->registerPrimitivesComponent("triangle", [triangleLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
+        Primitive::IPrimitive *triangle = triangleLoader->getInstance<Primitive::IPrimitive *>("getTriangleInstance");
+        std::shared_ptr<Primitive::IPrimitive> sharedPtrTriangle(triangle);
+        return sharedPtrTriangle;
     });
     this->registerPrimitivesComponent("cylinder", [cylinderLoader]() -> std::shared_ptr<Primitive::IPrimitive> {
         Primitive::IPrimitive *cylinder = cylinderLoader->getInstance<Primitive::IPrimitive *>("getCylinderInstance");

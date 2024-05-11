@@ -361,6 +361,69 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
             this->_primitives.add(newPlane);
         }
     }
+    if (primitives.exists("triangles")) {
+
+        libconfig::Setting& triangleArray = primitives.lookup("triangles");
+        for (int index = 0; index < triangleArray.getLength(); index++) {
+            std::shared_ptr<Primitive::IPrimitive> triangle = _factory.createPrimitivesComponent("triangle");
+            std::shared_ptr<Primitive::Triangle> newTriangle = std::dynamic_pointer_cast<Primitive::Triangle>(triangle);
+
+            libconfig::Setting& vertex1 = triangleArray[index].lookup("vertex1");
+            const libconfig::Setting &vertex1X = vertex1["x"];
+            const libconfig::Setting &vertex1Y = vertex1["y"];
+            const libconfig::Setting &vertex1Z = vertex1["z"];
+            Math::Point3D newVertex1 (_parseValue(vertex1X), _parseValue(vertex1Y), _parseValue(vertex1Z));
+            newTriangle->setVertex1(newVertex1);
+
+            libconfig::Setting& vertex2 = triangleArray[index].lookup("vertex2");
+            const libconfig::Setting &vertex2X = vertex2["x"];
+            const libconfig::Setting &vertex2Y = vertex2["y"];
+            const libconfig::Setting &vertex2Z = vertex2["z"];
+            Math::Point3D newVertex2 (_parseValue(vertex2X), _parseValue(vertex2Y), _parseValue(vertex2Z));
+            newTriangle->setVertex2(newVertex2);
+
+            libconfig::Setting& vertex3 = triangleArray[index].lookup("vertex3");
+            const libconfig::Setting &vertex3X = vertex3["x"];
+            const libconfig::Setting &vertex3Y = vertex3["y"];
+            const libconfig::Setting &vertex3Z = vertex3["z"];
+            Math::Point3D newVertex3 (_parseValue(vertex3X), _parseValue(vertex3Y), _parseValue(vertex3Z));
+            newTriangle->setVertex3(newVertex3);
+
+            if (triangleArray[index].exists("rotation")) {
+                libconfig::Setting& rotationSetting = triangleArray[index].lookup("rotation");
+                const libconfig::Setting &rotationX = rotationSetting["x"];
+                const libconfig::Setting &rotationY = rotationSetting["y"];
+                const libconfig::Setting &rotationZ = rotationSetting["z"];
+                Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
+                newTriangle->setRotation(rotation);
+            }
+
+            std::string materialType;
+            libconfig::Setting& material = triangleArray[index].lookup("material");
+            material.lookupValue("type", materialType);
+
+            if (materialType == "flatColor") {
+                libconfig::Setting& color = material.lookup("color");
+                std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                newTriangle->setMaterial(materialPtr);
+            }
+
+            if (triangleArray[index].exists("translation")) {
+                libconfig::Setting& translation = triangleArray[index].lookup("translation");
+                Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+                Math::Vector3D Vertex1Trans = newTriangle->getVertex1();
+                Math::Vector3D Vertex2Trans = newTriangle->getVertex2();
+                Math::Vector3D Vertex3Trans = newTriangle->getVertex3();
+                Vertex1Trans.translate(trans);
+                Vertex2Trans.translate(trans);
+                Vertex3Trans.translate(trans);
+                newTriangle->setVertex1(Vertex1Trans);
+                newTriangle->setVertex2(Vertex2Trans);
+                newTriangle->setVertex3(Vertex3Trans);
+            }
+            this->_primitives.add(newTriangle);
+        }
+    }
     if (primitives.exists("rectangular_cuboids")) {
         libconfig::Setting& rectangularCuboidArray = primitives.lookup("rectangular_cuboids");
         for (int index = 0; index < rectangularCuboidArray.getLength(); index++) {
