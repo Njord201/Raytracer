@@ -37,6 +37,12 @@ Raytracer::CameraBuilder& Raytracer::CameraBuilder::setResolution(double width, 
     return *this;
 }
 
+Raytracer::CameraBuilder& Raytracer::CameraBuilder::setAntialiasing(int antialiasing)
+{
+    this->_camera.setAntialiasing(antialiasing);
+    return *this;
+}
+
 Raytracer::Camera Raytracer::CameraBuilder::build(void)
 {
     return this->_camera;
