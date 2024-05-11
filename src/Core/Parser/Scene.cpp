@@ -100,10 +100,12 @@ double Raytracer::Scene::_parseValue(const libconfig::Setting &value)
 
 int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
 {
+    CameraBuilder camBuilder;
+
     if (camera.exists("resolution")) {
         const libconfig::Setting &ResolutionWidthSetting = camera["resolution"]["width"];
         const libconfig::Setting &ResolutionHeightSetting = camera["resolution"]["height"];
-        this->_camera.setResolution(_parseValue(ResolutionWidthSetting), _parseValue(ResolutionHeightSetting));
+        camBuilder.setResolution(_parseValue(ResolutionWidthSetting), _parseValue(ResolutionHeightSetting));
     } else {
         throw ParserException("There is no resolution data in file !");
     }
@@ -112,13 +114,13 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
         const libconfig::Setting &positionY = camera["position"]["y"];
         const libconfig::Setting &positionZ = camera["position"]["z"];
         Math::Point3D origin(_parseValue(positionX), _parseValue(positionY), _parseValue(positionZ));
-        this->_camera.setOrigin(origin);
+        camBuilder.setOrigin(origin);
 
         Math::Vector3D bottomSide(1, 0, 0);
         Math::Vector3D leftSide(0, 1, 0);
         Math::Point3D origin_screen(origin.x() - 0.5, origin.y() - 0.5, 0);
         Rectangle3D screen(origin_screen, bottomSide, leftSide);
-        this->_camera.setScreen(screen);
+        camBuilder.setScreen(screen);
     } else {
         throw ParserException("There is no position data in file !");
     }
@@ -127,7 +129,7 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
         const libconfig::Setting &rotationY = camera["rotation"]["y"];
         const libconfig::Setting &rotationZ = camera["rotation"]["z"];
         Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
-        this->_camera.setRotation(rotation);
+        camBuilder.setRotation(rotation);
     }
 
     if (camera.exists("translation")) {
@@ -135,13 +137,15 @@ int Raytracer::Scene::_parseCameraSetting(const libconfig::Setting &camera)
         Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
         Math::Vector3D newOrigin = this->_camera.getOrigin();
         newOrigin.translate(trans);
-        this->_camera.setOrigin(newOrigin);
+        camBuilder.setOrigin(newOrigin);
     }
 
     if (camera.exists("fieldOfView")) {
         const libconfig::Setting &fieldOfViewSetting = camera["fieldOfView"];
-        this->_camera.setFov(_parseValue(fieldOfViewSetting));
+        camBuilder.setFov(_parseValue(fieldOfViewSetting));
     }
+
+    this->_camera = camBuilder.build();
     return 0;
 }
 
@@ -407,6 +411,67 @@ int Raytracer::Scene::_parsePrimitiveSetting(const libconfig::Setting &primitive
                 newTriangle->setVertex3(Vertex3Trans);
             }
             this->_primitives.add(newTriangle);
+        }
+    }
+    if (primitives.exists("rectangular_cuboids")) {
+        libconfig::Setting& rectangularCuboidArray = primitives.lookup("rectangular_cuboids");
+        for (int index = 0; index < rectangularCuboidArray.getLength(); index++) {
+            std::shared_ptr<Primitive::IPrimitive> rectangularCuboid = _factory.createPrimitivesComponent("rectangular_cuboid");
+            std::shared_ptr<Primitive::RectangularCuboid> newRectangularCuboid = std::dynamic_pointer_cast<Primitive::RectangularCuboid>(rectangularCuboid);
+
+            const libconfig::Setting &minX = rectangularCuboidArray[index]["minX"];
+            const libconfig::Setting &minY = rectangularCuboidArray[index]["minY"];
+            const libconfig::Setting &minZ = rectangularCuboidArray[index]["minZ"];
+            const libconfig::Setting &maxX = rectangularCuboidArray[index]["maxX"];
+            const libconfig::Setting &maxY = rectangularCuboidArray[index]["maxY"];
+            const libconfig::Setting &maxZ = rectangularCuboidArray[index]["maxZ"];
+
+            newRectangularCuboid->setMinX(_parseValue(minX));
+            newRectangularCuboid->setMinY(_parseValue(minY));
+            newRectangularCuboid->setMinZ(_parseValue(minZ));
+            newRectangularCuboid->setMaxX(_parseValue(maxX));
+            newRectangularCuboid->setMaxY(_parseValue(maxY));
+            newRectangularCuboid->setMaxZ(_parseValue(maxZ));
+
+            std::string materialType;
+            libconfig::Setting& material = rectangularCuboidArray[index].lookup("material");
+            material.lookupValue("type", materialType);
+
+            if (materialType == "flatColor") {
+                libconfig::Setting& color = material.lookup("color");
+                std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                newRectangularCuboid->setMaterial(materialPtr);
+            }
+
+            if (rectangularCuboidArray[index].exists("translation")) {
+                libconfig::Setting& translation = rectangularCuboidArray[index].lookup("translation");
+                Math::Vector3D trans(_parseValue(translation["x"]), _parseValue(translation["y"]), _parseValue(translation["z"]));
+
+                double newMinX = newRectangularCuboid->getMinX() + trans.x();
+                double newMinY = newRectangularCuboid->getMinY() + trans.y();
+                double newMinZ = newRectangularCuboid->getMinZ() + trans.z();
+                double newMaxX = newRectangularCuboid->getMaxX() + trans.x();
+                double newMaxY = newRectangularCuboid->getMaxY() + trans.y();
+                double newMaxZ = newRectangularCuboid->getMaxZ() + trans.z();
+
+                newRectangularCuboid->setMinX(newMinX);
+                newRectangularCuboid->setMinY(newMinY);
+                newRectangularCuboid->setMinZ(newMinZ);
+                newRectangularCuboid->setMaxX(newMaxX);
+                newRectangularCuboid->setMaxY(newMaxY);
+                newRectangularCuboid->setMaxZ(newMaxZ);
+            }
+
+            if (rectangularCuboidArray[index].exists("rotation")) {
+                libconfig::Setting& rotationSetting = rectangularCuboidArray[index].lookup("rotation");
+                const libconfig::Setting &rotationX = rotationSetting["x"];
+                const libconfig::Setting &rotationY = rotationSetting["y"];
+                const libconfig::Setting &rotationZ = rotationSetting["z"];
+                Math::Vector3D rotation(_parseValue(rotationX), _parseValue(rotationY), _parseValue(rotationZ));
+                newRectangularCuboid->setRotation(rotation);
+            }
+
+            this->_primitives.add(newRectangularCuboid);
         }
     }
     return 0;

@@ -150,3 +150,24 @@ void Primitive::Triangle::setTriangleInverseNormal(const Math::Vector3D& inverse
 {
     _inverseNormal = inverseNormal;
 }
+
+Octree::cubeCollider Primitive::Triangle::getColliderBox() const
+{
+    Octree::cubeCollider collider;
+
+    collider.maxX.second = std::max(_vertex1.x(), std::max(_vertex2.x(), _vertex3.x()));
+    collider.minX.second = std::min(_vertex1.x(), std::min(_vertex2.x(), _vertex3.x()));
+    collider.maxY.second = std::max(_vertex1.y(), std::max(_vertex2.y(), _vertex3.y()));
+    collider.minY.second = std::min(_vertex1.y(), std::min(_vertex2.y(), _vertex3.y()));
+    collider.maxZ.second = std::max(_vertex1.z(), std::max(_vertex2.z(), _vertex3.z()));
+    collider.minZ.second = std::min(_vertex1.z(), std::min(_vertex2.z(), _vertex3.z()));
+
+    collider.maxX.first = false;
+    collider.minX.first = false;
+    collider.maxY.first = false;
+    collider.minY.first = false;
+    collider.maxZ.first = false;
+    collider.minZ.first = false;
+
+    return collider;
+}

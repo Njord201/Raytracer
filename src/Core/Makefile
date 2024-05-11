@@ -18,6 +18,7 @@ SRC			=	Parser/Scene.cpp \
 				\
 				Camera/Camera.cpp \
 				Camera/Rectangle.cpp \
+				Camera/CameraBuilder.cpp \
 				\
 				Materials/FlatColor.cpp \
 				\
@@ -32,6 +33,7 @@ SRC			=	Parser/Scene.cpp \
 				../Plugins/Primitives/Cylinder/Cylinder.cpp \
 				../Plugins/Primitives/Plane/Plane.cpp \
 				../Plugins/Primitives/Triangle/Triangle.cpp \
+				../Plugins/Primitives/RectangularCuboid/RectangularCuboid.cpp \
 				\
 				../Plugins/Lights/Ambient/Ambient.cpp \
 				../Plugins/Lights/Point/Point.cpp \

@@ -156,3 +156,40 @@ Math::Vector3D Primitive::Plane::getNormal(const Math::Vector3D& hitPoint, const
         return normal;
     return normal * -1;
 }
+
+Octree::cubeCollider Primitive::Plane::getColliderBox() const
+{
+    Octree::cubeCollider collider;
+
+    collider.minX.second = _position.x();
+    collider.minY.second = _position.y();
+    collider.minZ.second = _position.z();
+    collider.maxX.second = _position.x();
+    collider.maxY.second = _position.y();
+    collider.maxZ.second = _position.z();
+
+    collider.maxX.first = false;
+    collider.minX.first = false;
+    collider.maxY.first = false;
+    collider.minY.first = false;
+    collider.maxZ.first = false;
+    collider.minZ.first = false;
+
+    if (_axis == Axis::X) {
+        collider.minY.first = true;
+        collider.minZ.first = true;
+        collider.maxY.first = true;
+        collider.maxZ.first = true;
+    } else if (_axis == Axis::Y) {
+        collider.minX.first = true;
+        collider.minZ.first = true;
+        collider.maxX.first = true;
+        collider.maxZ.first = true;
+    } else if (_axis == Axis::Z) {
+        collider.minX.first = true;
+        collider.minY.first = true;
+        collider.maxX.first = true;
+        collider.maxY.first = true;
+    }
+    return collider;
+}

@@ -127,6 +127,11 @@ namespace Math {
             Vector3D operator/(double n);
             Vector3D& operator/=(double n);
 
+            bool operator==(const Vector3D& ptr);
+            bool operator!=(const Vector3D& ptr);
+            bool operator<(const Vector3D& ptr);
+            bool operator>(const Vector3D& ptr);
+
         private:
 
             double _vector[3];

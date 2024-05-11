@@ -154,6 +154,13 @@ namespace Primitive {
              */
             void setTriangleInverseNormal(const Math::Vector3D& inverseNormal);
 
+            /**
+             * @brief Get the collider box object.
+             *
+             * @return Octree::cubeCollider
+             */
+            Octree::cubeCollider getColliderBox() const override;
+
         private:
             Math::Vector3D                       _rotation;
             Math::Vector3D                       _normal;
