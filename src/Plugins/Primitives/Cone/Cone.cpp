@@ -144,9 +144,9 @@ Math::Vector3D Primitive::Cone::getNormal(const Math::Vector3D& hitPoint, const 
     return coneNormal;
 }
 
-Octree::cubeCollider Primitive::Cone::getColliderBox() const
+Optimisation::cubeCollider Primitive::Cone::getColliderBox() const
 {
-    Octree::cubeCollider collider;
+    Optimisation::cubeCollider collider;
 
     collider.maxX.second = _position.x() + _angle;
     collider.minX.second = _position.x() - _angle;
