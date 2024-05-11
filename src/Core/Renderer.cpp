@@ -52,7 +52,6 @@ void Raytracer::Renderer::renderScene()
 
     bool windowOpen = true;
     while (windowOpen) {
-        std::cout << "in loop" << std::endl;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT)
                 windowOpen = false;
