@@ -41,6 +41,8 @@ double Light::Point::getDiffuseMultiplier(void) const
 
 void Light::Point::setDiffuseMultiplier(double diffuseMultiplier)
 {
+    if (diffuseMultiplier > 1)
+        diffuseMultiplier = 1;
     this->_diffuseMultiplier = diffuseMultiplier;
 }
 
@@ -62,12 +64,11 @@ Color Light::Point::computeColor(Math::Vector3D primitiveNormal, const Math::Poi
 
     double angle = acos(n / d) * 180 / M_PI;
 
+    double diffuse = getDiffuseMultiplier();
     double coeffLight = (1 - (angle / 90));
 
-    Math::Vector3D colorCoeff (_color.getR(), _color.getG(), _color.getB());
-
     if (angle <= 90)
-        color *= coeffLight;
+        color *= coeffLight * diffuse;
     else
         color = Math::Point3D(0,0,0);
 

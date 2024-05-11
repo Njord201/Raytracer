@@ -38,6 +38,8 @@ double Light::Ambient::getDiffuseMultiplier(void) const
 
 void Light::Ambient::setDiffuseMultiplier(double diffuseMultiplier)
 {
+    if (diffuseMultiplier > 1)
+        diffuseMultiplier = 1;
     this->_diffuseMultiplier = diffuseMultiplier;
 }
 
