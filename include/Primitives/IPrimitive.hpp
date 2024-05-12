@@ -40,7 +40,7 @@ namespace Primitive {
              * @param ray Vector3D
              * @return Math::Point3D
              */
-            virtual Math::Point3D hitPoint(const Raytracer::Ray& ray) const = 0;
+            virtual Math::Point3D hitPoint(const Raytracer::Ray& ray) = 0;
 
             /**
              * @brief Get the Normal of the object.

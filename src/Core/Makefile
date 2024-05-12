@@ -10,6 +10,7 @@ MAIN 		=	main.cpp
 SRC			=	Parser/Scene.cpp \
 				Parser/Factory.cpp \
 				Parser/DLLoader.cpp \
+				Parser/ParserObj.cpp \
 				\
 				Primitives/PrimitivesContainer.cpp \
 				Primitives/Shadow.cpp \
@@ -37,6 +38,7 @@ SRC			=	Parser/Scene.cpp \
 				../Plugins/Primitives/Plane/Plane.cpp \
 				../Plugins/Primitives/Triangle/Triangle.cpp \
 				../Plugins/Primitives/RectangularCuboid/RectangularCuboid.cpp \
+				../Plugins/Primitives/Mesh/Mesh.cpp \
 				\
 				../Plugins/Lights/Ambient/Ambient.cpp \
 				../Plugins/Lights/Point/Point.cpp \

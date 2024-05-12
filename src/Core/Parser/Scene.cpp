@@ -72,13 +72,43 @@ Raytracer::Scene::Scene(std::string filePath)
 int Raytracer::Scene::_parseScenesImports(const libconfig::Config &config)
 {
     if (config.exists("imports")) {
-        const libconfig::Setting &imports = config.lookup("imports")["scenes"];
-        for (int index = 0; index < imports.getLength(); index++) {
-            std::string importPath;
-            imports[index].lookupValue("path", importPath);
-            if (!filepathParsed(this->_importedScenesFiles, importPath)) {
-                std::cout << "Importing scene file: " << importPath << std::endl;
-                this->parseImportedScene(importPath);
+        const libconfig::Setting &imports = config.lookup("imports");
+
+        if (imports.exists("scenes")) {
+            const libconfig::Setting &scenes = imports.lookup("scenes");
+            for (int index = 0; index < scenes.getLength(); index++) {
+                std::string importPath;
+                scenes[index].lookupValue("path", importPath);
+                if (!filepathParsed(this->_importedScenesFiles, importPath)) {
+                    std::cout << "Importing scene file: " << importPath << std::endl;
+                    this->parseImportedScene(importPath);
+                }
+            }
+        }
+
+        if (imports.exists("meshes")) {
+            const libconfig::Setting &meshes = imports.lookup("meshes");
+            for (int index = 0; index < meshes.getLength(); index++) {
+
+                std::string meshPath;
+                meshes[index].lookupValue("path", meshPath);
+
+                std::shared_ptr<Primitive::IPrimitive> mesh = _factory.createPrimitivesComponent("mesh");
+                std::shared_ptr<Primitive::Mesh> newMesh = std::dynamic_pointer_cast<Primitive::Mesh>(mesh);
+
+                std::cout << "Importing obj file: " << meshPath << std::endl;
+                ParserObj parserObj(meshPath, newMesh);
+
+                std::string materialType;
+                libconfig::Setting& material = meshes[index].lookup("material");
+                material.lookupValue("type", materialType);
+
+                if (materialType == "flatColor") {
+                    libconfig::Setting& color = material.lookup("color");
+                    std::shared_ptr<FlatColor> materialPtr = std::make_shared<FlatColor>(color["r"], color["g"], color["b"]);
+                    newMesh->setMaterial(materialPtr);
+                }
+                this->_primitives.add(newMesh);
             }
         }
     }
