@@ -35,34 +35,34 @@ class Raytracer::Scene {
         using PrimitivesCreator = std::function<std::unique_ptr<Primitive::IPrimitive>()>;
 
         /**
-         * @brief Construct a new Scene object
+         * @brief Construct a new Scene object.
          * 
          * @param filePath File to parse
          */
         Scene(std::string filePath);
 
         /**
-         * @brief Destruct a Scene object
+         * @brief Destruct a Scene object.
          *
          */
         ~Scene() = default;
 
         /**
-         * @brief Get the Camera object
+         * @brief Get the Camera object.
          * 
          * @return Camera Object
          */
         Raytracer::Camera &getCamera(void);
         
         /**
-         * @brief Get the Primitives object
+         * @brief Get the Primitives object.
          * 
          * @return Primitive::PrimitivesContainer 
          */
         Primitive::PrimitivesContainer getPrimitives(void) const;
 
         /**
-         * @brief Get the Lights object
+         * @brief Get the Lights object.
          * 
          * @return Light::LightsContainer
          */
@@ -70,12 +70,15 @@ class Raytracer::Scene {
 
         class ParserException : public std::exception {
             public:
-                /// @brief Exception to throw when there is an error in parsing
-                /// @param msg message to throw
+                /*
+                 * @brief Exception to throw when there is an error in parsing.
+                 * @param msg message to throw
+                 */ 
                 explicit ParserException(const std::string &msg) : message(msg) {}
                 
-                /// @brief Return the message of error
-                /// @return message
+                /* @brief Return the message of error.
+                 * @return message
+                 */
                 virtual const char* what() const noexcept override {
                     return message.c_str();
                 }
@@ -85,36 +88,47 @@ class Raytracer::Scene {
         };
     
     private:
+            /*
+             * @brief Parse the Camera settings.
+             * @param camera Settings
+             * @return 0 if no error else 84
+             */
+            int _parseCameraSetting(const libconfig::Setting &camera);
 
-        /// @brief Parse the Camera settings
-        /// @param camera Settings
-        /// @return 0 if no error else 84
-        int _parseCameraSetting(const libconfig::Setting &camera);
+            /*
+             * @brief Parse the Primitives settings.
+             * @param camera Settings
+             * @return 0 if no error else 84
+             */
+            int _parsePrimitiveSetting(const libconfig::Setting &primitives);
 
-        /// @brief Parse the Primitives settings
-        /// @param camera Settings
-        /// @return 0 if no error else 84
-        int _parsePrimitiveSetting(const libconfig::Setting &primitives);
+            /*
+             * @brief Parse the Lights settings.
+             * @param camera Settings
+             * @return 0 if no error else 84
+             */
+            int _parseLightsSetting(const libconfig::Setting &lights);
 
-        /// @brief Parse the Lights settings
-        /// @param camera Settings
-        /// @return 0 if no error else 84
-        int _parseLightsSetting(const libconfig::Setting &lights);
+            /*
+             * @brief Parse the value of settings.
+             * @param value to parse
+             * @return The value parsed
+             */
+            double _parseValue(const libconfig::Setting &value);
 
-        /// @brief Parse the value of settings
-        /// @param value to parse
-        /// @return The value parsed
-        double _parseValue(const libconfig::Setting &value);
+            /*
+             * @brief Parse imports of scenes.
+             * @param config of the current file
+             * @return integer 0 if no error else x
+             */
+            int _parseScenesImports(const libconfig::Config &config);
 
-        /// @brief Parse imports of scenes
-        /// @param config of the current file
-        /// @return integer 0 if no error else x
-        int _parseScenesImports(const libconfig::Config &config);
-
-        /// @brief Parse the imported scene
-        /// @param filePath of the scene to parse
-        /// @return integer 0 if no error else x
-        int parseImportedScene(std::string filePath);
+            /*
+             * @brief Parse the imported scene.
+             * @param filePath of the scene to parse
+             * @return integer 0 if no error else x
+             */
+            int parseImportedScene(std::string filePath);
 
         Raytracer::Factory                  _factory;
         Raytracer::Camera                   _camera;

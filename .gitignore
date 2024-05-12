@@ -31,4 +31,9 @@
 *.out
 *.app
 
+#image generated
 *.ppm
+
+#generated doc
+doc/doxygen/html
+doc/doxygen/latex
