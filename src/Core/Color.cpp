@@ -58,3 +58,19 @@ bool Color::isWrongColor() const
         return true;
     return false;
 }
+
+Color& Color::operator+=(const Color& other)
+{
+    this->_r += other.getR();
+    this->_g += other.getG();
+    this->_b += other.getB();
+    return *this;
+}
+
+Color& Color::operator/=(float value)
+{
+    this->_r /= value;
+    this->_g /= value;
+    this->_b /= value;
+    return *this;
+}

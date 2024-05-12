@@ -11,6 +11,7 @@ Raytracer::Camera::Camera(): _origin(0,0,0), _screen()
 {
     this->_resolution.first = 0;
     this->_resolution.second = 0;
+    this->_antialiasing = 1;
 }
 
 Raytracer::Camera::Camera(const Camera& other)
@@ -20,6 +21,7 @@ Raytracer::Camera::Camera(const Camera& other)
     this->_rotation = other._rotation;
     this->_fov = other._fov;
     this->_resolution = other._resolution;
+    this->_antialiasing = other._antialiasing;
 }
 
 Raytracer::Camera::~Camera()
@@ -97,5 +99,16 @@ Raytracer::Camera& Raytracer::Camera::operator=(const Raytracer::Camera& other)
     this->_resolution = other.getResolution();
     this->_rotation = other.getRotation();
     this->_screen = other.getScreen();
+    this->_antialiasing = other.getAntialiasing();
     return *this;
+}
+
+void Raytracer::Camera::setAntialiasing(int antialiasing)
+{
+    this->_antialiasing = antialiasing;
+}
+
+int Raytracer::Camera::getAntialiasing(void) const
+{
+    return this->_antialiasing;
 }
