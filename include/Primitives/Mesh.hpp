@@ -68,7 +68,7 @@ class Primitive::Mesh : public Primitive::IPrimitive {
          *
          * @return Octree::cubeCollider
          */
-        Octree::cubeCollider getColliderBox() const override;
+        Optimisation::cubeCollider getColliderBox() const override;
 
         /**
          * @brief Add a primitive to the mesh.
@@ -80,7 +80,7 @@ class Primitive::Mesh : public Primitive::IPrimitive {
     private:
 
         std::shared_ptr<Material::IMaterial>                _material;
-        Octree::cubeCollider                                _collider;
+        Optimisation::cubeCollider                                _collider;
         std::shared_ptr<Primitive::IPrimitive>              _lastHit;
         std::vector<std::shared_ptr<Primitive::IPrimitive>> _primitives;
 };
