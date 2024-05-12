@@ -19,4 +19,4 @@ namespace Octree {
         std::pair<bool, double> maxY;
         std::pair<bool, double> maxZ;
     };
-}
+};
