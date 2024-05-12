@@ -48,7 +48,7 @@ std::shared_ptr<Material::IMaterial> Primitive::Mesh::getMaterial() const
     return _material;
 }
 
-Octree::cubeCollider Primitive::Mesh::getColliderBox() const
+Optimisation::cubeCollider Primitive::Mesh::getColliderBox() const
 {
     return _collider;
 }
