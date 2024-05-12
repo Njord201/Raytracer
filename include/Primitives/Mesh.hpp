@@ -33,7 +33,7 @@ class Primitive::Mesh : public Primitive::IPrimitive {
         ~Mesh() = default;
 
         /**
-         * @brief Compute the hit point of a Mesh with a ray
+         * @brief Compute the hit point of a Mesh with a ray.
          *
          * @param ray Vector3D
          * @return Math::Point3D
