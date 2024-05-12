@@ -59,7 +59,7 @@ static Math::Vector3D getRayDirectionByAxis(const Raytracer::Ray& ray, const Pri
     return rayDirection;
 }
 
-Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& ray) const
+Math::Point3D Primitive::Cylinder::hitPoint(const Raytracer::Ray& ray)
 {
     Math::Point3D rayOrigin = getRayOriginByAxis(ray, _axis, this->_rotation);
     Math::Vector3D rayDirection = getRayDirectionByAxis(ray, _axis, this->_rotation);

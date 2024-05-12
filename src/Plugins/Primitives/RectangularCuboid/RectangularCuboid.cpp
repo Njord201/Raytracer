@@ -38,7 +38,7 @@ Math::Point3D Primitive::RectangularCuboid::checkRayReachPrimitive(double t, Mat
     return Math::Point3D(-1, -1, -1);
 }
 
-Math::Point3D Primitive::RectangularCuboid::hitPoint(const Raytracer::Ray& ray) const
+Math::Point3D Primitive::RectangularCuboid::hitPoint(const Raytracer::Ray& ray)
 {
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();

@@ -35,6 +35,15 @@ namespace Primitive {
             Triangle(const Math::Point3D& vertex1, const Math::Point3D& vertex2, const Math::Point3D& vertex3, std::shared_ptr<Material::IMaterial> material);
 
             /**
+             * @brief Construct a new triangle object.
+             *
+             * @param vertex1 first edge of the triangle
+             * @param vertex2 second edge of the triangle
+             * @param vertex3 third edge of the triangle
+             */
+            Triangle(const Math::Point3D& vertex1, const Math::Point3D& vertex2, const Math::Point3D& vertex3);
+
+            /**
              * @brief Destroy the triangle object.
              *
              */
@@ -46,7 +55,7 @@ namespace Primitive {
              * @param ray vector3D
              * @return Point3D
              */
-            Math::Point3D hitPoint(const Raytracer::Ray& ray) const override;
+            Math::Point3D hitPoint(const Raytracer::Ray& ray) override;
 
             /**
              * @brief Set the vertex1 object.

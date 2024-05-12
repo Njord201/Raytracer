@@ -17,6 +17,7 @@
 
 #include "Camera/Camera.hpp"
 #include "Parser/Factory.hpp"
+#include "Parser/ParserObj.hpp"
 #include "Materials/FlatColor.hpp"
 #include "Camera/CameraBuilder.hpp"
 #include "Lights/LightsContainer.hpp"

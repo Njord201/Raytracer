@@ -16,7 +16,7 @@ Primitive::Cone::Cone() : _rotation(0,0,0), _position(0,0,0), _angle(25), _axis(
 Primitive::Cone::Cone(const Math::Point3D& origin, double angle, Axis axis, std::shared_ptr<Material::IMaterial> material) :
 _position(origin), _angle(angle), _axis(axis), _material(material) {}
 
-Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray) const
+Math::Point3D Primitive::Cone::hitPoint(const Raytracer::Ray& ray)
 {
     Math::Point3D rayOrigin = ray.origin();
     Math::Vector3D rayDirection = ray.direction();
