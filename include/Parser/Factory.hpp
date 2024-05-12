@@ -15,10 +15,10 @@
 #include <unordered_map>
 #include <libconfig.h++>
 
-#include "Primitives/Mesh.hpp"
 #include "Lights/Point.hpp"
 #include "Lights/Ambient.hpp"
 #include "Primitives/Cone.hpp"
+#include "Primitives/Mesh.hpp"
 #include "Parser/DLLoader.hpp"
 #include "Primitives/Plane.hpp"
 #include "Primitives/Sphere.hpp"

@@ -20,19 +20,19 @@ class Primitive::Mesh : public Primitive::IPrimitive {
     public:
 
         /**
-         * @brief Construct a new Mesh object.
+         * @brief Construct a new mesh object.
          *
          */
         Mesh();
 
         /**
-         * @brief Destroy the Mesh object.
+         * @brief Destroy the mesh object.
          *
          */
         ~Mesh() = default;
 
         /**
-         * @brief compute the hit point of a Mesh with a ray
+         * @brief Compute the hit point of a Mesh with a ray
          *
          * @param ray Vector3D
          * @return Math::Point3D
@@ -40,7 +40,7 @@ class Primitive::Mesh : public Primitive::IPrimitive {
         Math::Point3D hitPoint(const Raytracer::Ray& ray) override;
 
         /**
-         * @brief Get the Normal of the object.
+         * @brief Get the normal of the object.
          *
          * @param hitPoint to compute the normal
          * @param ray of the camera
@@ -49,14 +49,14 @@ class Primitive::Mesh : public Primitive::IPrimitive {
         Math::Vector3D getNormal(const Math::Vector3D& hitPoint, const Raytracer::Ray& ray) const;
 
         /**
-         * @brief Set the Material.
+         * @brief Set the material.
          *
          * @param material New material to set
          */
         void setMaterial(std::shared_ptr<Material::IMaterial> material);
 
         /**
-         * @brief Get the Material object.
+         * @brief Get the material object.
          *
          * @return std::shared_ptr<Material::IMaterial>
          */
@@ -67,10 +67,10 @@ class Primitive::Mesh : public Primitive::IPrimitive {
          *
          * @return Octree::cubeCollider
          */
-        Octree::cubeCollider getColliderBox() const;
+        Octree::cubeCollider getColliderBox() const override;
 
         /**
-         * @brief Add a Primitive to the Mesh.
+         * @brief Add a primitive to the mesh.
          *
          * @param primitive to add
          */

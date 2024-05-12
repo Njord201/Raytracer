@@ -44,7 +44,6 @@ namespace Primitive {
             Triangle(const Math::Point3D& vertex1, const Math::Point3D& vertex2, const Math::Point3D& vertex3);
 
             /**
-             * 
              * @brief Destroy the triangle object.
              *
              */
