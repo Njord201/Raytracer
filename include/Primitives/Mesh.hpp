@@ -8,6 +8,7 @@
 #pragma once
 
 #include "Primitives/IPrimitive.hpp"
+#include "Optimisation/OctreeRules.hpp"
 
 #include <vector>
 
